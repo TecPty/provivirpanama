@@ -1,0 +1,84 @@
+# ============================================================================
+# .gitignore - Provivir Panama
+# ============================================================================
+
+# ===== CONFIG FILES (SENSITIVE) =====
+backend/api/config.php
+.env
+.env.local
+.env.production
+
+# ===== DATABASE =====
+*.sql.backup
+*.sql.gz
+/backend/database/backups/
+
+# ===== LOGS =====
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== DEPENDENCIES =====
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+yarn.lock
+
+# ===== CMS (if using Strapi) =====
+/cms/.tmp/
+/cms/.cache/
+/cms/build/
+/cms/.env
+/cms/public/uploads/*
+!/cms/public/uploads/.gitkeep
+
+# ===== IDE / EDITORS =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ===== BUILD / DIST =====
+/dist/
+/build/
+*.min.js
+*.min.css
+
+# ===== UPLOADS =====
+/frontend/assets/images/properties/*
+!/frontend/assets/images/properties/.gitkeep
+/frontend/assets/images/testimonials/*
+!/frontend/assets/images/testimonials/.gitkeep
+/frontend/assets/uploads/
+
+# ===== TEMP FILES =====
+/tmp/
+/temp/
+*.tmp
+*.bak
+
+# ===== SSL CERTIFICATES =====
+*.pem
+*.key
+*.crt
+*.csr
+
+# ===== CACHE =====
+.cache/
+*.cache
+
+# ===== OS GENERATED =====
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini

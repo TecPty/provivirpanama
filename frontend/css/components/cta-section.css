@@ -1,0 +1,122 @@
+
+/* ==========================================================================
+   CTA SECTION (Call to Action)
+   ========================================================================== */
+
+.cta-section {
+    background: linear-gradient(135deg, var(--color-primary-blue) 0%, var(--color-accent-dark) 100%);
+    padding: var(--spacing-5xl) 0;
+}
+
+.cta-box {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.cta-box__title {
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    line-height: var(--line-height-tight);
+}
+
+.cta-box__subtitle {
+    font-size: var(--font-size-lg);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: var(--line-height-relaxed);
+    max-width: 600px;
+}
+
+.cta-form {
+    width: 100%;
+    max-width: 600px;
+}
+
+.cta-form__group {
+    display: flex;
+    gap: var(--spacing-md);
+    width: 100%;
+}
+
+.cta-form__input {
+    flex: 1;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    border: none;
+    border-radius: var(--radius-lg);
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--color-text-primary);
+    transition: all var(--transition-base);
+}
+
+.cta-form__input:focus {
+    outline: none;
+    background-color: var(--color-white);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+.cta-form__input::placeholder {
+    color: var(--color-gray-400);
+}
+
+.cta-form__input.error {
+    border: 2px solid var(--color-error);
+}
+
+.cta-form__privacy {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: var(--spacing-md);
+}
+
+.cta-form__success {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-3xl);
+}
+
+.cta-form__success svg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.cta-form__success h3 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    margin-bottom: var(--spacing-sm);
+}
+
+.cta-form__success p {
+    font-size: var(--font-size-base);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .cta-section {
+        padding: var(--spacing-3xl) 0;
+    }
+    
+    .cta-box__title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .cta-box__subtitle {
+        font-size: var(--font-size-base);
+    }
+    
+    .cta-form__group {
+        flex-direction: column;
+    }
+    
+    .cta-form__input {
+        width: 100%;
+    }
+}
