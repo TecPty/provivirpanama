@@ -144,7 +144,9 @@ const PropertyLoader = (() => {
         const propertyId = propertyCard.dataset.propertyId;
         
         // Aquí puedes abrir un modal, redirigir a una página de detalles, etc.
-        console.log('View property details:', propertyId);
+        if (CONFIG.ENVIRONMENT === 'development') {
+            console.log('View property details:', propertyId);
+        }
         
         // Por ahora, mostrar alerta
         alert(`Ver detalles de la propiedad #${propertyId}`);
@@ -160,7 +162,9 @@ const PropertyLoader = (() => {
         // Store selected property in sessionStorage
         sessionStorage.setItem('selectedPropertyId', propertyId);
         
-        console.log('Contact about property:', propertyId);
+        if (CONFIG.ENVIRONMENT === 'development') {
+            console.log('Contact about property:', propertyId);
+        }
     };
 
     /**

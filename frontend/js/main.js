@@ -99,10 +99,12 @@
                 const connectTime = perfData.responseEnd - perfData.requestStart;
                 const renderTime = perfData.domComplete - perfData.domLoading;
                 
-                console.log('Performance Metrics:');
-                console.log(`Page Load Time: ${pageLoadTime}ms`);
-                console.log(`Connect Time: ${connectTime}ms`);
-                console.log(`Render Time: ${renderTime}ms`);
+                if (CONFIG.ENVIRONMENT === 'development') {
+                    console.log('Performance Metrics:');
+                    console.log(`Page Load Time: ${pageLoadTime}ms`);
+                    console.log(`Connect Time: ${connectTime}ms`);
+                    console.log(`Render Time: ${renderTime}ms`);
+                }
                 
                 // Send to analytics if enabled
                 if (CONFIG.FEATURES.ANALYTICS && window.gtag) {
@@ -151,7 +153,9 @@
             monitorPerformance();
         }
         
-        console.log('✅ Provivir Panama initialized successfully');
+        if (CONFIG.ENVIRONMENT === 'development') {
+            console.log('✅ Provivir Panama initialized successfully');
+        }
     };
     
     // Initialize when DOM is ready
