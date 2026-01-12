@@ -28,6 +28,11 @@
     margin-top: 2rem;
 }
 
+/* Two column grid for Mission and Vision */
+.value-props__grid--two {
+    grid-template-columns: 1fr;
+}
+
 /* Value Cards */
 .value-card {
     background: white;
@@ -36,6 +41,14 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+}
+
+.value-card--large {
+    padding: 3rem 2rem;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .value-card:hover {
@@ -70,12 +83,21 @@
     font-weight: 700;
     margin-bottom: 1rem;
     color: var(--text-primary);
+    letter-spacing: 2px;
 }
 
 .value-card__description {
     color: var(--text-secondary);
     line-height: 1.7;
     font-size: 1rem;
+}
+
+.value-card__description--large {
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 /* Tablet */
@@ -89,8 +111,17 @@
         gap: 2rem;
     }
 
+    .value-props__grid--two {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+    }
+
     .value-card {
         padding: 2.5rem;
+    }
+
+    .value-card--large {
+        padding: 4rem 2.5rem;
     }
 }
 
@@ -104,8 +135,16 @@
         gap: 3rem;
     }
 
+    .value-props__grid--two {
+        gap: 4rem;
+    }
+
     .value-card {
         padding: 3rem;
+    }
+
+    .value-card--large {
+        padding: 5rem 3rem;
     }
 
     .value-card__title {
@@ -114,5 +153,9 @@
 
     .value-card__description {
         font-size: 1.125rem;
+    }
+
+    .value-card__description--large {
+        font-size: 1.25rem;
     }
 }

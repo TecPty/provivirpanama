@@ -6,7 +6,6 @@
 
 const FormHandler = (() => {
     const leadForm = document.getElementById('leadForm');
-    const emailInput = document.getElementById('emailInput');
     const formSuccess = document.getElementById('formSuccess');
     
     /**
@@ -15,6 +14,14 @@ const FormHandler = (() => {
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    };
+    
+    /**
+     * Validate phone format
+     */
+    const isValidPhone = (phone) => {
+        const phoneRegex = /^[\d\s\-\+\(\)]{7,}$/;
+        return phoneRegex.test(phone);
     };
     
     /**
@@ -33,9 +40,6 @@ const FormHandler = (() => {
         const errorDiv = document.createElement('div');
         errorDiv.className = 'error-message';
         errorDiv.textContent = message;
-        errorDiv.style.color = 'var(--color-error)';
-        errorDiv.style.fontSize = 'var(--font-size-sm)';
-        errorDiv.style.marginTop = 'var(--spacing-xs)';
         
         input.parentElement.appendChild(errorDiv);
     };
@@ -61,10 +65,12 @@ const FormHandler = (() => {
         if (isLoading) {
             submitButton.disabled = true;
             submitButton.dataset.originalText = submitButton.textContent;
-            submitButton.textContent = 'Enviando...';
+            submitButton.innerHTML = '<span>Enviando...</span>';
+            submitButton.style.opacity = '0.7';
         } else {
             submitButton.disabled = false;
             submitButton.textContent = submitButton.dataset.originalText || 'Enviar';
+            submitButton.style.opacity = '1';
         }
     };
     
@@ -76,16 +82,11 @@ const FormHandler = (() => {
         
         leadForm.style.display = 'none';
         formSuccess.style.display = 'flex';
-        formSuccess.style.flexDirection = 'column';
-        formSuccess.style.alignItems = 'center';
-        formSuccess.style.gap = 'var(--spacing-md)';
-        formSuccess.style.padding = 'var(--spacing-2xl)';
-        formSuccess.style.textAlign = 'center';
         
         // Reset form after delay
         setTimeout(() => {
             formSuccess.style.display = 'none';
-            leadForm.style.display = 'block';
+            leadForm.style.display = 'flex';
             leadForm.reset();
         }, 5000);
     };
@@ -103,32 +104,95 @@ const FormHandler = (() => {
     };
     
     /**
+     * Validate form data
+     */
+    const validateForm = (formData) => {
+        let isValid = true;
+        const inputs = leadForm.querySelectorAll('input, select, textarea');
+        
+        // Clear all errors first
+        inputs.forEach(input => clearError(input));
+        
+        // Validate full name
+        const fullName = formData.get('fullName');
+        const fullNameInput = leadForm.querySelector('#fullName');
+        if (!fullName || fullName.trim().length < 3) {
+            showError(fullNameInput, 'Por favor ingresa tu nombre completo');
+            isValid = false;
+        }
+        
+        // Validate email
+        const email = formData.get('email');
+        const emailInput = leadForm.querySelector('#email');
+        if (!email) {
+            showError(emailInput, 'Por favor ingresa tu correo electrónico');
+            isValid = false;
+        } else if (!isValidEmail(email)) {
+            showError(emailInput, 'Por favor ingresa un correo electrónico válido');
+            isValid = false;
+        }
+        
+        // Validate phone
+        const phone = formData.get('phone');
+        const phoneInput = leadForm.querySelector('#phone');
+        if (!phone) {
+            showError(phoneInput, 'Por favor ingresa tu teléfono');
+            isValid = false;
+        } else if (!isValidPhone(phone)) {
+            showError(phoneInput, 'Por favor ingresa un teléfono válido');
+            isValid = false;
+        }
+        
+        // Validate project
+        const project = formData.get('project');
+        const projectInput = leadForm.querySelector('#project');
+        if (!project) {
+            showError(projectInput, 'Por favor selecciona un proyecto');
+            isValid = false;
+        }
+        
+        // Validate message
+        const message = formData.get('message');
+        const messageInput = leadForm.querySelector('#message');
+        if (!message || message.trim().length < 10) {
+            showError(messageInput, 'Por favor ingresa un mensaje de al menos 10 caracteres');
+            isValid = false;
+        }
+        
+        // Validate terms
+        const terms = formData.get('terms');
+        const termsInput = leadForm.querySelector('input[name="terms"]');
+        if (!terms) {
+            showError(termsInput, 'Debes aceptar los términos y condiciones');
+            isValid = false;
+        }
+        
+        return isValid;
+    };
+    
+    /**
      * Handle lead form submission
      */
     const handleLeadFormSubmit = async (e) => {
         e.preventDefault();
         
-        const email = emailInput.value.trim();
+        const formData = new FormData(leadForm);
         
-        // Clear previous errors
-        clearError(emailInput);
-        
-        // Validate email
-        if (!email) {
-            showError(emailInput, 'Por favor ingresa tu correo electrónico');
-            return;
-        }
-        
-        if (!isValidEmail(email)) {
-            showError(emailInput, 'Por favor ingresa un correo electrónico válido');
+        // Validate form
+        if (!validateForm(formData)) {
             return;
         }
         
         // Prepare data
         const leadData = {
-            email: email,
-            source: 'landing_cta',
-            property_id: sessionStorage.getItem('selectedPropertyId') || null,
+            name: formData.get('fullName').trim(),
+            email: formData.get('email').trim(),
+            phone: formData.get('phone').trim(),
+            salary: formData.get('salary') || null,
+            employment: formData.get('employment') || null,
+            property_id: formData.get('project'),
+            message: formData.get('message').trim(),
+            source: 'landing_contact_form',
             ...getUTMParams()
         };
         
@@ -142,18 +206,19 @@ const FormHandler = (() => {
                 showSuccess();
                 
                 // Track conversion if analytics enabled
-                if (CONFIG.FEATURES.ANALYTICS && window.gtag) {
+                if (typeof gtag !== 'undefined') {
                     gtag('event', 'lead_submission', {
                         'event_category': 'engagement',
-                        'event_label': 'cta_form'
+                        'event_label': 'contact_form',
+                        'value': leadData.property_id
                     });
                 }
             } else {
-                showError(emailInput, response.error || CONFIG.FORMS.LEAD_FORM.ERROR_MESSAGE);
+                alert(response.error || 'Hubo un error al enviar el formulario. Por favor intenta de nuevo.');
             }
         } catch (error) {
             console.error('Error submitting lead:', error);
-            showError(emailInput, CONFIG.FORMS.LEAD_FORM.ERROR_MESSAGE);
+            alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo.');
         } finally {
             setLoading(leadForm, false);
         }
@@ -169,11 +234,18 @@ const FormHandler = (() => {
         leadForm.addEventListener('submit', handleLeadFormSubmit);
         
         // Clear errors on input
-        if (emailInput) {
-            emailInput.addEventListener('input', () => {
-                clearError(emailInput);
+        const inputs = leadForm.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                clearError(input);
             });
-        }
+            
+            input.addEventListener('change', () => {
+                clearError(input);
+            });
+        });
+        
+        console.log('Form handler initialized');
     };
     
     // Public API
