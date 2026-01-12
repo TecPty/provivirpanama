@@ -238,6 +238,38 @@ if (typeof module !== 'undefined' && module.exports) {
             console.error('Error fetching testimonials:', error);
             throw error;
         }
+    },
+
+    /**
+     * Get social posts
+     */
+    async getSocialPosts(params = {}) {
+        try {
+            const queryString = new URLSearchParams(params).toString();
+            const url = `${CONFIG.API.BASE_URL}/social-posts.php${queryString ? '?' + queryString : ''}`;
+            
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+            
+            if (data.success) {
+                return data;
+            } else {
+                throw new Error(data.error || 'Error desconocido');
+            }
+        } catch (error) {
+            console.error('Error fetching social posts:', error);
+            throw error;
+        }
     }
 };
 >>>>>>> 2a3a6b9ea61feb000f9140425420fc8aa4b05932

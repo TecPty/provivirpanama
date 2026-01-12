@@ -28,16 +28,17 @@
 }
 
 .trust-bar__logo {
-    height: 32px;
+    height: 144px;
     width: auto;
-    opacity: 0.6;
-    filter: grayscale(100%);
+    max-width: 540px;
+    opacity: 0.85;
     transition: all var(--transition-base);
+    object-fit: contain;
 }
 
 .trust-bar__logo:hover {
     opacity: 1;
-    filter: grayscale(0%);
+    transform: scale(1.05);
 }
 
 /* RESPONSIVE */
@@ -51,6 +52,7 @@
     }
     
     .trust-bar__logo {
-        height: 24px;
+        height: 108px;
+        max-width: 420px;
     }
 }
