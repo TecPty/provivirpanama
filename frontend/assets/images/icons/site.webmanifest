@@ -1,0 +1,22 @@
+{
+  "name": "Provivir Panamá - Viviendas Asequibles",
+  "short_name": "Provivir",
+  "description": "Soluciones de vivienda asequibles con subsidios gubernamentales y opciones de financiamiento flexibles",
+  "icons": [
+    {
+      "src": "/assets/images/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#005B96",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/"
+}

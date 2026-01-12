@@ -5,9 +5,12 @@
  */
 
 const CONFIG = {
+    // Environment (development | production)
+    ENVIRONMENT: 'development', // Cambiar a 'production' antes del deploy
+    
     // API Configuration
     API: {
-        BASE_URL: '/api', // Cambiar según tu servidor
+        BASE_URL: '/provivirpanama/backend/api', // Ruta para XAMPP en desarrollo
         ENDPOINTS: {
             PROPERTIES: '/properties.php',
             TESTIMONIALS: '/testimonials.php',
@@ -73,16 +76,20 @@ const CONFIG = {
         TWITTER_HANDLE: '@provivirpanama'
     },
 
-    // Contact Information
+    // Contact Information (DATOS REALES del sitio)
     CONTACT: {
-        PHONE: '+507 1234-5678',
-        EMAIL: 'hola@provivirpanama.com',
-        ADDRESS: 'Panamá, Ciudad de Panamá',
-        WHATSAPP: '+50712345678',
+        PHONE: '390-9094',
+        PHONE_SECONDARY: '6371-2652',
+        EMAIL: 'ventas2@provivirpanama.com',
+        ADDRESS: 'Iglesia del Carmen, PH Beta 120, Vía España y Alquilino de la Guardia Diagonal a Canal Bank. Estación del Metro',
+        WHATSAPP: '+50763712652',
+        GOOGLE_MAPS: 'https://g.co/kgs/jXG9nqx',
         SOCIAL: {
-            FACEBOOK: 'https://facebook.com/provivirpanama',
-            INSTAGRAM: 'https://instagram.com/provivirpanama',
-            TWITTER: 'https://twitter.com/provivirpanama'
+            YOUTUBE: 'https://www.youtube.com/c/ProvivirPanamá',
+            FACEBOOK: 'https://www.facebook.com/provivirpanama/',
+            INSTAGRAM: 'https://www.instagram.com/provivir/',
+            TIKTOK: 'https://www.tiktok.com/@provivirpanama',
+            TWITTER: 'https://x.com/provivirpanama'
         }
     }
 };

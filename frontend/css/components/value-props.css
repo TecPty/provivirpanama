@@ -1,0 +1,118 @@
+/* ========================================
+   VALUE PROPS SECTION
+   ======================================== */
+
+.value-props {
+    padding: var(--section-padding-mobile) 0;
+    background-color: var(--bg-light);
+}
+
+.value-props .section__title {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.value-props .section__subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.value-props__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Value Cards */
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.value-card__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.value-card__icon--blue {
+    color: var(--primary-color);
+}
+
+.value-card__icon--green {
+    color: var(--success-color, #10b981);
+}
+
+.value-card__icon--orange {
+    color: var(--warning-color, #f59e0b);
+}
+
+.value-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.value-card__description {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .value-props {
+        padding: var(--section-padding-tablet) 0;
+    }
+
+    .value-props__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .value-card {
+        padding: 2.5rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .value-props {
+        padding: var(--section-padding-desktop) 0;
+    }
+
+    .value-props__grid {
+        gap: 3rem;
+    }
+
+    .value-card {
+        padding: 3rem;
+    }
+
+    .value-card__title {
+        font-size: 1.75rem;
+    }
+
+    .value-card__description {
+        font-size: 1.125rem;
+    }
+}
