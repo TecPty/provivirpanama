@@ -10,7 +10,7 @@ const CONFIG = {
     
     // API Configuration
     API: {
-        BASE_URL: '/api', // Cambiar según tu servidor
+        BASE_URL: '/provivirpanama/backend/api', // Ruta para XAMPP en desarrollo
         ENDPOINTS: {
             PROPERTIES: '/properties.php',
             TESTIMONIALS: '/testimonials.php',

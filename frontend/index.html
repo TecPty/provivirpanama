@@ -104,7 +104,38 @@
                 </div>
                 
                 <div class="hero__image">
-                    <img src="./assets/images/hero/hero-guayacanes.avif" alt="Familia feliz frente a su nuevo hogar - Altos de los Guayacanes" loading="eager">
+                    <!-- Slider de imágenes -->
+                    <div class="hero__slider">
+                        <div class="hero__slide active" data-project="altos-guayacanes">
+                            <img src="./assets/images/hero/hero-guayacanes.avif" alt="Residencial Altos de los Guayacanes - La Chorrera" loading="eager">
+                            <div class="hero__slide-caption">Altos de los Guayacanes</div>
+                        </div>
+                        <div class="hero__slide" data-project="ciudad-del-este">
+                            <img src="./assets/images/hero/hero-ciudad-este.avif" alt="Residencial Ciudad del Este - Pacora" loading="lazy">
+                            <div class="hero__slide-caption">Ciudad del Este</div>
+                        </div>
+                        <div class="hero__slide" data-project="villas-oeste">
+                            <img src="./assets/images/hero/hero-villas-oeste.avif" alt="Residencial Villas del Oeste - Santa Cruz" loading="lazy">
+                            <div class="hero__slide-caption">Villas del Oeste</div>
+                        </div>
+                        <div class="hero__slide" data-project="colinas-este">
+                            <img src="./assets/images/hero/hero-colinas-este.jpg" alt="Residencial Colinas del Este - Pacora" loading="lazy">
+                            <div class="hero__slide-caption">Colinas del Este</div>
+                        </div>
+                        <div class="hero__slide" data-project="villas-este">
+                            <img src="./assets/images/hero/hero-villas-este.jpg" alt="Residencial Villas del Este - Pacora" loading="lazy">
+                            <div class="hero__slide-caption">Villas del Este</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Indicadores del slider -->
+                    <div class="hero__slider-dots">
+                        <button class="hero__dot active" data-slide="0" aria-label="Ir a Altos de los Guayacanes"></button>
+                        <button class="hero__dot" data-slide="1" aria-label="Ir a Ciudad del Este"></button>
+                        <button class="hero__dot" data-slide="2" aria-label="Ir a Villas del Oeste"></button>
+                        <button class="hero__dot" data-slide="3" aria-label="Ir a Colinas del Este"></button>
+                        <button class="hero__dot" data-slide="4" aria-label="Ir a Villas del Este"></button>
+                    </div>
                     
                     <div class="hero__badge">
                         <svg class="hero__badge-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -341,6 +372,7 @@
     <script src="./js/components/form-handler.js"></script>
     <script src="./js/components/scroll-animations.js"></script>
     <script src="./js/components/lazy-loading.js"></script>
+    <script src="./js/components/hero-slider.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>

@@ -145,6 +145,11 @@
         // Initialize smooth scrolling
         initSmoothScroll();
         
+        // Initialize hero slider (if function exists)
+        if (typeof initHeroSlider === 'function') {
+            initHeroSlider();
+        }
+        
         // Handle external links
         initExternalLinks();
         
