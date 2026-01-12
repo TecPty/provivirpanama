@@ -161,6 +161,40 @@
         </div>
     </section>
 
+    <!-- PROPERTIES SECTION -->
+    <section class="properties" id="propiedades">
+        <div class="container">
+            <h2 class="section__title">Nuestros Proyectos</h2>
+            <p class="section__subtitle">
+                Encuentra la casa de tus sueños con facilidades de pago y financiamiento
+            </p>
+
+            <!-- Loading State -->
+            <div class="properties__loading" id="propertiesLoading">
+                <div class="loading-spinner"></div>
+                <p>Cargando propiedades...</p>
+            </div>
+
+            <!-- Error State -->
+            <div class="properties__error" id="propertiesError" style="display: none;">
+                <p>⚠️ No se pudieron cargar las propiedades. Por favor, intenta más tarde.</p>
+            </div>
+
+            <!-- Properties Grid -->
+            <div class="properties__grid" id="propertiesGrid"></div>
+
+            <!-- View More Button -->
+            <div class="properties__footer">
+                <a href="https://provivirpanama.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">
+                    Ver Todos los Proyectos
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- MISSION AND VISION -->
     <section class="value-props" id="vision-mision">
         <div class="container">
