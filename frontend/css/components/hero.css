@@ -121,7 +121,7 @@
     width: 100%;
     height: auto;
     min-height: 500px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: var(--radius-2xl);
     display: block;
 }

@@ -86,8 +86,10 @@ const CONFIG = {
         GOOGLE_MAPS: 'https://g.co/kgs/jXG9nqx',
         SOCIAL: {
             YOUTUBE: 'https://www.youtube.com/c/ProvivirPanamá',
-            FACEBOOK: 'https://facebook.com/provivirpanama',
-            INSTAGRAM: 'https://instagram.com/provivirpanama'
+            FACEBOOK: 'https://www.facebook.com/provivirpanama/',
+            INSTAGRAM: 'https://www.instagram.com/provivir/',
+            TIKTOK: 'https://www.tiktok.com/@provivirpanama',
+            TWITTER: 'https://x.com/provivirpanama'
         }
     }
 };
