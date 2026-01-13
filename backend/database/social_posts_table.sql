@@ -21,8 +21,11 @@ CREATE TABLE IF NOT EXISTS social_posts (
     INDEX idx_display_order (display_order)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Datos de ejemplo (posts iniciales)
-INSERT INTO social_posts (platform, image_url, caption, likes_count, comments_count, post_url, is_trending, display_order) VALUES
-('instagram', './assets/images/social/post-1.jpg', 'Conoce nuestro nuevo proyecto en La Chorrera 🏡✨', 1200, 86, 'https://www.instagram.com/p/example1', TRUE, 1),
-('tiktok', './assets/images/social/post-2.jpg', 'Tour virtual por nuestras viviendas 🎥', 432, 52, 'https://www.tiktok.com/@provivirpanama/video/example2', TRUE, 2),
-('instagram', './assets/images/social/post-3.jpg', 'Familias felices en sus nuevos hogares 💙', 890, 43, 'https://www.instagram.com/p/example3', FALSE, 3);
+-- Datos de ejemplo con placeholders (hasta conectar API automática)
+INSERT INTO social_posts (platform, post_id, image_url, caption, likes_count, comments_count, post_url, is_trending, display_order) VALUES
+('instagram', 'temp_ig_001', 'https://via.placeholder.com/1080x1350/0077C2/FFFFFF?text=Proyecto+La+Chorrera', 'Conoce nuestro nuevo proyecto en La Chorrera 🏡✨ #Provivir #CasaNueva', 1200, 86, 'https://www.instagram.com/provivirpanama/', TRUE, 1),
+('tiktok', 'temp_tt_001', 'https://via.placeholder.com/1080x1920/00A651/FFFFFF?text=Tour+Virtual', 'Tour virtual por nuestras viviendas 🎥 ¡Mira los acabados! #TourVirtual #Provivir', 432, 52, 'https://www.tiktok.com/@provivirpanama', TRUE, 2),
+('instagram', 'temp_ig_002', 'https://via.placeholder.com/1080x1350/0077C2/FFFFFF?text=Familias+Felices', 'Familias felices en sus nuevos hogares 💙 #HogarPropio #Provivir', 890, 43, 'https://www.instagram.com/provivirpanama/', FALSE, 3),
+('instagram', 'temp_ig_003', 'https://via.placeholder.com/1080x1350/00A651/FFFFFF?text=Villas+del+Este', 'Villas del Este: tu hogar soñado en Panamá 🌟 #VillasDelEste #Pacora', 1540, 92, 'https://www.instagram.com/provivirpanama/', TRUE, 4),
+('tiktok', 'temp_tt_002', 'https://via.placeholder.com/1080x1920/0077C2/FFFFFF?text=Financiamiento', '¿Sabías que tenemos facilidades de pago? 💰 #Financiamiento #CasaPropia', 678, 38, 'https://www.tiktok.com/@provivirpanama', FALSE, 5),
+('instagram', 'temp_ig_004', 'https://via.placeholder.com/1080x1350/00A651/FFFFFF?text=Altos+Guayacanes', 'Altos de los Guayacanes: comunidad, seguridad y naturaleza 🌳 #Guayacanes', 2100, 120, 'https://www.instagram.com/provivirpanama/', TRUE, 6);
