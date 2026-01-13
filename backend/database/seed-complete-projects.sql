@@ -6,10 +6,8 @@
 
 USE provivir_db;
 
--- Limpiar datos previos
-SET FOREIGN_KEY_CHECKS=0;
-TRUNCATE TABLE properties;
-SET FOREIGN_KEY_CHECKS=1;
+-- Limpiar datos previos (respetando foreign keys)
+DELETE FROM properties;
 
 -- ============================================================================
 -- CIUDAD DEL ESTE - PACORA
