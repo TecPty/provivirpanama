@@ -6,7 +6,7 @@
  */
 
 const PropertyLoader = (() => {
-    const propertiesGrid = document.getElementById('properties-grid');
+    const propertiesGrid = document.getElementById('propertiesGrid');
     let properties = [];
 
     /**
