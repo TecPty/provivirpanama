@@ -83,6 +83,9 @@ try {
     
     $leadId = $db->lastInsertId();
     
+    // Enviar notificación por email al equipo de ventas
+    sendLeadNotification($name, $email, $phone, $message, $propertyId);
+    
     // Log en desarrollo
     if (ENVIRONMENT === 'development') {
         logRequest('POST /api/leads.php', 'POST', [
@@ -117,3 +120,122 @@ try {
         'error' => 'Error interno del servidor'
     ]);
 }
+
+/**
+ * ============================================================================
+ * FUNCIÓN: Enviar notificación de lead por email
+ * ============================================================================
+ */
+function sendLeadNotification($name, $email, $phone, $message, $propertyId) {
+    $to = ADMIN_EMAIL;
+    $subject = "Nuevo Lead: " . $name . " - Provivir";
+    
+    // Construir cuerpo del email
+    $body = "
+    <html>
+    <head>
+        <meta charset='UTF-8'>
+        <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { background-color: #f4f4f4; padding: 20px; }
+            .content { background-color: #fff; padding: 20px; border-radius: 5px; max-width: 600px; margin: 0 auto; }
+            .header { border-bottom: 3px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; }
+            .header h2 { color: #007bff; margin: 0; }
+            .field { margin-bottom: 15px; }
+            .label { font-weight: bold; color: #007bff; }
+            .value { margin-top: 5px; }
+            .footer { margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 12px; color: #666; }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <div class='content'>
+                <div class='header'>
+                    <h2>✉️ Nuevo Lead Capturado</h2>
+                </div>
+                
+                <div class='field'>
+                    <div class='label'>Nombre:</div>
+                    <div class='value'>" . htmlspecialchars($name) . "</div>
+                </div>
+                
+                <div class='field'>
+                    <div class='label'>Email:</div>
+                    <div class='value'><a href='mailto:" . htmlspecialchars($email) . "'>" . htmlspecialchars($email) . "</a></div>
+                </div>
+                
+                <div class='field'>
+                    <div class='label'>Teléfono:</div>
+                    <div class='value'><a href='tel:" . htmlspecialchars($phone) . "'>" . htmlspecialchars($phone) . "</a></div>
+                </div>
+    ";
+    
+    // Si hay ID de propiedad, obtener nombre de la propiedad
+    if ($propertyId) {
+        try {
+            $db = getDatabase();
+            $stmt = $db->prepare("SELECT title FROM properties WHERE id = ?");
+            $stmt->execute([$propertyId]);
+            $property = $stmt->fetch();
+            
+            if ($property) {
+                $body .= "
+                <div class='field'>
+                    <div class='label'>Propiedad de Interés:</div>
+                    <div class='value'>" . htmlspecialchars($property['title']) . "</div>
+                </div>
+                ";
+            }
+        } catch (Exception $e) {
+            // Silenciar errores al obtener propiedad
+        }
+    }
+    
+    // Mensaje del usuario
+    if ($message) {
+        $body .= "
+                <div class='field'>
+                    <div class='label'>Mensaje:</div>
+                    <div class='value'>" . nl2br(htmlspecialchars($message)) . "</div>
+                </div>
+        ";
+    }
+    
+    $body .= "
+                <div class='footer'>
+                    <p>Este email fue generado automáticamente desde provivir.com</p>
+                    <p>Fecha: " . date('Y-m-d H:i:s') . " | IP: " . ($_SERVER['REMOTE_ADDR'] ?? 'N/A') . "</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    ";
+    
+    // Headers del email
+    $headers = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+    $headers .= "From: " . FROM_EMAIL . " <" . FROM_EMAIL . ">\r\n";
+    $headers .= "Reply-To: " . $email . "\r\n";
+    $headers .= "X-Priority: 1\r\n";
+    
+    // Enviar email
+    $emailSent = @mail($to, $subject, $body, $headers);
+    
+    // Log de envío de email
+    if (ENVIRONMENT === 'development') {
+        $logMsg = ($emailSent ? 'EMAIL ENVIADO' : 'EMAIL FALLÓ') . " a {$to} para lead {$name}\n";
+        @file_put_contents(LOG_FILE, date('Y-m-d H:i:s') . " | " . $logMsg, FILE_APPEND);
+    }
+    
+    return $emailSent;
+}
+
+function logError($context, $exception) {
+    if (!LOG_ERRORS) return;
+    
+    $log = date('Y-m-d H:i:s') . " | ERROR | {$context} | " . 
+           $exception->getMessage() . " | File: " . $exception->getFile() . 
+           ":" . $exception->getLine() . "\n";
+    
+    @file_put_contents(LOG_FILE, $log, FILE_APPEND);

@@ -5,11 +5,12 @@
  */
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
-header('Access-Control-Allow-Headers: Content-Type');
 
-require_once '../config/database.php';
+define('ACCESS_ALLOWED', true);
+require_once __DIR__ . '/config.php';
+
+// Manejo de CORS
+handleCORS();
 
 // Manejar preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -20,8 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 $method = $_SERVER['REQUEST_METHOD'];
 
 try {
-    $database = new Database();
-    $db = $database->getConnection();
+    $db = getDatabase();
     
     switch ($method) {
         case 'GET':

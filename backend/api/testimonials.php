@@ -7,9 +7,12 @@
  */
 
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+
+define('ACCESS_ALLOWED', true);
+require_once __DIR__ . '/config.php';
+
+// Manejo de CORS
+handleCORS();
 
 // Handle preflight requests
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
@@ -17,24 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit();
 }
 
-require_once 'config.php';
-
 /**
- * Database connection
+ * Database connection - usar función centralizada
  */
 function getDBConnection() {
-    global $dbConfig;
-    
-    try {
-        $dsn = "mysql:host={$dbConfig['host']};dbname={$dbConfig['database']};charset=utf8mb4";
-        $pdo = new PDO($dsn, $dbConfig['username'], $dbConfig['password']);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        return $pdo;
-    } catch (PDOException $e) {
-        sendResponse(false, 'Database connection failed: ' . $e->getMessage(), [], 500);
-        exit();
-    }
+    return getDatabase();
 }
 
 /**

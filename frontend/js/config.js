@@ -4,13 +4,31 @@
  * ============================================================================
  */
 
+// Detectar ambiente automáticamente
+const ENVIRONMENT = window.location.hostname === 'localhost' || 
+                   window.location.hostname === '127.0.0.1' ||
+                   window.location.hostname.includes('.local')
+    ? 'development'
+    : 'production';
+
+// Construir BASE_URL según ambiente
+const getAPIBaseURL = () => {
+    if (ENVIRONMENT === 'development') {
+        // XAMPP local - ajustar según tu instalación
+        return '/provivirpanama/backend/api';
+    } else {
+        // Producción - ruta relativa funciona en mismo dominio
+        return '/backend/api';
+    }
+};
+
 const CONFIG = {
     // Environment (development | production)
-    ENVIRONMENT: 'development', // Cambiar a 'production' antes del deploy
+    ENVIRONMENT: ENVIRONMENT,
     
     // API Configuration
     API: {
-        BASE_URL: '/provivirpanama/backend/api', // Ruta para XAMPP en desarrollo
+        BASE_URL: getAPIBaseURL(),
         ENDPOINTS: {
             PROPERTIES: '/properties.php',
             TESTIMONIALS: '/testimonials.php',
@@ -24,9 +42,9 @@ const CONFIG = {
 
     // CMS Configuration (para integración futura con Strapi u otro)
     CMS: {
-        ENABLED: true,
-        BASE_URL: '/cms', // URL de tu CMS headless
-        API_KEY: '', // Tu API key del CMS
+        ENABLED: false,
+        BASE_URL: '/cms',
+        API_KEY: '',
     },
 
     // Features Toggle
