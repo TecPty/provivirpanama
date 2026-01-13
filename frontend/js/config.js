@@ -15,7 +15,8 @@ const CONFIG = {
             PROPERTIES: '/properties.php',
             TESTIMONIALS: '/testimonials.php',
             LEADS: '/leads.php',
-            CONTACT: '/contact.php'
+            CONTACT: '/contact.php',
+            SOCIAL_POSTS: '/social-posts.php'
         },
         TIMEOUT: 10000, // 10 segundos
         RETRY_ATTEMPTS: 3
