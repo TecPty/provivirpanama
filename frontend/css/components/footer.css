@@ -15,10 +15,22 @@
     margin-bottom: var(--spacing-3xl);
 }
 
-.footer__logo {
-    width: auto;
-    height: 40px;
+.footer__logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
+}
+
+.footer__logo-icon {
+    width: auto;
+    height: 50px;
+}
+
+.footer__logo-text {
+    width: auto;
+    height: 35px;
+    filter: brightness(0) invert(1); /* Convierte a blanco */
 }
 
 .footer__description {

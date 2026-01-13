@@ -1,0 +1,124 @@
+/**
+ * ============================================================================
+ * HERO ANIMATION - Villas del Este
+ * Animación: Propiedad entra desde la derecha, logo cae y la detiene
+ * ============================================================================
+ * 
+ * INSTRUCCIONES:
+ * 1. Crea las imágenes PNG:
+ *    - villas-este-property.png (casa/propiedad)
+ *    - villas-este-logo.png (logo del proyecto)
+ *    Guárdalas en: frontend/assets/images/hero/
+ * 
+ * 2. Descomentar el código HTML en index.html (busca "HERO ANIMATION")
+ * 
+ * 3. Descomentar este archivo en main.css
+ * 
+ * 4. Ajustar medidas según las pruebas
+ * ============================================================================
+ */
+
+/* Contenedor de la animación */
+.hero__animation {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(0, 119, 194, 0.05) 0%, rgba(0, 166, 81, 0.05) 100%);
+    border-radius: var(--radius-xl);
+    margin-top: var(--spacing-2xl);
+}
+
+/* Propiedad que entra desde la derecha */
+.hero__property {
+    position: absolute;
+    bottom: 20px;
+    right: -100%;
+    width: auto;
+    height: 250px;
+    animation: slideInFromRight 2s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Logo que cae desde arriba */
+.hero__project-logo {
+    position: absolute;
+    top: -100%;
+    right: 50%;
+    transform: translateX(50%);
+    width: auto;
+    height: 120px;
+    animation: fallDown 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation-delay: 2s;
+}
+
+/* Animación: Propiedad entra horizontalmente */
+@keyframes slideInFromRight {
+    0% {
+        right: -100%;
+        opacity: 0;
+    }
+    100% {
+        right: 80px;
+        opacity: 1;
+    }
+}
+
+/* Animación: Logo cae y rebota */
+@keyframes fallDown {
+    0% {
+        top: -100%;
+        transform: translateX(50%) rotate(0deg);
+    }
+    60% {
+        top: 40px;
+        transform: translateX(50%) rotate(10deg);
+    }
+    80% {
+        top: 60px;
+        transform: translateX(50%) rotate(-5deg);
+    }
+    100% {
+        top: 50px;
+        transform: translateX(50%) rotate(0deg);
+    }
+}
+
+/* Efecto de impacto cuando el logo "detiene" la propiedad */
+.hero__animation.impact .hero__property {
+    animation: shake 0.3s ease-in-out;
+    animation-delay: 3.5s;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero__animation {
+        height: 300px;
+    }
+    
+    .hero__property {
+        height: 180px;
+    }
+    
+    .hero__project-logo {
+        height: 80px;
+    }
+    
+    @keyframes slideInFromRight {
+        100% {
+            right: 40px;
+        }
+    }
+}
