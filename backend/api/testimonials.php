@@ -114,7 +114,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
     
     default:
         sendResponse(false, 'Method not allowed', [], 405);
-        break();
+        break;
 }
 
 ?>

@@ -183,17 +183,13 @@ const FormHandler = (() => {
             return;
         }
         
-        // Prepare data
+        // Prepare data - Only send fields that backend expects
         const leadData = {
             name: formData.get('fullName').trim(),
             email: formData.get('email').trim(),
             phone: formData.get('phone').trim(),
-            salary: formData.get('salary') || null,
-            employment: formData.get('employment') || null,
-            property_id: formData.get('project'),
             message: formData.get('message').trim(),
-            source: 'landing_contact_form',
-            ...getUTMParams()
+            property_id: formData.get('project') || null
         };
         
         // Set loading state

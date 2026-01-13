@@ -1,0 +1,50 @@
+# Enable mod_rewrite
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Set the base path
+    RewriteBase /provivirpanama/
+    
+    # If the request is for a file or folder that exists, serve it
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    
+    # Otherwise, redirect to index.html
+    RewriteRule ^(.*)$ index.html [QSA,L]
+</IfModule>
+
+# Enable DirectoryIndex
+<IfModule mod_dir.c>
+    DirectoryIndex index.html index.php
+</IfModule>
+
+# Set the correct MIME types
+<IfModule mod_mime.c>
+    AddType text/html .html
+    AddType application/json .json
+    AddType text/css .css
+    AddType application/javascript .js
+    AddType image/avif .avif
+    AddEncoding gzip .js.gz
+    AddEncoding gzip .css.gz
+</IfModule>
+
+# Protect backend API from direct access (except via fetch)
+<FilesMatch "\.php$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </IfModule>
+</FilesMatch>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Disable directory listing
+Options -Indexes

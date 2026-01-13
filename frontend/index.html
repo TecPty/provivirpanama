@@ -34,6 +34,59 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./css/main.css">
+    
+    <!-- Schema Markup - JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Provivir Panamá",
+      "image": "https://provivirpanama.com/assets/images/logo/logo-provivir.png",
+      "description": "Soluciones de vivienda asequible con subsidios gubernamentales y financiamiento flexible en Panamá",
+      "url": "https://provivirpanama.com",
+      "telephone": "+507-xxxx-xxxx",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Panamá",
+        "addressCountry": "PA"
+      },
+      "sameAs": [
+        "https://www.facebook.com/provivirpanama",
+        "https://www.instagram.com/provivirpanama",
+        "https://www.whatsapp.com"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Provivir Panamá",
+      "url": "https://provivirpanama.com",
+      "logo": "https://provivirpanama.com/assets/images/logo/logo-provivir.png",
+      "description": "Tu nuevo hogar está más cerca de lo que piensas",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+507-xxxx-xxxx",
+        "email": "ventas2@provivirpanama.com"
+      }
+    }
+    </script>
+    
+    <!-- Google Analytics 4 -->
+    <!-- IMPORTANTE: Reemplaza G-XXXXXXXXXX con tu ID de GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX', {
+        'anonymize_ip': true,
+        'allow_google_signals': false
+      });
+    </script>
 </head>
 <body>
     
@@ -109,32 +162,33 @@
                 </div>
                 
                 <div class="hero__image">
-                    <!-- Slider de imágenes -->
+                    <!-- Logo que cae sincronizado -->
+                    <div class="hero__logo">
+                        <img id="logoSlide" src="./assets/images/logos/ciudad-del-este-logo.png" alt="Logo Proyecto" loading="eager">
+                    </div>
+
+                    <!-- Slider de propiedades -->
                     <div class="hero__slider">
-                        <div class="hero__slide active" data-project="altos-guayacanes">
-                            <img src="./assets/images/properties/altos-guayacanes/altos-de-los-gayacanes.png" alt="Residencial Altos de los Guayacanes - La Chorrera" loading="eager">
+                        <div class="hero__slide" data-project="ciudad-del-este" data-logo="ciudad-del-este-logo.png">
+                            <img src="./assets/images/properties/ciudad-del-este-propiedad.png" alt="Ciudad del Este" loading="eager">
                         </div>
-                        <div class="hero__slide" data-project="ciudad-del-este">
-                            <img src="./assets/images/properties/ciudad-del-este/cuidad-del-este.png" alt="Residencial Ciudad del Este - Pacora" loading="lazy">
+                        <div class="hero__slide" data-project="colinas-del-este" data-logo="colinas-del-este-logo.png">
+                            <img src="./assets/images/properties/colinas-del-este-propiedad.png" alt="Colinas del Este" loading="lazy">
                         </div>
-                        <div class="hero__slide" data-project="villas-oeste">
-                            <img src="./assets/images/properties/villas-oeste/villas-oeste.png" alt="Residencial Villas del Oeste - Santa Cruz" loading="lazy">
+                        <div class="hero__slide" data-project="los-guayacanes" data-logo="los-guayacanes-logo.png">
+                            <img src="./assets/images/properties/los-guayacanes-propiedad.png" alt="Los Guayacanes" loading="lazy">
                         </div>
-                        <div class="hero__slide" data-project="colinas-este">
-                            <img src="./assets/images/properties/colinas-este/colinas-este.png" alt="Residencial Colinas del Este - Pacora" loading="lazy">
-                        </div>
-                        <div class="hero__slide" data-project="villas-este">
-                            <img src="./assets/images/properties/villas-este/villas-este.png" alt="Residencial Villas del Este - Pacora" loading="lazy">
+                        <div class="hero__slide" data-project="villas-del-este" data-logo="villas-del-este-logo.png">
+                            <img src="./assets/images/properties/villas-del-este-propiedad.png" alt="Villas del Este" loading="lazy">
                         </div>
                     </div>
                     
                     <!-- Indicadores del slider -->
                     <div class="hero__slider-dots">
-                        <button class="hero__dot active" data-slide="0" aria-label="Ir a Altos de los Guayacanes"></button>
-                        <button class="hero__dot" data-slide="1" aria-label="Ir a Ciudad del Este"></button>
-                        <button class="hero__dot" data-slide="2" aria-label="Ir a Villas del Oeste"></button>
-                        <button class="hero__dot" data-slide="3" aria-label="Ir a Colinas del Este"></button>
-                        <button class="hero__dot" data-slide="4" aria-label="Ir a Villas del Este"></button>
+                        <button class="hero__dot active" data-slide="0" aria-label="Ciudad del Este"></button>
+                        <button class="hero__dot" data-slide="1" aria-label="Colinas del Este"></button>
+                        <button class="hero__dot" data-slide="2" aria-label="Los Guayacanes"></button>
+                        <button class="hero__dot" data-slide="3" aria-label="Villas del Este"></button>
                     </div>
                     
                     <div class="hero__badge">
@@ -717,6 +771,7 @@
     <script src="./js/components/scroll-animations.js"></script>
     <script src="./js/components/lazy-loading.js"></script>
     <script src="./js/components/hero-slider.js"></script>
+    <script src="./js/components/hero-animation-sync.js"></script>
     <script src="./js/components/team-carousel.js"></script>
     <script src="./js/components/social-feed-loader.js"></script>
     <script src="./js/main.js"></script>
