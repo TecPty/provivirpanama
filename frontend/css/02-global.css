@@ -104,7 +104,6 @@ section {
 .btn--primary:hover {
     background-color: var(--color-accent-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
 }
 
 .btn--secondary {
