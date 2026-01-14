@@ -4,8 +4,8 @@
 
 .hero {
     background: linear-gradient(135deg, var(--color-white-matte) 0%, var(--color-white) 100%);
-    padding-top: var(--spacing-lg);
-    padding-bottom: var(--spacing-2xl);
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-lg);
     overflow: hidden;
 }
 
@@ -39,8 +39,8 @@
 }
 
 .hero__title--compact {
-    font-size: 2.5rem;
-    line-height: 1.2;
+    font-size: 2rem;
+    line-height: 1.1;
 }
 
 .hero__title--highlight {
@@ -49,16 +49,16 @@
 }
 
 .hero__description {
-    font-size: var(--font-size-base);
-    line-height: var(--line-height-relaxed);
+    font-size: 0.9rem;
+    line-height: 1.4;
     color: var(--color-text-secondary);
-    max-width: 480px;
-    margin-bottom: var(--spacing-md);
+    max-width: 400px;
+    margin-bottom: var(--spacing-sm);
 }
 
 .hero__actions {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     flex-wrap: wrap;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .hero__stat-number {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
 }
