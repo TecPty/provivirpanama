@@ -270,19 +270,46 @@ const PropertyLoader = (() => {
 
             renderProperties(filteredProperties);
 
-            // Attach view all button listener
-            const viewAllBtn = document.querySelector('[data-action="view-all"]');
-            if (viewAllBtn) {
-                viewAllBtn.addEventListener('click', toggleViewAll);
-            }
+            // Attach view all button listener after rendering
+            attachViewAllListener();
 
-            if (CONFIG.ENVIRONMENT === 'development') {
+            if (typeof CONFIG !== 'undefined' && CONFIG.ENVIRONMENT === 'development') {
                 console.log('Properties loaded:', properties.length);
             }
         } catch (error) {
             console.error('Error loading properties:', error);
             if (propertiesLoading) propertiesLoading.classList.add('hidden');
             if (propertiesError) propertiesError.classList.remove('hidden');
+        }
+    };
+
+    /**
+     * Attach view all button listener
+     */
+    const attachViewAllListener = () => {
+        const viewAllBtn = document.querySelector('[data-action="view-all"]');
+        console.log('Searching for button with data-action="view-all"');
+        console.log('Found button:', viewAllBtn);
+        
+        if (viewAllBtn) {
+            console.log('Button found, attaching click listener');
+            viewAllBtn.addEventListener('click', (e) => {
+                console.log('View all button clicked!');
+                e.preventDefault();
+                toggleViewAll();
+            });
+            
+            if (typeof CONFIG !== 'undefined' && CONFIG.ENVIRONMENT === 'development') {
+                console.log('View all button listener attached');
+            }
+        } else {
+            console.warn('View all button not found - searched for [data-action="view-all"]');
+            // Debug: try to find any buttons
+            const allButtons = document.querySelectorAll('button');
+            console.log('All buttons on page:', allButtons.length);
+            allButtons.forEach((btn, idx) => {
+                console.log(`Button ${idx}:`, btn.className, btn.textContent, btn.dataset);
+            });
         }
     };
 
@@ -307,8 +334,11 @@ const PropertyLoader = (() => {
 })();
 
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', PropertyLoader.init);
-} else {
-    PropertyLoader.init();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Property Loader: DOMContentLoaded triggered');
+    if (typeof PropertyLoader !== 'undefined' && PropertyLoader.init) {
+        PropertyLoader.init();
+    } else {
+        console.warn('PropertyLoader not found or init method missing');
+    }
+});
