@@ -1,241 +1,259 @@
 /**
- * ============================================================================
- * PROPERTY LOADER - Provivir Panama
- * Carga y renderiza propiedades desde mock data
- * ============================================================================
+ * Real properties from provivirpanama.com with actual image paths
  */
+const getMockProperties = () => {
+    return [
+        // ALTOS DE LOS GUAYACANES - Lirio
+        {
+            id: 1,
+            title: 'Altos de los Guayacanes - Lirio',
+            location: 'Altos de los Guayacanes',
+            price: 93.55,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Hermoso modelo Lirio con 3 habitaciones y 2 baños. Diseño moderno con amplios espacios.',
+            image: './assets/images/properties/altos-guayacanes/lirio-sala.avif',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqft: 190,
+            badge: null,
+            badgeType: 'success'
+        },
+        // ALTOS DE LOS GUAYACANES - Jazmín
+        {
+            id: 2,
+            title: 'Altos de los Guayacanes - Jazmin',
+            location: 'Altos de los Guayacanes',
+            price: 61.27,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Compacto y funcional modelo Jazmin con 2 habitaciones y 1 baño. Ideal para parejas o pequeñas familias.',
+            image: './assets/images/properties/altos-guayacanes/jazmin-sala.avif',
+            bedrooms: 2,
+            bathrooms: 1,
+            sqft: 186,
+            badge: null,
+            badgeType: 'success'
+        },
+        // VILLAS DEL ESTE - Roble
+        {
+            id: 3,
+            title: 'Villas del Este - Roble',
+            location: 'Villas del Este',
+            price: 88.64,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Modelo Roble con 2 habitaciones y 1 baño. Ubicacion privilegiada en Villas del Este.',
+            image: './assets/images/properties/villas-este/roble-sala.avif',
+            bedrooms: 2,
+            bathrooms: 1,
+            sqft: 190,
+            badge: null,
+            badgeType: 'success'
+        },
+        // VILLAS DEL ESTE - Cerezo
+        {
+            id: 4,
+            title: 'Villas del Este - Cerezo',
+            location: 'Villas del Este',
+            price: 110.22,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Espacioso modelo Cerezo con 3 habitaciones y 2 baños. Premium con acabados de lujo.',
+            image: './assets/images/properties/villas-este/cerezo-sala.png',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqft: 221,
+            badge: 'Mas Espacioso',
+            badgeType: 'success'
+        },
+        // CIUDAD DEL ESTE - Córdoba
+        {
+            id: 5,
+            title: 'Ciudad del Este - Cordoba',
+            location: 'Ciudad del Este',
+            price: 104.34,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Elegante modelo Cordoba con 3 habitaciones y 2 baños. Diseño moderno y funcional.',
+            image: './assets/images/properties/ciudad-este/cordoba-sala.avif',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqft: 190,
+            badge: null,
+            badgeType: 'success'
+        },
+        // CIUDAD DEL ESTE - Granada
+        {
+            id: 6,
+            title: 'Ciudad del Este - Granada',
+            location: 'Ciudad del Este',
+            price: 61.27,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Practico modelo Granada con 2 habitaciones y 1 baño. Acceso facil a todos los servicios.',
+            image: './assets/images/properties/ciudad-este/granada-sala.avif',
+            bedrooms: 2,
+            bathrooms: 1,
+            sqft: 190,
+            badge: null,
+            badgeType: 'success'
+        },
+        // COLINAS DEL ESTE - Andalucía
+        {
+            id: 7,
+            title: 'Colinas del Este - Andalucia',
+            location: 'Colinas del Este',
+            price: 61.27,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Acogedora modelo Andalucia con 2 habitaciones y 1 baño. Excelente relacion calidad-precio.',
+            image: './assets/images/properties/colinas-este/andalucia-sala.avif',
+            bedrooms: 2,
+            bathrooms: 1,
+            sqft: 190,
+            badge: null,
+            badgeType: 'success'
+        },
+        // VILLAS DEL OESTE - Tulipán (Archived)
+        {
+            id: 8,
+            title: 'Villas del Oeste - Tulipan',
+            location: 'Villas del Oeste',
+            price: 61.27,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Modelo Tulipan con 2 habitaciones y 1 baño. Comunidad en renovacion.',
+            image: './assets/images/properties/villas-oeste/placeholder.png',
+            bedrooms: 2,
+            bathrooms: 1,
+            sqft: 135,
+            badge: 'En Renovacion',
+            badgeType: 'warning'
+        },
+        // VILLAS DEL OESTE - Caoba (Archived)
+        {
+            id: 9,
+            title: 'Villas del Oeste - Caoba',
+            location: 'Villas del Oeste',
+            price: 93.55,
+            currency: 'B/.',
+            pricePeriod: 'quincenal',
+            description: 'Modelo Caoba con 3 habitaciones y 2 baños. Comunidad en renovacion.',
+            image: './assets/images/properties/villas-oeste/placeholder.png',
+            bedrooms: 3,
+            bathrooms: 2,
+            sqft: 186,
+            badge: 'En Renovacion',
+            badgeType: 'warning'
+        }
+    ];
+};
 
+/**
+ * Property Loader Module
+ */
 const PropertyLoader = (() => {
-    const propertiesGrid = document.getElementById('propertiesGrid');
-    const propertiesLoading = document.getElementById('propertiesLoading');
-    const propertiesError = document.getElementById('propertiesError');
     let properties = [];
     let filteredProperties = [];
-    let showingAll = false;
+    let isViewingAll = false;
+
+    const propertiesGrid = document.querySelector('.properties__grid');
+    const propertiesLoading = document.querySelector('[data-state="loading"]');
+    const propertiesError = document.querySelector('[data-state="error"]');
 
     /**
-     * Mock data - 9 proyectos
+     * Render properties in grid
      */
-    const getMockProperties = () => {
-        return [
-            {
-                id: 1,
-                title: 'Green Meadows',
-                location: 'Distrito Norte',
-                price: 125000,
-                description: 'Hermosas casas unifamiliares en una comunidad tranquila con acceso a parques y escuelas de calidad. Perfectas para familias que buscan un ambiente seguro y acogedor.',
-                image: 'https://images.unsplash.com/photo-1511649475669-e288648b2339?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 1200,
-                badge: '¡Pocas Unidades!',
-                badgeType: 'warning'
-            },
-            {
-                id: 2,
-                title: 'Sunrise Valley',
-                location: 'Este',
-                price: 145000,
-                description: 'Modernos apartamentos con acabados de lujo en ubicación privilegiada cerca de zonas comerciales. Diseño contemporáneo con amplios espacios y excelente iluminación natural.',
-                image: 'https://images.unsplash.com/photo-1500595046891-d9ba81e5f325?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 901,
-                badge: 'Nuevo Lanzamiento',
-                badgeType: 'info'
-            },
-            {
-                id: 3,
-                title: 'Urban Heights',
-                location: 'Centro de la Ciudad',
-                price: 175000,
-                description: 'Vive en el corazón de la ciudad con acceso inmediato a transporte público y entretenimiento. Edificio moderno con amenidades de primera clase.',
-                image: 'https://images.unsplash.com/photo-1480074568708-e7b720bb3f5d?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 870,
-                badge: 'Más Vendido',
-                badgeType: 'success'
-            },
-            {
-                id: 4,
-                title: 'Pacific Breeze',
-                location: 'Punta Pacífica',
-                price: 450000,
-                description: 'Lujosos penthouses con vistas al océano y amenidades tipo resort de cinco estrellas. Exclusivo complejo residencial con seguridad 24/7.',
-                image: 'https://images.unsplash.com/photo-1512917774080-9b274b3c0fa3?w=800&q=80',
-                bedrooms: 4,
-                bathrooms: 3,
-                sqft: 2300,
-                badge: null,
-                badgeType: null
-            },
-            {
-                id: 5,
-                title: 'Mountain View',
-                location: 'Altos del Este',
-                price: 98000,
-                description: 'Casas acogedoras ideales para parejas jóvenes. Diseñadas para el descanso y la convivencia con la naturaleza. Comunidad cerrada con excelentes servicios.',
-                image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80',
-                bedrooms: 2,
-                bathrooms: 1,
-                sqft: 1000,
-                badge: 'Entrega Inmediata',
-                badgeType: 'success'
-            },
-            {
-                id: 6,
-                title: 'Azure Bay',
-                location: 'Playa Blanca',
-                price: 215000,
-                description: 'La mejor inversión en propiedades de playa con alta rentabilidad y amenidades exclusivas. Oportunidad de negocios perfecta para inversores.',
-                image: 'https://images.unsplash.com/photo-1566195992271-5f4e466febda?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 1370,
-                badge: null,
-                badgeType: null
-            },
-            {
-                id: 7,
-                title: 'Central Garden',
-                location: 'Hato Pintado',
-                price: 189000,
-                description: 'Espacios amplios y jardines privados en el centro de la ciudad. Ideal para familias en crecimiento. Comunidad con parques y escuelas cercanas.',
-                image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 1450,
-                badge: null,
-                badgeType: null
-            },
-            {
-                id: 8,
-                title: 'The Landmark',
-                location: 'Casco Viejo',
-                price: 165000,
-                description: 'Arquitectura clásica y estilo de vida cosmopolita. El nuevo punto de referencia en el centro histórico. Perfecto para profesionales y emprendedores.',
-                image: 'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=800&q=80',
-                bedrooms: 2,
-                bathrooms: 1,
-                sqft: 920,
-                badge: 'En Preventa',
-                badgeType: 'info'
-            },
-            {
-                id: 9,
-                title: 'Eco Village',
-                location: 'Arraiján',
-                price: 110000,
-                description: 'Proyecto eco-sostenible con paneles solares incluidos y sistema de recolección de agua. Perfecto para familias comprometidas con la sostenibilidad ambiental.',
-                image: 'https://images.unsplash.com/photo-1499209974033-bc7655ee27d5?w=800&q=80',
-                bedrooms: 3,
-                bathrooms: 2,
-                sqft: 1390,
-                badge: 'Sostenible',
-                badgeType: 'success'
-            }
-        ];
-    };
-
-    /**
-     * Create property card HTML
-     */
-    const createPropertyCard = (property) => {
-        return `
-            <div class="property-card" data-property-id="${property.id}">
-                <div class="property-image">
-                    <img src="${property.image}" alt="${property.title}" loading="lazy">
-                    ${property.badge ? `<span class="property-badge badge-${property.badgeType}">${property.badge}</span>` : ''}
-                </div>
-                <div class="property-info">
-                    <p class="property-location">${property.location}</p>
-                    <h3>${property.title}</h3>
-                    <p class="property-description">${property.description}</p>
-                    <div class="property-features">
-                        <span>🛏️ ${property.bedrooms} hab</span>
-                        <span>🚿 ${property.bathrooms} baños</span>
-                        <span>📐 ${property.sqft} m²</span>
-                    </div>
-                    <div class="property-actions">
-                        <span class="property-price">B/.${property.price.toLocaleString()}</span>
-                        <button class="btn btn--primary" data-action="contact">Contactar</button>
-                    </div>
-                </div>
-            </div>
-        `;
-    };
-
-    /**
-     * Render properties to grid
-     */
-    const renderProperties = (propertiesToRender) => {
+    const renderProperties = (propsToRender = properties) => {
         if (!propertiesGrid) return;
 
-        propertiesLoading.classList.add('hidden');
-        propertiesError.classList.add('hidden');
+        propertiesGrid.innerHTML = '';
 
-        const html = propertiesToRender.map(createPropertyCard).join('');
-        propertiesGrid.innerHTML = html;
+        propsToRender.forEach(property => {
+            const badge = property.badge ? `<span class="property-card__badge property-card__badge--${property.badgeType}">${property.badge}</span>` : '';
+            
+            const card = document.createElement('div');
+            card.className = 'property-card';
+            card.innerHTML = `
+                <div class="property-card__image-container">
+                    <img src="${property.image}" alt="${property.title}" class="property-card__image" loading="lazy">
+                    ${badge}
+                </div>
+                <div class="property-card__content">
+                    <h3 class="property-card__title">${property.title}</h3>
+                    <p class="property-card__location">${property.location}</p>
+                    <p class="property-card__description">${property.description}</p>
+                    <div class="property-card__specs">
+                        <span class="property-card__spec">
+                            <span class="property-card__spec-label">Hab:</span>
+                            <span>${property.bedrooms}</span>
+                        </span>
+                        <span class="property-card__spec">
+                            <span class="property-card__spec-label">Banos:</span>
+                            <span>${property.bathrooms}</span>
+                        </span>
+                        <span class="property-card__spec">
+                            <span class="property-card__spec-label">m2:</span>
+                            <span>${property.sqft}</span>
+                        </span>
+                    </div>
+                    <div class="property-card__footer">
+                        <div class="property-card__price">
+                            <span class="property-card__price-value">${property.currency} ${property.price.toFixed(2)}</span>
+                            <span class="property-card__price-period">/${property.pricePeriod}</span>
+                        </div>
+                        <button class="btn btn--primary property-card__contact-btn" data-property-id="${property.id}">Contactar</button>
+                    </div>
+                </div>
+            `;
 
-        attachEventListeners();
-    };
+            card.querySelector('.property-card__contact-btn').addEventListener('click', () => {
+                handleContact(property);
+            });
 
-    /**
-     * Attach event listeners
-     */
-    const attachEventListeners = () => {
-        const contactButtons = document.querySelectorAll('[data-action="contact"]');
-        contactButtons.forEach(button => {
-            button.addEventListener('click', handleContact);
+            propertiesGrid.appendChild(card);
         });
+
+        propertiesLoading.classList.add('hidden');
     };
 
     /**
      * Handle contact button click
      */
-    const handleContact = (e) => {
-        const propertyCard = e.target.closest('.property-card');
-        const propertyId = propertyCard.dataset.propertyId;
-        const property = properties.find(p => p.id == propertyId);
-
-        sessionStorage.setItem('selectedPropertyId', propertyId);
-        sessionStorage.setItem('selectedPropertyTitle', property.title);
-
-        if (CONFIG.ENVIRONMENT === 'development') {
-            console.log('Contact about property:', propertyId);
-        }
-
-        // Scroll to contact form
-        const contactSection = document.getElementById('contacto');
+    const handleContact = (property) => {
+        // Store property info in session for form
+        sessionStorage.setItem('selectedProperty', JSON.stringify({
+            id: property.id,
+            title: property.title,
+            location: property.location
+        }));
+        
+        // Scroll to contact form or open modal
+        const contactSection = document.querySelector('#contact-section') || document.querySelector('form');
         if (contactSection) {
             contactSection.scrollIntoView({ behavior: 'smooth' });
         }
     };
 
     /**
-     * Toggle view - show all or just 3
+     * Toggle view all properties
      */
     const toggleViewAll = () => {
-        showingAll = !showingAll;
+        isViewingAll = !isViewingAll;
         
-        if (showingAll) {
-            renderProperties(properties);
+        if (isViewingAll) {
+            filteredProperties = properties;
         } else {
-            renderProperties(properties.slice(0, 3));
+            filteredProperties = properties.slice(0, 3);
         }
         
-        updateViewMoreButton();
-    };
-
-    /**
-     * Update view more button text
-     */
-    const updateViewMoreButton = () => {
-        const button = document.querySelector('[data-action="view-all"]');
-        if (button) {
-            button.textContent = showingAll ? '← Ver Menos Proyectos' : 'Ver Todos los Proyectos →';
-            button.dataset.toggle = showingAll ? 'less' : 'more';
+        renderProperties(filteredProperties);
+        
+        // Update button text
+        const viewAllBtn = document.querySelector('[data-action="view-all"]');
+        if (viewAllBtn) {
+            viewAllBtn.textContent = isViewingAll ? 'Ver Menos' : 'Ver Todos los Proyectos';
         }
     };
 
@@ -244,13 +262,14 @@ const PropertyLoader = (() => {
      */
     const loadProperties = async () => {
         try {
-            // Simular pequeño delay de carga
+            // Simulate small loading delay
             await new Promise(resolve => setTimeout(resolve, 300));
-            
+
             properties = getMockProperties();
-            filteredProperties = properties.slice(0, 3); // Mostrar 3 inicialmente
+            filteredProperties = properties.slice(0, 3); // Show 3 initially
+
             renderProperties(filteredProperties);
-            
+
             // Attach view all button listener
             const viewAllBtn = document.querySelector('[data-action="view-all"]');
             if (viewAllBtn) {
@@ -258,12 +277,12 @@ const PropertyLoader = (() => {
             }
 
             if (CONFIG.ENVIRONMENT === 'development') {
-                console.log('✅ Properties loaded:', properties.length);
+                console.log('Properties loaded:', properties.length);
             }
         } catch (error) {
-            console.error('❌ Error loading properties:', error);
-            propertiesLoading.classList.add('hidden');
-            propertiesError.classList.remove('hidden');
+            console.error('Error loading properties:', error);
+            if (propertiesLoading) propertiesLoading.classList.add('hidden');
+            if (propertiesError) propertiesError.classList.remove('hidden');
         }
     };
 
