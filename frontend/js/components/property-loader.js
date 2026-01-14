@@ -56,12 +56,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Modelo Roble con 2 habitaciones y 1 baño. Ubicacion privilegiada en Villas del Este.',
-            image: 'assets/images/properties/villas-este/roble-sala.avif',
+            image: 'assets/images/properties/villas-este/roble-home.png',
             images: [
+                'assets/images/properties/villas-este/roble-home.png',
                 'assets/images/properties/villas-este/roble-sala.avif',
-                'assets/images/properties/villas-este/roble-cocina.avif',
-                'assets/images/properties/villas-este/roble-hab-principal.avif',
-                'assets/images/properties/villas-este/roble-hab-2.avif'
+                'assets/images/properties/villas-este/roble-cocina.png',
+                'assets/images/properties/villas-este/roble-hab-principal.png'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -78,12 +78,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Espacioso modelo Cerezo con 3 habitaciones y 2 baños. Premium con acabados de lujo.',
-            image: 'assets/images/properties/villas-este/cerezo-sala.png',
+            image: 'assets/images/properties/villas-este/cerezo-home.png',
             images: [
+                'assets/images/properties/villas-este/cerezo-home.png',
                 'assets/images/properties/villas-este/cerezo-sala.png',
-                'assets/images/properties/villas-este/cerezo-cocina.avif',
-                'assets/images/properties/villas-este/cerezo-hab-principal.avif',
-                'assets/images/properties/villas-este/cerezo-hab-2.avif'
+                'assets/images/properties/villas-este/cerezo-cocina.png',
+                'assets/images/properties/villas-este/cerezo-hab-principal.avif'
             ],
             bedrooms: 3,
             bathrooms: 2,
@@ -104,8 +104,8 @@ const getMockProperties = () => {
             images: [
                 'assets/images/properties/ciudad-este/cordoba-sala.avif',
                 'assets/images/properties/ciudad-este/cordoba-cocina.avif',
-                'assets/images/properties/ciudad-este/cordoba-hab-principal.avif',
-                'assets/images/properties/ciudad-este/cordoba-hab-2.avif'
+                'assets/images/properties/ciudad-este/cordoba-comedor.avif',
+                'assets/images/properties/ciudad-este/cordoba-bano.avif'
             ],
             bedrooms: 3,
             bathrooms: 2,
@@ -122,12 +122,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Practico modelo Granada con 2 habitaciones y 1 baño. Acceso facil a todos los servicios.',
-            image: 'assets/images/properties/ciudad-este/granada-sala.avif',
+            image: 'assets/images/properties/ciudad-este/granada-home.png',
             images: [
+                'assets/images/properties/ciudad-este/granada-home.png',
                 'assets/images/properties/ciudad-este/granada-sala.avif',
-                'assets/images/properties/ciudad-este/granada-cocina.avif',
-                'assets/images/properties/ciudad-este/granada-hab-principal.avif',
-                'assets/images/properties/ciudad-este/granada-hab-2.avif'
+                'assets/images/properties/ciudad-este/granada-comedor.avif',
+                'assets/images/properties/ciudad-este/granada-hab-principal.avif'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -147,7 +147,7 @@ const getMockProperties = () => {
             image: 'assets/images/properties/colinas-este/andalucia-sala.avif',
             images: [
                 'assets/images/properties/colinas-este/andalucia-sala.avif',
-                'assets/images/properties/colinas-este/andalucia-cocina.avif',
+                'assets/images/properties/colinas-este/andalucia-bano.png',
                 'assets/images/properties/colinas-este/andalucia-hab-principal.avif',
                 'assets/images/properties/colinas-este/andalucia-hab-2.avif'
             ],
@@ -191,7 +191,7 @@ const getMockProperties = () => {
             image: 'assets/images/properties/villas-oeste/caoba-sala.avif',
             images: [
                 'assets/images/properties/villas-oeste/caoba-sala.avif',
-                'assets/images/properties/villas-oeste/caoba-cocina.avif',
+                'assets/images/properties/villas-oeste/caoba-comedor-cocina.avif',
                 'assets/images/properties/villas-oeste/caoba-hab-principal.avif',
                 'assets/images/properties/villas-oeste/caoba-hab-2.avif'
             ],

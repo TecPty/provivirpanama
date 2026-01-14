@@ -4,7 +4,7 @@
 
 .trust-bar {
     background-color: var(--color-white);
-    padding: var(--spacing-3xl) 0;
+    padding: 6rem 0 5rem 0 !important;
     border-top: 1px solid var(--color-gray-100);
     border-bottom: 1px solid var(--color-gray-100);
 }
@@ -21,13 +21,33 @@
 
 .trust-bar__logos {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    gap: var(--spacing-3xl);
-    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    flex-wrap: nowrap;
+    padding: 0 var(--spacing-lg);
 }
 
 .trust-bar__logo {
+    height: 120px;
+    width: auto;
+    max-width: 480px;
+    opacity: 0.85;
+    transition: all var(--transition-base);
+    object-fit: contain;
+}
+
+.trust-bar__logo-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: 0;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.trust-bar__logo-link img {
+    display: block;
     height: 166px;
     width: auto;
     max-width: 624px;
@@ -36,7 +56,7 @@
     object-fit: contain;
 }
 
-.trust-bar__logo:hover {
+.trust-bar__logo-link:hover img {
     opacity: 1;
     transform: scale(1.05);
 }

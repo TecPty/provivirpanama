@@ -129,7 +129,6 @@
 }
 
 .form-input,
-.form-select,
 .form-textarea {
     padding: 0.875rem 1.125rem;
     border: 2px solid #e0e0e0;
@@ -142,14 +141,12 @@
 }
 
 .form-input:hover,
-.form-select:hover,
 .form-textarea:hover {
     border-color: #bdbdbd;
     background: white;
 }
 
 .form-input:focus,
-.form-select:focus,
 .form-textarea:focus {
     outline: none;
     border-color: #003a7a;
@@ -163,24 +160,55 @@
 }
 
 .form-input.error,
-.form-select.error,
 .form-textarea.error {
     border-color: #d32f2f;
     background: #ffebee;
 }
 
 .form-select {
+    padding: 0.875rem 1.125rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: #fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E") no-repeat right 1rem center;
+    background-size: 16px;
+    padding-right: 3rem;
+    color: #333;
     cursor: pointer;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.form-select:hover {
+    border-color: #bdbdbd;
+    background-color: white;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     background-size: 16px;
-    padding-right: 3rem;
 }
 
 .form-select:focus {
+    outline: none;
+    border-color: #003a7a;
+    background-color: white;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    box-shadow: 0 0 0 4px rgba(0, 58, 122, 0.08);
+}
+
+.form-select.error {
+    border-color: #d32f2f;
+    background-color: #ffebee;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
 }
 
 .form-textarea {
@@ -328,7 +356,7 @@
 /* Tablet */
 @media (min-width: 768px) {
     .contact-wrapper {
-        grid-template-columns: 380px 1fr;
+        grid-template-columns: 1fr 380px;
         gap: 2.5rem;
     }
 

@@ -6,6 +6,11 @@
     background-color: var(--color-white);
 }
 
+.properties .container {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
 /* Loading and Error States */
 .properties__loading,
 .properties__error {
@@ -44,8 +49,8 @@
 .properties__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-2xl);
-    margin-bottom: var(--spacing-3xl);
+    gap: 50px;
+    margin-bottom: 5rem;
 }
 
 @media (max-width: 1024px) {
@@ -92,7 +97,7 @@
 .property-card__image-container {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 210px;
     overflow: hidden;
     background-color: var(--color-gray-100);
     cursor: pointer;
@@ -129,10 +134,10 @@
 }
 
 .property-card__content {
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     flex: 1;
 }
 
@@ -146,7 +151,7 @@
 }
 
 .property-card__title {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
     line-height: var(--line-height-tight);
@@ -154,7 +159,7 @@
 }
 
 .property-card__description {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
     line-height: var(--line-height-normal);
     display: -webkit-box;
@@ -166,13 +171,13 @@
 
 .property-card__specs {
     display: flex;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-md) 0;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
     border-top: 1px solid var(--color-gray-100);
     border-bottom: 1px solid var(--color-gray-100);
     font-size: var(--font-size-xs);
     color: var(--color-text-secondary);
-    margin: var(--spacing-md) 0;
+    margin: var(--spacing-sm) 0;
 }
 
 .property-card__spec {
@@ -195,12 +200,12 @@
 
 .property-card__footer {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     margin-top: auto;
     align-items: center;
     justify-content: space-between;
     border-top: 2px solid var(--color-primary-blue);
-    padding-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
 }
 
 .property-card__price {
@@ -214,7 +219,7 @@
 }
 
 .property-card__price-value {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
     font-weight: var(--font-weight-bold);
     color: var(--color-text-primary);
 }

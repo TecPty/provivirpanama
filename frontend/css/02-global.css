@@ -23,14 +23,14 @@ body {
 
 /* SECTION SPACING */
 section {
-    padding-top: var(--spacing-4xl);
-    padding-bottom: var(--spacing-4xl);
+    padding-top: 6rem;
+    padding-bottom: 5rem;
 }
 
 @media (max-width: 768px) {
     section {
-        padding-top: var(--spacing-3xl);
-        padding-bottom: var(--spacing-3xl);
+        padding-top: 3.5rem;
+        padding-bottom: 6rem;
     }
 }
 
