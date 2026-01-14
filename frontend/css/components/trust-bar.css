@@ -28,9 +28,9 @@
 }
 
 .trust-bar__logo {
-    height: 144px;
+    height: 166px;
     width: auto;
-    max-width: 540px;
+    max-width: 624px;
     opacity: 0.85;
     transition: all var(--transition-base);
     object-fit: contain;
