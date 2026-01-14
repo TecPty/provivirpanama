@@ -11,8 +11,8 @@
 
 .hero__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-4xl);
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--spacing-2xl);
     align-items: center;
 }
 
@@ -35,6 +35,11 @@
     font-weight: var(--font-weight-extrabold);
     line-height: var(--line-height-tight);
     color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero__title--compact {
+    font-size: var(--font-size-4xl);
 }
 
 .hero__title--highlight {
@@ -43,10 +48,11 @@
 }
 
 .hero__description {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     line-height: var(--line-height-relaxed);
     color: var(--color-text-secondary);
-    max-width: 540px;
+    max-width: 480px;
+    margin-bottom: var(--spacing-xl);
 }
 
 .hero__actions {
