@@ -159,12 +159,14 @@ class SocialFeedLoader {
             </div>
         ` : '';
         
-        const mediaUrl = post.video_url || post.image_url;
+        const mediaUrl = post.media_url || post.image_url || post.video_url;
+        const likesCount = post.likes || post.likes_count || 0;
+        const commentsCount = post.comments || post.comments_count || 0;
         
         card.innerHTML = `
             ${badge}
             <div class="social-card__media ${mediaClass}" ${isVideo ? `onclick="window.open('${post.post_url}', '_blank')"` : ''}>
-                <img src="${post.image_url}" alt="${post.platform} Post" loading="lazy">
+                <img src="${mediaUrl}" alt="${post.platform} Post" loading="lazy">
                 ${playButton}
             </div>
             <div class="social-card__content">
@@ -178,16 +180,16 @@ class SocialFeedLoader {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                         </svg>
-                        ${this.formatNumber(post.likes_count)}
+                        ${this.formatNumber(likesCount)}
                     </span>
                     <span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
                         </svg>
-                        ${this.formatNumber(post.comments_count)}
+                        ${this.formatNumber(commentsCount)}
                     </span>
                 </div>
-                <a href="${post.post_url}" target="_blank" class="social-card__cta">
+                <a href="${post.post_url}" target="_blank" class="social-card__cta">>
                     VER AHORA
                 </a>
             </div>
