@@ -4,7 +4,9 @@
 
 .value-props {
     padding: var(--section-padding-mobile) 0;
+    padding-bottom: 6rem;
     background-color: var(--bg-light);
+    color: #000000;
 }
 
 .value-props .section__title {
@@ -31,6 +33,7 @@
 /* Two column grid for Mission and Vision */
 .value-props__grid--two {
     grid-template-columns: 1fr;
+    margin-top: -2rem;
 }
 
 /* Value Cards */

@@ -4,6 +4,7 @@
 
 .team {
     padding: var(--section-padding-mobile) 0;
+    padding-top: 6rem;
     background: linear-gradient(135deg, #003a7a 0%, #004c99 100%);
     color: white;
 }

@@ -8,22 +8,47 @@ const PropertyImageCarousel = (() => {
     let propertyImages = {};
 
     const init = () => {
-        // Store images from properties for modal use
-        const properties = getMockProperties();
-        properties.forEach(prop => {
-            propertyImages[prop.id] = prop.images || [];
-        });
-
-        // Attach click handlers to property image containers
-        document.addEventListener('click', handleImageClick);
-        document.addEventListener('click', handleCarouselControls);
+        console.log('PropertyImageCarousel: Initializing...');
+        
+        // Wait a bit for properties to be loaded
+        setTimeout(() => {
+            // Try to get properties from global scope if available
+            if (typeof getMockProperties !== 'undefined') {
+                const properties = getMockProperties();
+                console.log('PropertyImageCarousel: Found getMockProperties, loaded', properties.length, 'properties');
+                properties.forEach(prop => {
+                    propertyImages[prop.id] = prop.images || [];
+                });
+                console.log('PropertyImageCarousel: propertyImages populated:', propertyImages);
+            } else {
+                console.warn('PropertyImageCarousel: getMockProperties not found');
+            }
+            
+            // Attach click handlers to property image containers
+            document.addEventListener('click', handleImageClick);
+            document.addEventListener('click', handleCarouselControls);
+            console.log('PropertyImageCarousel: Event listeners attached');
+        }, 500);
     };
 
     const handleImageClick = (e) => {
         const imageContainer = e.target.closest('.property-card__image-container');
         if (imageContainer) {
+            console.log('PropertyImageCarousel: Image clicked');
             const card = imageContainer.closest('.property-card');
             const propertyId = card.querySelector('.property-card__contact-btn').dataset.propertyId;
+            console.log('PropertyImageCarousel: Property ID:', propertyId);
+            
+            // If images not already loaded, try to load them now
+            if (!propertyImages[propertyId]) {
+                if (typeof getMockProperties !== 'undefined') {
+                    const properties = getMockProperties();
+                    properties.forEach(prop => {
+                        propertyImages[prop.id] = prop.images || [];
+                    });
+                }
+            }
+            
             openModal(propertyId);
         }
     };
@@ -40,13 +65,17 @@ const PropertyImageCarousel = (() => {
     };
 
     const openModal = (propertyId) => {
+        console.log('PropertyImageCarousel: Opening modal for property', propertyId);
         currentPropertyId = propertyId;
         currentImageIndex = 0;
 
         if (!propertyImages[propertyId] || propertyImages[propertyId].length === 0) {
             console.warn('No images found for property', propertyId);
+            console.log('Available propertyImages:', propertyImages);
             return;
         }
+
+        console.log('PropertyImageCarousel: Images found for property', propertyId, propertyImages[propertyId]);
 
         const modal = createModal(propertyId);
         document.body.appendChild(modal);

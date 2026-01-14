@@ -95,6 +95,7 @@
     height: 280px;
     overflow: hidden;
     background-color: var(--color-gray-100);
+    cursor: pointer;
 }
 
 .property-card__image {
