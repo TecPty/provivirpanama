@@ -13,6 +13,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Hermoso modelo Lirio con 3 habitaciones y 2 baños. Diseño moderno con amplios espacios.',
             image: 'assets/images/properties/altos-guayacanes/lirio-sala.avif',
+            images: [
+                'assets/images/properties/altos-guayacanes/lirio-sala.avif',
+                'assets/images/properties/altos-guayacanes/lirio-cocina.avif',
+                'assets/images/properties/altos-guayacanes/lirio-hab-principal.avif',
+                'assets/images/properties/altos-guayacanes/lirio-hab-2.avif'
+            ],
             bedrooms: 3,
             bathrooms: 2,
             sqft: 190,
@@ -29,6 +35,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Compacto y funcional modelo Jazmin con 2 habitaciones y 1 baño. Ideal para parejas o pequeñas familias.',
             image: 'assets/images/properties/altos-guayacanes/jazmin-sala.avif',
+            images: [
+                'assets/images/properties/altos-guayacanes/jazmin-sala.avif',
+                'assets/images/properties/altos-guayacanes/jazmin-cocina.avif',
+                'assets/images/properties/altos-guayacanes/jazmin-hab-principal.avif',
+                'assets/images/properties/altos-guayacanes/jazmin-hab-2.avif'
+            ],
             bedrooms: 2,
             bathrooms: 1,
             sqft: 186,
@@ -45,6 +57,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Modelo Roble con 2 habitaciones y 1 baño. Ubicacion privilegiada en Villas del Este.',
             image: 'assets/images/properties/villas-este/roble-sala.avif',
+            images: [
+                'assets/images/properties/villas-este/roble-sala.avif',
+                'assets/images/properties/villas-este/roble-cocina.avif',
+                'assets/images/properties/villas-este/roble-hab-principal.avif',
+                'assets/images/properties/villas-este/roble-hab-2.avif'
+            ],
             bedrooms: 2,
             bathrooms: 1,
             sqft: 190,
@@ -61,6 +79,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Espacioso modelo Cerezo con 3 habitaciones y 2 baños. Premium con acabados de lujo.',
             image: 'assets/images/properties/villas-este/cerezo-sala.png',
+            images: [
+                'assets/images/properties/villas-este/cerezo-sala.png',
+                'assets/images/properties/villas-este/cerezo-cocina.avif',
+                'assets/images/properties/villas-este/cerezo-hab-principal.avif',
+                'assets/images/properties/villas-este/cerezo-hab-2.avif'
+            ],
             bedrooms: 3,
             bathrooms: 2,
             sqft: 221,
@@ -77,6 +101,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Elegante modelo Cordoba con 3 habitaciones y 2 baños. Diseño moderno y funcional.',
             image: 'assets/images/properties/ciudad-este/cordoba-sala.avif',
+            images: [
+                'assets/images/properties/ciudad-este/cordoba-sala.avif',
+                'assets/images/properties/ciudad-este/cordoba-cocina.avif',
+                'assets/images/properties/ciudad-este/cordoba-hab-principal.avif',
+                'assets/images/properties/ciudad-este/cordoba-hab-2.avif'
+            ],
             bedrooms: 3,
             bathrooms: 2,
             sqft: 190,
@@ -93,6 +123,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Practico modelo Granada con 2 habitaciones y 1 baño. Acceso facil a todos los servicios.',
             image: 'assets/images/properties/ciudad-este/granada-sala.avif',
+            images: [
+                'assets/images/properties/ciudad-este/granada-sala.avif',
+                'assets/images/properties/ciudad-este/granada-cocina.avif',
+                'assets/images/properties/ciudad-este/granada-hab-principal.avif',
+                'assets/images/properties/ciudad-este/granada-hab-2.avif'
+            ],
             bedrooms: 2,
             bathrooms: 1,
             sqft: 190,
@@ -109,6 +145,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Acogedora modelo Andalucia con 2 habitaciones y 1 baño. Excelente relacion calidad-precio.',
             image: 'assets/images/properties/colinas-este/andalucia-sala.avif',
+            images: [
+                'assets/images/properties/colinas-este/andalucia-sala.avif',
+                'assets/images/properties/colinas-este/andalucia-cocina.avif',
+                'assets/images/properties/colinas-este/andalucia-hab-principal.avif',
+                'assets/images/properties/colinas-este/andalucia-hab-2.avif'
+            ],
             bedrooms: 2,
             bathrooms: 1,
             sqft: 190,
@@ -125,6 +167,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Modelo Tulipan con 2 habitaciones y 1 baño. Comunidad en renovacion.',
             image: 'assets/images/properties/villas-oeste/tulipan-sala.png',
+            images: [
+                'assets/images/properties/villas-oeste/tulipan-sala.png',
+                'assets/images/properties/villas-oeste/tulipan-cocina.avif',
+                'assets/images/properties/villas-oeste/tulipan-hab-principal.avif',
+                'assets/images/properties/villas-oeste/tulipan-hab-2.avif'
+            ],
             bedrooms: 2,
             bathrooms: 1,
             sqft: 135,
@@ -141,6 +189,12 @@ const getMockProperties = () => {
             pricePeriod: 'quincenal',
             description: 'Modelo Caoba con 3 habitaciones y 2 baños. Comunidad en renovacion.',
             image: 'assets/images/properties/villas-oeste/caoba-sala.avif',
+            images: [
+                'assets/images/properties/villas-oeste/caoba-sala.avif',
+                'assets/images/properties/villas-oeste/caoba-cocina.avif',
+                'assets/images/properties/villas-oeste/caoba-hab-principal.avif',
+                'assets/images/properties/villas-oeste/caoba-hab-2.avif'
+            ],
             bedrooms: 3,
             bathrooms: 2,
             sqft: 186,

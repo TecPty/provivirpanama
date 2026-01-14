@@ -1,0 +1,227 @@
+/* ==========================================================================
+   PROPERTY IMAGE CAROUSEL MODAL
+   ========================================================================== */
+
+.carousel-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.carousel-modal__content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-modal__image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-modal__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: zoomIn 0.3s ease-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Close Button */
+.carousel__close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--color-white);
+    font-size: 36px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform var(--transition-base);
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel__close:hover {
+    transform: scale(1.2);
+}
+
+/* Previous/Next Buttons */
+.carousel__prev,
+.carousel__next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    color: var(--color-white);
+    font-size: 28px;
+    cursor: pointer;
+    padding: var(--spacing-md) var(--spacing-lg);
+    transition: all var(--transition-base);
+    border-radius: var(--radius-sm);
+    z-index: 10;
+}
+
+.carousel__prev {
+    left: -60px;
+}
+
+.carousel__next {
+    right: -60px;
+}
+
+.carousel__prev:hover,
+.carousel__next:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Mobile: Buttons inside the image */
+@media (max-width: 768px) {
+    .carousel__prev,
+    .carousel__next {
+        position: absolute;
+        left: 0;
+        right: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 24px;
+    }
+
+    .carousel__prev {
+        left: var(--spacing-sm);
+    }
+
+    .carousel__next {
+        right: var(--spacing-sm);
+        left: auto;
+    }
+
+    .carousel__close {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+}
+
+/* Dots Navigation */
+.carousel__dots {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--spacing-sm);
+    z-index: 10;
+}
+
+.carousel__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    padding: 0;
+}
+
+.carousel__dot:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+    transform: scale(1.2);
+}
+
+.carousel__dot.active {
+    background-color: var(--color-white);
+    border-color: var(--color-white);
+}
+
+/* Image Counter (optional) */
+.carousel__counter {
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .carousel-modal__content {
+        max-width: 100%;
+        height: 80vh;
+    }
+
+    .carousel__prev {
+        left: var(--spacing-md);
+    }
+
+    .carousel__next {
+        right: var(--spacing-md);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-modal {
+        padding: var(--spacing-lg);
+    }
+
+    .carousel-modal__content {
+        max-width: 100%;
+        height: 70vh;
+        max-height: 500px;
+    }
+
+    .carousel__close {
+        font-size: 32px;
+    }
+
+    .carousel__dots {
+        bottom: -40px;
+    }
+}
