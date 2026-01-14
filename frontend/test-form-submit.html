@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulario - Provivir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Figtree', sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #0077C2;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #0077C2;
+            padding-bottom: 15px;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #0077C2;
+            border-radius: 4px;
+        }
+        
+        .test-section h3 {
+            color: #005B96;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background: #0077C2;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+            margin: 5px 5px 5px 0;
+        }
+        
+        button:hover {
+            background: #005B96;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .log-output {
+            background: #1e1e1e;
+            color: #0f0;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+            margin: 10px 0;
+        }
+        
+        .log-line {
+            margin: 3px 0;
+            padding: 2px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .success {
+            color: #00ff00;
+        }
+        
+        .error {
+            color: #ff4444;
+        }
+        
+        .warning {
+            color: #ffaa00;
+        }
+        
+        .info {
+            color: #4488ff;
+        }
+        
+        .test-status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .test-status.pass {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .test-status.fail {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .test-status.pending {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Formulario Provivir</h1>
+        
+        <div class="test-section">
+            <h3>Información de Conexión</h3>
+            <p><strong>API Base URL:</strong> <code id="apiUrl"></code></p>
+            <p><strong>Endpoint:</strong> <code id="endpoint"></code></p>
+            <div id="connectionStatus" class="test-status pending">Verificando conexión...</div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 1: Validación de Campos Requeridos</h3>
+            <button onclick="testEmptyFields()">Ejecutar Test</button>
+            <div id="test1Status" class="test-status" style="display:none;"></div>
+            <div id="test1Log" class="log-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 2: Envío de Formulario Válido</h3>
+            <button onclick="testValidSubmission()">Ejecutar Test</button>
+            <div id="test2Status" class="test-status" style="display:none;"></div>
+            <div id="test2Log" class="log-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 3: Validación de Email</h3>
+            <button onclick="testEmailValidation()">Ejecutar Test</button>
+            <div id="test3Status" class="test-status" style="display:none;"></div>
+            <div id="test3Log" class="log-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 4: Mapeo de Proyecto</h3>
+            <button onclick="testProjectMapping()">Ejecutar Test</button>
+            <div id="test4Status" class="test-status" style="display:none;"></div>
+            <div id="test4Log" class="log-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Test 5: Envío con Datos Completos</h3>
+            <button onclick="testCompleteSubmission()">Ejecutar Test</button>
+            <div id="test5Status" class="test-status" style="display:none;"></div>
+            <div id="test5Log" class="log-output"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>Resumen de Pruebas</h3>
+            <div id="summary" class="log-output">
+                <div class="log-line info">Haz clic en los botones para ejecutar los tests...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================================================
+        // CONFIGURATION
+        // ========================================================================
+        const API_BASE_URL = '/provivirpanama/backend/api';
+        const ENDPOINT = '/leads.php';
+        const API_URL = API_BASE_URL + ENDPOINT;
+        
+        // Project slug to ID mapping
+        const PROJECT_SLUG_TO_ID = {
+            'altos-guayacanes': 8,
+            'ciudad-del-este': 1,
+            'colinas-este': 5,
+            'villas-este': 3,
+            'villas-oeste': 4
+        };
+        
+        let testResults = [];
+        
+        // ========================================================================
+        // UTILITIES
+        // ========================================================================
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            console.log(`[${timestamp}] ${message}`);
+        }
+        
+        function appendLog(elementId, message, type = 'info') {
+            const logEl = document.getElementById(elementId);
+            const line = document.createElement('div');
+            line.className = `log-line ${type}`;
+            line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            logEl.appendChild(line);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+        
+        function updateStatus(elementId, passed, message) {
+            const el = document.getElementById(elementId);
+            el.className = `test-status ${passed ? 'pass' : 'fail'}`;
+            el.textContent = (passed ? '✓ PASSED: ' : '✗ FAILED: ') + message;
+            el.style.display = 'block';
+        }
+        
+        // ========================================================================
+        // CHECK CONNECTION
+        // ========================================================================
+        async function checkConnection() {
+            document.getElementById('apiUrl').textContent = API_URL;
+            document.getElementById('endpoint').textContent = ENDPOINT;
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'OPTIONS',
+                    headers: {'Content-Type': 'application/json'}
+                });
+                
+                document.getElementById('connectionStatus').className = 'test-status pass';
+                document.getElementById('connectionStatus').textContent = '✓ Conexión establecida (HTTP ' + response.status + ')';
+            } catch (error) {
+                document.getElementById('connectionStatus').className = 'test-status fail';
+                document.getElementById('connectionStatus').textContent = '✗ Error de conexión: ' + error.message;
+            }
+        }
+        
+        // ========================================================================
+        // TEST 1: Empty Fields Validation
+        // ========================================================================
+        async function testEmptyFields() {
+            const logId = 'test1Log';
+            document.getElementById(logId).innerHTML = '';
+            
+            appendLog(logId, 'Iniciando Test 1: Validación de campos vacíos', 'info');
+            
+            const emptyData = {
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            };
+            
+            appendLog(logId, 'Enviando datos vacíos: ' + JSON.stringify(emptyData), 'warning');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(emptyData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 400 && !data.success) {
+                    appendLog(logId, 'Respuesta: ' + data.error, 'success');
+                    updateStatus('test1Status', true, 'Validación correctamente rechazó campos vacíos');
+                } else {
+                    appendLog(logId, 'Respuesta inesperada: ' + JSON.stringify(data), 'error');
+                    updateStatus('test1Status', false, 'La API no validó correctamente');
+                }
+            } catch (error) {
+                appendLog(logId, 'Error: ' + error.message, 'error');
+                updateStatus('test1Status', false, error.message);
+            }
+        }
+        
+        // ========================================================================
+        // TEST 2: Valid Submission
+        // ========================================================================
+        async function testValidSubmission() {
+            const logId = 'test2Log';
+            document.getElementById(logId).innerHTML = '';
+            
+            appendLog(logId, 'Iniciando Test 2: Envío válido', 'info');
+            
+            const validData = {
+                name: 'Test User ' + Date.now(),
+                email: 'test-' + Date.now() + '@example.com',
+                phone: '+507 1234567',
+                message: 'Este es un mensaje de prueba'
+            };
+            
+            appendLog(logId, 'Enviando datos válidos...', 'info');
+            appendLog(logId, 'Nombre: ' + validData.name, 'info');
+            appendLog(logId, 'Email: ' + validData.email, 'info');
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(validData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 201 && data.success) {
+                    appendLog(logId, 'Lead creado con ID: ' + data.data.id, 'success');
+                    appendLog(logId, 'Mensaje: ' + data.message, 'success');
+                    updateStatus('test2Status', true, 'Lead insertado exitosamente (ID: ' + data.data.id + ')');
+                } else {
+                    appendLog(logId, 'Respuesta: ' + JSON.stringify(data), 'error');
+                    updateStatus('test2Status', false, 'La API retornó status ' + response.status);
+                }
+            } catch (error) {
+                appendLog(logId, 'Error: ' + error.message, 'error');
+                updateStatus('test2Status', false, error.message);
+            }
+        }
+        
+        // ========================================================================
+        // TEST 3: Email Validation
+        // ========================================================================
+        async function testEmailValidation() {
+            const logId = 'test3Log';
+            document.getElementById(logId).innerHTML = '';
+            
+            appendLog(logId, 'Iniciando Test 3: Validación de email', 'info');
+            
+            const testCases = [
+                {data: {name: 'Test', email: 'invalid-email', phone: '+507 1234567', message: 'test'}, shouldFail: true, label: 'Email inválido'},
+                {data: {name: 'Test', email: 'valid@example.com', phone: '+507 1234567', message: 'test'}, shouldFail: false, label: 'Email válido'}
+            ];
+            
+            let passed = 0;
+            let failed = 0;
+            
+            for (let testCase of testCases) {
+                appendLog(logId, 'Probando: ' + testCase.label + '...', 'info');
+                
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify(testCase.data)
+                    });
+                    
+                    const data = await response.json();
+                    const didFail = response.status !== 201 || !data.success;
+                    
+                    if (didFail === testCase.shouldFail) {
+                        appendLog(logId, '  ✓ Resultado esperado: ' + (testCase.shouldFail ? 'Rechazado' : 'Aceptado'), 'success');
+                        passed++;
+                    } else {
+                        appendLog(logId, '  ✗ Resultado inesperado', 'error');
+                        failed++;
+                    }
+                } catch (error) {
+                    appendLog(logId, '  ✗ Error: ' + error.message, 'error');
+                    failed++;
+                }
+            }
+            
+            updateStatus('test3Status', failed === 0, passed + ' pasaron, ' + failed + ' fallaron');
+        }
+        
+        // ========================================================================
+        // TEST 4: Project Mapping
+        // ========================================================================
+        function testProjectMapping() {
+            const logId = 'test4Log';
+            document.getElementById(logId).innerHTML = '';
+            
+            appendLog(logId, 'Iniciando Test 4: Mapeo de proyectos', 'info');
+            
+            let allCorrect = true;
+            
+            for (let slug in PROJECT_SLUG_TO_ID) {
+                const id = PROJECT_SLUG_TO_ID[slug];
+                appendLog(logId, slug + ' → ID ' + id, 'info');
+                
+                if (!Number.isInteger(id) || id <= 0) {
+                    appendLog(logId, '  ✗ ID inválido para ' + slug, 'error');
+                    allCorrect = false;
+                } else {
+                    appendLog(logId, '  ✓ Mapeo válido', 'success');
+                }
+            }
+            
+            appendLog(logId, 'Total de proyectos mapeados: ' + Object.keys(PROJECT_SLUG_TO_ID).length, 'info');
+            updateStatus('test4Status', allCorrect, 'Mapeo de proyectos correcto');
+        }
+        
+        // ========================================================================
+        // TEST 5: Complete Submission with Project
+        // ========================================================================
+        async function testCompleteSubmission() {
+            const logId = 'test5Log';
+            document.getElementById(logId).innerHTML = '';
+            
+            appendLog(logId, 'Iniciando Test 5: Envío completo con proyecto', 'info');
+            
+            const projectSlug = 'ciudad-del-este';
+            const propertyId = PROJECT_SLUG_TO_ID[projectSlug];
+            
+            const completeData = {
+                name: 'Cliente Test ' + Date.now(),
+                email: 'cliente-test-' + Date.now() + '@provivir.com',
+                phone: '+507 6371-2652',
+                message: 'Estoy muy interesado en conocer más sobre esta propiedad. Me gustaría recibir información detallada.',
+                property_id: propertyId
+            };
+            
+            appendLog(logId, 'Proyecto seleccionado: ' + projectSlug, 'info');
+            appendLog(logId, 'Propiedad ID convertido a: ' + propertyId, 'info');
+            appendLog(logId, '', 'info');
+            appendLog(logId, 'Datos a enviar:', 'info');
+            appendLog(logId, JSON.stringify(completeData, null, 2), 'info');
+            appendLog(logId, '', 'info');
+            
+            try {
+                appendLog(logId, 'Enviando a: ' + API_URL, 'warning');
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(completeData)
+                });
+                
+                const data = await response.json();
+                
+                appendLog(logId, 'Respuesta HTTP: ' + response.status, 'info');
+                appendLog(logId, 'Respuesta JSON: ' + JSON.stringify(data, null, 2), 'info');
+                
+                if (response.status === 201 && data.success) {
+                    appendLog(logId, '✓ Lead creado exitosamente', 'success');
+                    appendLog(logId, 'ID del lead: ' + data.data.id, 'success');
+                    updateStatus('test5Status', true, 'Envío completado (ID: ' + data.data.id + ')');
+                } else {
+                    updateStatus('test5Status', false, 'HTTP ' + response.status + ': ' + data.error);
+                }
+            } catch (error) {
+                appendLog(logId, 'Error: ' + error.message, 'error');
+                appendLog(logId, error.stack, 'error');
+                updateStatus('test5Status', false, error.message);
+            }
+        }
+        
+        // ========================================================================
+        // Initialize on page load
+        // ========================================================================
+        window.addEventListener('DOMContentLoaded', checkConnection);
+    </script>
+</body>
+</html>

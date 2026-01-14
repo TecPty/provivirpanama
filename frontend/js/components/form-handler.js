@@ -9,6 +9,17 @@ const FormHandler = (() => {
     const formSuccess = document.getElementById('formSuccess');
     
     /**
+     * Mapping of project slugs to database property IDs
+     */
+    const PROJECT_SLUG_TO_ID = {
+        'altos-guayacanes': 8,      // Altos de los Guayacanes
+        'ciudad-del-este': 1,       // Ciudad del Este
+        'colinas-este': 5,          // Colinas del Este
+        'villas-este': 3,           // Villas del Este
+        'villas-oeste': 4            // Villas del Oeste
+    };
+    
+    /**
      * Validate email format
      */
     const isValidEmail = (email) => {
@@ -183,13 +194,17 @@ const FormHandler = (() => {
             return;
         }
         
+        // Get project slug from form
+        const projectSlug = formData.get('project');
+        const propertyId = projectSlug ? PROJECT_SLUG_TO_ID[projectSlug] || null : null;
+        
         // Prepare data - Only send fields that backend expects
         const leadData = {
             name: formData.get('fullName').trim(),
             email: formData.get('email').trim(),
             phone: formData.get('phone').trim(),
             message: formData.get('message').trim(),
-            property_id: formData.get('project') || null
+            property_id: propertyId
         };
         
         // Set loading state
