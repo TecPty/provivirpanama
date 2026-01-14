@@ -7,7 +7,7 @@ const getMockProperties = () => {
         {
             id: 1,
             title: 'Altos de los Guayacanes - Lirio',
-            location: 'Altos de los Guayacanes',
+            location: 'La Chorrera',
             price: 93.55,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -23,7 +23,7 @@ const getMockProperties = () => {
         {
             id: 2,
             title: 'Altos de los Guayacanes - Jazmin',
-            location: 'Altos de los Guayacanes',
+            location: 'La Chorrera',
             price: 61.27,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -39,7 +39,7 @@ const getMockProperties = () => {
         {
             id: 3,
             title: 'Villas del Este - Roble',
-            location: 'Villas del Este',
+            location: 'Pacora',
             price: 88.64,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -55,7 +55,7 @@ const getMockProperties = () => {
         {
             id: 4,
             title: 'Villas del Este - Cerezo',
-            location: 'Villas del Este',
+            location: 'Pacora',
             price: 110.22,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -71,7 +71,7 @@ const getMockProperties = () => {
         {
             id: 5,
             title: 'Ciudad del Este - Cordoba',
-            location: 'Ciudad del Este',
+            location: 'Pacora',
             price: 104.34,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -87,7 +87,7 @@ const getMockProperties = () => {
         {
             id: 6,
             title: 'Ciudad del Este - Granada',
-            location: 'Ciudad del Este',
+            location: 'Pacora',
             price: 61.27,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -103,7 +103,7 @@ const getMockProperties = () => {
         {
             id: 7,
             title: 'Colinas del Este - Andalucia',
-            location: 'Colinas del Este',
+            location: 'Pacora',
             price: 61.27,
             currency: 'B/.',
             pricePeriod: 'quincenal',
@@ -119,12 +119,12 @@ const getMockProperties = () => {
         {
             id: 8,
             title: 'Villas del Oeste - Tulipan',
-            location: 'Villas del Oeste',
+            location: 'La Chorrera',
             price: 61.27,
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Modelo Tulipan con 2 habitaciones y 1 baño. Comunidad en renovacion.',
-            image: 'assets/images/properties/villas-oeste/placeholder.png',
+            image: 'assets/images/properties/villas-oeste/tulipan-sala.png',
             bedrooms: 2,
             bathrooms: 1,
             sqft: 135,
@@ -135,12 +135,12 @@ const getMockProperties = () => {
         {
             id: 9,
             title: 'Villas del Oeste - Caoba',
-            location: 'Villas del Oeste',
+            location: 'La Chorrera',
             price: 93.55,
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Modelo Caoba con 3 habitaciones y 2 baños. Comunidad en renovacion.',
-            image: 'assets/images/properties/villas-oeste/placeholder.png',
+            image: 'assets/images/properties/villas-oeste/caoba-sala.avif',
             bedrooms: 3,
             bathrooms: 2,
             sqft: 186,
@@ -184,21 +184,21 @@ const PropertyLoader = (() => {
                     ${badge}
                 </div>
                 <div class="property-card__content">
+                    <span class="property-card__location">${property.location}</span>
                     <h3 class="property-card__title">${property.title}</h3>
-                    <p class="property-card__location">${property.location}</p>
                     <p class="property-card__description">${property.description}</p>
                     <div class="property-card__specs">
                         <span class="property-card__spec">
-                            <span class="property-card__spec-label">Hab:</span>
-                            <span>${property.bedrooms}</span>
+                            <img src="assets/images/icons/home-icon.png" alt="Habitaciones" class="property-card__spec-icon">
+                            <span class="property-card__spec-label">${property.bedrooms} Hab</span>
                         </span>
                         <span class="property-card__spec">
-                            <span class="property-card__spec-label">Banos:</span>
-                            <span>${property.bathrooms}</span>
+                            <img src="assets/images/icons/bathroom-icon.png" alt="Baños" class="property-card__spec-icon">
+                            <span class="property-card__spec-label">${property.bathrooms} Banos</span>
                         </span>
                         <span class="property-card__spec">
-                            <span class="property-card__spec-label">m2:</span>
-                            <span>${property.sqft}</span>
+                            <img src="assets/images/icons/measure-icon.png" alt="Area" class="property-card__spec-icon">
+                            <span class="property-card__spec-label">${property.sqft} m²</span>
                         </span>
                     </div>
                     <div class="property-card__footer">
@@ -206,7 +206,7 @@ const PropertyLoader = (() => {
                             <span class="property-card__price-value">${property.currency} ${property.price.toFixed(2)}</span>
                             <span class="property-card__price-period">/${property.pricePeriod}</span>
                         </div>
-                        <button class="btn btn--primary property-card__contact-btn" data-property-id="${property.id}">Contactar</button>
+                        <button class="property-card__contact-btn" data-property-id="${property.id}">Contactar →</button>
                     </div>
                 </div>
             `;
