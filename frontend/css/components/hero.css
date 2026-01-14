@@ -4,8 +4,8 @@
 
 .hero {
     background: linear-gradient(135deg, var(--color-white-matte) 0%, var(--color-white) 100%);
-    padding-top: var(--spacing-sm);
-    padding-bottom: var(--spacing-lg);
+    padding-top: 0.55rem;
+    padding-bottom: 1.35rem;
     overflow: hidden;
 }
 
@@ -19,7 +19,7 @@
 .hero__content {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
 }
 
 .hero__breadcrumb {
@@ -39,7 +39,7 @@
 }
 
 .hero__title--compact {
-    font-size: 2rem;
+    font-size: 3rem;
     line-height: 1.1;
 }
 
@@ -58,8 +58,10 @@
 
 .hero__actions {
     display: flex;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
     flex-wrap: wrap;
+    align-items: center;
+    max-width: 400px;
 }
 
 .hero__stats {
@@ -100,7 +102,7 @@
 .hero__slider {
     position: relative;
     width: 100%;
-    min-height: 500px;
+    min-height: 450px;
     overflow: hidden;
     border-radius: var(--radius-2xl);
     box-shadow: var(--shadow-xl);
@@ -116,12 +118,28 @@
     will-change: transform, opacity;
     pointer-events: none;
     transform: translateX(100%);
+    transition: opacity 0.5s ease-out;
 }
 
-.hero__slide:first-child {
-    position: relative;
-    transform: translateX(0);
+.hero__slide.active {
     opacity: 1;
+    pointer-events: auto;
+    z-index: 2;
+    transition: opacity 0.5s ease-out;
+}
+
+.hero__slide.fade-out {
+    opacity: 0;
+    animation: none;
+}
+
+@keyframes fadeOutSlide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .hero__slide.active {
@@ -235,16 +253,16 @@
 /* Hero Logo Animation - Overlay on image */
 .hero__logo {
     position: absolute;
-    top: -50px;
+    top: 20px;
     left: var(--spacing-lg);
-    z-index: 10;
+    z-index: 10000;
     transform: translateY(-200px);
     opacity: 0;
     will-change: transform, opacity;
 }
 
 .hero__logo img {
-    max-width: 280px;
+    max-width: 250px;
     height: auto;
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.2));
 }
@@ -273,6 +291,10 @@
     
     .hero__title {
         font-size: var(--font-size-3xl);
+    }
+    
+    .hero__title--compact {
+        font-size: 2.5rem;
     }
     
     .hero__description {

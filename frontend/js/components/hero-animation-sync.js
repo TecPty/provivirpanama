@@ -23,7 +23,7 @@
 
         // Configuración de animación
         const CONFIG = {
-            slideDuration: 4000,        // Duración total del slide (ms)
+            slideDuration: 2000,        // 2 segundos: 1.5s visible + 0.5s fade
             imageSlideInDuration: 1500, // Duración de entrada de imagen (ms)
             logoDropDelay: 800,         // Delay antes de que caiga el logo (ms)
             logoDropDuration: 600,      // Duración de caída del logo (ms)

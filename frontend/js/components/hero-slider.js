@@ -16,7 +16,8 @@
         const dots = document.querySelectorAll('.hero__dot');
         
         let currentSlide = 0;
-        const slideInterval = 3000; // Cambiar cada 3 segundos
+        const slideInterval = 2000; // 2 segundos: 1.5s visible + 0.5s fade
+        const fadeOutDuration = 500; // Iniciar fade a 1500ms (2000 - 500)
         let autoplayInterval;
 
         /**
@@ -33,7 +34,10 @@
             }
 
             // Remover clase active de todos
-            slides.forEach(slide => slide.classList.remove('active'));
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.classList.remove('fade-out'); // Remover fade-out
+            });
             dots.forEach(dot => dot.classList.remove('active'));
 
             // Agregar clase active al slide y dot actual
@@ -49,7 +53,12 @@
          * Siguiente slide
          */
         function nextSlide() {
-            showSlide(currentSlide + 1);
+            // Agregar fade-out al slide actual
+            slides[currentSlide].classList.add('fade-out');
+            // Calcular el siguiente índice
+            const nextIndex = currentSlide + 1 >= slides.length ? 0 : currentSlide + 1;
+            // Cambiar al siguiente slide durante el fade (a mitad del tiempo de fade)
+            setTimeout(() => showSlide(nextIndex), fadeOutDuration - 250);
         }
 
         /**
