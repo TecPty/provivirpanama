@@ -6,14 +6,13 @@
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: transparent;
-    box-shadow: none;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
     z-index: var(--z-index-sticky);
-    transition: background-color var(--transition-base), box-shadow var(--transition-base);
+    transition: box-shadow var(--transition-base);
 }
 
 .header.scrolled {
-    background-color: var(--color-white);
     box-shadow: var(--shadow-md);
 }
 
