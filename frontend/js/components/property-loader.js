@@ -159,14 +159,17 @@ const PropertyLoader = (() => {
     let isViewingAll = false;
 
     const propertiesGrid = document.querySelector('.properties__grid');
-    const propertiesLoading = document.querySelector('[data-state="loading"]');
-    const propertiesError = document.querySelector('[data-state="error"]');
+    const propertiesLoading = document.querySelector('#propertiesLoading');
+    const propertiesError = document.querySelector('#propertiesError');
 
     /**
      * Render properties in grid
      */
     const renderProperties = (propsToRender = properties) => {
-        if (!propertiesGrid) return;
+        if (!propertiesGrid) {
+            console.warn('Properties grid not found');
+            return;
+        }
 
         propertiesGrid.innerHTML = '';
 
@@ -215,7 +218,10 @@ const PropertyLoader = (() => {
             propertiesGrid.appendChild(card);
         });
 
-        propertiesLoading.classList.add('hidden');
+        // Hide loading state if element exists
+        if (propertiesLoading) {
+            propertiesLoading.classList.add('hidden');
+        }
     };
 
     /**
