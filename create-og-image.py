@@ -10,7 +10,7 @@ import os
 def create_og_image():
     """Generar OG image para redes sociales"""
     
-    # Configuración
+    # Configuración 
     width = 1200
     height = 630
     bg_color = (0, 119, 194)  # #0077C2 - Azul Provivir
