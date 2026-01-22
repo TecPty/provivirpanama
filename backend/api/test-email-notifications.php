@@ -302,7 +302,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_test'])) {
         $propertyId = (int)$_POST['test_property'];
         if ($propertyId > 0) {
             $db = getDatabase();
-            $stmt = $db->prepare(\"SELECT name FROM properties WHERE id = :id\");
+            $stmt = $db->prepare("SELECT name FROM properties WHERE id = :id");
             $stmt->execute([':id' => $propertyId]);
             $prop = $stmt->fetch(PDO::FETCH_ASSOC);
             if ($prop) {
