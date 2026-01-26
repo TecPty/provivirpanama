@@ -1,7 +1,18 @@
 {
-  "buildCommand": "npm run build || echo 'No build needed'",
+  "buildCommand": "npm run build || true",
   "outputDirectory": "frontend",
-  "installCommand": "echo 'Skipping npm install'",
+  "installCommand": "npm install || true",
   "framework": "other",
-  "public": "frontend"
+  "public": "frontend",
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
 }
