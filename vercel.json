@@ -1,13 +1,7 @@
 {
-  "buildCommand": "echo 'Static site - no build needed'",
+  "buildCommand": "npm run build || echo 'No build needed'",
   "outputDirectory": "frontend",
+  "installCommand": "echo 'Skipping npm install'",
   "framework": "other",
-  "cleanUrls": true,
-  "trailingSlash": false,
-  "routes": [
-    {
-      "src": "/(?!.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|avif|woff|woff2)$).*",
-      "dest": "/index.html"
-    }
-  ]
+  "public": "frontend"
 }
