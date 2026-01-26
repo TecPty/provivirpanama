@@ -234,7 +234,7 @@ const PropertyLoader = (() => {
             card.className = 'property-card';
             card.innerHTML = `
                 <div class="property-card__image-container">
-                    <img src="${property.image}" alt="${property.title}" class="property-card__image" loading="lazy">
+                    <img src="${property.image}" alt="${property.title}" class="property-card__image" loading="lazy" style="cursor: pointer;">
                     ${badge}
                 </div>
                 <div class="property-card__content">
@@ -264,6 +264,13 @@ const PropertyLoader = (() => {
                     </div>
                 </div>
             `;
+
+            // Add click handler to image
+            card.querySelector('.property-card__image').addEventListener('click', () => {
+                if (window.propertyImageModal) {
+                    window.propertyImageModal.openFromCard(property.id, properties, 0);
+                }
+            });
 
             card.querySelector('.property-card__contact-btn').addEventListener('click', () => {
                 handleContact(property);
