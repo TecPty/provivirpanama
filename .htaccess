@@ -1,23 +1,19 @@
-# Enable mod_rewrite
+# Provivir Panama - Root .htaccess
+# Map /provivirpanama/* to root /*
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    RewriteBase /
     
-    # Set the base path
-    RewriteBase /provivirpanama/
+    # Mapear /provivirpanama/* a raíz
+    RewriteCond %{REQUEST_URI} ^/provivirpanama/
+    RewriteRule ^provivirpanama/(.*)$ $1 [PT,L]
     
-    # Don't rewrite API requests
-    RewriteCond %{REQUEST_URI} ^/provivirpanama/backend/ [OR]
-    RewriteCond %{REQUEST_URI} ^/provivirpanama/cms/
-    RewriteRule ^ - [L]
-    
-    # If the request is for a file or folder that exists, serve it
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
-    
-    # Otherwise, redirect to index.html (only for frontend)
-    RewriteRule ^(?!backend|cms)(.*)$ index.html [QSA,L]
+    # Mapear /provivirpanama a raíz
+    RewriteCond %{REQUEST_URI} ^/provivirpanama$
+    RewriteRule ^provivirpanama/?$ / [PT,L]
 </IfModule>
+
 
 # Enable DirectoryIndex
 <IfModule mod_dir.c>
