@@ -1,0 +1,13 @@
+backend/
+cms/
+*.php
+node_modules/
+.git/
+.gitignore
+README.md
+DEPLOYMENT.md
+*.md
+.env.local
+.env
+logs/
+*.sql
