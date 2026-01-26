@@ -66,11 +66,11 @@ try {
     // Obtener nombre de la propiedad para el email
     $propertyName = 'No especificada';
     if ($propertyId) {
-        $propStmt = $db->prepare("SELECT name FROM properties WHERE id = :id LIMIT 1");
+        $propStmt = $db->prepare("SELECT title FROM properties WHERE id = :id LIMIT 1");
         $propStmt->execute([':id' => $propertyId]);
         $prop = $propStmt->fetch(PDO::FETCH_ASSOC);
         if ($prop) {
-            $propertyName = $prop['name'];
+            $propertyName = $prop['title'];
         }
     }
     
