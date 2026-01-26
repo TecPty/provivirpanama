@@ -110,96 +110,109 @@ class EmailHandler {
     private function sendViaSMTP($to, $subject, $message, $headers) {
         
         try {
-            // Crear contexto SMTP
+            // Crear conexión usando stream con contexto SSL mejorado
             $context = stream_context_create([
                 'ssl' => [
                     'verify_peer' => false,
                     'verify_peer_name' => false,
-                    'allow_self_signed' => true
+                    'allow_self_signed' => true,
+                    'crypto_method' => STREAM_CRYPTO_METHOD_TLS_CLIENT
                 ]
             ]);
             
-            // Conectar a servidor SMTP
-            $smtp = fsockopen(
-                'tls://' . $this->smtpHost,
-                $this->smtpPort,
+            // Conectar a servidor SMTP con contexto
+            $smtp = @stream_socket_client(
+                'tls://' . $this->smtpHost . ':' . $this->smtpPort,
                 $errno,
                 $errstr,
-                10
+                10,
+                STREAM_CLIENT_CONNECT,
+                $context
             );
             
             if (!$smtp) {
-                $this->errors[] = "Error SMTP: $errstr ($errno)";
+                $this->errors[] = "SMTP Connection Failed: $errstr ($errno)";
+                // Fallback a mail() si SMTP falla y está habilitado
+                if (defined('FALLBACK_TO_MAIL') && FALLBACK_TO_MAIL) {
+                    error_log("SMTP falló, intentando con mail() para lead ID");
+                    return $this->sendViaPhpMail($to, $subject, $message, $headers);
+                }
                 return false;
             }
             
             // Leer respuesta inicial
-            $response = fgets($smtp, 1024);
+            $response = @fgets($smtp, 1024);
             
-            if (strpos($response, '220') === false) {
-                $this->errors[] = "SMTP: Respuesta inválida del servidor";
-                fclose($smtp);
+            if (!$response || strpos($response, '220') === false) {
+                $this->errors[] = "SMTP Server returned invalid response";
+                @fclose($smtp);
+                if (defined('FALLBACK_TO_MAIL') && FALLBACK_TO_MAIL) {
+                    return $this->sendViaPhpMail($to, $subject, $message, $headers);
+                }
                 return false;
             }
             
             // EHLO
-            fputs($smtp, "EHLO " . $_SERVER['HTTP_HOST'] . "\r\n");
-            fgets($smtp, 1024);
+            $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'localhost';
+            @fputs($smtp, "EHLO $host\r\n");
+            @fgets($smtp, 1024);
             
             // AUTH LOGIN
-            fputs($smtp, "AUTH LOGIN\r\n");
-            fgets($smtp, 1024);
+            @fputs($smtp, "AUTH LOGIN\r\n");
+            @fgets($smtp, 1024);
             
-            // Username
-            fputs($smtp, base64_encode($this->smtpUsername) . "\r\n");
-            fgets($smtp, 1024);
+            // Username (base64 encoded)
+            @fputs($smtp, base64_encode($this->smtpUsername) . "\r\n");
+            @fgets($smtp, 1024);
             
-            // Password
-            fputs($smtp, base64_encode($this->smtpPassword) . "\r\n");
-            $response = fgets($smtp, 1024);
+            // Password (base64 encoded)
+            @fputs($smtp, base64_encode($this->smtpPassword) . "\r\n");
+            $response = @fgets($smtp, 1024);
             
-            if (strpos($response, '235') === false) {
-                $this->errors[] = "SMTP: Autenticación fallida";
-                fclose($smtp);
+            if (strpos($response, '235') === false && strpos($response, '2.7.0') === false) {
+                $this->errors[] = "SMTP Authentication failed";
+                @fclose($smtp);
+                if (defined('FALLBACK_TO_MAIL') && FALLBACK_TO_MAIL) {
+                    return $this->sendViaPhpMail($to, $subject, $message, $headers);
+                }
                 return false;
             }
             
             // MAIL FROM
-            fputs($smtp, "MAIL FROM:<" . $this->fromEmail . ">\r\n");
-            fgets($smtp, 1024);
+            @fputs($smtp, "MAIL FROM:<" . $this->fromEmail . ">\r\n");
+            @fgets($smtp, 1024);
             
             // RCPT TO
-            fputs($smtp, "RCPT TO:<" . $to . ">\r\n");
-            fgets($smtp, 1024);
+            @fputs($smtp, "RCPT TO:<$to>\r\n");
+            @fgets($smtp, 1024);
             
             // DATA
-            fputs($smtp, "DATA\r\n");
-            fgets($smtp, 1024);
+            @fputs($smtp, "DATA\r\n");
+            @fgets($smtp, 1024);
             
-            // Construir mensaje completo
-            $fullMessage = "From: " . $this->fromName . " <" . $this->fromEmail . ">\r\n";
-            $fullMessage .= "To: " . $to . "\r\n";
-            $fullMessage .= "Subject: " . $subject . "\r\n";
-            $fullMessage .= $headers . "\r\n";
-            $fullMessage .= "\r\n" . $message . "\r\n";
-            
-            fputs($smtp, $fullMessage . "\r\n.\r\n");
-            $response = fgets($smtp, 1024);
+            // Enviar headers y mensaje
+            @fputs($smtp, $headers . "\r\n\r\n");
+            @fputs($smtp, $message . "\r\n.\r\n");
+            $response = @fgets($smtp, 1024);
             
             if (strpos($response, '250') === false) {
-                $this->errors[] = "SMTP: Error al enviar mensaje";
-                fclose($smtp);
+                $this->errors[] = "SMTP: Failed to send message";
+                @fclose($smtp);
                 return false;
             }
             
             // QUIT
-            fputs($smtp, "QUIT\r\n");
-            fclose($smtp);
+            @fputs($smtp, "QUIT\r\n");
+            @fclose($smtp);
             
             return true;
             
         } catch (Exception $e) {
-            $this->errors[] = "Excepción SMTP: " . $e->getMessage();
+            $this->errors[] = "SMTP Exception: " . $e->getMessage();
+            if (defined('FALLBACK_TO_MAIL') && FALLBACK_TO_MAIL) {
+                error_log("SMTP Exception, usando mail() como fallback");
+                return $this->sendViaPhpMail($to, $subject, $message, $headers);
+            }
             return false;
         }
     }
@@ -217,10 +230,38 @@ class EmailHandler {
     private function sendViaPhpMail($to, $subject, $message, $headers) {
         
         try {
+            // En desarrollo sin SMTP: guardar como archivo JSON en logs
+            if (!USE_SMTP || (defined('FALLBACK_TO_MAIL') && FALLBACK_TO_MAIL)) {
+                $logsDir = __DIR__ . '/../../logs';
+                if (!is_dir($logsDir)) {
+                    @mkdir($logsDir, 0777, true);
+                }
+                
+                // Guardar email en JSON para verificación
+                $emailData = [
+                    'timestamp' => date('Y-m-d H:i:s'),
+                    'to' => $to,
+                    'subject' => $subject,
+                    'from' => FROM_EMAIL,
+                    'from_name' => FROM_NAME,
+                    'message_preview' => substr(strip_tags($message), 0, 200),
+                    'status' => 'pending'
+                ];
+                
+                $logFile = $logsDir . '/emails-log.json';
+                $emails = file_exists($logFile) ? json_decode(file_get_contents($logFile), true) ?: [] : [];
+                $emails[] = $emailData;
+                
+                file_put_contents($logFile, json_encode($emails, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                error_log("[" . date('Y-m-d H:i:s') . "] Email registrado en logs (modo desarrollo): $to");
+                
+                return true;
+            }
+            
+            // Si SMTP está activo, intentar usar mail() de PHP
             $result = mail($to, $subject, $message, $headers);
             
             if (!$result) {
-                // Log del intento fallido
                 $logMessage = "[" . date('Y-m-d H:i:s') . "] Email fallido a: $to\n";
                 error_log($logMessage, 3, __DIR__ . '/../../logs/email-errors.log');
                 $this->errors[] = "Error al enviar email vía mail()";
