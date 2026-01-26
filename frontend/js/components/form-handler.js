@@ -210,6 +210,16 @@ const FormHandler = (() => {
         // Set loading state
         setLoading(leadForm, true);
         
+        // Check if backend is available (not in Vercel demo)
+        if (CONFIG.IS_VERCEL) {
+            // Vercel demo mode - show demo message
+            setTimeout(() => {
+                alert('✅ En el modo de demostración.\n\nEsta versión es solo de visualización. El formulario está funcional en la versión local.\n\nPara contactar con el equipo: ventas@provivirpanama.com');
+                setLoading(leadForm, false);
+            }, 1500);
+            return;
+        }
+        
         try {
             const response = await API.submitLead(leadData);
             

@@ -2,17 +2,12 @@
   "buildCommand": "echo 'Static site - no build needed'",
   "outputDirectory": "frontend",
   "framework": "other",
-  "env": {
-    "NODE_ENV": "production"
-  },
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
     {
-      "src": "/provivirpanama/.*",
-      "dest": "/provivirpanama/index.html"
-    },
-    {
-      "src": "/provivirpanama/(?!.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|avif|woff|woff2)$).*",
-      "dest": "/provivirpanama/index.html"
+      "src": "/(?!.*\\.(js|css|png|jpg|jpeg|gif|ico|svg|avif|woff|woff2)$).*",
+      "dest": "/index.html"
     }
   ]
 }

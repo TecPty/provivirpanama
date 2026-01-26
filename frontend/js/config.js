@@ -11,20 +11,37 @@ const ENVIRONMENT = window.location.hostname === 'localhost' ||
     ? 'development'
     : 'production';
 
+// Detectar si está en Vercel
+const IS_VERCEL = window.location.hostname.includes('.vercel.app');
+
 // Construir BASE_URL según ambiente
 const getAPIBaseURL = () => {
     if (ENVIRONMENT === 'development') {
-        // XAMPP local - ajustar según tu instalación
+        // XAMPP local
         return '/provivirpanama/backend/api';
+    } else if (IS_VERCEL) {
+        // En Vercel no hay backend PHP (por ahora)
+        return null; 
     } else {
-        // Producción - ruta relativa funciona en mismo dominio
+        // Producción en servidor real
         return '/backend/api';
+    }
+};
+
+// Base path para assets (importante para Vercel)
+const getBasePath = () => {
+    if (ENVIRONMENT === 'development') {
+        return '/provivirpanama';
+    } else {
+        return ''; // En Vercel/prod, es desde raíz
     }
 };
 
 const CONFIG = {
     // Environment (development | production)
     ENVIRONMENT: ENVIRONMENT,
+    IS_VERCEL: IS_VERCEL,
+    BASE_PATH: getBasePath(),
     
     // API Configuration
     API: {
