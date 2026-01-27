@@ -1,0 +1,11 @@
+# CMS .htaccess - Allow direct access to PHP files
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /provivirpanama/cms/
+</IfModule>
+
+# Permitir acceso directo a archivos
+<IfModule mod_dir.c>
+    DirectoryIndex login.php
+</IfModule>

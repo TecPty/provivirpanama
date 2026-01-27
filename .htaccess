@@ -5,11 +5,9 @@
     RewriteEngine On
     RewriteBase /
     
-    # Exclude CMS, API, and Backend from rewriting
-    RewriteRule ^(cms|api|backend)/ - [L]
-    
-    # Mapear /provivirpanama/* a raíz
+    # Mapear /provivirpanama/* a raíz primero
     RewriteCond %{REQUEST_URI} ^/provivirpanama/
+    RewriteCond %{REQUEST_URI} !^/provivirpanama/(cms|api|backend)/
     RewriteRule ^provivirpanama/(.*)$ $1 [PT,L]
     
     # Mapear /provivirpanama a raíz
