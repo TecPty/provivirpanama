@@ -4,6 +4,10 @@
     RewriteEngine On
     RewriteBase /provivirpanama/
     
+    # Don't rewrite /cms/, /api/, or /backend/
+    RewriteCond %{REQUEST_URI} ^/provivirpanama/(cms|api|backend)/ [NC]
+    RewriteRule ^ - [L]
+    
     # Don't rewrite if it's a real file or directory
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
