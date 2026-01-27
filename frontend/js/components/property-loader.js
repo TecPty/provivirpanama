@@ -12,12 +12,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Hermoso modelo Lirio con 3 habitaciones y 2 baños. Diseño moderno con amplios espacios.',
-            image: 'assets/images/properties/altos-guayacanes/lirio-sala.avif',
+            image: 'assets/images/properties/altos-guayacanes/lirio-sala.webp',
             images: [
-                'assets/images/properties/altos-guayacanes/lirio-sala.avif',
-                'assets/images/properties/altos-guayacanes/lirio-cocina.avif',
-                'assets/images/properties/altos-guayacanes/lirio-hab-principal.avif',
-                'assets/images/properties/altos-guayacanes/lirio-hab-2.avif'
+                'assets/images/properties/altos-guayacanes/lirio-sala.webp',
+                'assets/images/properties/altos-guayacanes/lirio-cocina.webp',
+                'assets/images/properties/altos-guayacanes/lirio-hab-principal.webp',
+                'assets/images/properties/altos-guayacanes/lirio-hab-2.webp'
             ],
             bedrooms: 3,
             bathrooms: 2,
@@ -34,12 +34,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Compacto y funcional modelo Jazmin con 2 habitaciones y 1 baño. Ideal para parejas o pequeñas familias.',
-            image: 'assets/images/properties/altos-guayacanes/jazmin-sala.avif',
+            image: 'assets/images/properties/altos-guayacanes/jazmin-sala.webp',
             images: [
-                'assets/images/properties/altos-guayacanes/jazmin-sala.avif',
-                'assets/images/properties/altos-guayacanes/jazmin-cocina.avif',
-                'assets/images/properties/altos-guayacanes/jazmin-hab-principal.avif',
-                'assets/images/properties/altos-guayacanes/jazmin-hab-2.avif'
+                'assets/images/properties/altos-guayacanes/jazmin-sala.webp',
+                'assets/images/properties/altos-guayacanes/jazmin-cocina.webp',
+                'assets/images/properties/altos-guayacanes/jazmin-hab-principal.webp',
+                'assets/images/properties/altos-guayacanes/jazmin-hab-2.webp'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -59,7 +59,7 @@ const getMockProperties = () => {
             image: 'assets/images/properties/villas-este/roble-home.png',
             images: [
                 'assets/images/properties/villas-este/roble-home.png',
-                'assets/images/properties/villas-este/roble-sala.avif',
+                'assets/images/properties/villas-este/roble-sala.webp',
                 'assets/images/properties/villas-este/roble-cocina.png',
                 'assets/images/properties/villas-este/roble-hab-principal.png'
             ],
@@ -83,7 +83,7 @@ const getMockProperties = () => {
                 'assets/images/properties/villas-este/cerezo-home.png',
                 'assets/images/properties/villas-este/cerezo-sala.png',
                 'assets/images/properties/villas-este/cerezo-cocina.png',
-                'assets/images/properties/villas-este/cerezo-hab-principal.avif'
+                'assets/images/properties/villas-este/cerezo-hab-principal.webp'
             ],
             bedrooms: 3,
             bathrooms: 2,
@@ -100,12 +100,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Elegante modelo Cordoba con 3 habitaciones y 2 baños. Diseño moderno y funcional.',
-            image: 'assets/images/properties/ciudad-este/cordoba-sala.avif',
+            image: 'assets/images/properties/ciudad-este/cordoba-sala.webp',
             images: [
-                'assets/images/properties/ciudad-este/cordoba-sala.avif',
-                'assets/images/properties/ciudad-este/cordoba-cocina.avif',
-                'assets/images/properties/ciudad-este/cordoba-comedor.avif',
-                'assets/images/properties/ciudad-este/cordoba-bano.avif'
+                'assets/images/properties/ciudad-este/cordoba-sala.webp',
+                'assets/images/properties/ciudad-este/cordoba-cocina.webp',
+                'assets/images/properties/ciudad-este/cordoba-comedor.webp',
+                'assets/images/properties/ciudad-este/cordoba-bano.webp'
             ],
             bedrooms: 3,
             bathrooms: 2,
@@ -125,9 +125,9 @@ const getMockProperties = () => {
             image: 'assets/images/properties/ciudad-este/granada-home.png',
             images: [
                 'assets/images/properties/ciudad-este/granada-home.png',
-                'assets/images/properties/ciudad-este/granada-sala.avif',
-                'assets/images/properties/ciudad-este/granada-comedor.avif',
-                'assets/images/properties/ciudad-este/granada-hab-principal.avif'
+                'assets/images/properties/ciudad-este/granada-sala.webp',
+                'assets/images/properties/ciudad-este/granada-comedor.webp',
+                'assets/images/properties/ciudad-este/granada-hab-principal.webp'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -144,12 +144,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Acogedora modelo Andalucia con 2 habitaciones y 1 baño. Excelente relacion calidad-precio.',
-            image: 'assets/images/properties/colinas-este/andalucia-sala.avif',
+            image: 'assets/images/properties/colinas-este/andalucia-sala.webp',
             images: [
-                'assets/images/properties/colinas-este/andalucia-sala.avif',
+                'assets/images/properties/colinas-este/andalucia-sala.webp',
                 'assets/images/properties/colinas-este/andalucia-bano.png',
-                'assets/images/properties/colinas-este/andalucia-hab-principal.avif',
-                'assets/images/properties/colinas-este/andalucia-hab-2.avif'
+                'assets/images/properties/colinas-este/andalucia-hab-principal.webp',
+                'assets/images/properties/colinas-este/andalucia-hab-2.webp'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -169,9 +169,9 @@ const getMockProperties = () => {
             image: 'assets/images/properties/villas-oeste/tulipan-sala.png',
             images: [
                 'assets/images/properties/villas-oeste/tulipan-sala.png',
-                'assets/images/properties/villas-oeste/tulipan-cocina.avif',
-                'assets/images/properties/villas-oeste/tulipan-hab-principal.avif',
-                'assets/images/properties/villas-oeste/tulipan-hab-2.avif'
+                'assets/images/properties/villas-oeste/tulipan-cocina.webp',
+                'assets/images/properties/villas-oeste/tulipan-hab-principal.webp',
+                'assets/images/properties/villas-oeste/tulipan-hab-2.webp'
             ],
             bedrooms: 2,
             bathrooms: 1,
@@ -188,12 +188,12 @@ const getMockProperties = () => {
             currency: 'B/.',
             pricePeriod: 'quincenal',
             description: 'Modelo Caoba con 3 habitaciones y 2 baños. Comunidad en renovacion.',
-            image: 'assets/images/properties/villas-oeste/caoba-sala.avif',
+            image: 'assets/images/properties/villas-oeste/caoba-sala.webp',
             images: [
-                'assets/images/properties/villas-oeste/caoba-sala.avif',
-                'assets/images/properties/villas-oeste/caoba-comedor-cocina.avif',
-                'assets/images/properties/villas-oeste/caoba-hab-principal.avif',
-                'assets/images/properties/villas-oeste/caoba-hab-2.avif'
+                'assets/images/properties/villas-oeste/caoba-sala.webp',
+                'assets/images/properties/villas-oeste/caoba-comedor-cocina.webp',
+                'assets/images/properties/villas-oeste/caoba-hab-principal.webp',
+                'assets/images/properties/villas-oeste/caoba-hab-2.webp'
             ],
             bedrooms: 3,
             bathrooms: 2,
