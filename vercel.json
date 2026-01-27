@@ -4,6 +4,9 @@
   "installCommand": "npm install || true",
   "framework": "other",
   "public": "frontend",
+  "env": {
+    "VERCEL_DEPLOY": "true"
+  },
   "headers": [
     {
       "source": "/assets/(.*)",
