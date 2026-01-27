@@ -17,14 +17,14 @@ const IS_VERCEL = window.location.hostname.includes('.vercel.app');
 // Construir BASE_URL según ambiente
 const getAPIBaseURL = () => {
     if (ENVIRONMENT === 'development') {
-        // XAMPP local
-        return '/provivirpanama/backend/api';
+        // XAMPP local - usar /api/ (funciona en ambos: local y Vercel)
+        return '/provivirpanama/api';
     } else if (IS_VERCEL) {
-        // En Vercel no hay backend PHP (por ahora)
-        return null; 
+        // En Vercel usa /api/
+        return '/api'; 
     } else {
         // Producción en servidor real
-        return '/backend/api';
+        return '/api';
     }
 };
 
@@ -47,11 +47,11 @@ const CONFIG = {
     API: {
         BASE_URL: getAPIBaseURL(),
         ENDPOINTS: {
-            PROPERTIES: '/properties.php',
-            TESTIMONIALS: '/testimonials.php',
-            LEADS: '/leads.php',
-            CONTACT: '/contact.php',
-            SOCIAL_POSTS: '/social-posts.php'
+            PROPERTIES: '/properties',
+            TESTIMONIALS: '/testimonials',
+            LEADS: '/leads',
+            CONTACT: '/contact',
+            SOCIAL_POSTS: '/social-posts'
         },
         TIMEOUT: 10000, // 10 segundos
         RETRY_ATTEMPTS: 3

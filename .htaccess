@@ -5,9 +5,13 @@
     RewriteEngine On
     RewriteBase /
     
-    # Mapear /provivirpanama/* a raíz primero
+    # Route /provivirpanama/api/* to api-router.php
+    RewriteCond %{REQUEST_URI} ^/provivirpanama/api/
+    RewriteRule ^provivirpanama/api/(.*)$ /provivirpanama/api-router.php?endpoint=$1 [QSA,L]
+    
+    # Mapear /provivirpanama/* a raíz primero (excluyendo /api/)
     RewriteCond %{REQUEST_URI} ^/provivirpanama/
-    RewriteCond %{REQUEST_URI} !^/provivirpanama/(cms|api|backend)/
+    RewriteCond %{REQUEST_URI} !^/provivirpanama/(cms|api|backend|api-router)/
     RewriteRule ^provivirpanama/(.*)$ $1 [PT,L]
     
     # Mapear /provivirpanama a raíz
