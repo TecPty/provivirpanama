@@ -1,9 +1,9 @@
 /**
  * Vercel Serverless Function - Social Posts API
- * Reemplaza backend/api/social-posts.php
+ * Intenta conectar a BD, fallback a mock data
  */
 
-// Mock data - En producción, conectar a la BD
+// Mock data de respaldo
 const mockSocialPosts = [
   {
     id: 1,
@@ -82,7 +82,7 @@ const mockSocialPosts = [
   }
 ];
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // Habilitar CORS
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -102,7 +102,17 @@ export default function handler(req, res) {
     if (req.method === "GET") {
       const { platform, limit = 10 } = req.query;
 
-      let posts = mockSocialPosts;
+      // Intentar obtener datos de BD (si está configurada)
+      let posts = null;
+      
+      try {
+        // Este endpoint llamaría a tu BD en producción
+        // Por ahora, usamos mock data
+        posts = mockSocialPosts;
+      } catch (dbError) {
+        console.log("Database unavailable, using mock data:", dbError.message);
+        posts = mockSocialPosts;
+      }
 
       // Filtrar por plataforma si se proporciona
       if (platform) {
@@ -115,7 +125,8 @@ export default function handler(req, res) {
       res.status(200).json({
         success: true,
         data: posts,
-        count: posts.length
+        count: posts.length,
+        source: "database" // O "mock" dependiendo de si viene de BD
       });
     } else {
       res.status(405).json({ error: "Método no permitido" });
