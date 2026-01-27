@@ -52,10 +52,9 @@ Thumbs.db
 *.min.css
 
 # ===== UPLOADS =====
-/frontend/assets/images/properties/*
-!/frontend/assets/images/properties/.gitkeep
-/frontend/assets/images/testimonials/*
-!/frontend/assets/images/testimonials/.gitkeep
+# Allow property and testimonial images - they are part of the project
+# /frontend/assets/images/properties/*
+# !/frontend/assets/images/properties/.gitkeep
 /frontend/assets/uploads/
 
 # ===== TEMP FILES =====
