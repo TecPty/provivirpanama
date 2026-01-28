@@ -1,21 +1,13 @@
 {
-  "buildCommand": "npm run build || true",
+  "buildCommand": "echo 'Static frontend deployment'",
   "outputDirectory": "frontend",
-  "installCommand": "npm install || true",
+  "installCommand": "",
   "framework": "other",
   "public": "frontend",
   "env": {
     "VERCEL_DEPLOY": "true"
   },
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/:path*"
-    },
-    {
-      "source": "/backend/api/:path*",
-      "destination": "/api/:path*"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"
