@@ -7,8 +7,7 @@
     # Route /api/* to api-router.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} ^/provivirpanama/api/
-    RewriteRule ^provivirpanama/api/(.*)$ /provivirpanama/api-router.php?endpoint=$1 [QSA,L]
+    RewriteRule ^api/(.*)$ /provivirpanama/api-router.php?endpoint=$1 [QSA,L]
 </IfModule>
 <IfModule mod_mime.c>
     AddType text/html .html
