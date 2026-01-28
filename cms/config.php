@@ -4,7 +4,8 @@
  * Panel de administración para Provivir
  */
 
-session_start();
+// Note: session_start() is called in login.php and dashboard.php
+// Do NOT call it again here to avoid "session already started" errors
 
 // Credenciales de admin (en producción, usar BD con hashes)
 define('ADMIN_USERNAME', 'provivir_admin');

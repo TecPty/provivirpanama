@@ -4,10 +4,8 @@
  * Este archivo se puede usar tanto localmente como en producción
  */
 
-header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST, OPTIONS');
-header('Access-Control-Allow-Headers: Content-Type');
+// NOTE: Headers are set by api-router.php before including this file
+// Do NOT set headers again to avoid "headers already sent" error
 
 // Manejar CORS preflight
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {

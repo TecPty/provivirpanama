@@ -15,9 +15,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // Extract API endpoint
+// Try from URL rewrite first (/api/endpoint-name)
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$path = str_replace('/provivirpanama/api/', '', $path);
-$endpoint = explode('?', $path)[0];
+$endpoint = '';
+
+// Method 1: From /api/endpoint format (after .htaccess rewrite)
+if (strpos($path, '/provivirpanama/api/') !== false) {
+    $path = str_replace('/provivirpanama/api/', '', $path);
+    $endpoint = explode('?', $path)[0];
+}
+
+// Method 2: From query string (?endpoint=social-posts)
+if (empty($endpoint) && isset($_GET['endpoint'])) {
+    $endpoint = $_GET['endpoint'];
+}
 
 // Route to appropriate handler
 switch ($endpoint) {
@@ -39,6 +50,6 @@ switch ($endpoint) {
     
     default:
         http_response_code(404);
-        echo json_encode(['error' => 'Endpoint not found']);
+        echo json_encode(['error' => 'Endpoint not found', 'endpoint' => $endpoint]);
         break;
 }

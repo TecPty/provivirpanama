@@ -5,7 +5,7 @@
     RewriteBase /provivirpanama/cms/
 </IfModule>
 
-# Permitir acceso directo a archivos
+# Set directory index
 <IfModule mod_dir.c>
     DirectoryIndex login.php
 </IfModule>

@@ -1,16 +1,15 @@
-# Frontend SPA .htaccess - Simple routing
+# Frontend SPA routing - Only for files in this directory
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /provivirpanama/
+    RewriteBase /provivirpanama/frontend/
     
-    # Don't rewrite if it's a real file or directory
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
+    # Don't rewrite files or directories that exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     
-    # Rewrite all other requests to index.html for SPA routing
-    RewriteRule ^(?!api/|backend/)(.*)$ index.html [QSA,L]
+    # Rewrite everything else to index.html for SPA
+    RewriteRule ^(.*)$ index.html [QSA,L]
 </IfModule>
 
 # CORS

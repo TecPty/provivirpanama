@@ -1,31 +1,15 @@
-# Provivir Panama - Root .htaccess
-# Map /provivirpanama/* to root /*
+# Root .htaccess - Route API requests
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
+    RewriteBase /provivirpanama/
     
-    # Route /provivirpanama/api/* to api-router.php
+    # Route /api/* to api-router.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} ^/provivirpanama/api/
     RewriteRule ^provivirpanama/api/(.*)$ /provivirpanama/api-router.php?endpoint=$1 [QSA,L]
-    
-    # Mapear /provivirpanama/* a raíz primero (excluyendo /api/)
-    RewriteCond %{REQUEST_URI} ^/provivirpanama/
-    RewriteCond %{REQUEST_URI} !^/provivirpanama/(cms|api|backend|api-router)/
-    RewriteRule ^provivirpanama/(.*)$ $1 [PT,L]
-    
-    # Mapear /provivirpanama a raíz
-    RewriteCond %{REQUEST_URI} ^/provivirpanama$
-    RewriteRule ^provivirpanama/?$ / [PT,L]
 </IfModule>
-
-
-# Enable DirectoryIndex
-<IfModule mod_dir.c>
-    DirectoryIndex index.html index.php
-</IfModule>
-
-# Set the correct MIME types
 <IfModule mod_mime.c>
     AddType text/html .html
     AddType application/json .json
