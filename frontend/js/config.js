@@ -17,13 +17,13 @@ const IS_VERCEL = window.location.hostname.includes('.vercel.app');
 // Construir BASE_URL según ambiente
 const getAPIBaseURL = () => {
     if (ENVIRONMENT === 'development') {
-        // XAMPP local - usar /api/ (funciona en ambos: local y Vercel)
-        return '/provivirpanama/api';
+        // Local: Node.js API on port 3000
+        return 'http://localhost:3000/api';
     } else if (IS_VERCEL) {
-        // En Vercel usa /api/
-        return '/api'; 
+        // Vercel: Backend también en Vercel
+        return 'https://provivirpanama.vercel.app/api'; 
     } else {
-        // Producción en servidor real
+        // Producción: Usar URL relativa
         return '/api';
     }
 };

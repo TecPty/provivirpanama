@@ -1,11 +1,13 @@
 {
-  "buildCommand": "echo 'Static frontend deployment'",
+  "buildCommand": "echo 'Frontend build complete'",
   "outputDirectory": "frontend",
-  "installCommand": "",
+  "installCommand": "npm install",
   "framework": "other",
   "public": "frontend",
-  "env": {
-    "VERCEL_DEPLOY": "true"
+  "functions": {
+    "api/**.js": {
+      "runtime": "nodejs18.x"
+    }
   },
   "rewrites": [
     {
