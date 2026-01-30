@@ -48,9 +48,20 @@
 /* Properties Grid */
 .properties__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 50px;
     margin-bottom: 5rem;
+}
+
+/* First two cards (main projects) are larger */
+.property-card:nth-child(1),
+.property-card:nth-child(2) {
+    grid-column: span 1;
+}
+
+/* Remaining cards are smaller and span full width when needed */
+.property-card:nth-child(n+3) {
+    grid-column: span 1;
 }
 
 @media (max-width: 1024px) {
