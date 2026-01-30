@@ -168,34 +168,11 @@
                 </div>
                 
                 <div class="hero__image">
-                    <!-- Logo que cae sincronizado -->
-                    <div class="hero__logo">
-                        <img id="logoSlide" src="./assets/images/logos/ciudad-del-este-logo.png" alt="Logo Proyecto" loading="eager">
-                    </div>
-
-                    <!-- Slider de propiedades -->
-                    <div class="hero__slider">
-                        <div class="hero__slide" data-project="ciudad-del-este" data-logo="ciudad-del-este-logo.png">
-                            <img src="./assets/images/properties/ciudad-del-este-propiedad.png" alt="Ciudad del Este" loading="eager">
-                        </div>
-                        <div class="hero__slide" data-project="villas-del-este" data-logo="villas-del-este-logo.png">
-                            <img src="./assets/images/properties/villas-del-este-propiedad.png" alt="Villas del Este" loading="lazy">
-                        </div>
-                        <div class="hero__slide" data-project="colinas-del-este" data-logo="colinas-del-este-logo.png">
-                            <img src="./assets/images/properties/colinas-del-este-propiedad.png" alt="Colinas del Este" loading="lazy">
-                        </div>
-                        <div class="hero__slide" data-project="los-guayacanes" data-logo="los-guayacanes-logo.png">
-                            <img src="./assets/images/properties/los-guayacanes-propiedad.png" alt="Los Guayacanes" loading="lazy">
-                        </div>
-                    </div>
-                    
-                    <!-- Indicadores del slider -->
-                    <div class="hero__slider-dots">
-                        <button class="hero__dot active" data-slide="0" aria-label="Ciudad del Este"></button>
-                        <button class="hero__dot" data-slide="1" aria-label="Villas del Este"></button>
-                        <button class="hero__dot" data-slide="2" aria-label="Colinas del Este"></button>
-                        <button class="hero__dot" data-slide="3" aria-label="Los Guayacanes"></button>
-                    </div>
+                    <!-- Video de fondo -->
+                    <video class="hero__video" autoplay muted loop playsinline>
+                        <source src="./assets/images/hero/hero-video-desktop.webm" type="video/webm">
+                        Tu navegador no soporta videos HTML5.
+                    </video>
                 </div>
             </div>
         </div>
@@ -718,8 +695,6 @@
     <script src="./js/components/form-handler.js"></script>
     <script src="./js/components/scroll-animations.js"></script>
     <script src="./js/components/lazy-loading.js"></script>
-    <script src="./js/components/hero-slider.js"></script>
-    <script src="./js/components/hero-animation-sync.js"></script>
     <script src="./js/components/team-carousel.js"></script>
     <script src="./js/components/social-feed-loader.js"></script>
     <script src="./js/main.js"></script>
