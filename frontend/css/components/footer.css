@@ -5,7 +5,28 @@
 .footer {
     background-color: var(--color-gray-900);
     color: var(--color-white);
+    overflow: hidden;
+}
+
+.footer__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+}
+
+.footer__left {
     padding: var(--spacing-4xl) 0 var(--spacing-xl);
+}
+
+.footer__map-wrapper {
+    overflow: hidden;
+}
+
+.footer__map {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
 }
 
 .footer__grid {
@@ -148,6 +169,15 @@
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+    .footer__content {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .footer__map-wrapper {
+        min-height: 400px;
+    }
+
     .footer__grid {
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-2xl);
