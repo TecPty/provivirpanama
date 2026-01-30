@@ -134,28 +134,19 @@
 
     <!-- HERO SECTION -->
     <section class="hero" id="inicio">
-        <div class="container">
-            <div class="hero__grid">
-                <div class="hero__content">
-                    <h1 class="hero__title hero__title--compact">
-                        Tu Nuevo Hogar está 
-                        <span class="hero__title--highlight">Más Cerca</span>
-                    </h1>
-                    
-                    <p class="hero__description">
-                        Tu nuevo hogar está más cerca de lo que piensas.
-                    </p>
-                    
-                    </div>
-                </div>
-                
-                <div class="hero__image">
-                    <!-- Video de fondo -->
-                    <video class="hero__video" autoplay muted loop playsinline>
-                        <source src="./assets/images/hero/hero-video-desktop.mp4" type="video/mp4">
-                        Tu navegador no soporta videos HTML5.
-                    </video>
-                </div>
+        <!-- Video de fondo -->
+        <video class="hero__video" autoplay muted loop playsinline>
+            <source src="./assets/images/hero/hero-video-desktop.mp4" type="video/mp4">
+            Tu navegador no soporta videos HTML5.
+        </video>
+        
+        <!-- Contenido centrado sobre el video -->
+        <div class="hero__overlay">
+            <div class="hero__content-wrapper">
+                <h1 class="hero__title">
+                    Tu Nuevo Hogar está 
+                    <span class="hero__title--highlight">Más Cerca</span>
+                </h1>
             </div>
         </div>
     </section>

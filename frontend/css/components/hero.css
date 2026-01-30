@@ -3,10 +3,42 @@
    ========================================================================== */
 
 .hero {
-    background: linear-gradient(135deg, var(--color-white-matte) 0%, var(--color-white) 100%);
-    padding-top: 6rem;
-    padding-bottom: 5rem;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    z-index: 1;
+}
+
+.hero__overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hero__content-wrapper {
+    text-align: center;
+    max-width: 800px;
+    padding: 0 var(--spacing-lg);
 }
 
 .hero__grid {
@@ -17,9 +49,7 @@
 }
 
 .hero__content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+    display: none;
 }
 
 .hero__breadcrumb {
@@ -31,33 +61,30 @@
 }
 
 .hero__title {
-    font-size: var(--font-size-5xl);
+    font-size: 4.5rem;
     font-weight: var(--font-weight-extrabold);
-    line-height: var(--line-height-tight);
-    color: var(--color-text-primary);
-    margin-bottom: var(--spacing-sm);
+    line-height: 1.1;
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero__title--compact {
-    font-size: 3rem;
+    font-size: 4.5rem;
     line-height: 1.1;
 }
 
 .hero__title--highlight {
-    color: var(--color-primary-blue);
+    color: var(--color-white);
     display: block;
 }
 
 .hero__description {
-    font-size: 0.9rem;
-    line-height: 1.4;
-    color: var(--color-text-secondary);
-    max-width: 400px;
-    margin-bottom: var(--spacing-sm);
+    display: none;
 }
 
 .hero__actions {
-    display: flex;
+    display: none;
     gap: var(--spacing-xs);
     flex-wrap: wrap;
     align-items: center;
@@ -65,7 +92,7 @@
 }
 
 .hero__stats {
-    display: flex;
+    display: none;
     gap: var(--spacing-lg);
     padding-top: var(--spacing-md);
     margin-top: var(--spacing-xs);
