@@ -154,31 +154,29 @@
     <!-- PROJECTS SECTION -->
     <section class="projects" id="proyectos">
         <div class="container">
-            <h2 class="section__title">Nuestros Proyectos</h2>
-            <p class="section__subtitle">
-                Encuentra la casa de tus sueños en las mejores ubicaciones de Panamá
-            </p>
             
             <div class="projects__grid">
-                <div class="project-card">
+                <!-- Villas del Este -->
+                <div class="project-card" data-project="villas">
                     <img src="./assets/images/properties/villas.png" alt="Villas del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
                         <h3 class="project-card__title">Villas del Este</h3>
                         <p class="project-card__description">Lujo y comodidad en un entorno privado.</p>
-                        <button class="btn btn--primary btn--small" data-project="villas-este">
+                        <button class="btn btn--primary btn--small project-card__btn" data-project="villas">
                             VER DETALLES
                         </button>
                     </div>
                 </div>
                 
-                <div class="project-card">
+                <!-- Ciudad del Este -->
+                <div class="project-card" data-project="ciudad">
                     <img src="./assets/images/properties/ciudad.png" alt="Ciudad del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
                         <h3 class="project-card__title">Ciudad del Este</h3>
                         <p class="project-card__description">Tu familia merece el mejor espacio.</p>
-                        <button class="btn btn--primary btn--small" data-project="ciudad-este">
+                        <button class="btn btn--primary btn--small project-card__btn" data-project="ciudad">
                             VER DETALLES
                         </button>
                     </div>
@@ -186,6 +184,20 @@
             </div>
         </div>
     </section>
+
+    <!-- PROJECT DETAILS MODAL -->
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal__overlay"></div>
+        <div class="project-modal__content">
+            <button class="project-modal__close" aria-label="Cerrar">×</button>
+            <div class="project-modal__header">
+                <h2 class="project-modal__title" id="modalTitle">Proyectos</h2>
+            </div>
+            <div class="project-modal__projects" id="modalProjects">
+                <!-- Projects loaded dynamically -->
+            </div>
+        </div>
+    </div>
 
     <!-- TRUST BAR -->
     <section class="trust-bar" id="financiamiento">
@@ -530,115 +542,13 @@
                 </iframe>
             </div>
         </div>
-                <div class="footer__col">
-                    <div class="footer__logo-wrapper">
-                        <img src="./assets/images/logo/logo-icon-provivir.png" alt="Provivir Isotipo" class="footer__logo-icon">
-                        <img src="./assets/images/logo/logo-word-provivir.png" alt="Provivir" class="footer__logo-text">
-                    </div>
-                    <p class="footer__description">
-                        Hogares para crecer, comunidades para vivir.
-                    </p>
-                </div>
-                
-                <div class="footer__col">
-                    <h4 class="footer__title">Explorar</h4>
-                    <ul class="footer__links">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#financiamiento">Financiamiento</a></li>
-                        <li><a href="#asesoras">Asesores</a></li>
-                        <li><a href="#social-feed">Social Media</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer__col">
-                    <h4 class="footer__title">Contacto</h4>
-                    <ul class="footer__contact">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M2 3C2 2.44772 2.44772 2 3 2H5.15287C5.64171 2 6.0589 2.35341 6.13927 2.8356L6.87858 7.27147C6.95075 7.70451 6.73206 8.13397 6.3394 8.3303L4.79126 9.10437C5.90756 11.8783 8.12168 14.0924 10.8956 15.2087L11.6697 13.6606C11.866 13.2679 12.2955 13.0492 12.7285 13.1214L17.1644 13.8607C17.6466 13.9411 18 14.3583 18 14.8471V17C18 17.5523 17.5523 18 17 18H15C7.8203 18 2 12.1797 2 5V3Z" fill="currentColor"/>
-                            </svg>
-                            <a href="tel:3909094">390-9094</a> / <a href="tel:63712652">6371-2652</a>
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M2.003 5.884L10 9.882L17.997 5.884C17.9674 5.37444 17.7441 4.89549 17.3728 4.54523C17.0016 4.19497 16.5104 3.99991 16 4H4C3.48958 3.99991 2.99845 4.19497 2.62718 4.54523C2.25591 4.89549 2.0326 5.37444 2.003 5.884Z" fill="currentColor"/>
-                                <path d="M18 8.11798L10 12.118L2 8.11798V14C2 14.5304 2.21071 15.0391 2.58579 15.4142C2.96086 15.7893 3.46957 16 4 16H16C16.5304 16 17.0391 15.7893 17.4142 15.4142C17.7893 15.0391 18 14.5304 18 14V8.11798Z" fill="currentColor"/>
-                            </svg>
-                            <a href="mailto:ventas2@provivirpanama.com">ventas2@provivirpanama.com</a>
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.05025 4.05025C7.78392 1.31658 12.2161 1.31658 14.9497 4.05025C17.6834 6.78392 17.6834 11.2161 14.9497 13.9497L10 18.8995L5.05025 13.9497C2.31658 11.2161 2.31658 6.78392 5.05025 4.05025ZM10 11C11.1046 11 12 10.1046 12 9C12 7.89543 11.1046 7 10 7C8.89543 7 8 7.89543 8 9C8 10.1046 8.89543 11 10 11Z" fill="currentColor"/>
-                            </svg>
-                            <a href="https://g.co/kgs/jXG9nqx" target="_blank" rel="noopener">PH Beta 120, Vía España, Ciudad de Panamá</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="footer__col">
-                    <h4 class="footer__title">Contáctanos</h4>
-                    <ul class="footer__links">
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            <a href="mailto:info@provivirpanama.com">info@provivirpanama.com</a>
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                            </svg>
-                            <a href="tel:+507390-9094">390-9094</a>
-                        </li>
-                        <li>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            <a href="https://wa.me/50763712652" target="_blank" rel="noopener">6371-2652 (WhatsApp)</a>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="footer__col">
-                    <h4 class="footer__title">Síguenos</h4>
-                    <div class="footer__social">
-                        <a href="https://www.youtube.com/c/ProvivirPanamá" target="_blank" rel="noopener" aria-label="YouTube" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" fill="currentColor"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.facebook.com/provivirpanama/" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M24 12.073C24 5.40904 18.627 0 12 0C5.373 0 0 5.40904 0 12.073C0 18.0993 4.388 23.0943 10.125 24V15.5633H7.078V12.073H10.125V9.41296C10.125 6.38748 11.917 4.71592 14.658 4.71592C15.97 4.71592 17.344 4.95092 17.344 4.95092V7.92092H15.83C14.34 7.92092 13.875 8.85304 13.875 9.80904V12.073H17.203L16.671 15.5633H13.875V24C19.612 23.0943 24 18.0993 24 12.073Z" fill="currentColor"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.instagram.com/provivir/" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2.163C15.204 2.163 15.584 2.175 16.85 2.233C20.102 2.381 21.621 3.924 21.769 7.152C21.827 8.417 21.838 8.797 21.838 12.001C21.838 15.206 21.826 15.585 21.769 16.85C21.62 20.075 20.105 21.621 16.85 21.769C15.584 21.827 15.206 21.839 12 21.839C8.796 21.839 8.416 21.827 7.151 21.769C3.891 21.62 2.38 20.07 2.232 16.849C2.174 15.584 2.162 15.205 2.162 12C2.162 8.796 2.175 8.417 2.232 7.151C2.381 3.924 3.896 2.38 7.151 2.232C8.417 2.175 8.796 2.163 12 2.163ZM12 0C8.741 0 8.333 0.014 7.053 0.072C2.695 0.272 0.273 2.69 0.073 7.052C0.014 8.333 0 8.741 0 12C0 15.259 0.014 15.668 0.072 16.948C0.272 21.306 2.69 23.728 7.052 23.928C8.333 23.986 8.741 24 12 24C15.259 24 15.668 23.986 16.948 23.928C21.302 23.728 23.73 21.31 23.927 16.948C23.986 15.668 24 15.259 24 12C24 8.741 23.986 8.333 23.928 7.053C23.732 2.699 21.311 0.273 16.949 0.073C15.668 0.014 15.259 0 12 0ZM12 5.838C8.597 5.838 5.838 8.597 5.838 12C5.838 15.403 8.597 18.163 12 18.163C15.403 18.163 18.162 15.404 18.162 12C18.162 8.597 15.403 5.838 12 5.838ZM12 16C9.791 16 8 14.21 8 12C8 9.791 9.791 8 12 8C14.209 8 16 9.791 16 12C16 14.21 14.209 16 12 16ZM18.406 4.155C17.61 4.155 16.965 4.8 16.965 5.595C16.965 6.39 17.61 7.035 18.406 7.035C19.201 7.035 19.845 6.39 19.845 5.595C19.845 4.8 19.201 4.155 18.406 4.155Z" fill="currentColor"/>
-                            </svg>
-                        </a>
-                        <a href="https://www.tiktok.com/@provivirpanama" target="_blank" rel="noopener" aria-label="TikTok" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" fill="currentColor"/>
-                            </svg>
-                        </a>
-                        <a href="https://x.com/provivirpanama" target="_blank" rel="noopener" aria-label="Twitter/X" class="footer__social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer__bottom">
-                <p>&copy; 2024 Provivir S.A. - Parte del grupo PARIS HILTON S.A. Todos los derechos reservados.</p>
-                <div class="footer__legal">
-                    <a href="#" id="privacyLink">Política de Privacidad</a>
-                    <a href="#" id="termsLink">Términos de Servicio</a>
-                    <a href="#" id="equalHousingLink">Igualdad de Oportunidades de Vivienda</a>
-                </div>
+        
+        <div class="footer__bottom">
+            <p>&copy; 2024 Provivir S.A. - Parte del grupo PARIS HILTON S.A. Todos los derechos reservados.</p>
+            <div class="footer__legal">
+                <a href="#" id="privacyLink">Política de Privacidad</a>
+                <a href="#" id="termsLink">Términos de Servicio</a>
+                <a href="#" id="equalHousingLink">Igualdad de Oportunidades de Vivienda</a>
             </div>
         </div>
     </footer>
@@ -675,6 +585,7 @@
     <script src="./js/components/lazy-loading.js"></script>
     <script src="./js/components/team-carousel.js"></script>
     <script src="./js/components/social-feed-loader.js"></script>
+    <script src="./js/components/project-gallery.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
