@@ -1,25 +1,28 @@
 /* ========================================
-   VALUE PROPS SECTION
+   VALUE PROPS SECTION - Mission & Vision
    ======================================== */
 
 .value-props {
-    padding: 6rem 0 5rem 0 !important;
-    background-color: var(--bg-light);
+    padding: 7rem 0 !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     color: #000000;
 }
 
 .value-props .section__title {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .value-props .section__subtitle {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 4rem;
     color: var(--text-secondary);
-    font-size: 1.125rem;
-    line-height: 1.6;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    font-style: italic;
 }
 
 .value-props__grid {
@@ -31,23 +34,25 @@
 
 /* Two column grid for Mission and Vision */
 .value-props__grid--two {
-    grid-template-columns: 1fr;
-    margin-top: -2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 0;
 }
 
 /* Value Cards */
 .value-card {
     background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
+    position: relative;
 }
 
 .value-card--large {
-    padding: 3rem 2rem;
-    min-height: 300px;
+    padding: 3.5rem 2.5rem;
+    min-height: 340px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,39 +64,50 @@
 }
 
 .value-card__icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 1.5rem;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 58, 122, 0.1) 0%, rgba(0, 58, 122, 0.05) 100%);
+}
+
+.value-card__icon img {
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
 .value-card__icon--blue {
     color: var(--primary-color);
+    background: linear-gradient(135deg, rgba(0, 75, 153, 0.15) 0%, rgba(0, 75, 153, 0.08) 100%);
 }
 
 .value-card__icon--green {
     color: var(--success-color, #10b981);
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.08) 100%);
 }
 
 .value-card__icon--orange {
     color: var(--warning-color, #f59e0b);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(245, 158, 11, 0.08) 100%);
 }
 
 .value-card__title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--text-primary);
-    letter-spacing: 2px;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 .value-card__description {
     color: var(--text-secondary);
-    line-height: 1.7;
-    font-size: 1rem;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .value-card__description--large {
