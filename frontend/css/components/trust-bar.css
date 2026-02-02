@@ -48,18 +48,18 @@
 
 .trust-bar__logo-link img {
     display: block;
-    height: 80px;
+    height: 150px;
     width: auto;
-    max-width: 200px;
-    opacity: 0.8;
+    max-width: 350px;
+    opacity: 1;
     transition: all 0.3s ease;
     object-fit: contain;
-    filter: grayscale(100%);
+    filter: none;
 }
 
 .trust-bar__logo-link:hover img {
     opacity: 1;
-    filter: grayscale(0%);
+    filter: none;
     transform: scale(1.08);
 }
 

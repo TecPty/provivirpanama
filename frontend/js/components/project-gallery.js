@@ -11,13 +11,13 @@ const projectComplexes = {
             {
                 name: 'Villas del Este - Jazmin',
                 description: 'Residencias de lujo con diseño moderno, áreas verdes y seguridad 24/7. Incluye habitaciones amplias, cocina integral y espacios para vivir con comodidad.',
-                image: './assets/images/properties/villas.png',
+                image: './assets/images/properties/villa_1.png',
                 whatsapp: '6371-2652'
             },
             {
                 name: 'Villas del Este - Lirio',
                 description: 'Proyecto exclusivo de viviendas con acabados premium. Cada propiedad cuenta con vista al verde, parqueadero privado y acceso a áreas comunes de recreación.',
-                image: './assets/images/properties/villas.png',
+                image: './assets/images/properties/villa_2.png',
                 whatsapp: '6371-2652'
             }
         ]
@@ -28,19 +28,19 @@ const projectComplexes = {
             {
                 name: 'Ciudad del Este - Córdoba',
                 description: 'Apartamentos modernos en zona estratégica con fácil acceso a comercios y servicios. Áreas comunes con gimnasio, piscina y zonas de esparcimiento.',
-                image: './assets/images/properties/ciudad.png',
+                image: './assets/images/properties/ciudad_1.png',
                 whatsapp: '6371-2652'
             },
             {
                 name: 'Ciudad del Este - Granada',
                 description: 'Proyecto residencial con unidades variadas para todo tipo de familia. Ubicación privilegiada con seguridad perimetral y sistemas de vigilancia modernos.',
-                image: './assets/images/properties/ciudad.png',
+                image: './assets/images/properties/ciudad_2.png',
                 whatsapp: '6371-2652'
             },
             {
                 name: 'Ciudad del Este - Sevilla',
                 description: 'Viviendas diseñadas para ofrecer confort y practicidad. Cercano a escuelas, hospitales y centros comerciales, con financiamiento flexible disponible.',
-                image: './assets/images/properties/ciudad.png',
+                image: './assets/images/properties/ciudad_3.png',
                 whatsapp: '6371-2652'
             }
         ]

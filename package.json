@@ -7,19 +7,28 @@
   "scripts": {
     "start": "node api/index.js",
     "dev": "node --watch api/index.js",
+    "frontend": "http-server frontend -p 8080 -c-1",
+    "dev:all": "echo \"Inicia 2 terminales: 1) npm run dev  2) npm run frontend\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["real-estate", "api"],
+  "keywords": [
+    "real-estate",
+    "api"
+  ],
   "author": "TecPty",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "mysql2": "^3.6.5",
-    "body-parser": "^1.20.2"
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "mysql2": "^3.6.5"
   },
   "devDependencies": {
+    "http-server": "^14.1.1",
     "nodemon": "^3.0.2"
   }
 }

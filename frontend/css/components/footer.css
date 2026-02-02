@@ -10,8 +10,9 @@
 
 .footer__content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 600px;
+    grid-template-columns: 3fr 1fr;
+    gap: var(--spacing-2xl);
+    align-items: start;
 }
 
 .footer__left {
@@ -20,11 +21,15 @@
 
 .footer__map-wrapper {
     overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    height: 200px;
+    margin-top: var(--spacing-3xl);
 }
 
 .footer__map {
     width: 100%;
-    height: 100%;
+    height: 200px;
     border: none;
     display: block;
 }
@@ -128,14 +133,31 @@
     height: 40px;
     background-color: var(--color-gray-800);
     border-radius: var(--radius-md);
-    color: var(--color-gray-300);
+    color: var(--color-white);
     transition: all var(--transition-base);
 }
 
+/* Color específico para cada red social */
+.footer__social-link:nth-child(1) {
+    background-color: #1877F2; /* Facebook */
+}
+
+.footer__social-link:nth-child(2) {
+    background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4); /* Instagram */
+}
+
+.footer__social-link:nth-child(3) {
+    background-color: #000000; /* TikTok */
+}
+
+.footer__social-link:nth-child(4) {
+    background-color: #25D366; /* WhatsApp */
+}
+
 .footer__social-link:hover {
-    background-color: var(--color-primary-blue);
     color: var(--color-white);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .footer__social-link svg {

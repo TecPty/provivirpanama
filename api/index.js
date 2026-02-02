@@ -18,8 +18,10 @@ app.use(express.json());
 
 // Routes
 import socialPostsRouter from './routes/social-posts.js';
+import leadsRouter from './routes/leads.js';
 
 app.use('/api/social-posts', socialPostsRouter);
+app.use('/api/leads', leadsRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {

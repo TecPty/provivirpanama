@@ -17,15 +17,14 @@
     <title>Provivir Panamá - Tu Nuevo Hogar Está Más Cerca de lo que Piensas</title>
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/icons/favicon-16x16.png">
-    <link rel="manifest" href="./assets/images/icons/site.webmanifest">
-    <link rel="shortcut icon" href="./assets/images/icons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/logo/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/logo/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/logo/site.webmanifest">
+    <link rel="shortcut icon" href="./assets/images/logo/favicon.ico">
     
     <!-- Preload Critical Assets -->
     <link rel="preload" as="image" href="./assets/images/logo/logo-provivir.png">
-    <link rel="preload" as="image" href="./assets/images/hero/hero-guayacanes.avif">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,7 +102,7 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <!-- HEADER -->
-    <header class="header" id="header">
+    <header class="header" id="header" style="display: none;">
         <div class="container">
             <nav class="nav">
                 <a href="#" class="nav__logo">
@@ -136,7 +135,7 @@
     <section class="hero" id="inicio">
         <!-- Video de fondo -->
         <video class="hero__video" autoplay muted loop playsinline>
-            <source src="./assets/images/hero/hero-video-desktop.mp4" type="video/mp4">
+            <source src="./assets/images/hero/hero-provivir.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
         </video>
         
@@ -161,11 +160,10 @@
                     <img src="./assets/images/properties/villas.png" alt="Villas del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Villas del Este</h3>
-                        <p class="project-card__description">Lujo y comodidad en un entorno privado.</p>
+                        <h3 class="project-card__title" style="color: #0066cc;">Villas del Este</h3>
+                        <p class="project-card__description" style="color: #0066cc;">Lujo y comodidad en un entorno privado.</p>
                         <button class="btn btn--primary btn--small project-card__btn" data-project="villas">
-                            VER DETALLES
-                        </button>
+                            Pulsa para más detalle</button>
                     </div>
                 </div>
                 
@@ -174,11 +172,10 @@
                     <img src="./assets/images/properties/ciudad.png" alt="Ciudad del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Ciudad del Este</h3>
-                        <p class="project-card__description">Tu familia merece el mejor espacio.</p>
+                        <h3 class="project-card__title" style="color: #0066cc;">Ciudad del Este</h3>
+                        <p class="project-card__description" style="color: #0066cc;">Tu familia merece el mejor espacio.</p>
                         <button class="btn btn--primary btn--small project-card__btn" data-project="ciudad">
-                            VER DETALLES
-                        </button>
+                            Pulsa para más detalle</button>
                     </div>
                 </div>
             </div>
@@ -429,23 +426,6 @@
                         <p>Un asesor se pondrá en contacto contigo pronto.</p>
                     </div>
                 </div>
-                
-                <!-- Right Column: Map (moved second) -->
-                <div class="contact-info">
-                    <h3 class="contact-info__title">Nuestra Ubicación</h3>
-                    
-                    <!-- Map -->
-                    <div class="contact-info__map">
-                        <iframe 
-                            title="Google Maps - Ubicación Provivir Panama"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.3184831891947!2d-79.53442668469717!3d9.033333793492398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8f1a1e6ad8d%3A0x5c63b3c8c1e0e1d3!2sProvivir%20Panama!5e0!3m2!1ses!2spa!4v1647890123456!5m2!1ses!2spa" 
-                            width="100%" 
-                            height="400" 
-                            allowfullscreen="" 
-                            loading="lazy">
-                        </iframe>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -534,11 +514,12 @@
             <!-- Footer Right: Map -->
             <div class="footer__map-wrapper">
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3934.0548098897025!2d-79.5328429!3d8.96998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca1f2e0c0c0c1%3A0x1234567890!2sVía%20España%20-%20Ciudad%20de%20Panamá!5e0!3m2!1ses!2spa!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.318482186195!2d-79.53442662404253!3d9.033333593492398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8f1a1e6ad8d%3A0x68375f68ce275da!2sPromotora%20Provivir%20Panama!5e0!3m2!1ses!2spa!4v1706893600000!5m2!1ses!2spa"
                     class="footer__map"
                     allowfullscreen="" 
                     loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación Provivir - Vía España, Panama">
                 </iframe>
             </div>
         </div>
@@ -576,15 +557,10 @@
     <script src="./js/utils/helpers.js"></script>
     <script src="./js/utils/placeholders.js"></script>
     <script src="./js/components/mobile-menu.js"></script>
-    <script src="./js/components/property-modal.js"></script>
-    <script src="./js/components/property-loader.js"></script>
-    <script src="./js/components/property-image-carousel.js"></script>
-    <script src="./js/components/testimonial-loader.js"></script>
     <script src="./js/components/form-handler.js"></script>
     <script src="./js/components/scroll-animations.js"></script>
     <script src="./js/components/lazy-loading.js"></script>
     <script src="./js/components/team-carousel.js"></script>
-    <script src="./js/components/social-feed-loader.js"></script>
     <script src="./js/components/project-gallery.js"></script>
     <script src="./js/main.js"></script>
 </body>
