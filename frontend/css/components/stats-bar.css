@@ -3,28 +3,26 @@
    ========================================================================== */
 
 .projects {
-    padding: var(--spacing-3xl) 0;
+    padding: 0;
     background: var(--color-white);
 }
 
 .projects__grid {
     display: grid;
-    grid-template-columns: repeat(2, 400px);
-    gap: var(--spacing-3xl);
-    margin-top: var(--spacing-3xl);
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin: 0;
 }
 
 .project-card {
     position: relative;
-    border-radius: var(--radius-2xl);
-    overflow: visible;
-    width: 400px;
-    height: 591px;
+    border-radius: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 70vh;
     cursor: pointer;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
-    box-shadow: var(--shadow-lg);
-    margin: 0 auto;
+    box-shadow: none;
 }
 
 .project-card:hover {
@@ -49,8 +47,7 @@
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
-    aspect-ratio: 4/5;
-    border-radius: 10%;
+    border-radius: 0;
 }
 
 .project-card__overlay {
@@ -62,8 +59,7 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
     transition: background var(--transition-base);
     z-index: 1;
-    aspect-ratio: 5/3;
-    border-radius: 10%;
+    border-radius: 0;
 }
 
 .project-card__content {
@@ -199,18 +195,34 @@
 .project-modal__projects {
     flex: 1;
     overflow-y: auto;
-    padding: var(--spacing-3xl);
+    padding: var(--spacing-2xl);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--spacing-2xl);
+    gap: var(--spacing-xl);
+    grid-auto-rows: minmax(350px, 1fr);
+    max-height: 70vh;
+}
+
+/* Villas: 2 columnas */
+.project-modal__projects--villas {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* Ciudad: 3 columnas */
+.project-modal__projects--ciudad {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .project-item {
-    background: var(--color-gray-50);
-    border-radius: var(--radius-lg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0;
     overflow: hidden;
     transition: transform var(--transition-base), box-shadow var(--transition-base);
     box-shadow: var(--shadow-sm);
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -221,34 +233,60 @@
 }
 
 .project-item__image {
-    width: 400px;
-    height: 591px;
-    object-fit: cover;
-    display: block;
-    aspect-ratio: 4/5;
-    border-radius: 10%;
+    display: none;
 }
 
 .project-item__content {
     padding: var(--spacing-lg);
     display: flex;
     flex-direction: column;
+    gap: var(--spacing-md);
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
     flex: 1;
+    justify-content: space-between;
 }
 
 .project-item__name {
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     font-weight: var(--font-weight-bold);
-    color: var(--color-text-primary);
-    margin: 0 0 var(--spacing-sm) 0;
+    color: white;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    background: transparent;
+    padding: var(--spacing-lg) var(--spacing-md);
+    border-radius: 0;
+    align-self: flex-start;
+    width: 100%;
 }
 
 .project-item__description {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin: 0 0 var(--spacing-md) 0;
-    flex: 1;
+    font-size: 0.85rem;
+    color: white;
+    line-height: 1.4;
+    margin: 0;
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    max-width: 85%;
+    margin-top: auto;
+}
+
+.project-item__buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    position: absolute;
+    right: var(--spacing-lg);
+    bottom: var(--spacing-lg);
+    justify-content: flex-end;
 }
 
 .project-item__btn {
@@ -256,26 +294,57 @@
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    background: var(--color-green-500);
     color: var(--color-white);
     border: none;
-    padding: var(--spacing-md) var(--spacing-lg);
+    background: transparent;
+    padding: var(--spacing-md) var(--spacing-xl);
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
     text-decoration: none;
-    transition: background var(--transition-base), transform var(--transition-base);
+    transition: all var(--transition-base);
     font-size: 0.9rem;
+    flex: 1;
+    min-width: 50px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.project-item__btn:hover {
-    background: var(--color-green-600);
-    transform: scale(1.05);
+.project-item__btn--location {
+    background: transparent;
 }
 
-.project-item__btn svg {
-    width: 18px;
-    height: 18px;
+.project-item__btn--location:hover {
+    transform: scale(1.1);
+}
+
+.project-item__btn--whatsapp {
+    background: transparent;
+}
+
+.project-item__btn--whatsapp:hover {
+    transform: scale(1.1);
+    transform: translateY(-2px);
+}
+
+.project-item__btn-icon {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
+}
+
+.project-modal.active ~ .whatsapp-btn,
+.project-modal.active ~ [class*="whatsapp"],
+.project-modal.active ~ button[aria-label*="WhatsApp"] {
+    display: none !important;
+}
+
+/* Oculta cualquier elemento flotante durante el modal */
+.project-modal.active {
+    z-index: 1000;
 }
 
 /* RESPONSIVE */
