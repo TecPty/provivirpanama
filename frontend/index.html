@@ -159,8 +159,8 @@
                     <img src="./assets/images/properties/villas-del-este.png" alt="Villas del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title" style="color: #0066cc;">Villas del Este</h3>
-                        <p class="project-card__description" style="color: #0066cc;">Lujo y comodidad en un entorno privado.</p>
+                        <h3 class="project-card__title">Villas del Este</h3>
+                        <p class="project-card__description">Lujo y comodidad en un entorno privado.</p>
                         <button class="btn btn--primary btn--small project-card__btn" data-project="villas">
                             Pulsa para más detalle</button>
                     </div>
@@ -168,11 +168,11 @@
                 
                 <!-- Ciudad del Este -->
                 <div class="project-card" data-project="ciudad">
-                    <img src="./assets/images/properties/ciudad-del-este.png" alt="Ciudad del Este" class="project-card__image" loading="lazy">
+                    <img src="./assets/images/properties/ciudad.jpeg" alt="Ciudad del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title" style="color: #0066cc;">Ciudad del Este</h3>
-                        <p class="project-card__description" style="color: #0066cc;">Tu familia merece el mejor espacio.</p>
+                        <h3 class="project-card__title">Ciudad del Este</h3>
+                        <p class="project-card__description">Tu familia merece el mejor espacio.</p>
                         <button class="btn btn--primary btn--small project-card__btn" data-project="ciudad">
                             Pulsa para más detalle</button>
                     </div>
@@ -383,11 +383,14 @@
                                     <label for="project">Proyecto de Interés <span class="required">*</span></label>
                                     <select id="project" name="project" class="form-select" required>
                                         <option value="">Seleccionar</option>
-                                        <option value="altos-guayacanes">Altos de los Guayacanes</option>
-                                        <option value="ciudad-del-este">Ciudad del Este</option>
-                                        <option value="colinas-este">Colinas del Este</option>
-                                        <option value="villas-este">Villas del Este</option>
-                                        <option value="villas-oeste">Villas del Oeste</option>
+                                        <optgroup label="Villas del Este">
+                                            <option value="modelo-roble">Modelo Roble</option>
+                                            <option value="modelo-cerezo">Modelo Cerezo</option>
+                                        </optgroup>
+                                        <optgroup label="Ciudad del Este">
+                                            <option value="modelo-cordoba">Modelo Córdoba</option>
+                                            <option value="modelo-granada">Modelo Granada</option>
+                                        </optgroup>
                                     </select>
                                 </div>
                             </div>
