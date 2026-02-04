@@ -5,15 +5,16 @@
 
 .cta-section {
     background: linear-gradient(135deg, #003a7a 0%, #004c99 100%);
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .contact-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1200px;
+    gap: 1.7rem;
+    max-width: 750px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Left Column - Contact Info */
@@ -84,24 +85,25 @@
 .contact-form-container {
     background: white;
     border-radius: 16px;
-    padding: 2.5rem;
+    padding: 1.7rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 1.5rem;
+    align-items: start;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1.25rem;
+    gap: 1.06rem;
 }
 
 .form-row--two {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 .form-group {
@@ -116,7 +118,7 @@
 .form-group label {
     font-weight: 600;
     color: #003a7a;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     font-size: 0.95rem;
     display: flex;
     align-items: center;
@@ -130,10 +132,10 @@
 
 .form-input,
 .form-textarea {
-    padding: 0.875rem 1.125rem;
+    padding: 0.74rem 0.95rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: inherit;
     transition: all 0.3s ease;
     background: #fafafa;
@@ -166,15 +168,15 @@
 }
 
 .form-select {
-    padding: 0.875rem 1.125rem;
+    padding: 0.74rem 0.95rem;
     border: 2px solid #e0e0e0;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-family: inherit;
     transition: all 0.3s ease;
-    background: #fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E") no-repeat right 1rem center;
+    background: #fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E") no-repeat right 0.9rem center;
     background-size: 16px;
-    padding-right: 3rem;
+    padding-right: 2.7rem;
     color: #333;
     cursor: pointer;
     appearance: none;
@@ -187,7 +189,7 @@
     background-color: white;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 1rem center;
+    background-position: right 0.9rem center;
     background-size: 16px;
 }
 
@@ -197,7 +199,7 @@
     background-color: white;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23003a7a' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 1rem center;
+    background-position: right 0.9rem center;
     background-size: 16px;
     box-shadow: 0 0 0 4px rgba(0, 58, 122, 0.08);
 }
@@ -213,9 +215,31 @@
 
 .form-textarea {
     resize: vertical;
-    min-height: 110px;
+    min-height: 240px;
     font-family: inherit;
     line-height: 1.6;
+}
+
+/* Form Columns Layout */
+.form-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.06rem;
+}
+
+.form-right-column .form-textarea {
+    min-height: 280px;
+}
+
+.form-right-column button {
+    align-self: flex-end;
+    margin-top: 2rem;
 }
 
 .form-group--checkbox {
@@ -295,8 +319,8 @@
 }
 
 .btn--large {
-    padding: 1.125rem 2.5rem;
-    font-size: 1.125rem;
+    padding: 0.56rem 1.25rem;
+    font-size: 0.8rem;
 }
 
 .btn--block {

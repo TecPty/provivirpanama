@@ -170,14 +170,6 @@ const FormHandler = (() => {
             isValid = false;
         }
         
-        // Validate terms
-        const terms = formData.get('terms');
-        const termsInput = leadForm.querySelector('input[name="terms"]');
-          if (!terms) {
-            showError(termsInput, 'Debes aceptar los términos y condiciones');
-            isValid = false;
-        }
-        
         return isValid;
     };
     

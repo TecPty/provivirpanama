@@ -83,8 +83,10 @@
 .project-card__title {
     font-size: 1.5rem;
     font-weight: var(--font-weight-bold);
-    color: var(--color-white);
+    color: #ffffff;
     line-height: 1.2;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 
+                 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .project-card__description {
@@ -194,7 +196,7 @@
 
 .project-modal__projects {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: hidden;
     padding: var(--spacing-2xl);
     display: grid;
     gap: var(--spacing-xl);
@@ -207,9 +209,9 @@
     grid-template-columns: repeat(2, 1fr);
 }
 
-/* Ciudad: 3 columnas */
+/* Ciudad: 2 columnas */
 .project-modal__projects--ciudad {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .project-item {
@@ -256,7 +258,8 @@
     font-weight: var(--font-weight-bold);
     color: white;
     margin: 0;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 
+                 0 8px 20px rgba(0, 0, 0, 0.5);
     background: transparent;
     padding: var(--spacing-lg) var(--spacing-md);
     border-radius: 0;
@@ -282,11 +285,12 @@
 
 .project-item__buttons {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 0.25rem;
     position: absolute;
     right: var(--spacing-lg);
     bottom: var(--spacing-lg);
     justify-content: flex-end;
+    align-items: center;
 }
 
 .project-item__btn {
@@ -297,7 +301,7 @@
     color: var(--color-white);
     border: none;
     background: transparent;
-    padding: var(--spacing-md) var(--spacing-xl);
+    padding: 0.5rem;
     border-radius: var(--radius-md);
     font-weight: var(--font-weight-semibold);
     cursor: pointer;
@@ -305,7 +309,7 @@
     transition: all var(--transition-base);
     font-size: 0.9rem;
     flex: 1;
-    min-width: 50px;
+    min-width: 45px;
     height: 45px;
     display: flex;
     align-items: center;
@@ -439,5 +443,93 @@
     .project-item__btn {
         font-size: 0.8rem;
         padding: var(--spacing-sm) var(--spacing-md);
+    }
+}
+/* ==========================================================================
+   MAP MODAL
+   ========================================================================== */
+
+.map-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.map-modal.active {
+    display: flex;
+}
+
+.map-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    z-index: 1;
+}
+
+.map-modal__content {
+    position: relative;
+    z-index: 2;
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    max-width: 45vw;
+    max-height: 45vh;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+}
+
+.map-modal__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: white;
+}
+
+.map-modal__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    font-size: 28px;
+    color: #333;
+    cursor: pointer;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.map-modal__close:hover {
+    background: white;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }
