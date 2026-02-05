@@ -69,6 +69,10 @@
     --font-primary: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-secondary: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-monospace: 'Courier New', Courier, monospace;
+    /* Backward-compatible aliases used across stylesheets */
+    --font-family-primary: var(--font-primary);
+    --font-family-display: var(--font-primary);
+    --font-family-mono: var(--font-monospace);
     
     /* Font Sizes */
     --font-size-xs: 0.75rem;      /* 12px */

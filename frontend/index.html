@@ -85,6 +85,9 @@
     <!-- Google Analytics 4 -->
     <!-- IMPORTANTE: Reemplaza G-XXXXXXXXXX con tu ID de GA4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    
+    <!-- Lottie Web -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -156,25 +159,23 @@
             <div class="projects__grid">
                 <!-- Villas del Este -->
                 <div class="project-card" data-project="villas">
-                    <img src="./assets/images/properties/villas-del-este.png" alt="Villas del Este" class="project-card__image" loading="lazy">
+                    <img src="./assets/images/properties/banner-villas-del-este.webp" alt="Villas del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Villas del Este</h3>
-                        <p class="project-card__description">Lujo y comodidad en un entorno privado.</p>
-                        <button class="btn btn--primary btn--small project-card__btn" data-project="villas">
-                            Pulsa para más detalle</button>
+                        <button class="project-card__tap-icon" data-project="villas">
+                            <div class="lottie-animation" data-lottie="villas"></div>
+                        </button>
                     </div>
                 </div>
                 
                 <!-- Ciudad del Este -->
                 <div class="project-card" data-project="ciudad">
-                    <img src="./assets/images/properties/ciudad.jpeg" alt="Ciudad del Este" class="project-card__image" loading="lazy">
+                    <img src="./assets/images/properties/banner-ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <h3 class="project-card__title">Ciudad del Este</h3>
-                        <p class="project-card__description">Tu familia merece el mejor espacio.</p>
-                        <button class="btn btn--primary btn--small project-card__btn" data-project="ciudad">
-                            Pulsa para más detalle</button>
+                        <button class="project-card__tap-icon" data-project="ciudad">
+                            <div class="lottie-animation" data-lottie="ciudad"></div>
+                        </button>
                     </div>
                 </div>
             </div>

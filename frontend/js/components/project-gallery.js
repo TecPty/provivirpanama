@@ -3,6 +3,39 @@
  * Maneja la apertura del modal con detalles de proyectos individuales
  */
 
+// Inicializar animaciones Lottie
+document.addEventListener('DOMContentLoaded', () => {
+    const lottieContainers = document.querySelectorAll('.lottie-animation');
+    
+    lottieContainers.forEach(container => {
+        lottie.loadAnimation({
+            container: container,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: './assets/images/icons/Hey.json'
+        });
+    });
+
+    initProjectGallery();
+});
+
+// Función para cargar animaciones Lottie en el modal
+function loadLottieAnimations() {
+    const lottieIcons = document.querySelectorAll('.project-item__lottie-icon');
+    
+    lottieIcons.forEach(icon => {
+        const path = icon.dataset.path;
+        lottie.loadAnimation({
+            container: icon,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: path
+        });
+    });
+}
+
 // Definición de proyectos por complejo
 const projectComplexes = {
     villas: {
@@ -11,16 +44,16 @@ const projectComplexes = {
             {
                 name: 'Modelo Roble',
                 description: 'Terrenos hasta 181m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 51.995 - Ingreso familiar desde $750.',
-                image: './assets/images/properties/roble.png',
+                image: './assets/images/properties/roble-villas.png',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/provivir-map.png'
+                location: './assets/images/properties/map-provivir.png'
             },
             {
                 name: 'Modelo Cerezo',
                 description: 'Terrenos hasta 221m². 3 habitaciones, 2 baños, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 62.995 - Ingreso familiar desde $900.',
-                image: './assets/images/properties/cerezo.png',
+                image: './assets/images/properties/cerezo-villas.png',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/provivir-map.png'
+                location: './assets/images/properties/map-provivir.png'
             }
         ]
     },
@@ -30,16 +63,16 @@ const projectComplexes = {
             {
                 name: 'Modelo Córdoba',
                 description: 'Terrenos hasta 233m². 3 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 54.995 - Ingreso familiar desde $800.',
-                image: './assets/images/properties/cordoba.png',
+                image: './assets/images/properties/cordoba-ciudad.jpg',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/provivir-map.png'
+                location: './assets/images/properties/map-provivir.png'
             },
             {
                 name: 'Modelo Granada',
                 description: 'Terrenos hasta 135m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 45.000 - Ingreso familiar desde $630.',
-                image: './assets/images/properties/granada.png',
+                image: './assets/images/properties/granada-ciudad.png',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/provivir-map.png'
+                location: './assets/images/properties/map-provivir.png'
             }
         ]
     }
@@ -135,14 +168,14 @@ function openProjectModal(complexKey) {
                         <button class="project-item__btn project-item__btn--location"
                            data-map="${project.location}"
                            title="Ver ubicación">
-                            <img src="./assets/images/icons/cloud.png" alt="Ubicación" class="project-item__btn-icon">
+                            <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/location.json"></div>
                         </button>
                         <a href="https://wa.me/507${project.whatsapp.replace('-', '')}" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--whatsapp"
                            title="Contactar por WhatsApp">
-                            <img src="./assets/images/icons/phone-message.png" alt="WhatsApp" class="project-item__btn-icon">
+                            <div class="project-item__lottie-icon" data-lottie="chat" data-path="./assets/images/icons/chat.json"></div>
                         </a>
                     </div>
                 </div>
@@ -154,6 +187,9 @@ function openProjectModal(complexKey) {
             projectEl.style.backgroundPosition = 'center';
             modalProjects.appendChild(projectEl);
         });
+
+        // Cargar animaciones Lottie del modal
+        loadLottieAnimations();
 
         // Agregar event listeners a los botones de ubicación
         const locationButtons = modalProjects.querySelectorAll('.project-item__btn--location');
