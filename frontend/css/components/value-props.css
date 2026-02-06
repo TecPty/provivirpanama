@@ -32,12 +32,10 @@
     margin-top: 2rem;
 }
 
-/* Two column grid for Mission and Vision */
-.value-props__grid--two {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    margin-top: 0;
-}
+    .value-props__grid--two {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
 
 /* Value Cards */
 .value-card {

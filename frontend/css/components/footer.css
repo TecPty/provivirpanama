@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .footer {
-    background-color: var(--color-gray-900);
+    background-color: #003a7a;
     color: var(--color-white);
     overflow: hidden;
 }

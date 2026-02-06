@@ -70,11 +70,21 @@
     }
     
     .trust-bar__logos {
-        gap: var(--spacing-xl);
+        gap: var(--spacing-sm);
+        justify-content: center;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 0 var(--spacing-sm);
     }
     
     .trust-bar__logo {
-        height: 108px;
-        max-width: 420px;
+        height: 60px;
+        max-width: 200px;
+        flex-shrink: 0;
+    }
+    
+    .trust-bar__logo-link img {
+        height: 60px;
+        max-width: 150px;
     }
 }
