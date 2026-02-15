@@ -7,6 +7,7 @@ backend/api/config.php
 .env
 .env.local
 .env.production
+frontend/api/config.php
 
 # ===== DATABASE =====
 *.sql.backup

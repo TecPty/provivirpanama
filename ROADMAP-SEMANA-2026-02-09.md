@@ -19,7 +19,7 @@
 Objetivo: Auditoría + desbloqueo parcial sin cPanel
 - Auditoría funcional local (frontend + backend local sin DB). ✅
 - Revisar UX del formulario y validaciones (sin tocar backend real).
-- Preparar checklist de producción: DB, credenciales, CORS, seguridad.
+- Preparar checklist de producción: DB, credenciales, CORS, seguridad. ✅
 - Dejar registro formal de bloqueos.
 
 ### Martes 10 Feb

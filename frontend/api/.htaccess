@@ -1,0 +1,38 @@
+# ============================================================================
+# .htaccess - Provivir Panama API
+# Apache configuration for PHP API endpoints
+# ============================================================================
+
+# Security: Prevent direct access to config.php
+<Files "config.php">
+    Require all denied
+</Files>
+
+# Security: Prevent access to example files
+<Files "*.example.php">
+    Require all denied
+</Files>
+
+# Enable PHP error logging (production safe)
+php_flag display_errors Off
+php_flag log_errors On
+
+# Set maximum execution time
+php_value max_execution_time 30
+
+# Set memory limit
+php_value memory_limit 128M
+
+# Security: Disable directory listing
+Options -Indexes
+
+# CORS Headers for API requests
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With"
+    Header always set Access-Control-Max-Age "86400"
+</IfModule>
+
+# Set default charset
+AddDefaultCharset UTF-8

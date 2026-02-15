@@ -7,16 +7,16 @@
 const FormHandler = (() => {
     const leadForm = document.getElementById('leadForm');
     const formSuccess = document.getElementById('formSuccess');
+    const formFeedback = document.getElementById('formFeedback');
     
     /**
      * Mapping of project slugs to database property IDs
      */
     const PROJECT_SLUG_TO_ID = {
-        'altos-guayacanes': 8,      // Altos de los Guayacanes
-        'ciudad-del-este': 1,       // Ciudad del Este
-        'colinas-este': 5,          // Colinas del Este
-        'villas-este': 3,           // Villas del Este
-        'villas-oeste': 4            // Villas del Oeste
+        'modelo-roble': 1,
+        'modelo-cerezo': 2,
+        'modelo-cordoba': 3,
+        'modelo-granada': 4
     };
     
     /**
@@ -31,7 +31,7 @@ const FormHandler = (() => {
      * Validate phone format
      */
     const isValidPhone = (phone) => {
-        const phoneRegex = /^[\d\s\-\+\(\)]{7,}$/;
+        const phoneRegex = /^(\+507)?[\s-]?\d{4}[\s-]?\d{4}$/;
         return phoneRegex.test(phone);
     };
     
@@ -83,6 +83,21 @@ const FormHandler = (() => {
             submitButton.textContent = submitButton.dataset.originalText || 'Enviar';
             submitButton.style.opacity = '1';
         }
+    };
+
+    /**
+     * Show feedback message (error or success)
+     */
+    const showFeedback = (message, type = 'error') => {
+        if (!formFeedback) return;
+
+        formFeedback.textContent = message;
+        formFeedback.className = `form-feedback form-feedback--${type}`;
+        
+        // Hide after 5 seconds
+        setTimeout(() => {
+            formFeedback.className = 'form-feedback';
+        }, 5000);
     };
     
     /**
@@ -191,12 +206,21 @@ const FormHandler = (() => {
         const propertyId = projectSlug ? PROJECT_SLUG_TO_ID[projectSlug] || null : null;
         
         // Prepare data - Only send fields that backend expects
+        const utmParams = getUTMParams();
+
         const leadData = {
             name: formData.get('fullName').trim(),
             email: formData.get('email').trim(),
             phone: formData.get('phone').trim(),
             message: formData.get('message').trim(),
-            property_id: propertyId
+            property_id: propertyId,
+            salary: formData.get('salary') || null,
+            employment: formData.get('employment') || null,
+            project: projectSlug || '',
+            website: formData.get('website') || '',
+            utm_source: utmParams.utm_source,
+            utm_medium: utmParams.utm_medium,
+            utm_campaign: utmParams.utm_campaign
         };
         
         // Set loading state
@@ -219,11 +243,11 @@ const FormHandler = (() => {
                     });
                 }
             } else {
-                alert(response.error || 'Hubo un error al enviar el formulario. Por favor intenta de nuevo.');
+                showFeedback(response.error || 'Hubo un error al enviar el formulario. Por favor intenta de nuevo.', 'error');
             }
         } catch (error) {
             console.error('Error submitting lead:', error);
-            alert('Hubo un error al enviar el formulario. Por favor intenta de nuevo.');
+            showFeedback('Hubo un error de conexión. Por favor revisa tu internet y vuelve a intentarlo.', 'error');
         } finally {
             setLoading(leadForm, false);
         }

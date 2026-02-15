@@ -8,19 +8,28 @@ dotenv.config();
 const router = express.Router();
 
 // Create MySQL connection pool
-// Nota: Configurar cuando tengas credenciales de GoDaddy
+// Enhanced configuration for remote connection (Vercel → GoDaddy)
 let pool;
 try {
   pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
     user: process.env.DB_USER || 'root',
     password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'provivir',
+    database: process.env.DB_NAME || 'provivir_db',
     port: process.env.DB_PORT || 3306,
     waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+    connectionLimit: 5, // Lower for Vercel serverless
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
+    connectTimeout: 10000, // 10s timeout
+    // SSL configuration for remote connections (if GoDaddy requires it)
+    ssl: process.env.DB_SSL === 'true' ? {
+      rejectUnauthorized: false // GoDaddy shared hosting usually doesn't use SSL
+    } : false
   });
+  
+  console.log('✅ MySQL pool created successfully');
 } catch (error) {
   console.error('❌ Error creating MySQL pool:', error);
 }
@@ -55,7 +64,25 @@ const leadValidation = [
   body('property_id')
     .optional()
     .isInt({ min: 1 })
-    .withMessage('Property ID inválido')
+    .withMessage('Property ID inválido'),
+  
+  body('salary')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 50 })
+    .withMessage('Salario inválido'),
+  
+  body('employment')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 50 })
+    .withMessage('Estabilidad laboral inválida'),
+    
+  body('project')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 100 })
+    .withMessage('Proyecto inválido')
 ];
 
 /**
@@ -63,18 +90,25 @@ const leadValidation = [
  * Crear nuevo lead desde el formulario de contacto
  */
 router.post('/', leadValidation, async (req, res) => {
+  // Honeypot check
+  if (req.body.website) {
+    console.warn('Honeypot field filled, likely spam.');
+    // Return a success-like message to not alert the bot
+    return res.status(200).json({ success: true, message: 'Gracias por tu interés.' });
+  }
+
   try {
     // Check validation errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        success: false,
+        success: false,, project
         error: 'Datos inválidos',
         details: errors.array()
       });
     }
 
-    const { name, email, phone, message, property_id } = req.body;
+    const { name, email, phone, message, property_id, salary, employment } = req.body;
 
     // Check if DB pool is available
     if (!pool) {
@@ -87,9 +121,9 @@ router.post('/', leadValidation, async (req, res) => {
 
     // Insert lead into database (prepared statement prevents SQL injection)
     const [result] = await pool.execute(
-      `INSERT INTO leads (name, email, phone, message, property_id, created_at)
-       VALUES (?, ?, ?, ?, ?, NOW())`,
-      [name, email, phone, message, property_id || null]
+      `INSERT INTO leads (name, email, phone, message, salary, employment_status, project_name, property_id, created_at)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
+      [name, email, phone, message, salary || null, employment || null, project || null, property_id || null]
     );
 
     console.log('✅ Lead created:', { id: result.insertId, email });

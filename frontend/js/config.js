@@ -4,64 +4,53 @@
  * ============================================================================
  */
 
-// Detectar ambiente automáticamente
+// Detect environment automatically
 const ENVIRONMENT = window.location.hostname === 'localhost' || 
                    window.location.hostname === '127.0.0.1' ||
                    window.location.hostname.includes('.local')
     ? 'development'
     : 'production';
 
-// Detectar si está en Vercel
-const IS_VERCEL = window.location.hostname.includes('.vercel.app');
-
-// Construir BASE_URL según ambiente
+// Build BASE_URL
 const getAPIBaseURL = () => {
-    if (ENVIRONMENT === 'development') {
-        // Local: Node.js API on port 3000
-        return 'http://localhost:3000/api';
-    } else if (IS_VERCEL) {
-        // Vercel: Backend también en Vercel
-        return 'https://provivirpanama.vercel.app/api'; 
-    } else {
-        // Producción: Usar URL relativa
-        return '/api';
-    }
+    // PHP API (same origin)
+    return '/api';
 };
 
-// Base path para assets (importante para Vercel)
+// Base path for assets (important for local setups)
 const getBasePath = () => {
     if (ENVIRONMENT === 'development') {
         return '/provivirpanama';
-    } else {
-        return ''; // En Vercel/prod, es desde raíz
     }
+    return '';
 };
 
 const CONFIG = {
     // Environment (development | production)
     ENVIRONMENT: ENVIRONMENT,
-    IS_VERCEL: IS_VERCEL,
+    IS_VERCEL: false,
     BASE_PATH: getBasePath(),
-    
+
     // API Configuration
     API: {
         BASE_URL: getAPIBaseURL(),
         ENDPOINTS: {
             PROPERTIES: '/properties',
             TESTIMONIALS: '/testimonials',
-            LEADS: '/leads',
-            CONTACT: '/contact',
+            LEADS: '/leads.php',
+            CONTACT: '/contact.php',
+            HEALTH: '/health.php',
             SOCIAL_POSTS: '/social-posts'
         },
-        TIMEOUT: 10000, // 10 segundos
+        TIMEOUT: 10000, // 10 seconds
         RETRY_ATTEMPTS: 3
     },
 
-    // CMS Configuration (para integración futura con Strapi u otro)
+    // CMS Configuration (future integration)
     CMS: {
         ENABLED: false,
         BASE_URL: '/cms',
-        API_KEY: '',
+        API_KEY: ''
     },
 
     // Features Toggle
@@ -79,49 +68,49 @@ const CONFIG = {
         MOBILE_BREAKPOINT: 768,
         TABLET_BREAKPOINT: 1024,
         PROPERTIES_PER_PAGE: 6,
-        TESTIMONIALS_PER_PAGE: 3,
+        TESTIMONIALS_PER_PAGE: 3
     },
 
     // Form Settings
     FORMS: {
         LEAD_FORM: {
             REQUIRED_FIELDS: ['email'],
-            SUCCESS_MESSAGE: '¡Gracias! Un asesor se contactará pronto.',
-            ERROR_MESSAGE: 'Ocurrió un error. Por favor intenta de nuevo.'
+            SUCCESS_MESSAGE: 'Thanks! We will contact you soon.',
+            ERROR_MESSAGE: 'An error occurred. Please try again.'
         },
         CONTACT_FORM: {
             REQUIRED_FIELDS: ['name', 'email', 'phone', 'message'],
-            SUCCESS_MESSAGE: 'Mensaje enviado exitosamente.',
-            ERROR_MESSAGE: 'Error al enviar el mensaje.'
+            SUCCESS_MESSAGE: 'Message sent successfully.',
+            ERROR_MESSAGE: 'Error sending message.'
         }
     },
 
     // Analytics
     ANALYTICS: {
-        GOOGLE_ANALYTICS_ID: '', // Tu GA4 ID
-        FACEBOOK_PIXEL_ID: '', // Tu Facebook Pixel ID
+        GOOGLE_ANALYTICS_ID: '',
+        FACEBOOK_PIXEL_ID: '',
         TRACK_EVENTS: true
     },
 
     // SEO & Meta
     SEO: {
-        SITE_NAME: 'Provivir Panamá',
-        DEFAULT_TITLE: 'Provivir - Tu Nuevo Hogar Está Más Cerca',
-        DEFAULT_DESCRIPTION: 'Soluciones de vivienda asequibles con subsidios gubernamentales',
+        SITE_NAME: 'Provivir Panama',
+        DEFAULT_TITLE: 'Provivir - Tu Nuevo Hogar Esta Mas Cerca',
+        DEFAULT_DESCRIPTION: 'Soluciones de vivienda asequible con subsidios gubernamentales',
         DEFAULT_IMAGE: '/assets/images/og-image.jpg',
         TWITTER_HANDLE: '@provivirpanama'
     },
 
-    // Contact Information (DATOS REALES del sitio)
+    // Contact Information
     CONTACT: {
         PHONE: '390-9094',
         PHONE_SECONDARY: '6371-2652',
         EMAIL: 'ventas2@provivirpanama.com',
-        ADDRESS: 'Iglesia del Carmen, PH Beta 120, Vía España y Alquilino de la Guardia Diagonal a Canal Bank. Estación del Metro',
+        ADDRESS: 'Iglesia del Carmen, PH Beta 120, Via Espana y Alquilino de la Guardia Diagonal a Canal Bank. Estacion del Metro',
         WHATSAPP: '+50763712652',
         GOOGLE_MAPS: 'https://g.co/kgs/jXG9nqx',
         SOCIAL: {
-            YOUTUBE: 'https://www.youtube.com/c/ProvivirPanamá',
+            YOUTUBE: 'https://www.youtube.com/c/ProvivirPanama',
             FACEBOOK: 'https://www.facebook.com/provivirpanama/',
             INSTAGRAM: 'https://www.instagram.com/provivir/',
             TIKTOK: 'https://www.tiktok.com/@provivirpanama',

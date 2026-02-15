@@ -14,6 +14,13 @@
     <meta property="og:url" content="https://provivirpanama.com">
     <meta property="og:type" content="website">
     
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@provivirpanama">
+    <meta name="twitter:title" content="Provivir - Tu Nuevo Hogar Está Más Cerca">
+    <meta name="twitter:description" content="Soluciones de vivienda asequibles con subsidios y financiamiento flexible">
+    <meta name="twitter:image" content="https://provivirpanama.com/assets/images/og-image.jpg">
+
     <title>Provivir Panamá - Tu Nuevo Hogar Está Más Cerca de lo que Piensas</title>
     
     <!-- Favicon -->
@@ -43,10 +50,11 @@
       "image": "https://provivirpanama.com/assets/images/logo/logo-provivir.png",
       "description": "Soluciones de vivienda asequible con subsidios gubernamentales y financiamiento flexible en Panamá",
       "url": "https://provivirpanama.com",
-      "telephone": "+507-xxxx-xxxx",
+      "telephone": "+5073909094",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Panamá",
+        "streetAddress": "Vía España, PH Beta 120",
+        "addressLocality": "Panama City",
         "addressCountry": "PA"
       },
       "sameAs": [
@@ -68,7 +76,7 @@
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "Customer Service",
-        "telephone": "+507-xxxx-xxxx",
+        "telephone": "+5073909094",
         "email": "ventas2@provivirpanama.com"
       }
     }
@@ -105,7 +113,7 @@
     <!-- End Google Tag Manager (noscript) -->
     
     <!-- HEADER -->
-    <header class="header" id="header" style="display: none;">
+    <header class="header" id="header">
         <div class="container">
             <nav class="nav">
                 <a href="#" class="nav__logo">
@@ -134,27 +142,28 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="inicio">
-        <!-- Video de fondo -->
-        <video class="hero__video" autoplay muted loop playsinline>
-            <source src="./assets/images/hero/provivir-hero.mp4" type="video/mp4">
-            Tu navegador no soporta videos HTML5.
-        </video>
-        
-        <!-- Contenido centrado sobre el video -->
-        <div class="hero__overlay">
-            <div class="hero__content-wrapper">
-                <h1 class="hero__title">
-                    Tu Nuevo Hogar está 
-                    <span class="hero__title--highlight">Más Cerca</span>
-                </h1>
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" id="inicio">
+            <!-- Video de fondo -->
+            <video class="hero__video" autoplay muted loop playsinline poster="./assets/images/hero/hero-fallback.jpg">
+                <source src="./assets/images/hero/provivir-hero.mp4" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+            </video>
+            
+            <!-- Contenido centrado sobre el video -->
+            <div class="hero__overlay">
+                <div class="hero__content-wrapper">
+                    <h1 class="hero__title">
+                        Tu Nuevo Hogar está 
+                        <span class="hero__title--highlight">Más Cerca</span>
+                    </h1>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PROJECTS SECTION -->
-    <section class="projects" id="proyectos">
+        <!-- PROJECTS SECTION -->
+        <section class="projects" id="proyectos">
             
             <div class="projects__grid">
                 <!-- Villas del Este -->
@@ -347,6 +356,12 @@
                                 </div>
                             </div>
                             
+                            <!-- Honeypot field (for spam prevention) -->
+                            <div class="form-group form-group--honeypot" aria-hidden="true">
+                                <label for="website">Website</label>
+                                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group form-group--full">
                                     <label for="email">Email <span class="required">*</span></label>
@@ -431,6 +446,8 @@
                                 </div>
                             </div>
                             
+                            <div class="form-feedback" id="formFeedback" aria-live="polite"></div>
+
                             <button type="submit" class="btn btn--primary btn--large">
                                 Enviar
                             </button>
@@ -553,6 +570,7 @@
             </div>
         </div>
     </footer>
+    </main>
 
     <!-- WhatsApp Floating Button -->
     <div class="whatsapp-float">
@@ -568,17 +586,17 @@
 
     <!-- Scripts -->
 <!-- Scripts - ORDEN CRÍTICO -->
-    <script src="./js/config.js"></script>
-    <script src="./js/api.js"></script>
-    <script src="./js/utils/validators.js"></script>
-    <script src="./js/utils/helpers.js"></script>
-    <script src="./js/utils/placeholders.js"></script>
-    <script src="./js/components/mobile-menu.js"></script>
-    <script src="./js/components/form-handler.js"></script>
-    <script src="./js/components/scroll-animations.js"></script>
-    <script src="./js/components/lazy-loading.js"></script>
-    <script src="./js/components/team-carousel.js"></script>
-    <script src="./js/components/project-gallery.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/config.js" defer></script>
+    <script src="./js/api.js" defer></script>
+    <script src="./js/utils/validators.js" defer></script>
+    <script src="./js/utils/helpers.js" defer></script>
+    <script src="./js/utils/placeholders.js" defer></script>
+    <script src="./js/components/mobile-menu.js" defer></script>
+    <script src="./js/components/form-handler.js" defer></script>
+    <script src="./js/components/scroll-animations.js" defer></script>
+    <script src="./js/components/lazy-loading.js" defer></script>
+    <script src="./js/components/team-carousel.js" defer></script>
+    <script src="./js/components/project-gallery.js" defer></script>
+    <script src="./js/main.js" defer></script>
 </body>
 </html>
