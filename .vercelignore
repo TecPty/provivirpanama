@@ -11,5 +11,8 @@ cms/
 logs/
 *.sql
 *.md
-!frontend/**
+docstrash/
+# PHP files (only for GoDaddy, not Vercel)
+**/*.php
+*.php
 
