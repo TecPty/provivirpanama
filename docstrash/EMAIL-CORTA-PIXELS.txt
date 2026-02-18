@@ -1,0 +1,31 @@
+Hola,
+
+Para continuar con la integración del sitio web, necesito dos cosas que Marketing debe proporcionar:
+
+**1. META PIXEL ID**
+- Ir a Meta Business Manager → Eventos → Pixels
+- Si no existe, crear un nuevo Pixel con nombre "Provivir Landing"
+- Copiar y enviarme el Pixel ID (número de 15 dígitos)
+
+**2. TIKTOK PIXEL ID**
+- Ir a TikTok Ads Manager → Assets → Events → Pixel
+- Si no existe, crear un nuevo Pixel con nombre "Provivir Landing"
+- Copiar y enviarme el Pixel ID
+
+**¿Para qué sirve?**
+Estos pixeles rastrearán automáticamente cada lead que llene el formulario de contacto, permitiendo:
+- Ver el ROI de sus anuncios
+- Retargetar visitantes
+- Optimizar campañas
+
+**¿Cuándo lo necesito?**
+Esta semana para comenzar la integración.
+
+Pueden enviarme simplemente:
+```
+Meta Pixel ID: [número]
+TikTok Pixel ID: [número]
+```
+
+Gracias,
+[Tu Nombre]

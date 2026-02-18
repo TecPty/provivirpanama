@@ -1,0 +1,44 @@
+/**
+ * DIAGNÓSTICO: DATA FLOW - Formulario HTML → form-handler.js → API → leads.php
+ * 
+ * CAMPOS DEL FORMULARIO HTML (index.html, líneas 450-575):
+ * ✓ fullName       (type="text")      → form-handler.js: 'name'
+ * ✓ email          (type="email")     → form-handler.js: 'email' 
+ * ✓ phone          (type="tel")       → form-handler.js: 'phone'
+ * ✓ salary         (select)           → NO se envía al backend ❌
+ * ✓ employment     (select)           → NO se envía al backend ❌
+ * ✓ project        (select)           → form-handler.js: 'property_id'
+ * ✓ message        (textarea)         → form-handler.js: 'message'
+ * ✓ terms          (checkbox)         → NO se envía al backend ❌
+ * 
+ * DATOS ENVIADOS POR form-handler.js (línea 189-194):
+ * {
+ *     name: formData.get('fullName'),
+ *     email: formData.get('email'),
+ *     phone: formData.get('phone'),
+ *     message: formData.get('message'),
+ *     property_id: formData.get('project') ← ⚠️ AQUÍ ESTÁ EL PROBLEMA
+ * }
+ * 
+ * ESPERADO EN leads.php (líneas 40-50):
+ * - name (obligatorio)
+ * - email (obligatorio)
+ * - phone (obligatorio)
+ * - message (opcional)
+ * - property_id (opcional)
+ * 
+ * DIAGNÓSTICO:
+ * ✓ NAME → OK (fullName → name)
+ * ✓ EMAIL → OK
+ * ✓ PHONE → OK
+ * ✓ MESSAGE → OK
+ * ⚠️ property_id → PROBLEMA: formData.get('project') envía el VALUE del select,
+ *                 pero leads.php espera un INT (id de propiedad), no un slug
+ * 
+ * SOLUCIONES:
+ * Opción 1: Cambiar form-handler.js para enviar solo si hay valor
+ * Opción 2: Cambiar leads.php para manejar slugs en lugar de IDs
+ * Opción 3: Agregar un campo hidden con el property_id real
+ * 
+ * RECOMENDACIÓN: Opción 1 (Más segura)
+ */

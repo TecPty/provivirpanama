@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificación de Nuevo Lead - Provivir</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #00539B 0%, #003A7A 100%);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 4px solid #FFA500;
+        }
+        
+        .header img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 {
+            color: #ffffff;
+            font-size: 24px;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .header p {
+            color: #e0e0e0;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .alert {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+        
+        .alert p {
+            color: #2e7d32;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .lead-info {
+            background-color: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+        
+        .lead-info h2 {
+            color: #00539B;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #FFA500;
+            padding-bottom: 10px;
+        }
+        
+        .lead-field {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .lead-field:last-child {
+            border-bottom: none;
+        }
+        
+        .lead-label {
+            font-weight: 600;
+            color: #00539B;
+            width: 140px;
+            flex-shrink: 0;
+        }
+        
+        .lead-value {
+            color: #555;
+            word-break: break-word;
+        }
+        
+        .property-badge {
+            display: inline-block;
+            background-color: #FFA500;
+            color: #ffffff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 5px 0;
+        }
+        
+        .actions {
+            background-color: #f0f7ff;
+            border: 1px solid #b3d9ff;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .button {
+            display: inline-block;
+            background-color: #00539B;
+            color: #ffffff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin: 10px 5px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .button:hover {
+            background-color: #003A7A;
+        }
+        
+        .button-secondary {
+            background-color: #FFA500;
+        }
+        
+        .button-secondary:hover {
+            background-color: #ff8c00;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-box {
+            background-color: #f9f9f9;
+            padding: 15px;
+            text-align: center;
+            border-radius: 6px;
+            border-left: 3px solid #00539B;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00539B;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        
+        .footer {
+            background-color: #f5f5f5;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        .footer p {
+            font-size: 12px;
+            color: #888;
+            margin: 5px 0;
+        }
+        
+        .footer a {
+            color: #00539B;
+            text-decoration: none;
+        }
+        
+        .divider {
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 20px 0;
+        }
+        
+        .timestamp {
+            font-size: 12px;
+            color: #999;
+            text-align: right;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .lead-field {
+                flex-direction: column;
+            }
+            
+            .lead-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <img src="https://provivirpanama.com/assets/images/logo/logo-provivir.png" alt="Provivir Logo">
+            <h1>🎉 ¡Nuevo Lead Recibido!</h1>
+            <p>Alguien está interesado en nuestros proyectos</p>
+        </div>
+        
+        <!-- CONTENT -->
+        <div class="content">
+            <!-- ALERT -->
+            <div class="alert">
+                <p>✅ Se ha registrado correctamente un nuevo lead en el sistema. Revisa los detalles a continuación.</p>
+            </div>
+            
+            <!-- LEAD INFORMATION -->
+            <div class="lead-info">
+                <h2>📋 Información del Lead</h2>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Nombre:</div>
+                    <div class="lead-value"><strong>{{name}}</strong></div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Email:</div>
+                    <div class="lead-value"><a href="mailto:{{email}}" style="color: #00539B; text-decoration: none;">{{email}}</a></div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Teléfono:</div>
+                    <div class="lead-value"><a href="tel:{{phone}}" style="color: #00539B; text-decoration: none;">{{phone}}</a></div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Proyecto Interés:</div>
+                    <div class="lead-value">
+                        <span class="property-badge">{{property_name}}</span>
+                    </div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Presupuesto Aprox:</div>
+                    <div class="lead-value">{{salary}}</div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Situación Laboral:</div>
+                    <div class="lead-value">{{employment}}</div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Mensaje:</div>
+                    <div class="lead-value">
+                        <em style="color: #666;">"{{message}}"</em>
+                    </div>
+                </div>
+                
+                <div class="divider"></div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Origen:</div>
+                    <div class="lead-value">{{source}}</div>
+                </div>
+                
+                <div class="lead-field">
+                    <div class="lead-label">Fecha:</div>
+                    <div class="lead-value">{{created_at}}</div>
+                </div>
+            </div>
+            
+            <!-- QUICK ACTIONS -->
+            <div class="actions">
+                <h3 style="color: #00539B; margin-bottom: 15px;">⚡ Acciones Rápidas</h3>
+                <a href="mailto:{{email}}" class="button">Responder por Email</a>
+                <a href="https://wa.me/{{phone_clean}}" class="button button-secondary">Contactar por WhatsApp</a>
+            </div>
+            
+            <!-- DASHBOARD LINK -->
+            <div style="text-align: center; margin: 20px 0;">
+                <p style="color: #666; font-size: 14px; margin-bottom: 10px;">
+                    Ver todos los leads en el dashboard:
+                </p>
+                <a href="https://provivirpanama.com/admin/dashboard" class="button" style="background-color: #666;">
+                    Ir al Dashboard
+                </a>
+            </div>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <p><strong>Provivir Panamá</strong></p>
+            <p>Tu nuevo hogar está más cerca de lo que piensas</p>
+            <p style="margin-top: 15px;">
+                <a href="https://provivirpanama.com">Visitar Sitio Web</a> | 
+                <a href="https://wa.me/50761234567">WhatsApp</a> | 
+                <a href="mailto:ventas2@provivirpanama.com">Email</a>
+            </p>
+            <p style="margin-top: 15px; font-size: 11px; color: #aaa;">
+                Este es un email automatizado. No responder directamente a este mensaje.<br>
+                © {{year}} Provivir Panamá. Todos los derechos reservados.
+            </p>
+            <div class="timestamp">
+                Generado: {{email_sent_at}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
