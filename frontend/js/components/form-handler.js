@@ -13,10 +13,10 @@ const FormHandler = (() => {
      * Mapping of project slugs to database property IDs
      */
     const PROJECT_SLUG_TO_ID = {
-        'modelo-roble': 1,
-        'modelo-cerezo': 2,
-        'modelo-cordoba': 3,
-        'modelo-granada': 4
+        'villas-del-este-modelo-roble': 1,
+        'villas-del-este-modelo-cerezo': 2,
+        'ciudad-del-este-modelo-cordoba': 3,
+        'ciudad-del-este-modelo-granada': 4
     };
     
     /**
