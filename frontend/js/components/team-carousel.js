@@ -181,9 +181,16 @@
             // Cuando mostramos el primer clon al final, saltamos de vuelta
             if (currentIndex >= totalCards * 2) {
                 setTimeout(() => {
+                    // Forzar reflow antes del salto
+                    track.offsetHeight;
                     currentIndex = totalCards;
                     updateCarousel(false);
-                }, 600); // Tiempo sincronizado con la transición CSS
+                    
+                    // Restaurar transición en el siguiente frame
+                    requestAnimationFrame(() => {
+                        track.style.transition = '';
+                    });
+                }, 520); // 500ms CSS transition + 20ms buffer
             }
         }
 
@@ -198,9 +205,16 @@
             // Cuando mostramos el último clon al inicio, saltamos de vuelta
             if (currentIndex < totalCards) {
                 setTimeout(() => {
+                    // Forzar reflow antes del salto
+                    track.offsetHeight;
                     currentIndex = totalCards * 2 - 1;
                     updateCarousel(false);
-                }, 600); // Tiempo sincronizado con la transición CSS
+                    
+                    // Restaurar transición en el siguiente frame
+                    requestAnimationFrame(() => {
+                        track.style.transition = '';
+                    });
+                }, 520); // 500ms CSS transition + 20ms buffer
             }
         }
 
