@@ -23,8 +23,7 @@
 
         const originalSlides = slides.slice();
         const totalCards = originalSlides.length;
-        const CARD_CENTER_WIDTH = 340;
-        const CARD_SIDE_WIDTH = 260;
+        const CARD_WIDTH = 280; // Todas las tarjetas tienen el mismo ancho
         const GAP = 24;
 
         // Clonar tarjetas para carrusel infinito
@@ -99,25 +98,11 @@
         }
 
         /**
-         * Actualizar carrusel: asignar clases y centrar
+         * Actualizar carrusel: centrar tarjeta actual
          */
         function updateCarousel(animate = true) {
             // Índice dentro del rango original (0 - totalCards-1)
             const realIndex = ((currentIndex % totalCards) + totalCards) % totalCards;
-
-            // Actualizar clases de las tarjetas
-            slides.forEach((slide, index) => {
-                slide.classList.remove('side', 'center');
-                
-                // Verificar qué posición tiene en el carrusel (relativa a currentIndex)
-                const offset = index - currentIndex;
-                
-                if (offset === 0) {
-                    slide.classList.add('center');
-                } else {
-                    slide.classList.add('side');
-                }
-            });
 
             // Actualizar dots
             if (dotsContainer) {
@@ -134,23 +119,17 @@
                 });
             }
 
-            // Calcular offset de posición de forma correcta
-            // Todas las tarjetas tienen ancho diferente:
-            // - Laterales: 260px
-            // - Central: 340px
+            // Calcular offset - todas las tarjetas tienen el mismo ancho
             let positionLeft = 0;
             
             // Sumar todas las tarjetas ANTES de la actual
             for (let i = 0; i < currentIndex; i++) {
-                // Cada tarjeta tiene 260px + gap
-                positionLeft += CARD_SIDE_WIDTH + GAP;
+                positionLeft += CARD_WIDTH + GAP;
             }
             
-            // Ahora calcular cuánto mover hacia la izquierda para centrar
-            // Posición del centro de la tarjeta actual
+            // Calcular cuánto mover hacia la izquierda para centrar
             const containerWidth = track.parentElement.offsetWidth;
-            const cardCurrentWidth = CARD_CENTER_WIDTH;
-            const cardCenterPosition = positionLeft + cardCurrentWidth / 2;
+            const cardCenterPosition = positionLeft + CARD_WIDTH / 2;
             
             // Offset final: centrar la tarjeta en el contenedor
             const offset = (containerWidth / 2) - cardCenterPosition;
