@@ -3,3 +3,21 @@
    ========================================================================== */
 
 /* Navbar eliminado según solicitud del cliente */
+
+/* Forzar ocultamiento de cualquier navbar que pueda aparecer por caché */
+.header:not(.header-logo),
+.nav,
+.nav__menu,
+.nav__toggle,
+.nav__hamburger,
+.nav__logo,
+.nav__item,
+.nav__link,
+header:not(.header-logo) {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+}
