@@ -185,13 +185,13 @@
 
 /* Team Cards */
 .team-card {
-    background: #ffffff;
+    background: #003a7a;
     backdrop-filter: none;
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid #e6e9ee;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
@@ -219,14 +219,14 @@
     opacity: 1 !important;
     transform: scale(1) !important;
     box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2) !important;
-    border: 2px solid rgba(0, 58, 122, 0.18) !important;
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
     z-index: 2;
     padding: 2.4rem !important;
 }
 
 .team-card:hover {
     transform: translateY(-8px);
-    background: #ffffff;
+    background: #004a94;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
@@ -236,8 +236,8 @@
     margin: 0 auto 1.5rem;
     border-radius: 8px;
     overflow: hidden;
-    border: 3px solid rgba(0, 58, 122, 0.3);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     background: #f8f9fa;
 }
 
@@ -280,7 +280,7 @@
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: #000000;
+    color: #ffffff;
 }
 
 .team-card.center .team-card__name {
@@ -290,7 +290,7 @@
 .team-card__role {
     font-size: 1rem;
     margin-bottom: 1.5rem;
-    color: #666666;
+    color: rgba(255, 255, 255, 0.85);
     font-weight: 500;
 }
 
