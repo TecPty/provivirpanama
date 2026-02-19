@@ -105,6 +105,13 @@
             // Índice dentro del rango original (0 - totalCards-1)
             const realIndex = ((currentIndex % totalCards) + totalCards) % totalCards;
 
+            // Aplicar transición ANTES de cambiar las clases
+            if (animate) {
+                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            } else {
+                track.style.transition = 'none';
+            }
+
             // Actualizar clases de las tarjetas
             slides.forEach((slide, index) => {
                 slide.classList.remove('side', 'center');
@@ -134,29 +141,29 @@
                 });
             }
 
-            // Calcular offset de posición
-            let positionLeft = 0;
-            
-            // Sumar todas las tarjetas ANTES de la actual
-            for (let i = 0; i < currentIndex; i++) {
-                // Cada tarjeta tiene 260px + gap
-                positionLeft += CARD_SIDE_WIDTH + GAP;
-            }
-            
-            // Calcular cuánto mover hacia la izquierda para centrar
-            const containerWidth = track.parentElement.offsetWidth;
-            const cardCurrentWidth = CARD_CENTER_WIDTH;
-            const cardCenterPosition = positionLeft + cardCurrentWidth / 2;
-            
-            // Offset final: centrar la tarjeta en el contenedor
-            const offset = (containerWidth / 2) - cardCenterPosition;
+            // Forzar reflow para que el navegador aplique los cambios de clase
+            // antes de calcular posiciones (importante para obtener anchos correctos)
+            void track.offsetHeight;
 
-            // Aplicar transición
-            if (animate) {
-                track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
-            } else {
-                track.style.transition = 'none';
-            }
+            // Usar getBoundingClientRect para obtener posiciones reales
+            const container = track.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            const currentSlide = slides[currentIndex];
+            
+            if (!currentSlide) return;
+            
+            const slideRect = currentSlide.getBoundingClientRect();
+            
+            // Calcular cuánto debemos mover para centrar la tarjeta actual
+            const containerCenter = containerRect.left + containerRect.width / 2;
+            const slideCenter = slideRect.left + slideRect.width / 2;
+            
+            // Obtener offset actual (si existe)
+            const transformValue = track.style.transform || 'translateX(0px)';
+            const currentOffset = parseFloat(transformValue.replace(/translateX\(/g, '').replace(/px\)/g, '')) || 0;
+            
+            // Offset necesario para centrar
+            const offset = currentOffset + (containerCenter - slideCenter);
             
             track.style.transform = `translateX(${offset}px)`;
         }
