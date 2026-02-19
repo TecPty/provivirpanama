@@ -11,7 +11,6 @@
 
 /* Components */
 @import url('components/header.css');
-@import url('components/header-logo.css');
 @import url('components/hero.css');
 @import url('components/stats-bar.css');
 @import url('components/trust-bar.css');
