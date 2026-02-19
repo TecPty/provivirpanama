@@ -39,10 +39,10 @@
         // Actualizar referencia de slides
         slides = Array.from(track.querySelectorAll('.team-card'));
 
-        // Offset para empezar en el medio (en los clones del inicio)
-        let currentIndex = totalCards;
+        // Offset para empezar en el medio (en las tarjetas originales)
+        let currentIndex = totalCards; // Empieza en la primera tarjeta original
         let autoplayInterval;
-        const autoplayDelay = 2000; // 2 segundos
+        const autoplayDelay = 3000; // 3 segundos entre cada cambio
 
         /**
          * Crear indicadores (dots)
@@ -57,7 +57,7 @@
                 dot.classList.add('team__carousel-dot');
                 dot.setAttribute('aria-label', `Ir a asesor ${i + 1}`);
                 
-                if (i === 1) { // índice 1 es el segundo (Kenia)
+                if (i === 0) { // Primer asesor activo por defecto
                     dot.classList.add('active');
                 }
 
@@ -178,11 +178,12 @@
             updateCarousel(true);
             
             // Detectar si hemos llegado al final de los clones
+            // Cuando mostramos el primer clon al final, saltamos de vuelta
             if (currentIndex >= totalCards * 2) {
                 setTimeout(() => {
                     currentIndex = totalCards;
                     updateCarousel(false);
-                }, 500);
+                }, 600); // Tiempo sincronizado con la transición CSS
             }
         }
 
@@ -194,11 +195,12 @@
             updateCarousel(true);
             
             // Detectar si hemos llegado al inicio de los clones
-            if (currentIndex <= 0) {
+            // Cuando mostramos el último clon al inicio, saltamos de vuelta
+            if (currentIndex < totalCards) {
                 setTimeout(() => {
-                    currentIndex = totalCards;
+                    currentIndex = totalCards * 2 - 1;
                     updateCarousel(false);
-                }, 500);
+                }, 600); // Tiempo sincronizado con la transición CSS
             }
         }
 
@@ -284,7 +286,11 @@
         updateCarousel(false);
         startAutoplay();
 
-        console.log(`Team carousel inicializado con ${totalCards} asesoras (+ clones para infinito)`);
+        console.log(`✅ Carrusel infinito de asesoras inicializado:`);
+        console.log(`   - ${totalCards} asesoras originales`);
+        console.log(`   - ${slides.length} slides totales (con clones)`);
+        console.log(`   - Autoplay: ${autoplayDelay/1000}s entre slides`);
+        console.log(`   - Iniciando en: ${originalSlides[0]?.querySelector('.team-card__name')?.textContent || 'Primera asesora'}`);
     };
 
     // Auto-inicializar cuando el DOM esté listo
