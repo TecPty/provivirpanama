@@ -183,19 +183,45 @@
     margin-top: 3rem;
 }
 
-/* Team Cards - Diseño Minimalista */
+/* Team Cards */
 .team-card {
     background: #ffffff;
     backdrop-filter: none;
     border-radius: 12px;
     padding: 1.5rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid #e6e9ee;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    flex: 0 0 280px;
-    min-width: 280px;
-    opacity: 1;
+}
+
+/* Estilos por defecto - tarjetas laterales */
+.team-card {
+    flex: 0 0 260px;
+    min-width: 260px;
+    opacity: 0.85;
+    transform: scale(0.92);
+}
+
+/* Cards laterales - mejor visibilidad */
+.team-card.side {
+    flex: 0 0 260px !important;
+    min-width: 260px !important;
+    opacity: 0.85 !important;
+    transform: scale(0.92) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Card central - destacada */
+.team-card.center {
+    flex: 0 0 340px !important;
+    min-width: 340px !important;
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2) !important;
+    border: 2px solid rgba(0, 58, 122, 0.18) !important;
+    z-index: 2;
+    padding: 2.4rem !important;
 }
 
 .team-card:hover {
@@ -205,14 +231,19 @@
 }
 
 .team-card__image-wrapper {
-    width: 200px;
-    height: 240px;
+    width: 180px;
+    height: 220px;
     margin: 0 auto 1.5rem;
     border-radius: 8px;
     overflow: hidden;
     border: 3px solid rgba(0, 58, 122, 0.3);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background: #f8f9fa;
+}
+
+.team-card.center .team-card__image-wrapper {
+    width: 230px;
+    height: 270px;
 }
 
 .team-card__image-wrapper--placeholder {
@@ -246,10 +277,14 @@
 }
 
 .team-card__name {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: #000000;
+}
+
+.team-card.center .team-card__name {
+    font-size: 1.4rem;
 }
 
 .team-card__role {
@@ -257,6 +292,10 @@
     margin-bottom: 1.5rem;
     color: #666666;
     font-weight: 500;
+}
+
+.team-card.center .team-card__role {
+    font-size: 1.1rem;
 }
 
 .team-card .btn--small {
