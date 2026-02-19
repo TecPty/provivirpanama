@@ -224,7 +224,7 @@ function openMapModal(mapImage) {
             <div class="map-modal__overlay"></div>
             <div class="map-modal__content">
                 <button class="map-modal__close" aria-label="Cerrar">&times;</button>
-                <img id="mapImage" src="" alt="Mapa de ubicación" class="map-modal__image">
+                <img id="mapImage" src="" alt="Mapa de ubicación" class="map-modal__image" loading="lazy">
             </div>
         `;
         document.body.appendChild(mapModal);
