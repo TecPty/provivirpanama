@@ -37,7 +37,7 @@ const CONFIG = {
         ENDPOINTS: {
             PROPERTIES: '/properties',
             TESTIMONIALS: '/testimonials',
-            LEADS: '/leads.php',
+            LEADS: '/leads',
             CONTACT: '/contact.php',
             HEALTH: '/health.php',
             SOCIAL_POSTS: '/social-posts'

@@ -108,7 +108,7 @@ router.post('/', leadValidation, async (req, res) => {
       });
     }
 
-    const { name, email, phone, message, property_id, salary, employment } = req.body;
+    const { name, email, phone, message, property_id, salary, employment, project } = req.body;
 
     // Check if DB pool is available
     if (!pool) {
