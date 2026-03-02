@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
-import { fileURLToPath } from 'url';8
+import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 // Load environment variables
@@ -83,6 +83,14 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 
+// Start server (using SQLite for local development)
 app.listen(PORT, () => {
   console.log(`🚀 Provivir API running on port ${PORT}`);
+  console.log(`📦 Using SQLite for data storage`);
+});
+
+// Graceful shutdown
+process.on('SIGINT', () => {
+  console.log('\n🛑 Shutting down...');
+  process.exit(0);
 });

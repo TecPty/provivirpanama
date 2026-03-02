@@ -25,7 +25,10 @@
     "express-rate-limit": "^7.5.1",
     "express-validator": "^7.0.1",
     "helmet": "^7.2.0",
-    "mysql2": "^3.6.5"
+    "mysql2": "^3.6.5",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "tunnel-ssh": "^5.2.0"
   },
   "devDependencies": {
     "http-server": "^14.1.1",

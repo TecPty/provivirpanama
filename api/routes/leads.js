@@ -1,38 +1,49 @@
 import express from 'express';
 import { body, validationResult } from 'express-validator';
-import mysql from 'mysql2/promise';
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dbPath = path.join(__dirname, '../../provivir.db');
+
 const router = express.Router();
 
-// Create MySQL connection pool
-// Enhanced configuration for remote connection (Vercel → GoDaddy)
-let pool;
-try {
-  pool = mysql.createPool({
-    host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'provivir_db',
-    port: process.env.DB_PORT || 3306,
-    waitForConnections: true,
-    connectionLimit: 5, // Lower for Vercel serverless
-    queueLimit: 0,
-    enableKeepAlive: true,
-    keepAliveInitialDelay: 0,
-    connectTimeout: 10000, // 10s timeout
-    // SSL configuration for remote connections (if GoDaddy requires it)
-    ssl: process.env.DB_SSL === 'true' ? {
-      rejectUnauthorized: false // GoDaddy shared hosting usually doesn't use SSL
-    } : false
-  });
-  
-  console.log('✅ MySQL pool created successfully');
-} catch (error) {
-  console.error('❌ Error creating MySQL pool:', error);
-}
+// Initialize SQLite database
+let db;
+(async () => {
+  try {
+    db = await open({
+      filename: dbPath,
+      driver: sqlite3.Database
+    });
+    
+    // Create leads table if it doesn't exist
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS leads (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT NOT NULL UNIQUE,
+        phone TEXT,
+        message TEXT,
+        salary TEXT,
+        employment_status TEXT,
+        project_name TEXT,
+        property_id INTEGER,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+    
+    console.log('✅ SQLite database initialized successfully');
+  } catch (error) {
+    console.error('❌ Error initializing SQLite:', error);
+  }
+})();
 
 // Validation rules
 const leadValidation = [
@@ -93,7 +104,6 @@ router.post('/', leadValidation, async (req, res) => {
   // Honeypot check
   if (req.body.website) {
     console.warn('Honeypot field filled, likely spam.');
-    // Return a success-like message to not alert the bot
     return res.status(200).json({ success: true, message: 'Gracias por tu interés.' });
   }
 
@@ -110,47 +120,38 @@ router.post('/', leadValidation, async (req, res) => {
 
     const { name, email, phone, message, property_id, salary, employment, project } = req.body;
 
-    // Check if DB pool is available
-    if (!pool) {
-      console.error('❌ Database pool not initialized');
+    // Check if DB is available
+    if (!db) {
+      console.error('❌ Database not initialized');
       return res.status(500).json({
         success: false,
         error: 'Error de configuración del servidor'
       });
     }
 
-    // Insert lead into database (prepared statement prevents SQL injection)
-    const [result] = await pool.execute(
-      `INSERT INTO leads (name, email, phone, message, salary, employment_status, project_name, property_id, created_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
+    // Insert lead into database
+    const result = await db.run(
+      `INSERT INTO leads (name, email, phone, message, salary, employment_status, project_name, property_id)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [name, email, phone, message, salary || null, employment || null, project || null, property_id || null]
     );
 
-    console.log('✅ Lead created:', { id: result.insertId, email });
+    console.log('✅ Lead created:', { id: result.lastID, email });
 
-    // Return success
     res.status(201).json({
       success: true,
       message: 'Gracias por tu interés. Te contactaremos pronto.',
-      leadId: result.insertId
+      leadId: result.lastID
     });
 
   } catch (error) {
     console.error('❌ Error creating lead:', error);
     
-    // Handle duplicate email (if unique constraint exists)
-    if (error.code === 'ER_DUP_ENTRY') {
+    // Handle duplicate email
+    if (error.message.includes('UNIQUE')) {
       return res.status(400).json({
         success: false,
         error: 'Este email ya está registrado'
-      });
-    }
-
-    // Handle connection errors
-    if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
-      return res.status(503).json({
-        success: false,
-        error: 'Servicio temporalmente no disponible. Intenta más tarde.'
       });
     }
 
@@ -167,25 +168,28 @@ router.post('/', leadValidation, async (req, res) => {
  */
 router.get('/test', async (req, res) => {
   try {
-    if (!pool) {
+    if (!db) {
       return res.status(500).json({
         success: false,
-        error: 'Database pool not initialized'
+        error: 'Database not initialized'
       });
     }
 
-    const [rows] = await pool.execute('SELECT 1 as test');
+    const result = await db.get('SELECT 1 as test');
     
+    console.log('✅ Database test query successful:', result);
     res.json({
       success: true,
       message: 'Database connection OK',
-      test: rows[0]
+      test: result
     });
   } catch (error) {
     console.error('❌ Database test failed:', error);
+    
     res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message || 'Database connection failed',
+      details: process.env.NODE_ENV === 'development' ? error.toString() : 'Check server logs'
     });
   }
 });

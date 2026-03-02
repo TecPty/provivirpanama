@@ -43,14 +43,14 @@ const projectComplexes = {
         projects: [
             {
                 name: 'Modelo Roble',
-                description: 'Terrenos hasta 181m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 51.995 - Ingreso familiar desde $750.',
+                description: 'Terrenos hasta 181m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/villas-del-este-modelo-roble.webp',
                 whatsapp: '6371-2652',
                 location: './assets/images/properties/map-provivir.png'
             },
             {
                 name: 'Modelo Cerezo',
-                description: 'Terrenos hasta 221m². 3 habitaciones, 2 baños, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 62.995 - Ingreso familiar desde $900.',
+                description: 'Terrenos hasta 221m². 3 habitaciones, 2 baños, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/villas-del-este-modelo-cerezo.webp',
                 whatsapp: '6371-2652',
                 location: './assets/images/properties/map-provivir.png'
@@ -62,14 +62,14 @@ const projectComplexes = {
         projects: [
             {
                 name: 'Modelo Córdoba',
-                description: 'Terrenos hasta 233m². 3 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 54.995 - Ingreso familiar desde $800.',
+                description: 'Terrenos hasta 233m². 3 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/ciudad-del-este-modelo-cordoba.webp',
                 whatsapp: '6371-2652',
                 location: './assets/images/properties/map-provivir.png'
             },
             {
                 name: 'Modelo Granada',
-                description: 'Terrenos hasta 135m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento. Desde B/. 45.000 - Ingreso familiar desde $630.',
+                description: 'Terrenos hasta 135m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/ciudad-del-este-modelo-granada.webp',
                 whatsapp: '6371-2652',
                 location: './assets/images/properties/map-provivir.png'

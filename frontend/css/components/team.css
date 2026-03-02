@@ -232,6 +232,11 @@
     animation: carouselZoom 8s ease-in-out infinite;
 }
 
+.team-card__image--alberto {
+    transform: scale(0.7);
+    transform-origin: center;
+}
+
 .team-card:hover .team-card__image {
     animation-play-state: paused;
 }
