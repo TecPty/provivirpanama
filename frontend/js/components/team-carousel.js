@@ -229,6 +229,7 @@
          * Autoplay
          */
         function startAutoplay() {
+            if (autoplayInterval) return;
             autoplayInterval = setInterval(() => {
                 nextSlide();
             }, autoplayDelay);
@@ -237,6 +238,7 @@
         function stopAutoplay() {
             if (autoplayInterval) {
                 clearInterval(autoplayInterval);
+                autoplayInterval = null;
             }
         }
 
@@ -305,7 +307,24 @@
         createThumbs();
         createDots();
         updateCarousel(false);
-        startAutoplay();
+
+        if ('IntersectionObserver' in window) {
+            const carouselVisibilityObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        startAutoplay();
+                    } else {
+                        stopAutoplay();
+                    }
+                });
+            }, {
+                threshold: 0.2
+            });
+
+            carouselVisibilityObserver.observe(carousel);
+        } else {
+            startAutoplay();
+        }
 
         console.log(`✅ Carrusel infinito de asesoras inicializado:`);
         console.log(`   - ${totalCards} asesoras originales`);

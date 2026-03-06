@@ -6,12 +6,14 @@
     <meta name="description" content="Tu nuevo hogar está más cerca de lo que piensas. Soluciones de vivienda asequibles con subsidios gubernamentales y opciones de financiamiento flexibles en Panamá.">
     <meta name="keywords" content="vivienda, panamá, subsidios, financiamiento, casas, apartamentos, provivir">
     <meta name="author" content="Provivir Panama">
+    <link rel="canonical" href="https://provivirpanama.com/">
     <!-- Last Update: 2026-02-19 - Navbar permanently disabled -->
     <!-- Open Graph -->
     <meta property="og:title" content="Provivir - Tu Nuevo Hogar Está Más Cerca">
     <meta property="og:description" content="Soluciones de vivienda asequibles con subsidios y financiamiento flexible">
-    <meta property="og:image" content="./assets/images/og-image.jpg">
+    <meta property="og:image" content="https://provivirpanama.com/assets/images/og-image.jpg">
     <meta property="og:url" content="https://provivirpanama.com">
+    <meta property="og:site_name" content="Provivir Panamá">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card -->
@@ -39,7 +41,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.css?v=20260306b">
     
     <!-- Schema Markup - JSON-LD -->
     <script type="application/ld+json">
@@ -90,23 +92,13 @@
     })(window,document,'script','dataLayer','GTM-TN4GBJNM');</script>
     <!-- End Google Tag Manager -->
     
-    <!-- Google Analytics 4 -->
-    <!-- IMPORTANTE: Reemplaza G-XXXXXXXXXX con tu ID de GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    
     <!-- Lottie Web -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'allow_google_signals': false
-      });
-    </script>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN4GBJNM"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -116,7 +108,8 @@
         <!-- HERO SECTION -->
         <section class="hero" id="inicio">
             <!-- Video de fondo -->
-            <video class="hero__video" autoplay muted loop playsinline preload="metadata">
+            <video class="hero__video" autoplay muted loop playsinline preload="none" poster="./assets/images/properties/banner-ciudad-del-este.webp">
+                <!-- Solo cargar en desktop para ahorrar datos en mobile -->
                 <source src="./assets/images/hero/provivir-hero.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
             </video>
@@ -141,7 +134,7 @@
                     <img src="./assets/images/properties/banner-villas-del-este.webp" alt="Villas del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <button class="project-card__tap-icon" data-project="villas">
+                        <button class="project-card__tap-icon" data-project="villas" aria-label="Ver proyectos de Villas del Este" title="Ver proyectos de Villas del Este">
                             <div class="lottie-animation" data-lottie="villas"></div>
                         </button>
                     </div>
@@ -152,7 +145,7 @@
                     <img src="./assets/images/properties/banner-ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
-                        <button class="project-card__tap-icon" data-project="ciudad">
+                        <button class="project-card__tap-icon" data-project="ciudad" aria-label="Ver proyectos de Ciudad del Este" title="Ver proyectos de Ciudad del Este">
                             <div class="lottie-animation" data-lottie="ciudad"></div>
                         </button>
                     </div>
@@ -179,11 +172,11 @@
         <div class="container">
             <h2 class="trust-bar__title">Socios Financieros de Confianza</h2>
             <div class="trust-bar__logos">
-                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/la-hipotecaria.png" alt="La Hipotecaria" class="trust-bar__logo" width="540" height="144"></a>
-                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/banco-nacional.png" alt="Banco Nacional de Panamá" class="trust-bar__logo" width="540" height="144"></a>
-                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/caja-de-ahorro.png" alt="Caja de Ahorros" class="trust-bar__logo" width="540" height="144"></a>
-                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/banco-mercantil.png" alt="Banco Mercantil" class="trust-bar__logo" width="540" height="144"></a>
-                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/banco-general.png" alt="Banco General" class="trust-bar__logo" width="540" height="144"></a>
+                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/la-hipotecaria.png" alt="La Hipotecaria" class="trust-bar__logo" width="540" height="144" loading="lazy"></a>
+                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/banco-nacional.png" alt="Banco Nacional de Panamá" class="trust-bar__logo" width="540" height="144" loading="lazy"></a>
+                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/caja-de-ahorro.png" alt="Caja de Ahorros" class="trust-bar__logo" width="540" height="144" loading="lazy"></a>
+                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/banco-mercantil.png" alt="Banco Mercantil" class="trust-bar__logo" width="540" height="144" loading="lazy"></a>
+                <a href="#contacto" class="trust-bar__logo-link"><img src="./assets/images/partners/b-general.svg" alt="Banco General" class="trust-bar__logo" width="567" height="170" loading="lazy"></a>
             </div>
         </div>
     </section>
@@ -241,7 +234,7 @@
                             <a href="#contacto" class="btn btn--secondary btn--small">Consulta</a>
                         </div>
 
-                        <div class="team-card">
+                        <div class="team-card team-card--alberto">
                             <div class="team-card__image-wrapper">
                                 <img src="assets/images/team/alberto-valencia.webp" alt="Alberto Valencia" class="team-card__image team-card__image--alberto" loading="lazy">
                             </div>
@@ -266,6 +259,7 @@
                         <path d="M9 18l6-6-6-6"/>
                     </svg>
                 </button>
+                <div class="team__carousel-dots"></div>
             </div>
         </div>
     </section>
@@ -281,7 +275,7 @@
             <div class="value-props__grid value-props__grid--two">
                 <div class="value-card value-card--large">
                     <div class="value-card__icon value-card__icon--blue">
-                        <img src="./assets/images/icons/mission-icon.png" alt="Misión" width="48" height="48">
+                        <img src="./assets/images/icons/mission-icon.png" alt="Misión" width="48" height="48" loading="lazy">
                     </div>
                     <h3 class="value-card__title">MISIÓN</h3>
                     <p class="value-card__description value-card__description--large">
@@ -291,7 +285,7 @@
                 
                 <div class="value-card value-card--large">
                     <div class="value-card__icon value-card__icon--green">
-                        <img src="./assets/images/icons/vision-icon.png" alt="Visión" width="48" height="48">
+                        <img src="./assets/images/icons/vision-icon.png" alt="Visión" width="48" height="48" loading="lazy">
                     </div>
                     <h3 class="value-card__title">VISIÓN</h3>
                     <p class="value-card__description value-card__description--large">
@@ -356,7 +350,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="salary">Salario</label>
+                                    <label for="salary">Salario <span class="help-icon" aria-label="Usamos este dato para calcular a qué subsidios o bonos gubernamentales puedes aplicar." data-tooltip="Usamos este dato para calcular a qué subsidios o bonos gubernamentales puedes aplicar." tabindex="0">ℹ️</span></label>
+                                    <span class="form-hint">Para calcular beneficios y bonos.</span>
                                     <select id="salary" name="salary" class="form-select">
                                         <option value="">Seleccionar</option>
                                         <option value="menos-600">&lt; 600</option>
@@ -423,12 +418,13 @@
                     </form>
                     
                     <div class="form-success hidden" id="formSuccess">
-                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" class="form-success__icon">
                             <circle cx="32" cy="32" r="32" fill="#00A651"/>
                             <path d="M20 32L28 40L44 24" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
-                        <h3>¡Gracias por tu interés!</h3>
-                        <p>Un asesor se pondrá en contacto contigo pronto.</p>
+                        <h3 class="form-success__title">¡Gracias por tu interés!</h3>
+                        <p class="form-success__description">Un asesor experto se pondrá en contacto contigo muy pronto para revisar tus opciones.</p>
+                        <a href="#proyectos" class="btn btn--secondary">Explorar más proyectos</a>
                     </div>
                 </div>
             </div>
@@ -444,8 +440,7 @@
                     <div class="footer__grid">
                         <div class="footer__col">
                             <div class="footer__logo-wrapper">
-                                <img src="./assets/images/logo/logo-icon-provivir.png" alt="Provivir Isotipo" class="footer__logo-icon">
-                                <img src="./assets/images/logo/logo-word-provivir.png" alt="Provivir" class="footer__logo-text">
+                                <img src="./assets/images/logo/logo-provivir-w.png" alt="Provivir" class="footer__logo-text" loading="lazy">
                             </div>
                             <p class="footer__description">
                                 Hogares para crecer, comunidades para vivir.
@@ -530,11 +525,11 @@
         </div>
         
         <div class="footer__bottom">
-            <p>&copy; 2024 Provivir S.A. - Parte del grupo PARIS HILTON S.A. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Provivir S.A. Todos los derechos reservados.</p>
             <div class="footer__legal">
-                <a href="#" id="privacyLink">Política de Privacidad</a>
-                <a href="#" id="termsLink">Términos de Servicio</a>
-                <a href="#" id="equalHousingLink">Igualdad de Oportunidades de Vivienda</a>
+                <a href="./legal/politica-privacidad.html" id="privacyLink">Política de Privacidad</a>
+                <a href="./legal/terminos-servicio.html" id="termsLink">Términos de Servicio</a>
+                <a href="./legal/igualdad-vivienda.html" id="equalHousingLink">Igualdad de Oportunidades de Vivienda</a>
             </div>
         </div>
     </footer>
@@ -542,13 +537,15 @@
 
     <!-- WhatsApp Floating Button -->
     <div class="whatsapp-float">
+        <div class="whatsapp-tooltip">🟢 ¡Hola! Asesores en línea</div>
         <a href="https://wa.me/50763712652?text=Hola%2C%20estoy%20interesado%20en%20conocer%20m%C3%A1s%20sobre%20las%20viviendas%20disponibles" 
            target="_blank" 
            rel="noopener noreferrer"
            class="whatsapp-button"
-           data-tooltip="¿Necesitas ayuda? Escríbenos"
            aria-label="Contactar por WhatsApp">
-            <img src="./assets/images/icons/whatsapp.webp" alt="WhatsApp" class="whatsapp-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" class="whatsapp-icon">
+                <path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/>
+            </svg>
         </a>
     </div>
 

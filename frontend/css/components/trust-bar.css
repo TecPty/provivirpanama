@@ -23,8 +23,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    gap: 1.5rem;
+    flex-wrap: nowrap;
     padding: 0 var(--spacing-lg);
 }
 
@@ -38,23 +38,33 @@
 }
 
 .trust-bar__logo-link {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
     cursor: pointer;
     line-height: 0;
-    flex: 0 1 auto;
+    flex: 1 1 0;
     min-width: 0;
 }
 
 .trust-bar__logo-link img {
     display: block;
-    height: 150px;
     width: auto;
-    max-width: 350px;
+    height: clamp(69px, 7.94vw, 120px);
+    max-width: 100%;
     opacity: 1;
     transition: all 0.3s ease;
     object-fit: contain;
     filter: none;
+}
+
+/* Increase size for La Hipotecaria, Banco Nacional, and Banco Mercantil */
+.trust-bar__logos .trust-bar__logo-link:nth-child(1) img,
+.trust-bar__logos .trust-bar__logo-link:nth-child(2) img,
+.trust-bar__logos .trust-bar__logo-link:nth-child(4) img {
+    transform: scale(1.15);
+    transform-origin: center;
 }
 
 .trust-bar__logo-link:hover img {
@@ -66,7 +76,7 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
     .trust-bar {
-        padding: var(--spacing-2xl) 0;
+        padding: 1.05rem 0 0.63rem;
     }
     
     .trust-bar__logos {
@@ -78,13 +88,38 @@
     }
     
     .trust-bar__logo {
-        height: 60px;
+        height: 69px;
         max-width: 200px;
         flex-shrink: 0;
     }
     
     .trust-bar__logo-link img {
-        height: 60px;
+        height: 69px;
         max-width: 150px;
+    }
+
+    .trust-bar__logos .trust-bar__logo-link:nth-child(1) img,
+    .trust-bar__logos .trust-bar__logo-link:nth-child(2) img,
+    .trust-bar__logos .trust-bar__logo-link:nth-child(4) img {
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-bar__logos {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.4rem;
+        overflow-x: visible;
+        padding: 0 0.75rem;
+    }
+
+    .trust-bar__logo-link {
+        width: 100%;
+    }
+
+    .trust-bar__logo-link img {
+        height: 44px;
+        max-width: 100%;
     }
 }

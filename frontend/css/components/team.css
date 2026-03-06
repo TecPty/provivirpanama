@@ -229,12 +229,23 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: carouselZoom 8s ease-in-out infinite;
+    animation: none;
 }
 
 .team-card__image--alberto {
     transform: scale(0.7);
     transform-origin: center;
+}
+
+.team-card--alberto .team-card__image-wrapper {
+    margin-top: 0.35rem;
+    margin-bottom: 1.15rem;
+}
+
+.team-card--alberto.center .team-card__image-wrapper,
+.team-card--alberto.side .team-card__image-wrapper {
+    margin-top: 0.35rem;
+    margin-bottom: 1.15rem;
 }
 
 .team-card:hover .team-card__image {
@@ -290,7 +301,7 @@
 
 @media (max-width: 768px) {
     .team {
-        padding: var(--spacing-2xl) 0;
+        padding: 0.77rem 0 2rem;
     }
 
     .team-card {
@@ -335,6 +346,36 @@
     .team__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
+    }
+}
+
+/* Carousel Dots */
+.team__carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+}
+
+.team__carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.team__carousel-dot.active {
+    background: var(--color-primary-blue, #0077C2);
+    transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+    .team__carousel-dots {
+        display: none; /* Hide on desktop where we have thumbs/buttons */
     }
 }
 
@@ -426,6 +467,35 @@
 @media (max-width: 767px) {
     .team__carousel {
         padding: 0 20px;
+    }
+
+    .team-card,
+    .team-card.side,
+    .team-card.center {
+        flex: 0 0 min(82vw, 270px) !important;
+        min-width: min(82vw, 270px) !important;
+        padding: 1rem !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
+
+    .team-card__image-wrapper,
+    .team-card.side .team-card__image-wrapper,
+    .team-card.center .team-card__image-wrapper {
+        width: 130px !important;
+        height: 165px !important;
+        margin: 0 auto 0.85rem !important;
+    }
+
+    .team-card.center .team-card__name,
+    .team-card.side .team-card__name {
+        font-size: 1.1rem;
+    }
+
+    .team-card.center .team-card__role,
+    .team-card.side .team-card__role {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
     }
 
     .team__carousel-btn {

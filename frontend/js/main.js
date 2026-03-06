@@ -73,7 +73,7 @@
      * Handle external links
      */
     const initExternalLinks = () => {
-        const externalLinks = ['blogLink', 'aboutLink', 'privacyLink', 'termsLink', 'equalHousingLink'];
+        const externalLinks = ['blogLink', 'aboutLink'];
         
         externalLinks.forEach(linkId => {
             const link = document.getElementById(linkId);
@@ -132,6 +132,21 @@
     };
     
     /**
+     * Scroll Progress Bar
+     */
+    const initScrollProgress = () => {
+        const progressBar = document.getElementById('scrollProgress');
+        if (!progressBar) return;
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + '%';
+        });
+    };
+    
+    /**
      * Initialize all components
      */
     const init = () => {
@@ -144,6 +159,7 @@
         
         // Initialize smooth scrolling
         initSmoothScroll();
+        initScrollProgress();
         
         // Initialize hero slider (if function exists)
         if (typeof initHeroSlider === 'function') {

@@ -46,14 +46,14 @@ const projectComplexes = {
                 description: 'Terrenos hasta 181m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/villas-del-este-modelo-roble.webp',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/map-provivir.png'
+                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
             },
             {
                 name: 'Modelo Cerezo',
                 description: 'Terrenos hasta 221m². 3 habitaciones, 2 baños, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/villas-del-este-modelo-cerezo.webp',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/map-provivir.png'
+                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
             }
         ]
     },
@@ -65,14 +65,14 @@ const projectComplexes = {
                 description: 'Terrenos hasta 233m². 3 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/ciudad-del-este-modelo-cordoba.webp',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/map-provivir.png'
+                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
             },
             {
                 name: 'Modelo Granada',
                 description: 'Terrenos hasta 135m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
                 image: './assets/images/properties/ciudad-del-este-modelo-granada.webp',
                 whatsapp: '6371-2652',
-                location: './assets/images/properties/map-provivir.png'
+                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
             }
         ]
     }
@@ -165,11 +165,13 @@ function openProjectModal(complexKey) {
                     <h3 class="project-item__name">${project.name}</h3>
                     <p class="project-item__description">${project.description}</p>
                     <div class="project-item__buttons">
-                        <button class="project-item__btn project-item__btn--location"
-                           data-map="${project.location}"
+                        <a href="${project.location}"
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="project-item__btn project-item__btn--location"
                            title="Ver ubicación">
                             <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/location.json"></div>
-                        </button>
+                        </a>
                         <a href="https://wa.me/507${project.whatsapp.replace('-', '')}" 
                            target="_blank" 
                            rel="noopener noreferrer"
@@ -190,69 +192,13 @@ function openProjectModal(complexKey) {
 
         // Cargar animaciones Lottie del modal
         loadLottieAnimations();
-
-        // Agregar event listeners a los botones de ubicación
-        const locationButtons = modalProjects.querySelectorAll('.project-item__btn--location');
-        locationButtons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const mapImage = btn.dataset.map;
-                openMapModal(mapImage);
-            });
-        });
     }
 
     // Mostrar modal
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-    }
-}
-
-/**
- * Abre el modal del mapa
- */
-function openMapModal(mapImage) {
-    let mapModal = document.getElementById('mapModal');
-    
-    // Si no existe, crear el modal
-    if (!mapModal) {
-        mapModal = document.createElement('div');
-        mapModal.id = 'mapModal';
-        mapModal.className = 'map-modal';
-        mapModal.innerHTML = `
-            <div class="map-modal__overlay"></div>
-            <div class="map-modal__content">
-                <button class="map-modal__close" aria-label="Cerrar">&times;</button>
-                <img id="mapImage" src="" alt="Mapa de ubicación" class="map-modal__image" loading="lazy">
-            </div>
-        `;
-        document.body.appendChild(mapModal);
-        
-        // Event listeners para cerrar
-        mapModal.querySelector('.map-modal__close').addEventListener('click', closeMapModal);
-        mapModal.querySelector('.map-modal__overlay').addEventListener('click', closeMapModal);
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mapModal.classList.contains('active')) {
-                closeMapModal();
-            }
-        });
-    }
-    
-    // Establecer la imagen y mostrar modal
-    document.getElementById('mapImage').src = mapImage;
-    mapModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-/**
- * Cierra el modal del mapa
- */
-function closeMapModal() {
-    const mapModal = document.getElementById('mapModal');
-    if (mapModal) {
-        mapModal.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.add('project-modal-open');
     }
 }
 
@@ -264,6 +210,7 @@ function closeProjectModal() {
     if (modal) {
         modal.classList.remove('active');
         document.body.style.overflow = '';
+        document.body.classList.remove('project-modal-open');
     }
 }
 

@@ -14,6 +14,32 @@ const dbPath = path.join(__dirname, '../../provivir.db');
 
 const router = express.Router();
 
+const ensureLeadAttributionColumns = async () => {
+  const desiredColumns = {
+    utm_source: 'TEXT',
+    utm_medium: 'TEXT',
+    utm_campaign: 'TEXT',
+    utm_term: 'TEXT',
+    utm_content: 'TEXT',
+    utm_id: 'TEXT',
+    gclid: 'TEXT',
+    fbclid: 'TEXT',
+    ttclid: 'TEXT',
+    msclkid: 'TEXT',
+    landing_page: 'TEXT',
+    referrer: 'TEXT'
+  };
+
+  const tableInfo = await db.all('PRAGMA table_info(leads)');
+  const existingColumns = new Set(tableInfo.map((column) => column.name));
+
+  for (const [columnName, columnType] of Object.entries(desiredColumns)) {
+    if (!existingColumns.has(columnName)) {
+      await db.exec(`ALTER TABLE leads ADD COLUMN ${columnName} ${columnType};`);
+    }
+  }
+};
+
 // Initialize SQLite database
 let db;
 (async () => {
@@ -38,6 +64,8 @@ let db;
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
       );
     `);
+
+    await ensureLeadAttributionColumns();
     
     console.log('✅ SQLite database initialized successfully');
   } catch (error) {
@@ -93,7 +121,79 @@ const leadValidation = [
     .optional({ checkFalsy: true })
     .trim()
     .isLength({ max: 100 })
-    .withMessage('Proyecto inválido')
+    .withMessage('Proyecto inválido'),
+
+  body('utm_source')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_source inválido'),
+
+  body('utm_medium')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_medium inválido'),
+
+  body('utm_campaign')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_campaign inválido'),
+
+  body('utm_term')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_term inválido'),
+
+  body('utm_content')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_content inválido'),
+
+  body('utm_id')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('utm_id inválido'),
+
+  body('gclid')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('gclid inválido'),
+
+  body('fbclid')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('fbclid inválido'),
+
+  body('ttclid')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('ttclid inválido'),
+
+  body('msclkid')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 255 })
+    .withMessage('msclkid inválido'),
+
+  body('landing_page')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 2000 })
+    .withMessage('landing_page inválido'),
+
+  body('referrer')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 2000 })
+    .withMessage('referrer inválido')
 ];
 
 /**
@@ -118,7 +218,28 @@ router.post('/', leadValidation, async (req, res) => {
       });
     }
 
-    const { name, email, phone, message, property_id, salary, employment, project } = req.body;
+    const {
+      name,
+      email,
+      phone,
+      message,
+      property_id,
+      salary,
+      employment,
+      project,
+      utm_source,
+      utm_medium,
+      utm_campaign,
+      utm_term,
+      utm_content,
+      utm_id,
+      gclid,
+      fbclid,
+      ttclid,
+      msclkid,
+      landing_page,
+      referrer
+    } = req.body;
 
     // Check if DB is available
     if (!db) {
@@ -131,9 +252,50 @@ router.post('/', leadValidation, async (req, res) => {
 
     // Insert lead into database
     const result = await db.run(
-      `INSERT INTO leads (name, email, phone, message, salary, employment_status, project_name, property_id)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-      [name, email, phone, message, salary || null, employment || null, project || null, property_id || null]
+      `INSERT INTO leads (
+        name,
+        email,
+        phone,
+        message,
+        salary,
+        employment_status,
+        project_name,
+        property_id,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content,
+        utm_id,
+        gclid,
+        fbclid,
+        ttclid,
+        msclkid,
+        landing_page,
+        referrer
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        name,
+        email,
+        phone,
+        message,
+        salary || null,
+        employment || null,
+        project || null,
+        property_id || null,
+        utm_source || null,
+        utm_medium || null,
+        utm_campaign || null,
+        utm_term || null,
+        utm_content || null,
+        utm_id || null,
+        gclid || null,
+        fbclid || null,
+        ttclid || null,
+        msclkid || null,
+        landing_page || null,
+        referrer || null
+      ]
     );
 
     console.log('✅ Lead created:', { id: result.lastID, email });

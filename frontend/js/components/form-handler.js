@@ -108,13 +108,7 @@ const FormHandler = (() => {
         
         leadForm.style.display = 'none';
         formSuccess.style.display = 'flex';
-        
-        // Reset form after delay
-        setTimeout(() => {
-            formSuccess.style.display = 'none';
-            leadForm.style.display = 'flex';
-            leadForm.reset();
-        }, 5000);
+        // El mensaje de éxito ahora es permanente para dar mayor confianza.
     };
     
     /**
@@ -125,7 +119,16 @@ const FormHandler = (() => {
         return {
             utm_source: params.get('utm_source') || '',
             utm_medium: params.get('utm_medium') || '',
-            utm_campaign: params.get('utm_campaign') || ''
+            utm_campaign: params.get('utm_campaign') || '',
+            utm_term: params.get('utm_term') || '',
+            utm_content: params.get('utm_content') || '',
+            utm_id: params.get('utm_id') || '',
+            gclid: params.get('gclid') || '',
+            fbclid: params.get('fbclid') || '',
+            ttclid: params.get('ttclid') || '',
+            msclkid: params.get('msclkid') || '',
+            landing_page: window.location.href,
+            referrer: document.referrer || ''
         };
     };
     
@@ -143,7 +146,7 @@ const FormHandler = (() => {
         const fullName = formData.get('fullName');
         const fullNameInput = leadForm.querySelector('#fullName');
         if (!fullName || fullName.trim().length < 3) {
-            showError(fullNameInput, 'Por favor ingresa tu nombre completo');
+            showError(fullNameInput, 'Necesitamos tu nombre completo para saber con quién hablamos');
             isValid = false;
         }
         
@@ -151,10 +154,10 @@ const FormHandler = (() => {
         const email = formData.get('email');
         const emailInput = leadForm.querySelector('#email');
         if (!email) {
-            showError(emailInput, 'Por favor ingresa tu correo electrónico');
+            showError(emailInput, 'No olvides dejarnos tu correo');
             isValid = false;
         } else if (!isValidEmail(email)) {
-            showError(emailInput, 'Por favor ingresa un correo electrónico válido');
+            showError(emailInput, 'Parece que tu correo tiene un error, revísalo por favor');
             isValid = false;
         }
         
@@ -162,10 +165,10 @@ const FormHandler = (() => {
         const phone = formData.get('phone');
         const phoneInput = leadForm.querySelector('#phone');
         if (!phone) {
-            showError(phoneInput, 'Por favor ingresa tu teléfono');
+            showError(phoneInput, 'Necesitamos tu teléfono para poder contactarte');
             isValid = false;
         } else if (!isValidPhone(phone)) {
-            showError(phoneInput, 'Por favor ingresa un teléfono válido');
+            showError(phoneInput, 'Verifica el formato, ej: 6123-4567');
             isValid = false;
         }
         
@@ -173,7 +176,7 @@ const FormHandler = (() => {
         const project = formData.get('project');
         const projectInput = leadForm.querySelector('#project');
         if (!project) {
-            showError(projectInput, 'Por favor selecciona un proyecto');
+            showError(projectInput, 'Cuéntanos qué proyecto te interesa');
             isValid = false;
         }
         
@@ -181,7 +184,7 @@ const FormHandler = (() => {
         const message = formData.get('message');
         const messageInput = leadForm.querySelector('#message');
         if (!message || message.trim().length < 10) {
-            showError(messageInput, 'Por favor ingresa un mensaje de al menos 10 caracteres');
+            showError(messageInput, 'Escribe un mensaje de al menos 10 caracteres');
             isValid = false;
         }
         
@@ -220,7 +223,16 @@ const FormHandler = (() => {
             website: formData.get('website') || '',
             utm_source: utmParams.utm_source,
             utm_medium: utmParams.utm_medium,
-            utm_campaign: utmParams.utm_campaign
+            utm_campaign: utmParams.utm_campaign,
+            utm_term: utmParams.utm_term,
+            utm_content: utmParams.utm_content,
+            utm_id: utmParams.utm_id,
+            gclid: utmParams.gclid,
+            fbclid: utmParams.fbclid,
+            ttclid: utmParams.ttclid,
+            msclkid: utmParams.msclkid,
+            landing_page: utmParams.landing_page,
+            referrer: utmParams.referrer
         };
         
         // Set loading state
@@ -233,6 +245,36 @@ const FormHandler = (() => {
             
             if (response.success) {
                 showSuccess();
+
+                if (window.dataLayer && Array.isArray(window.dataLayer)) {
+                    window.dataLayer.push({
+                        event: 'lead_submission',
+                        event_category: 'engagement',
+                        event_label: 'contact_form',
+                        lead_project_slug: leadData.project,
+                        lead_property_id: leadData.property_id,
+                        utm_source: leadData.utm_source,
+                        utm_medium: leadData.utm_medium,
+                        utm_campaign: leadData.utm_campaign,
+                        utm_term: leadData.utm_term,
+                        utm_content: leadData.utm_content,
+                        utm_id: leadData.utm_id,
+                        gclid: leadData.gclid,
+                        fbclid: leadData.fbclid,
+                        ttclid: leadData.ttclid,
+                        msclkid: leadData.msclkid,
+                        value: 1,
+                        currency: 'USD'
+                    });
+
+                    window.dataLayer.push({
+                        event: 'generate_lead',
+                        lead_project_slug: leadData.project,
+                        lead_property_id: leadData.property_id,
+                        value: 1,
+                        currency: 'USD'
+                    });
+                }
                 
                 // Track conversion if analytics enabled
                 if (typeof gtag !== 'undefined') {
@@ -262,7 +304,7 @@ const FormHandler = (() => {
         // Lead form submission
         leadForm.addEventListener('submit', handleLeadFormSubmit);
         
-        // Clear errors on input
+        // Clear errors on input and add real-time validation on blur
         const inputs = leadForm.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('input', () => {
@@ -271,6 +313,18 @@ const FormHandler = (() => {
             
             input.addEventListener('change', () => {
                 clearError(input);
+            });
+
+            // Real-time validation on blur
+            input.addEventListener('blur', (e) => {
+                const val = e.target.value;
+                if (!val) return; // Skip if empty (let submit validation handle "required")
+
+                if (e.target.id === 'email' && !isValidEmail(val)) {
+                    showError(e.target, 'Parece que tu correo tiene un error, revísalo por favor');
+                } else if (e.target.id === 'phone' && !isValidPhone(val)) {
+                    showError(e.target, 'Verifica el formato, ej: +507 XXXX-XXXX');
+                }
             });
         });
         
