@@ -562,6 +562,42 @@
         width: 40px;
         height: 40px;
     }
+
+    .project-modal__content {
+        max-width: 95%;
+        max-height: 92vh;
+        overflow: hidden;
+    }
+
+    .project-modal__projects {
+        grid-template-columns: 1fr;
+        padding: 1.25rem;
+        gap: 1.5rem;
+        grid-auto-rows: auto;
+        max-height: 82vh;
+        overflow-y: auto;
+    }
+
+    .project-item {
+        min-height: 240px;
+    }
+
+    .project-item__content {
+        min-height: 240px;
+    }
+
+    .project-item__image {
+        height: 200px;
+    }
+
+    .project-item__name {
+        font-size: 1.4rem;
+    }
+
+    .project-item__description {
+        font-size: 0.85rem;
+        line-height: 1.35;
+    }
 }
 
 @media (max-width: 480px) {

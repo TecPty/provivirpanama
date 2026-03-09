@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tu nuevo hogar está más cerca de lo que piensas. Soluciones de vivienda asequibles con subsidios gubernamentales y opciones de financiamiento flexibles en Panamá.">
-    <meta name="keywords" content="vivienda, panamá, subsidios, financiamiento, casas, apartamentos, provivir">
+    <meta name="description" content="Viviendas en Panamá - Provivir ofrece casas y apartamentos con opciones de financiamiento flexibles. Tu nuevo hogar está más cerca de lo que piensas.">
+    <meta name="keywords" content="viviendas en panama, viviendas panama, casas en panama, apartamentos panama, financiamiento vivienda, provivir panama, inmobiliaria panama">
     <meta name="author" content="Provivir Panama">
     <link rel="canonical" href="https://provivirpanama.com/">
     <!-- Last Update: 2026-02-19 - Navbar permanently disabled -->
     <!-- Open Graph -->
-    <meta property="og:title" content="Provivir - Tu Nuevo Hogar Está Más Cerca">
-    <meta property="og:description" content="Soluciones de vivienda asequibles con subsidios y financiamiento flexible">
+    <meta property="og:title" content="Viviendas en Panamá | Provivir - Tu Nuevo Hogar">
+    <meta property="og:description" content="Encuentra tu casa o apartamento ideal en Panamá. Viviendas con financiamiento flexible y calidad garantizada.">
     <meta property="og:image" content="https://provivirpanama.com/assets/images/og-image.jpg">
     <meta property="og:url" content="https://provivirpanama.com">
     <meta property="og:site_name" content="Provivir Panamá">
@@ -19,11 +19,11 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@provivirpanama">
-    <meta name="twitter:title" content="Provivir - Tu Nuevo Hogar Está Más Cerca">
-    <meta name="twitter:description" content="Soluciones de vivienda asequibles con subsidios y financiamiento flexible">
+    <meta name="twitter:title" content="Viviendas en Panamá | Provivir">
+    <meta name="twitter:description" content="Encuentra tu casa o apartamento ideal en Panamá con financiamiento flexible y calidad garantizada.">
     <meta name="twitter:image" content="https://provivirpanama.com/assets/images/og-image.jpg">
 
-    <title>Provivir Panamá - Tu Nuevo Hogar Está Más Cerca de lo que Piensas</title>
+    <title>Viviendas en Panamá | Casas y Apartamentos | Provivir Panamá</title>
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/logo/apple-touch-icon.png">
@@ -33,15 +33,29 @@
     <link rel="shortcut icon" href="./assets/images/logo/favicon.ico">
     
     <!-- Preload Critical Assets -->
+    <link rel="preload" as="style" href="./css/main.css?v=20260306b">
     <link rel="preload" as="image" href="./assets/images/logo/logo-provivir.png">
+    <link rel="preload" as="script" href="./js/main.js">
     
-    <!-- Google Fonts -->
+    <!-- Resource Hints for External Resources -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.google.com">
+    
+    <!-- Google Fonts - Async Loading for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./css/main.css?v=20260306b">
+    
+    <!-- Inline Critical CSS for Font Loading -->
+    <style>
+        /* System font fallback until Figtree loads */
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+    </style>
     
     <!-- Schema Markup - JSON-LD -->
     <script type="application/ld+json">
@@ -50,7 +64,7 @@
       "@type": "RealEstateAgent",
       "name": "Provivir Panamá",
       "image": "https://provivirpanama.com/assets/images/logo/logo-provivir.png",
-      "description": "Soluciones de vivienda asequible con subsidios gubernamentales y financiamiento flexible en Panamá",
+      "description": "Viviendas en Panamá - Casas y apartamentos con financiamiento flexible. Soluciones de vivienda asequible y calidad garantizada.",
       "url": "https://provivirpanama.com",
       "telephone": "+5073909094",
       "address": {
@@ -92,8 +106,8 @@
     })(window,document,'script','dataLayer','GTM-TN4GBJNM');</script>
     <!-- End Google Tag Manager -->
     
-    <!-- Lottie Web -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <!-- Lottie Web - Defer for Better Performance -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -108,7 +122,7 @@
         <!-- HERO SECTION -->
         <section class="hero" id="inicio">
             <!-- Video de fondo -->
-            <video class="hero__video" autoplay muted loop playsinline preload="none" poster="./assets/images/properties/banner-ciudad-del-este.webp">
+            <video class="hero__video" autoplay muted loop playsinline preload="none" poster="./assets/images/properties/banner-ciudad-del-este.webp" fetchpriority="low">
                 <!-- Solo cargar en desktop para ahorrar datos en mobile -->
                 <source src="./assets/images/hero/provivir-hero.mp4" type="video/mp4">
                 Tu navegador no soporta videos HTML5.
@@ -118,8 +132,9 @@
             <div class="hero__overlay">
                 <div class="hero__content-wrapper">
                     <h1 class="hero__title">
-                        Tu Nuevo Hogar está 
-                        <span class="hero__title--highlight">Más Cerca</span>
+                        Viviendas en <span class="hero__title--highlight">Panamá</span>
+                        <br>
+                        <span style="font-size: 0.6em; font-weight: 500;">Tu Nuevo Hogar está Más Cerca</span>
                     </h1>
                 </div>
             </div>
@@ -131,7 +146,7 @@
             <div class="projects__grid">
                 <!-- Villas del Este -->
                 <div class="project-card" data-project="villas">
-                    <img src="./assets/images/properties/banner-villas-del-este.webp" alt="Villas del Este" class="project-card__image" loading="lazy">
+                    <img src="./assets/images/properties/banner-villas-del-este.webp" alt="Villas del Este" class="project-card__image" loading="eager" fetchpriority="high">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
                         <button class="project-card__tap-icon" data-project="villas" aria-label="Ver proyectos de Villas del Este" title="Ver proyectos de Villas del Este">
@@ -142,7 +157,7 @@
                 
                 <!-- Ciudad del Este -->
                 <div class="project-card" data-project="ciudad">
-                    <img src="./assets/images/properties/banner-ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy">
+                    <img src="./assets/images/properties/banner-ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="eager" fetchpriority="high">
                     <div class="project-card__overlay"></div>
                     <div class="project-card__content">
                         <button class="project-card__tap-icon" data-project="ciudad" aria-label="Ver proyectos de Ciudad del Este" title="Ver proyectos de Ciudad del Este">
@@ -184,10 +199,10 @@
     <!-- TEAM / ASESORES -->
     <section class="team" id="asesoras">
         <div class="container">
-            <h2 class="section__title">Asesores</h2>
             <p class="section__subtitle">
-                Contamos con un equipo de profesionales, altamente calificado y comprometido con el sueño de las familias panameñas de tener su propio hogar.
+                Contamos con un equipo de profesionales altamente calificado y comprometido con el sueño de las familias panameñas de tener su propio hogar.
             </p>
+            <h2 class="section__title">Nuestros Asesores</h2>
             
             <div class="team__carousel">
                 <button class="team__carousel-btn team__carousel-btn--prev" aria-label="Anterior">
@@ -234,9 +249,9 @@
                             <a href="#contacto" class="btn btn--secondary btn--small">Consulta</a>
                         </div>
 
-                        <div class="team-card team-card--alberto">
+                        <div class="team-card">
                             <div class="team-card__image-wrapper">
-                                <img src="assets/images/team/alberto-valencia.webp" alt="Alberto Valencia" class="team-card__image team-card__image--alberto" loading="lazy">
+                                <img src="assets/images/team/alberto-valencia.webp" alt="Alberto Valencia" class="team-card__image" loading="lazy">
                             </div>
                             <h3 class="team-card__name">Alberto Valencia</h3>
                             <p class="team-card__role">Asesor de Ventas</p>
@@ -350,8 +365,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="salary">Salario <span class="help-icon" aria-label="Usamos este dato para calcular a qué subsidios o bonos gubernamentales puedes aplicar." data-tooltip="Usamos este dato para calcular a qué subsidios o bonos gubernamentales puedes aplicar." tabindex="0">ℹ️</span></label>
-                                    <span class="form-hint">Para calcular beneficios y bonos.</span>
+                                    <label for="salary">Salario <span class="help-icon" aria-label="Usamos este dato para calcular tu capacidad de pago y ofrecerte las mejores opciones de financiamiento." data-tooltip="Usamos este dato para calcular tu capacidad de pago y ofrecerte las mejores opciones de financiamiento." tabindex="0">ℹ️</span></label>
+                                    <span class="form-hint">Para evaluar opciones de financiamiento.</span>
                                     <select id="salary" name="salary" class="form-select">
                                         <option value="">Seleccionar</option>
                                         <option value="menos-600">&lt; 600</option>
@@ -517,7 +532,8 @@
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.318482186195!2d-79.53442662404253!3d9.033333593492398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8faca8f1a1e6ad8d%3A0x68375f68ce275da!2sPromotora%20Provivir%20Panama!5e0!3m2!1ses!2spa!4v1706893600000!5m2!1ses!2spa"
                     class="footer__map"
                     allowfullscreen="" 
-                    loading="lazy" 
+                    loading="lazy"
+                    importance="low"
                     referrerpolicy="no-referrer-when-downgrade"
                     title="Ubicación Provivir - Vía España, Panama">
                 </iframe>

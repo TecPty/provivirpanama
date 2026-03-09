@@ -1,0 +1,559 @@
+================================================================================
+    INFORME DETALLADO: SECCIÓN DE ASESORES - PROVIVIR PANAMÁ
+================================================================================
+Fecha: 9 de marzo de 2026
+Versión: 1.0
+
+
+================================================================================
+1. PROPÓSITO Y FUNCIÓN PRINCIPAL
+================================================================================
+
+OBJETIVO DE NEGOCIO
+-------------------
+La sección de asesores sirve como **punto de contacto humano** entre el 
+prospecto y la empresa. Su función es:
+
+- Humanizar la marca: Mostrar rostros reales del equipo de ventas
+- Generar confianza: Presentar profesionales calificados que inspiran credibilidad
+- Facilitar conversión: Cada tarjeta tiene un botón CTA que lleva al formulario
+- Diferenciación competitiva: Destacar el equipo humano vs competidores que 
+  solo muestran propiedades
+
+MENSAJE CLAVE
+-------------
+"Contamos con un equipo de profesionales, altamente calificado y comprometido 
+con el sueño de las familias panameñas de tener su propio hogar."
+
+TONO EMOCIONAL: Cercanía, profesionalismo, compromiso con el cliente
+
+
+================================================================================
+2. ARQUITECTURA TÉCNICA
+================================================================================
+
+ESTRUCTURA HTML
+---------------
+<section class="team">
+  └── <div class="container">
+      ├── <h2> Título: "Nuestras Asesoras"
+      ├── <p> Subtítulo descriptivo
+      └── <div class="team__carousel">
+          ├── <button> Botón anterior (←)
+          ├── <div class="team__carousel-track-container">
+          │   └── <div class="team__carousel-track">
+          │       └── [6 tarjetas .team-card]
+          ├── <button> Botón siguiente (→)
+          └── <div class="team__carousel-dots"> Indicadores
+
+COMPONENTE: TARJETA DE ASESOR (.team-card)
+------------------------------------------
+Cada tarjeta contiene:
+1. Foto profesional (formato WebP, lazy loading)
+2. Nombre completo (h3)
+3. Rol ("Asesor/a de Ventas")
+4. CTA Button ("Consulta" → ancla a #contacto)
+
+TOTAL DE ASESORES ACTUALES: 6
+------------------------------
+- Alanis Gutierrez
+- Jacmily Figuera
+- Anny Navas
+- Kenia Vergara
+- Alberto Valencia
+- Veronica Barboza
+
+
+================================================================================
+3. SISTEMA DE CARRUSEL INFINITO
+================================================================================
+
+TECNOLOGÍA
+----------
+- JavaScript Vanilla (sin dependencias externas)
+- Arquitectura: Clonación de slides para scroll infinito
+- Animación: CSS transitions con cubic-bezier(0.4, 0, 0.2, 1)
+
+MECÁNICA DE FUNCIONAMIENTO
+--------------------------
+
+3.1 CLONACIÓN DE TARJETAS
+[Clones inicio] [Tarjetas originales] [Clones final]
+     6 cards         6 cards             6 cards
+   = 18 tarjetas totales en el DOM
+
+Propósito: Cuando llegas al final, salta instantáneamente al inicio sin que 
+el usuario lo note (scroll infinito seamless).
+
+3.2 SISTEMA DE 3 ESTADOS
+Las tarjetas tienen 3 posibles estados visuales:
+
+┌─────────┬────────┬───────┬──────────┬────────┬────────────────┐
+│ Estado  │ Clase  │ Ancho │ Opacidad │ Escala │ Sombra         │
+├─────────┼────────┼───────┼──────────┼────────┼────────────────┤
+│ Lateral │ .side  │ 260px │ 0.85     │ 0.92   │ Suave (0.08)   │
+│ Centro  │.center │ 340px │ 1.0      │ 1.0    │ Prominente(0.2)│
+│Inactiva │(ninguna)│ 260px│ 0.85     │ 0.92   │ Suave (0.08)   │
+└─────────┴────────┴───────┴──────────┴────────┴────────────────┘
+
+Efecto visual: La tarjeta central se "destaca" como si tuviera un spotlight,
+atrayendo la atención.
+
+3.3 AUTOPLAY INTELIGENTE
+- Intervalo: 3 segundos (configurable en autoplayDelay)
+- Pausa automática: 
+  * Al hacer hover sobre el carrusel
+  * Al hacer swipe en móvil
+  * Cuando la sección NO está visible en viewport (IntersectionObserver)
+- Reanudación: Al quitar hover o cuando vuelve a ser visible
+
+Beneficio: Ahorra recursos de CPU/batería cuando el usuario no está viendo 
+esta sección.
+
+
+================================================================================
+4. CONTROLES DE NAVEGACIÓN
+================================================================================
+
+4.1 BOTONES DE NAVEGACIÓN (DESKTOP)
+-----------------------------------
+Ubicación: Posición absoluta, laterales del carrusel
+- Botón anterior (izquierda): Flecha ←
+- Botón siguiente (derecha): Flecha →
+
+Estilos:
+- Fondo semi-transparente con backdrop-filter: blur(6px)
+- Hover: Escala 1.1x + background más opaco
+- Disabled state: Opacidad 0.3 (aunque en modo infinito nunca se desactivan)
+
+4.2 INDICADORES PUNTEADOS (DOTS)
+--------------------------------
+Ubicación: Centrado, debajo del carrusel
+- Cantidad: 6 dots (uno por asesor)
+- Función: Navegación directa a cualquier asesor
+- Estado activo: Más grande, color sólido, destaca con animación
+
+4.3 THUMBNAILS LATERALES (OPCIONAL)
+-----------------------------------
+Estado actual: Código presente pero NO renderizado en HTML
+- Concepto: Miniaturas verticales a la izquierda del carrusel
+- Función: Vista previa + navegación rápida
+- Tamaño: 64x64px con border-radius 12px
+
+NOTA: Esta feature está desactivada en la implementación actual pero el 
+código está listo para activarse agregando <div class="team__thumbs"></div> 
+al HTML.
+
+4.4 GESTOS TOUCH (MÓVIL/TABLET)
+-------------------------------
+- Swipe izquierda: Siguiente asesor
+- Swipe derecha: Asesor anterior
+- Threshold: 50px de desplazamiento mínimo para activar
+- Feedback visual: Pausa autoplay durante interacción
+
+
+================================================================================
+5. DISEÑO RESPONSIVE
+================================================================================
+
+BREAKPOINTS IMPLEMENTADOS
+-------------------------
+
+DESKTOP (≥1024px)
+- Layout: Carrusel horizontal con spotlight central
+- Cards visibles: 3 simultáneas (1 centro + 2 laterales parciales)
+- Controles: Todos visibles (botones, dots)
+- Foto asesor centro: 230x270px
+- Foto asesor lateral: 180x220px
+- Padding carrusel: 60px laterales
+
+TABLET (769px - 1023px)
+- Layout: Similar a desktop pero más compacto
+- Cards: Todas 260px de ancho
+- Botones: 48x48px
+- Padding: 40px laterales
+
+MOBILE (≤768px)
+- Layout: Scroll horizontal, todas las cards iguales
+- Cards: min(82vw, 270px) - se adapta al ancho de pantalla
+- Fotos: Todas 130x165px (uniformes)
+- Botones: Ocultos (solo swipe gestures)
+- Thumbnails: Ocultos
+- Estados: NO hay diferenciación center/side (todas iguales para legibilidad)
+
+Filosofía móvil: Simplicidad > Complejidad. En pantallas pequeñas, todas las 
+tarjetas tienen el mismo peso visual.
+
+
+================================================================================
+6. COMPONENTES VISUALES Y ESTILOS
+================================================================================
+
+6.1 TARJETA DE ASESOR - ESTRUCTURA VISUAL
+-----------------------------------------
+┌────────────────────────┐
+│                        │
+│   ┌──────────────┐     │
+│   │   FOTO CON   │     │  ← Marco con borde azul 3px
+│   │   BORDE      │     │    Background: #003a7a
+│   └──────────────┘     │    Box-shadow suave
+│                        │
+│   [Nombre Apellido]    │  ← Font bold 1.15rem (1.4rem centro)
+│   Asesor/a de Ventas   │  ← Color gris #666, 1rem
+│                        │
+│   ┌──────────────┐     │
+│   │  CONSULTA    │     │  ← Botón secundario, full-width
+│   └──────────────┘     │
+│                        │
+└────────────────────────┘
+
+PALETA DE COLORES
+-----------------
+- Fondo tarjeta: #ffffff (blanco puro)
+- Borde tarjeta: #e6e9ee (gris muy claro)
+- Marco foto: rgba(0, 58, 122, 0.3) (azul corporativo semi-transparente)
+- Texto nombre: #000000 (negro)
+- Texto rol: #666666 (gris medio)
+- Sombra tarjeta normal: 0 6px 16px rgba(0,0,0,0.08)
+- Sombra tarjeta centro: 0 16px 48px rgba(0,0,0,0.2) ← Mucho más dramática
+
+6.2 EFECTOS DE TRANSICIÓN
+-------------------------
+
+HOVER EN TARJETA
+transform: translateY(-8px);  /* Levita hacia arriba */
+box-shadow: 0 12px 40px rgba(0,0,0,0.15);  /* Sombra más fuerte */
+Duración: 0.5s con easing suave
+
+CAMBIO DE SLIDE
+transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+Easing personalizado: Aceleración suave al inicio, desaceleración al final 
+(Material Design)
+
+6.3 BOTÓN "CONSULTA"
+--------------------
+- Clase: .btn--secondary .btn--small
+- Ancho: 100% (full-width en tarjeta)
+- Padding: 0.6rem vertical, 1.5rem horizontal
+- Función: Scroll suave a la sección #contacto (formulario)
+
+
+================================================================================
+7. PERFORMANCE Y OPTIMIZACIONES
+================================================================================
+
+7.1 IMÁGENES
+------------
+✓ Formato WebP: Reduce peso 25-35% vs JPEG
+✓ Lazy Loading: loading="lazy" - solo carga al acercarse al viewport
+✓ Dimensiones fijas: Evita layout shift (CLS)
+
+Tamaños recomendados de imagen:
+- Original: ~800x1000px
+- Peso: <150KB por imagen
+- Total sección: ~900KB (6 asesores)
+
+7.2 JAVASCRIPT
+--------------
+✓ No dependencias externas: Bundle pequeño (~10KB minificado)
+✓ IntersectionObserver: Pausa autoplay fuera de vista
+✓ Debounce en resize: Evita cálculos excesivos al redimensionar
+✓ RequestAnimationFrame: Para animaciones suaves sin jank
+
+7.3 CSS
+-------
+✓ Hardware acceleration: transform en lugar de left/top
+✓ Will-change: Implícito en transforms
+✓ Backdrop-filter: Con fallback para navegadores antiguos
+
+7.4 MÉTRICAS ACTUALES (ESTIMADAS)
+---------------------------------
+- LCP: ~2.5s (imagen héroe más grande)
+- FID: <100ms (interacciones instantáneas)
+- CLS: <0.1 (sin layout shifts si imágenes tienen dimensiones)
+
+
+================================================================================
+8. FUNCIONALIDAD DE NAVEGACIÓN
+================================================================================
+
+FLUJO DE INTERACCIÓN
+--------------------
+1. Usuario ve sección
+2. Dispositivo Desktop → Ve 3 tarjetas (central destaca)
+   Dispositivo Móvil → Ve 1 tarjeta completa
+3. Autoplay cada 3s avanza automáticamente
+4. Usuario puede:
+   - Click en flechas (desktop)
+   - Click en dots (todos)
+   - Swipe (móvil/tablet)
+   - Hover para pausar (desktop)
+5. Si quiere contactar → Click CONSULTA
+6. Scroll automático a formulario #contacto
+7. Usuario completa formulario
+8. Lead capturado
+
+EVENTOS RASTREABLES (ANALYTICS)
+-------------------------------
+Eventos sugeridos para implementar:
+1. carousel_autoplay_view - Asesor mostrado por autoplay
+2. carousel_manual_navigation - Usuario usa botones/swipe
+3. carousel_dot_click - Click en indicador
+4. advisor_card_click - Click en botón CONSULTA
+5. advisor_card_hover - Hover prolongado (>2s) en tarjeta
+
+Datos a capturar:
+- Nombre del asesor
+- Método de navegación (autoplay, manual, swipe)
+- Tiempo de permanencia en cada asesor
+- Tasa de clicks en CONSULTA por asesor
+
+
+================================================================================
+9. ACCESIBILIDAD (A11Y)
+================================================================================
+
+IMPLEMENTACIONES ACTUALES
+-------------------------
+✓ Atributos ARIA: aria-label en botones de navegación
+✓ Alternativas textuales: alt descriptivo en todas las imágenes
+✓ Navegación por teclado: Tab para moverse entre controles
+
+MEJORAS PENDIENTES
+------------------
+⚠ ARIA live regions: Anunciar cambio de asesor a lectores de pantalla
+⚠ Focus visible: Mejorar indicadores de foco en modo teclado
+⚠ Skip links: Opción para saltar el carrusel
+⚠ Reducción de movimiento: Respetar prefers-reduced-motion
+
+
+================================================================================
+10. OPORTUNIDADES DE MEJORA
+================================================================================
+
+10.1 UX Y DISEÑO - ALTA PRIORIDAD
+----------------------------------
+1. INFORMACIÓN ADICIONAL DEL ASESOR
+   - Años de experiencia
+   - Especialización (ej: "Experta en financiamiento")
+   - Idiomas que habla
+   - Badge de "Top Asesor" o certificaciones
+
+2. CONTACTO DIRECTO
+   - Link de WhatsApp personal del asesor
+   - Número de teléfono directo
+   - Email personal
+   - Horario de disponibilidad
+
+3. SOCIAL PROOF
+   - Cantidad de familias asesoradas
+   - Rating/estrellas (si hay sistema de reviews)
+   - Testimonio corto de un cliente
+
+4. VIDEO INTRODUCCIÓN
+   - Clip de 15-30s del asesor saludando
+   - Play button en la tarjeta
+   - Modal con video al hacer click
+
+10.2 UX Y DISEÑO - MEDIA PRIORIDAD
+-----------------------------------
+5. FILTROS/CATEGORÍAS
+   - Por proyecto (asesores especializados en proyectos específicos)
+   - Por idioma
+   - Por disponibilidad
+
+6. BIOGRAFÍA EXPANDIBLE
+   - Click en tarjeta abre modal con bio completa
+   - Historia personal, valores, por qué trabaja en Provivir
+
+7. GAMIFICACIÓN
+   - "Asesor del mes" destacado
+   - Badges visuales (🏆 Top Seller, ⭐ 5 estrellas, 💬 Más consultado)
+
+10.3 TÉCNICAS - PERFORMANCE
+----------------------------
+8. Lazy load thumbnails: Solo cargar cuando se activa modo thumbnails
+9. Preload siguiente imagen: Cargar la siguiente imagen anticipadamente
+10. WebP + AVIF: Servir AVIF donde esté soportado (20% más ligero que WebP)
+
+10.4 TÉCNICAS - FUNCIONALIDAD
+------------------------------
+11. Modo thumbnails activable: Toggle para ver grid completo vs carrusel
+12. Marcar favoritos: Guardar asesor favorito en localStorage
+13. Compartir asesor: Botón para compartir link directo al perfil
+
+10.5 ANALYTICS Y CONVERSIÓN
+----------------------------
+14. A/B TESTING
+    - Probar orden de asesores (mejor performer primero vs aleatorio)
+    - CTA variations ("Consulta" vs "Contactar" vs "Hablar con [Nombre]")
+    - Autoplay ON vs OFF
+
+15. Heatmaps: Implementar para ver qué asesores reciben más atención
+16. Funnel tracking: Medir conversión desde vista de asesor hasta lead
+
+
+================================================================================
+11. INTEGRACIÓN CON OTRAS SECCIONES
+================================================================================
+
+FLUJO DEL USUARIO
+-----------------
+Hero → Proyectos → Stats/Logos → ASESORES → Visión/Misión → Testimonios → Form
+                                     ↓
+                  Click CONSULTA → Scroll a Formulario (#contacto)
+
+POSICIÓN ESTRATÉGICA: Después de mostrar productos (proyectos) pero antes del 
+formulario. El asesor es el "puente humano" entre el interés inicial y 
+la conversión.
+
+CROSS-REFERENCES
+----------------
+- Desde Hero: No hay link directo
+- Hacia Contacto: Botón CONSULTA en cada tarjeta
+- Desde Testimonios: Algunos testimonios podrían mencionar asesores específicos
+
+
+================================================================================
+12. ESTRUCTURA DE DATOS
+================================================================================
+
+FORMATO ACTUAL (HTML ESTÁTICO)
+------------------------------
+<div class="team-card">
+  <img src="assets/images/team/nombre-apellido.webp" alt="Nombre Apellido">
+  <h3>Nombre Apellido</h3>
+  <p>Asesor/a de Ventas</p>
+  <a href="#contacto">Consulta</a>
+</div>
+
+FORMATO IDEAL (JSON PARA CMS)
+-----------------------------
+{
+  "advisors": [
+    {
+      "id": "alanis-gutierrez",
+      "name": "Alanis Gutierrez",
+      "role": "Asesora de Ventas",
+      "photo": "/assets/images/team/alanis-gutierrez.webp",
+      "phone": "+507-6XXX-XXXX",
+      "whatsapp": "https://wa.me/507XXXXXXXX",
+      "email": "alanis@provivir.com",
+      "experience_years": 5,
+      "specialization": "Financiamiento preferencial",
+      "languages": ["Español", "Inglés"],
+      "stats": {
+        "families_helped": 127,
+        "rating": 4.9,
+        "response_time_hours": 2
+      },
+      "bio": "Texto largo...",
+      "availability": "Lun-Vie 8:00-18:00, Sáb 9:00-14:00",
+      "projects": ["ciudad-del-este", "villas-del-este"]
+    }
+  ]
+}
+
+BENEFICIOS:
+- CMS puede editar fácilmente
+- Reutilizable en otras partes del sitio
+- Base para features futuras (filtros, búsqueda, etc.)
+
+
+================================================================================
+13. CÓDIGO CRÍTICO - PUNTOS DE ATENCIÓN
+================================================================================
+
+JAVASCRIPT
+----------
+Archivo: frontend/js/components/team-carousel.js (346 líneas)
+
+Funciones clave:
+- updateCarousel(): Recalcula posiciones y aplica transformaciones
+- nextSlide() / prevSlide(): Navegación con detección de loop infinito
+- goToSlide(index): Navegación directa
+- startAutoplay() / stopAutoplay(): Control de autoplay
+
+Dependencias: Ninguna (Vanilla JS)
+
+CSS
+---
+Archivo: frontend/css/components/team.css (509 líneas)
+
+Clases críticas:
+- .team-card.center: Estilos de tarjeta destacada
+- .team-card.side: Estilos de tarjetas laterales
+- .team__carousel-track: Contenedor con transform para animación
+
+Variables CSS usadas:
+- --spacing-*: Del sistema de espaciado global
+- Colores hardcodeados: #003a7a, #ffffff, #666666, etc.
+
+HTML
+----
+Archivo: frontend/index.html (Líneas 184-270)
+
+Elementos clave:
+- 6 cards .team-card idénticas en estructura
+- Botones de navegación con SVG icons
+- Contenedor .team__carousel-dots (populated by JS)
+
+
+================================================================================
+14. RESUMEN EJECUTIVO
+================================================================================
+
+FORTALEZAS ACTUALES
+-------------------
+✓ Diseño limpio y profesional con jerarquía visual clara
+✓ Carrusel infinito suave sin dependencias pesadas
+✓ Fully responsive con adaptaciones inteligentes
+✓ Performance optimizada (lazy loading, IntersectionObserver)
+✓ CTA claro en cada tarjeta que lleva al formulario
+
+LIMITACIONES ACTUALES
+---------------------
+⚠ Información mínima por asesor (solo nombre y rol)
+⚠ No hay contacto directo (todo pasa por formulario general)
+⚠ Sin personalización (todos los asesores lucen iguales)
+⚠ No hay social proof específico por asesor
+⚠ Imposible elegir asesor en el formulario final
+
+RECOMENDACIONES PRIORITARIAS
+-----------------------------
+
+PARA MEJORAR CONVERSIÓN:
+1. Agregar WhatsApp directo en cada tarjeta
+2. Mostrar especialización/expertise
+3. Incluir "familias ayudadas" como métrica social proof
+
+PARA MEJORAR UX:
+4. Permitir pre-selección de asesor (pasa como parámetro al formulario)
+5. Agregar horario de disponibilidad visible
+6. Implementar modo grid para ver todos a la vez
+
+PARA MEJORAR ENGAGEMENT:
+7. Video corto de presentación por asesor
+8. Testimonios específicos por asesor
+9. Sistema de rating/reviews visible
+
+
+================================================================================
+DATOS CLAVE
+================================================================================
+Total de asesores activos: 6
+Conversión estimada sección → formulario: ~8-12% (sin datos actuales)
+Autoplay interval: 3 segundos
+Peso total de imágenes: ~900KB
+Tamaño código JavaScript: ~10KB minificado
+Líneas de CSS específicas: 509
+Breakpoints responsive: 3 (móvil ≤768px, tablet 769-1023px, desktop ≥1024px)
+
+
+================================================================================
+FIN DEL INFORME
+================================================================================
+Última actualización: 9 de marzo de 2026
+Preparado para: Rediseño de sección de asesores
+Próximos pasos: Evaluar oportunidades de mejora y priorizar implementación
+================================================================================

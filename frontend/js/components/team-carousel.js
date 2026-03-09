@@ -9,6 +9,18 @@
     'use strict';
 
     window.initTeamCarousel = function() {
+        // Solo ejecutar en desktop (>1024px)
+        if (window.innerWidth <= 1024) {
+            // Limpiar estilos inline en mobile/tablet para que CSS tome control
+            const track = document.querySelector('.team__carousel-track');
+            if (track) {
+                track.style.transform = '';
+                track.style.transition = '';
+            }
+            console.log('✅ Vista estática en mobile/tablet - JavaScript carousel deshabilitado');
+            return;
+        }
+
         const carousel = document.querySelector('.team__carousel');
         if (!carousel) return;
 
@@ -23,24 +35,24 @@
 
         const originalSlides = slides.slice();
         const totalCards = originalSlides.length;
-        const CARD_CENTER_WIDTH = 340;
-        const CARD_SIDE_WIDTH = 260;
-        const GAP = 24;
+        const CARD_CENTER_WIDTH = 260;
+        const CARD_SIDE_WIDTH = 200;
+        const GAP = 20;
 
-        // Clonar tarjetas para carrusel infinito
+        // Clonar tarjetas para carrusel infinito - DESHABILITADO PARA VISTA ESTÁTICA
         // Clonamos al inicio y al final para permitir scroll infinito
-        const clonedStart = slides.map(slide => slide.cloneNode(true));
-        const clonedEnd = slides.map(slide => slide.cloneNode(true));
+        // const clonedStart = slides.map(slide => slide.cloneNode(true));
+        // const clonedEnd = slides.map(slide => slide.cloneNode(true));
 
         // Insertar clones
-        clonedStart.forEach(clone => track.insertBefore(clone, track.firstChild));
-        clonedEnd.forEach(clone => track.appendChild(clone));
+        // clonedStart.forEach(clone => track.insertBefore(clone, track.firstChild));
+        // clonedEnd.forEach(clone => track.appendChild(clone));
 
-        // Actualizar referencia de slides
+        // Actualizar referencia de slides (ahora solo las 6 originales)
         slides = Array.from(track.querySelectorAll('.team-card'));
 
         // Offset para empezar en el medio (en las tarjetas originales)
-        let currentIndex = totalCards; // Empieza en la primera tarjeta original
+        let currentIndex = 0; // Empieza en la primera tarjeta (sin clones)
         let autoplayInterval;
         const autoplayDelay = 3000; // 3 segundos entre cada cambio
 
@@ -303,11 +315,13 @@
             resizeTimer = setTimeout(() => updateCarousel(false), 250);
         });
 
-        // Inicializar
-        createThumbs();
-        createDots();
-        updateCarousel(false);
+        // Inicializar - DESHABILITADO PARA VISTA ESTÁTICA
+        // createThumbs();
+        // createDots();
+        // updateCarousel(false);
 
+        // Autoplay deshabilitado para vista estática
+        /*
         if ('IntersectionObserver' in window) {
             const carouselVisibilityObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
@@ -325,12 +339,34 @@
         } else {
             startAutoplay();
         }
+        */
 
-        console.log(`✅ Carrusel infinito de asesoras inicializado:`);
-        console.log(`   - ${totalCards} asesoras originales`);
-        console.log(`   - ${slides.length} slides totales (con clones)`);
-        console.log(`   - Autoplay: ${autoplayDelay/1000}s entre slides`);
-        console.log(`   - Iniciando en: ${originalSlides[0]?.querySelector('.team-card__name')?.textContent || 'Primera asesora'}`);
+        console.log(`✅ Vista estática de asesores inicializada:`);
+        console.log(`   - ${totalCards} asesores en total`);
+        console.log(`   - Mostrando: ${originalSlides[0]?.querySelector('.team-card__name')?.textContent || 'Primera asesor/a'} y equipo`);
+
+
+        // Avatar fallback: si la imagen falla, mostrar iniciales
+        const allImages = Array.from(document.querySelectorAll('.team-card__image'));
+        allImages.forEach(img => {
+            img.addEventListener('error', function() {
+                const nameElement = this.closest('.team-card')?.querySelector('.team-card__name');
+                const name = nameElement?.textContent || '';
+                const initials = name
+                    .split(' ')
+                    .map(word => word[0])
+                    .slice(0, 2)
+                    .join('')
+                    .toUpperCase();
+                
+                const wrapper = this.parentElement;
+                wrapper.innerHTML = `
+                    <div class="team-card__avatar-fallback">
+                        <span>${initials}</span>
+                    </div>
+                `;
+            });
+        });
     };
 
     // Auto-inicializar cuando el DOM esté listo
@@ -339,6 +375,15 @@
     } else {
         window.initTeamCarousel();
     }
+
+    // Re-inicializar en resize (con debounce)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            window.initTeamCarousel();
+        }, 250);
+    });
 
 })();
 

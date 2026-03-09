@@ -1,0 +1,141 @@
+﻿- 2026-03-02 | 7dc0f1e | chore: update assets, db config and frontend tweaks
+- 2026-02-23 | 98ac4e4 | feat: Database schema actualizado, setup scripts y documentaci├│n MySQL
+- 2026-02-23 | 432745c | CR├ìTICO: Arreglar endpoint leads y destructure project - habilitar formulario funcionando
+- 2026-02-19 | 4a6e954 | feat: Actualizar equipo a 5 asesores - eliminar Dackiel y renombrar Jackson a Alberto
+- 2026-02-19 | f9ddcbd | fix: Corregir c├ílculo de posiciones en carrusel con 6 asesores
+- 2026-02-19 | dfaeb5b | style: Eliminar indicadores (dots) del carrusel de asesores
+- 2026-02-19 | a2f1c8a | fix: Mejorar loop infinito del carrusel - eliminar saltos visibles
+- 2026-02-19 | 2cd1a8d | feat: Agregar asesores Dackiel y Jackson al equipo
+- 2026-02-19 | 70041a0 | fix: Carrusel infinito de asesoras - corregir loop y timing
+- 2026-02-19 | 5f8d235 | style: Fondo blanco en tarjetas, solo imagen con fondo azul
+- 2026-02-19 | 254f64f | style: Agregar fondo azul a tarjetas de vendedoras con texto blanco
+- 2026-02-19 | 91fe577 | style: Opci├│n 1 carrusel - opacidad lateral 0.85 manteniendo efecto centro
+- 2026-02-19 | 0045088 | style: Cambiar carrusel de asesoras a dise├▒o minimalista - todas las tarjetas visibles e iguales
+- 2026-02-19 | ce316dc | perf: Comprimir video hero de 29.4MB a 4.6MB (84.5% reduccion) - 1920x1080 CRF28
+- 2026-02-19 | 16fe909 | perf: Optimizar carga de recursos - video preload metadata + lazy loading mapa
+- 2026-02-19 | 6eb02f2 | feat: Actualizar modelos de proyectos con nombres completos y archivos webp
+- 2026-02-19 | 1550f48 | fix: Remove header logo - video hero directo sin logo
+- 2026-02-19 | bb54753 | fix: Force hide navbar completely with !important rules
+- 2026-02-18 | f6786f1 | feat: Agregar logo en header simple
+- 2026-02-18 | f8ff480 | Remove navbar (desktop and mobile)
+- 2026-02-18 | f5e274b | fix: Syntax error in leads.js and add serverless-http dependency
+- 2026-02-18 | 5cac4ff | fix: Configure Netlify Functions and add serverless-http
+- 2026-02-18 | f4f0411 | fix: Configure Netlify Functions correctly
+- 2026-02-15 | abf5caa | fix: Minimal vercel.json
+- 2026-02-15 | 7f30a12 | temp: Remove docstrash for deploy
+- 2026-02-15 | dad21a8 | temp: Remove PHP files for Vercel deploy
+- 2026-02-15 | 4ccd08e | trigger: Force Vercel deployment
+- 2026-02-15 | ecd7881 | feat: Backend completo para demo Vercel + producci├│n GoDaddy
+- 2026-02-09 | 6296914 | Actualizar estilos del carrusel y roadmap semanal
+- 2026-02-09 | 48baf9c | Actualizar rangos de salario en formulario
+- 2026-02-06 | 2d7a437 | Team carousel refactor: infinite loop with cloned cards, improved styling for center/side cards, and responsive design adjustments
+- 2026-02-06 | 4190134 | Responsive improvements and team carousel styling with font path fixes
+- 2026-02-05 | ad9660c | Update fonts and modal assets
+- 2026-02-04 | e725b11 | Update project models in form select and improve modal card layout
+- 2026-02-04 | a63d615 | Update project card titles with white text and enhanced shadow effects
+- 2026-02-03 | 4c15b72 | Modal de proyectos: Redise├▒o de Villas con imagen de fondo, iconos en esquina inferior derecha, descripci├│n al pie. Sustituci├│n de bot├│n flotante WhatsApp con icono PNG y efecto glow verde-azulado
+- 2026-02-02 | 0ca4d55 | feat: UI improvements and backend setup - Remove navbar, optimize partner logos (150px, full color), update project cards (blue text, buttons at bottom) - Add glassmorphism effect to modal (95% transparency, backdrop blur) - Fix form: remove IS_VERCEL blocking code, create /api/leads endpoint with validation - Install security dependencies: express-validator, helmet, express-rate-limit - Update hero video to hero-provivir.mp4 - Implement favicons from logo folder, fix manifest paths - Update project modal images (villa_1.png, ciudad_*.png) - Remove contact section map, add compact footer map (200px, Via Espa├▒a location) - Style social media icons with brand colors (Facebook, Instagram, TikTok, WhatsApp) - Add audit documentation and roadmap files
+- 2026-01-30 | c97eddc | feat: sistema de galer├¡a de proyectos con modal
+- 2026-01-30 | e64128d | refine: Add descriptions to project cards and match reference design
+- 2026-01-30 | 414264e | docs: Add clean README for final project structure
+- 2026-01-30 | 7b43d44 | chore: Project cleanup - archive unused files to docstrash folder
+- 2026-01-30 | e8d140f | refine: Redesign project cards with overlay content
+- 2026-01-30 | 08675bf | feat: Transform statistics section into projects section with images
+- 2026-01-30 | 3d97931 | remove: Delete properties/projects section
+- 2026-01-30 | 8cf33fe | feat: Add statistics bar section between hero and projects
+- 2026-01-30 | a78a0f0 | refine: Make hero full-screen with centered title over video
+- 2026-01-30 | f2d1abe | refine: Simplify hero text and use optimized MP4 video
+- 2026-01-30 | 4f0914f | fix: Correct video filename and remove hero action buttons
+- 2026-01-30 | 6f1d854 | feat: Replace hero slider with video background
+- 2026-01-30 | 21ed12e | reorganize: Reorder sections to Hero  Proyectos  Bancos  Team  Misi├│n y Visi├│n  CTA  Footer
+- 2026-01-30 | 061658a | design: Add footer with 2-column layout (contact + map)
+- 2026-01-30 | f9eef9a | design: Redesign Mission & Vision section
+- 2026-01-30 | 131d9c7 | design: Improve trust bar (financial partners carousel)
+- 2026-01-30 | 333dc1c | design: Redesign projects grid to highlight main two projects
+- 2026-01-30 | 146bce2 | remove: Delete Caught on Camera social feed section
+- 2026-01-30 | b4bddbc | redesign: Change team section - remove emails, add Consulta button
+- 2026-01-29 | ea6e961 | feat: Migrate backend from PHP to Node.js with Express
+- 2026-01-28 | 9660098 | Fix: Configure Vercel to deploy frontend only (PHP not supported)
+- 2026-01-28 | 4448153 | Fix: Replace placeholder URLs with local property images in social feed
+- 2026-01-28 | d3c6aa8 | docs: Add comprehensive API routing fix documentation
+- 2026-01-28 | 1d267b7 | chore: Add index.php redirect and update vhost error handling
+- 2026-01-28 | b0254bb | fix: Resolve API routing and configuration issues - Apache vhost and .htaccess properly configured, API router functional
+- 2026-01-27 | 2cc62b0 | fix: Update API configuration to use unified /api/ endpoint
+- 2026-01-27 | 7ff7350 | fix: Improve .htaccess routing for /cms/, /api/, /backend/ folders
+- 2026-01-27 | d402dea | fix: Exclude /cms/, /api/, /backend/ from SPA routing rewrite
+- 2026-01-27 | da48110 | feat: Implement CMS admin panel for social posts management
+- 2026-01-27 | 75d00b7 | feat: Add Vercel serverless functions for API endpoints (social-posts, properties, testimonials)
+- 2026-01-27 | a63cb16 | cleanup: Remove old PNG team images
+- 2026-01-27 | 4f39043 | feat: Update team images to WebP and remove empty placeholder cards
+- 2026-01-27 | 8b4fab2 | feat: Update team member images and names
+- 2026-01-27 | ba5a31e | trigger: Force Vercel redeploy with WebP images
+- 2026-01-27 | 6634dad | chore: Add image conversion script for AVIF to WebP conversion
+- 2026-01-27 | 9446573 | feat: Convert AVIF images to WebP format for better Vercel compatibility
+- 2026-01-27 | c3bd7ce | trigger: Force Vercel redeploy to include new images
+- 2026-01-27 | 43c1873 | fix: Include property and testimonial images in repository for Vercel deployment
+- 2026-01-27 | 08336cd | docs: Add executive summary for stakeholders
+- 2026-01-26 | ddd9016 | config: Fix Vercel deployment to include all frontend assets
+- 2026-01-26 | 8db5ae8 | fix: Use relative paths in manifest for Vercel compatibility
+- 2026-01-26 | 2a313ea | fix: Update vercel.json to correctly serve frontend directory
+- 2026-01-26 | aa7d8b3 | fix: Vercel deployment routing and config for demo mode
+- 2026-01-26 | 05a6ba8 | config: Add Vercel deployment configuration
+- 2026-01-26 | c336119 | feat: Add property image modal with gallery navigation and fix webmanifest paths
+- 2026-01-26 | 94ff58d | Fix: Apache vhost configuration and .htaccess routing for SPA - JavaScript now loads correctly
+- 2026-01-26 | 801bdfb | Configure Apache vhost and .htaccess for proper routing - Email system fully functional
+- 2026-01-26 | 5e29e22 | Fix: Use 'title' column instead of 'name' in properties query for email notifications
+- 2026-01-26 | 45173cf | Phase 2 Activation: Gmail App Password configured, SMTP with intelligent fallback to file logging, system tested and working
+- 2026-01-22 | 2b8ae45 | Phase 2 Documentation: Complete email notifications guide and system overview
+- 2026-01-22 | f15a6e3 | Fix: Create logs directory for email notifications
+- 2026-01-22 | 200f225 | Phase 2 Complete: Email Notifications System + GTM Integration
+- 2026-01-14 | a9d7807 | Phase 1 Complete: Form testing, SEO optimization, documentation & email setup (Phase 2 preparation)
+- 2026-01-14 | 87c6cfa | Actualizar landing page: reordenar secciones, ajustar spacing, mejorar footer y formulario
+- 2026-01-14 | c9dfe3b | Update: Increase partner logos size by additional 5%
+- 2026-01-14 | 915adf7 | Update: Reorder sections - Caught on Camera before Testimonials
+- 2026-01-14 | dd3e8e3 | Add: Social feed posts from Instagram and TikTok
+- 2026-01-14 | c0aa050 | Update: Improve spacing and layout between sections
+- 2026-01-13 | e1b5298 | Add: Property image carousel with modal feature
+- 2026-01-13 | 6967313 | Update: Property locations, price display, and price box styling
+- 2026-01-13 | 44e3133 | Fix: Change image paths to relative URLs
+- 2026-01-13 | 57f1bdd | Fix: Update image paths to absolute URLs
+- 2026-01-13 | a058da9 | Fix: Correct element selectors in property loader
+- 2026-01-13 | 7406e76 | Fix: Remove duplicate properties section
+- 2026-01-13 | 48ca4ab | Fix: View all button event listener with improved debugging
+- 2026-01-13 | b47ef79 | Add: YouTube channel link and Matterport 3D tour links
+- 2026-01-13 | 3c962ab | Update: Real property data with images and fixed encoding
+- 2026-01-13 | af8ce76 | feat: opci├│n A - mock data con 9 proyectos y toggle view all/less
+- 2026-01-13 | 1005d49 | design: ajustar hero - aumentar padding-top 10%, reducir padding-bottom 10%, igualar titulo a 3rem, reducir botones
+- 2026-01-13 | bf6618a | Revert "design: header transparente con fondo blanco al hacer scroll"
+- 2026-01-13 | c32c761 | design: header transparente con fondo blanco al hacer scroll
+- 2026-01-13 | bcc8dd6 | design: reducir hero 10% m├ís para 100% zoom + reordenar slider seg├║n preferencia
+- 2026-01-13 | e611966 | design: optimizar hero 15% m├ís - ajustar espacios, tipograf├¡a y stats para 100% zoom
+- 2026-01-13 | d092df0 | design: compactar hero - reducir padding, tama├▒o de fuente, gaps y botones
+- 2026-01-13 | 76ac2e9 | feat: simplificar hero - eliminar stats/badge, reducir texto, botones redirigen a contacto
+- 2026-01-13 | c255b99 | fix: resolver todos los warnings - 0 errors, 0 warnings restantes
+- 2026-01-13 | f782a0e | fix: arreglar todos los warnings - CSS inline, rel noopener, webkit backdrop-filter
+- 2026-01-13 | 213e7ca | feat: hero animation sincronizada con logos (60 FPS)
+- 2026-01-13 | a7232ab | fix: Unificar APIs, a├▒adir notificaci├│n email y config din├ímico
+- 2026-01-12 | e711de8 | feat: integrate mission and vision PNG icons
+- 2026-01-12 | a9da672 | feat: integrate mission and vision PNG icons
+- 2026-01-12 | 4931e32 | feat: footer logo with white text and hero animation structure
+- 2026-01-12 | 232cfd5 | feat: implement director's design changes
+- 2026-01-12 | 7a67b25 | fix: correct properties grid ID from kebab-case to camelCase
+- 2026-01-12 | 3c5206a | fix: correct property-loader.js structure and syntax errors
+- 2026-01-12 | ca6513b | feat: add database configuration file
+- 2026-01-12 | ef713c0 | fix: add SOCIAL_POSTS endpoint and database config file
+- 2026-01-12 | 582a4b7 | fix: resolve Git merge conflicts in JS files
+- 2026-01-12 | 992bbe4 | fix: replace TRUNCATE with DELETE to respect FK constraints
+- 2026-01-12 | f095c53 | chore: update social posts with placeholder images
+- 2026-01-12 | fde193c | feat: add properties section between trust bar and vision/mission
+- 2026-01-12 | c2af168 | docs: comprehensive README update with detailed installation and troubleshooting
+- 2026-01-12 | 9dff6a0 | feat: social media feed system and UI improvements
+- 2026-01-12 | 03392ed | actualizacion de imagenes en carpeta de partners
+- 2026-01-12 | 09522fd | feat: reorganizaci├│n formulario contacto, secci├│n visi├│n/misi├│n y actualizaci├│n bancos
+- 2026-01-12 | 3fe8093 | add imagenes de brokers
+- 2026-01-12 | 93710b0 | chore: add .gitkeep files to track empty directories (team and properties folders)
+- 2026-01-12 | 3c03cd3 | actualizacion de repositorio
+- 2026-01-12 | f80620b | WIP: cambios locales antes de pull
+- 2026-01-12 | 2a3a6b9 | feat: WhatsApp integration, team section, social media updates and hero slider improvements
+- 2026-01-11 | 1126057 | feat: Fase 2 completa - Backend MySQL + Hero Slider animado
+- 2026-01-09 | 2206129 | feat: Preparacion para produccion - Fase 1 completa
+- 2026-01-08 | ed8f151 | Primer commit del proyecto
+- 2026-01-08 | 5d8aba5 | first commit

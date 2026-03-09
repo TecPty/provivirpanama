@@ -42,11 +42,12 @@
     grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: var(--spacing-3xl);
     margin-bottom: var(--spacing-3xl);
+    align-items: start;
 }
 
 .footer__logo-wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
 }
