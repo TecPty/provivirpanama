@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             renderer: 'svg',
             loop: true,
             autoplay: true,
-            path: './assets/images/icons/Hey.json'
+            path: './assets/images/icons/Login.json'
         });
     });
 
@@ -160,6 +160,10 @@ function openProjectModal(complexKey) {
             const projectEl = document.createElement('div');
             projectEl.className = 'project-item';
 
+            // Mensaje personalizado de WhatsApp por modelo
+            const whatsappMessage = `Hola, estoy interesado en el *${project.name}* de *${complexData.title}*. ¿Podrían brindarme más información?`;
+            const whatsappLink = `https://wa.me/507${project.whatsapp.replace('-', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+
             const projectHTML = `
                 <div class="project-item__content">
                     <h3 class="project-item__name">${project.name}</h3>
@@ -170,14 +174,14 @@ function openProjectModal(complexKey) {
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--location"
                            title="Ver ubicación">
-                            <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/location.json"></div>
+                            <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/Location-v2.json"></div>
                         </a>
-                        <a href="https://wa.me/507${project.whatsapp.replace('-', '')}" 
+                        <a href="${whatsappLink}" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--whatsapp"
                            title="Contactar por WhatsApp">
-                            <div class="project-item__lottie-icon" data-lottie="chat" data-path="./assets/images/icons/chat.json"></div>
+                            <div class="project-item__lottie-icon" data-lottie="chat" data-path="./assets/images/icons/Chat-v2.json"></div>
                         </a>
                     </div>
                 </div>
