@@ -116,6 +116,12 @@ const leadValidation = [
     .trim()
     .isLength({ max: 50 })
     .withMessage('Estabilidad laboral inválida'),
+  
+  body('advisor')
+    .optional({ checkFalsy: true })
+    .trim()
+    .isLength({ max: 100 })
+    .withMessage('Asesor inválido'),
     
   body('project')
     .optional({ checkFalsy: true })
@@ -226,6 +232,7 @@ router.post('/', leadValidation, async (req, res) => {
       property_id,
       salary,
       employment,
+      advisor,
       project,
       utm_source,
       utm_medium,
@@ -259,6 +266,7 @@ router.post('/', leadValidation, async (req, res) => {
         message,
         salary,
         employment_status,
+        advisor,
         project_name,
         property_id,
         utm_source,
@@ -273,7 +281,7 @@ router.post('/', leadValidation, async (req, res) => {
         msclkid,
         landing_page,
         referrer
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         name,
         email,
@@ -281,6 +289,7 @@ router.post('/', leadValidation, async (req, res) => {
         message,
         salary || null,
         employment || null,
+        advisor || null,
         project || null,
         property_id || null,
         utm_source || null,

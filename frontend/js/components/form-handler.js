@@ -219,6 +219,7 @@ const FormHandler = (() => {
             property_id: propertyId,
             salary: formData.get('salary') || null,
             employment: formData.get('employment') || null,
+            advisor: formData.get('advisor') || null,
             project: projectSlug || '',
             website: formData.get('website') || '',
             utm_source: utmParams.utm_source,
@@ -296,6 +297,32 @@ const FormHandler = (() => {
     };
     
     /**
+     * Handle advisor button clicks
+     */
+    const handleAdvisorSelection = () => {
+        const advisorButtons = document.querySelectorAll('[data-advisor]');
+        const advisorSelect = document.getElementById('advisor');
+        
+        if (!advisorSelect) return;
+        
+        advisorButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const advisorName = button.dataset.advisor;
+                if (advisorName) {
+                    // Pre-select the advisor in the form
+                    advisorSelect.value = advisorName;
+                    
+                    // Add a visual feedback (optional)
+                    advisorSelect.classList.add('pre-selected');
+                    setTimeout(() => {
+                        advisorSelect.classList.remove('pre-selected');
+                    }, 1000);
+                }
+            });
+        });
+    };
+    
+    /**
      * Initialize form handler
      */
     const init = () => {
@@ -303,6 +330,9 @@ const FormHandler = (() => {
         
         // Lead form submission
         leadForm.addEventListener('submit', handleLeadFormSubmit);
+        
+        // Handle advisor selection from team section
+        handleAdvisorSelection();
         
         // Clear errors on input and add real-time validation on blur
         const inputs = leadForm.querySelectorAll('input, select, textarea');

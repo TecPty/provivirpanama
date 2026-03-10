@@ -273,6 +273,12 @@
     background-size: 16px;
 }
 
+.form-select.pre-selected {
+    border-color: #4caf50;
+    background-color: #f1f8f4;
+    transition: all 0.3s ease;
+}
+
 .form-textarea {
     resize: vertical;
     min-height: 240px;
