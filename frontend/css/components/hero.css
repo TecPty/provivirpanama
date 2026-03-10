@@ -87,6 +87,10 @@
     display: block;
 }
 
+.hero__title--hidden {
+    display: none;
+}
+
 .hero__description {
     display: none;
 }

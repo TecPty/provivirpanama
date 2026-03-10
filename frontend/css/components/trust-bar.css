@@ -85,6 +85,12 @@
         flex-wrap: nowrap;
         overflow-x: auto;
         padding: 0 var(--spacing-sm);
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .trust-bar__logos::-webkit-scrollbar {
+        display: none;
     }
     
     .trust-bar__logo {

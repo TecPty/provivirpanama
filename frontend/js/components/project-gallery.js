@@ -43,14 +43,14 @@ const projectComplexes = {
         projects: [
             {
                 name: 'Modelo Roble',
-                description: 'Terrenos hasta 181m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
+                description: 'Terrenos hasta 181m². 2 hab, baño.',
                 image: './assets/images/properties/villas-del-este-modelo-roble.webp',
                 whatsapp: '6371-2652',
                 location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
             },
             {
                 name: 'Modelo Cerezo',
-                description: 'Terrenos hasta 221m². 3 habitaciones, 2 baños, sala/comedor, cocina, lavandería y estacionamiento.',
+                description: 'Terrenos hasta 221m². 3 hab, 2 baños.',
                 image: './assets/images/properties/villas-del-este-modelo-cerezo.webp',
                 whatsapp: '6371-2652',
                 location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
@@ -62,14 +62,14 @@ const projectComplexes = {
         projects: [
             {
                 name: 'Modelo Córdoba',
-                description: 'Terrenos hasta 233m². 3 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
+                description: 'Terrenos hasta 233m². 3 hab, baño.',
                 image: './assets/images/properties/ciudad-del-este-modelo-cordoba.webp',
                 whatsapp: '6371-2652',
                 location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
             },
             {
                 name: 'Modelo Granada',
-                description: 'Terrenos hasta 135m². 2 habitaciones, 1 baño, sala/comedor, cocina, lavandería y estacionamiento.',
+                description: 'Terrenos hasta 135m². 2 hab, baño.',
                 image: './assets/images/properties/ciudad-del-este-modelo-granada.webp',
                 whatsapp: '6371-2652',
                 location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
@@ -160,10 +160,6 @@ function openProjectModal(complexKey) {
             const projectEl = document.createElement('div');
             projectEl.className = 'project-item';
 
-            // Mensaje personalizado de WhatsApp por modelo
-            const whatsappMessage = `Hola, estoy interesado en el *${project.name}* de *${complexData.title}*. ¿Podrían brindarme más información?`;
-            const whatsappLink = `https://wa.me/507${project.whatsapp.replace('-', '')}?text=${encodeURIComponent(whatsappMessage)}`;
-
             const projectHTML = `
                 <div class="project-item__content">
                     <h3 class="project-item__name">${project.name}</h3>
@@ -176,7 +172,7 @@ function openProjectModal(complexKey) {
                            title="Ver ubicación">
                             <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/Location-v2.json"></div>
                         </a>
-                        <a href="${whatsappLink}" 
+                        <a href="https://wa.me/507${project.whatsapp.replace('-', '')}" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--whatsapp"

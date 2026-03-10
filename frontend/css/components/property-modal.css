@@ -131,6 +131,12 @@
     border-top: 1px solid #333;
     overflow-x: auto;
     max-height: 100px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.modal-thumbnails::-webkit-scrollbar {
+    display: none;
 }
 
 .modal-thumbnail {
