@@ -343,18 +343,23 @@
 
 @media (max-width: 768px) {
     .team {
-        padding: 0 0 2rem;
+        padding: 2.5rem 0 2rem;
     }
 
     .team .section__title {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
         font-size: 1.5rem;
+        color: #0d1f3c;
+        text-align: center;
     }
 
     .team .section__subtitle {
         margin: 0 auto 1.5rem;
         font-size: 0.75rem;
+        color: #6C757D;
         padding: 0 1.5rem;
+        text-align: center;
+        line-height: 1.6;
     }
 
     .team__carousel {
@@ -363,95 +368,126 @@
 
     .team__carousel-track-container {
         max-width: 100%;
-        padding: 0 1.5rem;
-        overflow-y: visible !important;
-        overflow-x: visible !important;
+        padding: 0 10px;
+        overflow: visible !important;
         display: block !important;
         height: auto !important;
     }
 
     .team__carousel-track {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 0.75rem;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
         padding: 0 !important;
         height: auto !important;
         width: 100% !important;
         transform: none !important;
         transition: none !important;
-        justify-content: initial !important;
-        align-items: initial !important;
+        flex-direction: unset !important;
     }
 
+    /* Mobile card — desktop style scaled down ~10% */
     .team-card {
-        padding: 0.5rem !important;
+        background: #ffffff !important;
+        border-radius: 18px !important;
+        padding: 0.875rem !important;
+        text-align: center !important;
+        border: none !important;
+        box-shadow: 0 4px 16px rgba(0, 30, 80, 0.08) !important;
         flex: none !important;
         max-width: none !important;
         min-width: 0 !important;
         width: 100% !important;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        opacity: 1 !important;
+        transform: scale(1) !important;
+        transition: all 0.3s ease !important;
     }
-    
+
     .team-card__image-wrapper {
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: 3/4;
-        border-radius: 8px;
-        margin: 0 auto 0.5rem !important;
-        border-width: 2px;
+        width: 90px !important;
+        height: 100px !important;
+        min-height: unset !important;
+        aspect-ratio: unset !important;
+        border-radius: 7px !important;
+        margin: 0 auto 0.75rem !important;
+        border: 3px solid #003a7a !important;
+        overflow: hidden !important;
+        background: linear-gradient(160deg, #1a3a5c 0%, #0d1f3c 100%) !important;
+        flex-shrink: 0;
     }
 
     .team-card__image {
-        border-radius: 6px;
         width: 100% !important;
         height: 100% !important;
-        object-fit: cover;
+        object-fit: cover !important;
+        object-position: top center !important;
     }
-    
+
     .team-card__name {
-        font-size: 0.65rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-        text-align: center;
-        line-height: 1.2;
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        color: #0d1f3c !important;
+        margin-bottom: 0.2rem !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
     }
-    
+
     .team-card__role {
-        font-size: 0.5rem;
-        margin-bottom: 0.5rem;
-        letter-spacing: 0.2px;
-        text-align: center;
-        line-height: 1.2;
-        text-transform: uppercase;
+        font-size: 7px !important;
+        color: #6C757D !important;
+        letter-spacing: 0.3px !important;
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+        font-weight: 400 !important;
     }
 
     .team-card .btn--small {
         display: inline-block !important;
-        font-size: 0.5rem;
-        padding: 0.35rem 0;
-        letter-spacing: 0.3px;
-        width: 100%;
+        font-size: 8px !important;
+        font-weight: 600 !important;
+        color: #003a7a !important;
+        border: 1.5px solid rgba(0, 40, 100, 0.18) !important;
+        border-radius: 50px !important;
+        background: transparent !important;
+        padding: 3px 0 !important;
+        letter-spacing: 0.8px !important;
+        text-transform: uppercase !important;
+        text-decoration: none !important;
+        width: 100% !important;
+        text-align: center !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .team-card .btn--small:hover {
+        background: #003a7a !important;
+        color: #ffffff !important;
+        border-color: #003a7a !important;
     }
 
     .team__carousel-btn {
         display: none !important;
     }
 
-    .team__carousel--thumbs {
-        padding-left: 90px;
-    }
-
-    .team__thumb {
-        width: 56px;
-        height: 56px;
-        border-radius: 10px;
-    }
-
     .team__grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2.5rem;
+    }
+}
+
+/* Mobile wide: 3 columns when ≥ 600px within mobile range */
+@media (min-width: 600px) and (max-width: 768px) {
+    .team__carousel-track {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .team-card__image-wrapper {
+        width: 80px !important;
+        height: 90px !important;
     }
 }
 
@@ -482,10 +518,27 @@
     }
 }
 
-/* Tablet / iPad */
+/* Tablet / iPad (769px - 1023px) */
 @media (min-width: 769px) and (max-width: 1023px) {
     .team {
-        padding: 1rem 0 2rem;
+        padding: var(--section-padding-desktop, 5rem) 0;
+    }
+
+    .team .section__title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0d1f3c;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .team .section__subtitle {
+        font-size: 0.875rem;
+        color: #6C757D;
+        margin: 0 auto 3.5rem;
+        padding: 0 1.5rem;
+        text-align: center;
+        line-height: 1.6;
     }
 
     .team__carousel {
@@ -495,63 +548,107 @@
     .team__carousel-track-container {
         max-width: 100%;
         padding: 0 1.5rem;
-        overflow-y: visible;
+        overflow: visible !important;
+        display: block !important;
+        height: auto !important;
     }
 
     .team__carousel-track {
         display: grid !important;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.25rem;
-        padding: 0;
-        height: auto;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1.5rem !important;
+        padding: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+        transform: none !important;
+        transition: none !important;
+        flex-direction: unset !important;
     }
 
+    /* Identical to desktop card style */
     .team-card {
-        padding: 1rem 0.75rem 0.875rem;
-        flex: none;
-        max-width: none;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        background: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 1.25rem 1rem !important;
+        text-align: center !important;
+        border: none !important;
+        box-shadow: 0 4px 16px rgba(0, 30, 80, 0.08) !important;
+        flex: none !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
         opacity: 1 !important;
         transform: scale(1) !important;
+        transition: all 0.3s ease !important;
     }
-    
+
+    .team-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 8px 24px rgba(0, 30, 80, 0.15) !important;
+    }
+
     .team-card__image-wrapper {
-        width: 140px;
-        height: 170px;
-        border-radius: 14px;
-        margin: 0 auto 0.75rem;
-        border-width: 3px;
+        width: 100% !important;
+        height: 200px !important;
+        min-height: unset !important;
+        aspect-ratio: unset !important;
+        border-radius: 8px !important;
+        margin: 0 auto 0.875rem !important;
+        border: 3px solid #003a7a !important;
+        overflow: hidden !important;
+        background: linear-gradient(160deg, #1a3a5c 0%, #0d1f3c 100%) !important;
     }
 
     .team-card__image {
-        border-radius: 12px;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: top center !important;
     }
-    
+
     .team-card__name {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin-bottom: 0.25rem;
-        text-align: center;
-        line-height: 1.2;
+        font-size: 0.95rem !important;
+        font-weight: 600 !important;
+        color: #0d1f3c !important;
+        margin-bottom: 0.25rem !important;
+        text-align: center !important;
+        line-height: 1.2 !important;
     }
-    
+
     .team-card__role {
-        font-size: 0.75rem;
-        margin-bottom: 0.75rem;
-        letter-spacing: 0.5px;
-        text-align: center;
-        line-height: 1.2;
-        text-transform: uppercase;
+        font-size: 0.625rem !important;
+        color: #6C757D !important;
+        letter-spacing: 0.5px !important;
+        margin-bottom: 0.75rem !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+        font-weight: 400 !important;
     }
 
     .team-card .btn--small {
         display: inline-block !important;
-        font-size: 0.625rem;
-        padding: 0.625rem 0;
-        letter-spacing: 1px;
+        font-size: 0.625rem !important;
+        font-weight: 600 !important;
+        color: #003a7a !important;
+        border: 1.5px solid rgba(0, 40, 100, 0.18) !important;
+        border-radius: 50px !important;
+        background: transparent !important;
+        padding: 0.625rem 0 !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        text-decoration: none !important;
+        width: 100% !important;
+        text-align: center !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .team-card .btn--small:hover {
+        background: #003a7a !important;
+        color: #ffffff !important;
+        border-color: #003a7a !important;
     }
 
     .team__carousel-btn {
