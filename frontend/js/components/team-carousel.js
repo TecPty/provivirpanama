@@ -9,6 +9,12 @@
     'use strict';
 
     window.initTeamCarousel = function() {
+        // CAROUSEL COMPLETAMENTE DESHABILITADO - Vista estática en todas las resoluciones
+        console.log('✅ Carousel deshabilitado - Vista estática de todos los asesores');
+        return;
+        
+        // Código original del carousel comentado
+        /*
         // Solo ejecutar en desktop (>1024px)
         if (window.innerWidth <= 1024) {
             // Limpiar estilos inline en mobile/tablet para que CSS tome control
@@ -20,6 +26,7 @@
             console.log('✅ Vista estática en mobile/tablet - JavaScript carousel deshabilitado');
             return;
         }
+        */
 
         const carousel = document.querySelector('.team__carousel');
         if (!carousel) return;

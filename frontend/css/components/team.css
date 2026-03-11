@@ -565,71 +565,73 @@
         padding: var(--section-padding-desktop) 0;
     }
 
+    /* Vista estática - Grid de 6 columnas para mostrar todos los asesores en una línea */
     .team__carousel-track {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
         width: 100%;
-        justify-content: center;
-        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
 
-    /* Estilos base para cards en desktop */
+    /* Todos los cards con el mismo estilo - sin efectos de carousel */
     .team-card {
-        padding: 1.25rem 1rem;
-        flex: 0 0 200px;
-        opacity: 0.42;
-        transform: scale(0.94);
-    }
-
-    /* Card central - destaca */
-    .team-card.center {
-        flex: 0 0 260px;
-        padding: 1.25rem 1.375rem;
+        padding: 1.25rem 1.25rem;
         opacity: 1;
-        transform: scale(1);
-        box-shadow: 0 16px 56px rgba(0, 30, 80, 0.13) !important;
+        transform: none;
+        transition: all 0.3s ease;
     }
 
-    /* Cards laterales */
+    .team-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 56px rgba(0, 30, 80, 0.18) !important;
+    }
+
+    /* Eliminar estilos de carousel (center/side) */
+    .team-card.center,
     .team-card.side {
-        flex: 0 0 200px;
-        opacity: 0.42;
-        transform: scale(0.94);
+        flex: none;
+        padding: 1.25rem 1.25rem;
+        opacity: 1;
+        transform: none;
+        box-shadow: 0 8px 32px rgba(0, 30, 80, 0.08);
     }
 
-    /* Imagen de card central más grande */
-    .team-card.center .team-card__image-wrapper {
-        height: 290px;
+    .team-card.center:hover,
+    .team-card.side:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 56px rgba(0, 30, 80, 0.18) !important;
     }
 
-    /* Imagen de cards laterales */
+    /* Imágenes consistentes */
+    .team-card__image-wrapper,
+    .team-card.center .team-card__image-wrapper,
     .team-card.side .team-card__image-wrapper {
-        height: 220px;
+        height: 260px;
     }
 
-    /* Nombres */
-    .team-card.center .team-card__name {
-        font-size: 1.2rem;
-    }
-
+    /* Nombres consistentes */
+    .team-card__name,
+    .team-card.center .team-card__name,
     .team-card.side .team-card__name {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
-    /* Roles */
-    .team-card.center .team-card__role {
-        margin-bottom: 1rem;
-    }
-
+    /* Roles consistentes */
+    .team-card__role,
+    .team-card.center .team-card__role,
     .team-card.side .team-card__role {
-        margin-bottom: 0;
+        margin-bottom: 0.75rem;
     }
 
     .team__carousel {
-        padding: 0 40px;
+        padding: 0;
     }
 
     .team__carousel-btn {
-        width: 44px;
-        height: 44px;
+        display: none !important;
     }
 
     .team__grid {

@@ -37,6 +37,9 @@ function loadLottieAnimations() {
 }
 
 // Definición de proyectos por complejo
+const DEFAULT_PROJECT_LOCATION = 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic';
+const VILLAS_DEL_ESTE_LOCATION = DEFAULT_PROJECT_LOCATION;
+
 const projectComplexes = {
     villas: {
         title: 'Villas del Este',
@@ -46,14 +49,14 @@ const projectComplexes = {
                 description: 'Terrenos hasta 181m². 2 hab, baño.',
                 image: './assets/images/properties/villas-del-este-modelo-roble.webp',
                 whatsapp: '6371-2652',
-                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
+                location: VILLAS_DEL_ESTE_LOCATION
             },
             {
                 name: 'Modelo Cerezo',
                 description: 'Terrenos hasta 221m². 3 hab, 2 baños.',
                 image: './assets/images/properties/villas-del-este-modelo-cerezo.webp',
                 whatsapp: '6371-2652',
-                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic' // TODO: Actualizar con link de Villas del Este si es diferente
+                location: VILLAS_DEL_ESTE_LOCATION
             }
         ]
     },
@@ -65,14 +68,14 @@ const projectComplexes = {
                 description: 'Terrenos hasta 233m². 3 hab, baño.',
                 image: './assets/images/properties/ciudad-del-este-modelo-cordoba.webp',
                 whatsapp: '6371-2652',
-                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
+                location: DEFAULT_PROJECT_LOCATION
             },
             {
                 name: 'Modelo Granada',
                 description: 'Terrenos hasta 135m². 2 hab, baño.',
                 image: './assets/images/properties/ciudad-del-este-modelo-granada.webp',
                 whatsapp: '6371-2652',
-                location: 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic'
+                location: DEFAULT_PROJECT_LOCATION
             }
         ]
     }
@@ -160,6 +163,9 @@ function openProjectModal(complexKey) {
             const projectEl = document.createElement('div');
             projectEl.className = 'project-item';
 
+            const whatsappMessage = encodeURIComponent(`Hola, estoy interesado/a en el ${project.name}. Me gustaría recibir más información.`);
+            const whatsappUrl = `https://wa.me/507${project.whatsapp.replace('-', '')}?text=${whatsappMessage}`;
+
             const projectHTML = `
                 <div class="project-item__content">
                     <h3 class="project-item__name">${project.name}</h3>
@@ -172,7 +178,7 @@ function openProjectModal(complexKey) {
                            title="Ver ubicación">
                             <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/Location-v2.json"></div>
                         </a>
-                        <a href="https://wa.me/507${project.whatsapp.replace('-', '')}" 
+                        <a href="${whatsappUrl}" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--whatsapp"
