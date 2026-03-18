@@ -38,7 +38,7 @@ function loadLottieAnimations() {
 
 // Definición de proyectos por complejo
 const DEFAULT_PROJECT_LOCATION = 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic';
-const VILLAS_DEL_ESTE_LOCATION = DEFAULT_PROJECT_LOCATION;
+const VILLAS_DEL_ESTE_LOCATION = 'https://goo.gl/maps/rgRH94BPhwnXBhZGA';
 
 const projectComplexes = {
     villas: {

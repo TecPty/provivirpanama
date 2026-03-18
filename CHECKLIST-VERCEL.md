@@ -110,7 +110,7 @@ Ejemplo: p3plzcpnl504722.prod.phx3.secureserver.net
 
 DB_USER = dev_provivir_user
 
-DB_PASSWORD = $c.r2+1(4vN^
+DB_PASSWORD = 
 
 DB_NAME = provivir_db
 
