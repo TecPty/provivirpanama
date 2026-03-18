@@ -85,3 +85,5 @@ Desktop.ini
 
 .vercel
 .env*.local
+
+*.php
