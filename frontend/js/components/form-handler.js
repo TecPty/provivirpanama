@@ -107,6 +107,7 @@ const FormHandler = (() => {
         if (!leadForm || !formSuccess) return;
         
         leadForm.style.display = 'none';
+        formSuccess.classList.remove('hidden');
         formSuccess.style.display = 'flex';
         // El mensaje de éxito ahora es permanente para dar mayor confianza.
     };
