@@ -91,7 +91,7 @@
 
 .contact-form {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     align-items: start;
 }
@@ -100,6 +100,25 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.06rem;
+}
+
+.form-intro {
+    margin-bottom: 0.35rem;
+}
+
+.form-intro__title {
+    margin: 0 0 0.55rem;
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.form-intro__text {
+    margin: 0;
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.45;
 }
 
 .form-row--two {
@@ -190,6 +209,52 @@
     transition: all 0.3s ease;
     background: #fafafa;
     color: #333;
+}
+
+.input-with-prefix {
+    display: flex;
+    align-items: stretch;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: #fafafa;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.input-prefix {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 58px;
+    padding: 0 0.75rem;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #334155;
+    background: #eef2f7;
+    border-right: 1px solid #d9dde3;
+}
+
+.input-with-prefix .form-input {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+}
+
+.input-with-prefix:hover {
+    border-color: #bdbdbd;
+    background: white;
+}
+
+.input-with-prefix:focus-within {
+    border-color: #003a7a;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(0, 58, 122, 0.08);
+}
+
+.input-with-prefix.error {
+    border-color: #d32f2f;
+    background: #ffebee;
 }
 
 .form-select {
@@ -293,6 +358,11 @@
     gap: 0.75rem;
 }
 
+.form-left-column--single {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
 .form-right-column {
     display: flex;
     flex-direction: column;
@@ -310,6 +380,54 @@
 
 .form-group--checkbox {
     margin-top: 0.5rem;
+}
+
+.radio-group {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.radio-group legend {
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #003a7a;
+    cursor: pointer;
+}
+
+.radio-group.error {
+    padding: 0.5rem 0.65rem;
+    border: 1px solid #d32f2f;
+    border-radius: 10px;
+    background: #ffebee;
+}
+
+.form-note {
+    margin: 0;
+    font-size: 0.84rem;
+    color: #4b5563;
+    line-height: 1.45;
+}
+
+.form-note--muted {
+    color: #6b7280;
 }
 .form-success {
     display: none;
@@ -417,15 +535,15 @@
 }
 
 .btn--primary {
-    background: linear-gradient(135deg, #003a7a 0%, #004c99 100%);
+    background: #0f4fa8;
     color: white;
-    box-shadow: 0 4px 14px rgba(0, 58, 122, 0.3);
+    box-shadow: none;
 }
 
 .btn--primary:hover {
-    background: linear-gradient(135deg, #002a5a 0%, #003a7a 100%);
-    box-shadow: 0 6px 20px rgba(0, 58, 122, 0.4);
-    transform: translateY(-2px);
+    background: #0d468f;
+    box-shadow: none;
+    transform: none;
 }
 
 .btn--primary:active {
@@ -433,8 +551,11 @@
 }
 
 .btn--large {
-    padding: 0.56rem 1.25rem;
-    font-size: 0.8rem;
+    padding: 0.8rem 1.25rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 .btn--block {
@@ -505,12 +626,8 @@
 /* Tablet */
 @media (min-width: 768px) {
     .contact-wrapper {
-        grid-template-columns: 1fr 380px;
+        grid-template-columns: 1fr;
         gap: 2.5rem;
-    }
-
-    .form-row--two {
-        grid-template-columns: 1fr 1fr;
     }
 
     .cta-section {
@@ -575,23 +692,17 @@
         padding: 1.5rem;
     }
 
-    .form-right-column {
-        gap: 0.8rem;
-    }
-
-    .form-right-column .form-textarea {
-        min-height: 180px;
-    }
-
-    .form-right-column button {
-        align-self: stretch;
-        width: 100%;
-        margin-top: 0.6rem;
-    }
-
     .form-input,
     .form-select,
     .form-textarea {
+        font-size: 0.92rem;
+    }
+
+    .form-intro__title {
+        font-size: 1.55rem;
+    }
+
+    .form-intro__text {
         font-size: 0.92rem;
     }
 

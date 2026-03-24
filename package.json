@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node api/index.js",
     "dev": "node --watch api/index.js",
-    "frontend": "http-server frontend -p 8080 -c-1",
+    "frontend": "http-server frontend -p 8081 -c-1",
     "dev:all": "echo \"Inicia 2 terminales: 1) npm run dev  2) npm run frontend\"",
     "migrate:advisor": "node migrate-advisor.js",
     "test": "echo \"Error: no test specified\" && exit 1"

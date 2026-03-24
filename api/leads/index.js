@@ -1,4 +1,5 @@
 import { execute, getLeadColumns } from '../../lib/mysql.js';
+import { syncLeadToPipedrive } from '../../lib/pipedrive.js';
 
 const setCors = (res) => {
   res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -75,17 +76,22 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, error: 'Teléfono inválido' });
   }
 
-  if (!message || message.length < 10) {
-    return res.status(400).json({ success: false, error: 'Mensaje inválido' });
+  if (!salary) {
+    return res.status(400).json({ success: false, error: 'Salario mensual inválido' });
+  }
+
+  if (!project) {
+    return res.status(400).json({ success: false, error: 'Ubicación de proyecto inválida' });
   }
 
   const propertyId = Number.isInteger(Number(body.property_id)) && Number(body.property_id) > 0
     ? Number(body.property_id)
     : null;
 
+  const baseMessage = message || `Lead web - Ubicación de proyecto: ${project}. Salario mensual: ${salary}.`;
   const composedMessage = advisor
-    ? `${message}\n\nAsesor de preferencia: ${advisor}`
-    : message;
+    ? `${baseMessage}\n\nAsesor de preferencia: ${advisor}`
+    : baseMessage;
 
   const candidateValues = {
     name,
@@ -132,10 +138,37 @@ export default async function handler(req, res) {
       values
     );
 
+    let crmSync = { synced: false, reason: 'not-attempted' };
+    try {
+      crmSync = await syncLeadToPipedrive({
+        name,
+        email,
+        phone,
+        message: composedMessage,
+        advisor,
+        salary,
+        employment,
+        project,
+        utm_source: candidateValues.utm_source,
+        utm_medium: candidateValues.utm_medium,
+        utm_campaign: candidateValues.utm_campaign,
+        utm_term: candidateValues.utm_term,
+        utm_content: candidateValues.utm_content,
+        gclid: candidateValues.gclid,
+        fbclid: candidateValues.fbclid,
+        landing_page: candidateValues.landing_page,
+        referrer: candidateValues.referrer
+      });
+    } catch (crmError) {
+      console.error('Pipedrive sync failed:', crmError.message);
+      crmSync = { synced: false, reason: 'sync-error' };
+    }
+
     return res.status(201).json({
       success: true,
       message: 'Gracias por tu interés. Te contactaremos pronto.',
-      leadId: result.insertId || null
+      leadId: result.insertId || null,
+      crmSynced: crmSync.synced === true
     });
   } catch (error) {
     if (error.code === 'ER_DUP_ENTRY') {

@@ -16,7 +16,18 @@ const FormHandler = (() => {
         'villas-del-este-modelo-roble': 1,
         'villas-del-este-modelo-cerezo': 2,
         'ciudad-del-este-modelo-cordoba': 3,
-        'ciudad-del-este-modelo-granada': 4
+        'ciudad-del-este-modelo-granada': 4,
+        'area-este': null,
+        'area-oeste': null
+    };
+
+    const PROJECT_LABELS = {
+        'area-este': 'Área Este',
+        'area-oeste': 'Área Oeste',
+        'villas-del-este-modelo-roble': 'Villas del Este - Modelo Roble',
+        'villas-del-este-modelo-cerezo': 'Villas del Este - Modelo Cerezo',
+        'ciudad-del-este-modelo-cordoba': 'Ciudad del Este - Modelo Córdoba',
+        'ciudad-del-este-modelo-granada': 'Ciudad del Este - Modelo Granada'
     };
     
     /**
@@ -40,6 +51,9 @@ const FormHandler = (() => {
      */
     const showError = (input, message) => {
         input.classList.add('error');
+        if (input.parentElement && input.parentElement.classList.contains('input-with-prefix')) {
+            input.parentElement.classList.add('error');
+        }
         
         // Remove existing error message if any
         const existingError = input.parentElement.querySelector('.error-message');
@@ -60,6 +74,9 @@ const FormHandler = (() => {
      */
     const clearError = (input) => {
         input.classList.remove('error');
+        if (input.parentElement && input.parentElement.classList.contains('input-with-prefix')) {
+            input.parentElement.classList.remove('error');
+        }
         const errorMessage = input.parentElement.querySelector('.error-message');
         if (errorMessage) {
             errorMessage.remove();
@@ -139,9 +156,13 @@ const FormHandler = (() => {
     const validateForm = (formData) => {
         let isValid = true;
         const inputs = leadForm.querySelectorAll('input, select, textarea');
+        const projectFieldset = leadForm.querySelector('.radio-group');
         
         // Clear all errors first
         inputs.forEach(input => clearError(input));
+        if (projectFieldset) {
+            clearError(projectFieldset);
+        }
         
         // Validate full name
         const fullName = formData.get('fullName');
@@ -173,19 +194,20 @@ const FormHandler = (() => {
             isValid = false;
         }
         
-        // Validate project
-        const project = formData.get('project');
-        const projectInput = leadForm.querySelector('#project');
-        if (!project) {
-            showError(projectInput, 'Cuéntanos qué proyecto te interesa');
+        // Validate salary
+        const salary = formData.get('salary');
+        const salaryInput = leadForm.querySelector('#salary');
+        if (!salary || Number(salary) <= 0) {
+            showError(salaryInput, 'Ingresa tu salario mensual para evaluar tu perfil');
             isValid = false;
         }
-        
-        // Validate message
-        const message = formData.get('message');
-        const messageInput = leadForm.querySelector('#message');
-        if (!message || message.trim().length < 10) {
-            showError(messageInput, 'Escribe un mensaje de al menos 10 caracteres');
+
+        // Validate project location
+        const projectLocation = formData.get('project');
+        if (!projectLocation) {
+            if (projectFieldset) {
+                showError(projectFieldset, 'Selecciona la ubicación del proyecto que prefieres');
+            }
             isValid = false;
         }
         
@@ -208,6 +230,9 @@ const FormHandler = (() => {
         // Get project slug from form
         const projectSlug = formData.get('project');
         const propertyId = projectSlug ? PROJECT_SLUG_TO_ID[projectSlug] || null : null;
+        const projectLabel = PROJECT_LABELS[projectSlug] || projectSlug || 'No especificado';
+        const salaryValue = formData.get('salary') ? String(formData.get('salary')).trim() : '';
+        const generatedMessage = `Lead web - Ubicación de proyecto: ${projectLabel}. Salario mensual: USD ${salaryValue || 'No especificado'}.`;
         
         // Prepare data - Only send fields that backend expects
         const utmParams = getUTMParams();
@@ -216,11 +241,11 @@ const FormHandler = (() => {
             name: formData.get('fullName').trim(),
             email: formData.get('email').trim(),
             phone: formData.get('phone').trim(),
-            message: formData.get('message').trim(),
+            message: generatedMessage,
             property_id: propertyId,
-            salary: formData.get('salary') || null,
-            employment: formData.get('employment') || null,
-            advisor: formData.get('advisor') || null,
+            salary: salaryValue || null,
+            employment: null,
+            advisor: null,
             project: projectSlug || '',
             website: formData.get('website') || '',
             utm_source: utmParams.utm_source,
@@ -355,6 +380,8 @@ const FormHandler = (() => {
                     showError(e.target, 'Parece que tu correo tiene un error, revísalo por favor');
                 } else if (e.target.id === 'phone' && !isValidPhone(val)) {
                     showError(e.target, 'Verifica el formato, ej: +507 XXXX-XXXX');
+                } else if (e.target.id === 'salary' && Number(val) <= 0) {
+                    showError(e.target, 'Ingresa un salario mensual válido');
                 }
             });
         });
@@ -362,6 +389,16 @@ const FormHandler = (() => {
         console.log('Form handler initialized');
     };
     
+
+        const projectRadios = leadForm.querySelectorAll('input[name="project"]');
+        const projectFieldset = leadForm.querySelector('.radio-group');
+        if (projectFieldset) {
+            projectRadios.forEach((radio) => {
+                radio.addEventListener('change', () => {
+                    clearError(projectFieldset);
+                });
+            });
+        }
     // Public API
     return {
         init

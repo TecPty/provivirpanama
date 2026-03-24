@@ -306,21 +306,19 @@
                 <!-- Left Column: Form (moved first) -->
                 <div class="contact-form-container">
                     <form class="contact-form" id="leadForm">
-                        <!-- Left Column: Input Fields -->
-                        <div class="form-left-column">
+                        <div class="form-left-column form-left-column--single">
+                            <div class="form-intro">
+                                <h3 class="form-intro__title">¡Estás más cerca de tu nuevo hogar!</h3>
+                                <p class="form-intro__text">La información que nos brindas será utilizada únicamente para compartir contigo información sobre nuestros proyectos.</p>
+                            </div>
+
                             <div class="form-row">
                                 <div class="form-group form-group--full">
-                                    <label for="fullName">Nombre Completo <span class="required">*</span></label>
-                                    <input 
-                                        type="text" 
-                                        id="fullName" 
-                                        name="fullName" 
-                                        class="form-input" 
-                                        required
-                                    >
+                                    <label for="fullName">Nombre y Apellido <span class="required">*</span></label>
+                                    <input type="text" id="fullName" name="fullName" class="form-input" autocomplete="name" required>
                                 </div>
                             </div>
-                            
+
                             <!-- Honeypot field (for spam prevention) -->
                             <div class="form-group form-group--honeypot" aria-hidden="true">
                                 <label for="website">Website</label>
@@ -329,109 +327,50 @@
 
                             <div class="form-row">
                                 <div class="form-group form-group--full">
-                                    <label for="email">Email <span class="required">*</span></label>
-                                    <input 
-                                        type="email" 
-                                        id="email" 
-                                        name="email" 
-                                        class="form-input" 
-                                        required
-                                    >
+                                    <label for="email">Correo electrónico <span class="required">*</span></label>
+                                    <input type="email" id="email" name="email" class="form-input" autocomplete="email" required>
                                 </div>
                             </div>
-                            
-                            <div class="form-row form-row--two">
-                                <div class="form-group">
-                                    <label for="phone">Teléfono <span class="required">*</span></label>
-                                    <input 
-                                        type="tel" 
-                                        id="phone" 
-                                        name="phone" 
-                                        class="form-input" 
-                                        required
-                                    >
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="salary">Salario <span class="help-icon" aria-label="Usamos este dato para calcular tu capacidad de pago y ofrecerte las mejores opciones de financiamiento." data-tooltip="Usamos este dato para calcular tu capacidad de pago y ofrecerte las mejores opciones de financiamiento." tabindex="0">ℹ️</span></label>
-                                    <span class="form-hint">Para evaluar opciones de financiamiento.</span>
-                                    <select id="salary" name="salary" class="form-select">
-                                        <option value="">Seleccionar</option>
-                                        <option value="menos-600">&lt; 600</option>
-                                        <option value="601-700">601 - 700</option>
-                                        <option value="701-800">701 - 800</option>
-                                        <option value="801-900">801 - 900</option>
-                                        <option value="901-1000">901 - 1000</option>
-                                        <option value="mas-1000">&gt; 1000</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group form-group--full">
-                                    <label for="employment">Estabilidad Laboral</label>
-                                    <select id="employment" name="employment" class="form-select">
-                                        <option value="">Seleccionar</option>
-                                        <option value="permanente">Permanente</option>
-                                        <option value="temporal">Temporal</option>
-                                        <option value="independiente">Independiente</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group form-group--full">
-                                    <label for="project">Proyecto de Interés <span class="required">*</span></label>
-                                    <select id="project" name="project" class="form-select" required>
-                                        <option value="">Seleccionar</option>
-                                        <optgroup label="Villas del Este">
-                                            <option value="villas-del-este-modelo-roble">Modelo Roble</option>
-                                            <option value="villas-del-este-modelo-cerezo">Modelo Cerezo</option>
-                                        </optgroup>
-                                        <optgroup label="Ciudad del Este">
-                                            <option value="ciudad-del-este-modelo-cordoba">Modelo Córdoba</option>
-                                            <option value="ciudad-del-este-modelo-granada">Modelo Granada</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group form-group--full">
-                                    <label for="advisor">Asesor de Preferencia</label>
-                                    <select id="advisor" name="advisor" class="form-select">
-                                        <option value="">Seleccionar</option>
-                                        <option value="Alanis Gutierrez">Alanis Gutierrez</option>
-                                        <option value="Jacmily Figuera">Jacmily Figuera</option>
-                                        <option value="Anny Navas">Anny Navas</option>
-                                        <option value="Kenia Vergara">Kenia Vergara</option>
-                                        <option value="Alberto Valencia">Alberto Valencia</option>
-                                        <option value="Veronica Barboza">Veronica Barboza</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Right Column: Message & Button -->
-                        <div class="form-right-column">
                             <div class="form-row">
                                 <div class="form-group form-group--full">
-                                    <label for="message">Mensaje <span class="required">*</span></label>
-                                    <textarea 
-                                        id="message" 
-                                        name="message" 
-                                        class="form-textarea" 
-                                        rows="8" 
-                                        required
-                                    ></textarea>
+                                    <label for="phone">Teléfono <span class="required">*</span></label>
+                                    <input type="tel" id="phone" name="phone" class="form-input" autocomplete="tel" required>
                                 </div>
                             </div>
-                            
+
+                            <div class="form-row">
+                                <div class="form-group form-group--full">
+                                    <label for="salary">Salario mensual <span class="required">*</span></label>
+                                    <div class="input-with-prefix">
+                                        <span class="input-prefix">USD</span>
+                                        <input type="number" id="salary" name="salary" class="form-input" min="1" step="1" inputmode="numeric" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <fieldset class="form-group form-group--full radio-group" role="radiogroup" aria-labelledby="project-label">
+                                    <legend id="project-label">Ubicación de Proyecto <span class="required">*</span></legend>
+                                    <label class="radio-option" for="project-east">
+                                        <input type="radio" id="project-east" name="project" value="area-este" required>
+                                        <span>Área Este</span>
+                                    </label>
+                                    <label class="radio-option" for="project-west">
+                                        <input type="radio" id="project-west" name="project" value="area-oeste" required>
+                                        <span>Área Oeste</span>
+                                    </label>
+                                </fieldset>
+                            </div>
+
                             <div class="form-feedback" id="formFeedback" aria-live="polite"></div>
 
-                            <button type="submit" class="btn btn--primary btn--large">
+                            <button type="submit" class="btn btn--primary btn--large btn--block">
                                 Enviar
                             </button>
+
+                            <p class="form-note">Los campos obligatorios están marcados con <span class="required">*</span></p>
+                            <p class="form-note form-note--muted">Nunca compartas información confidencial (números de tarjetas de crédito, números de identificación personal, contraseñas) a través de este formulario.</p>
                         </div>
                     </form>
                     

@@ -5,6 +5,7 @@ import { open } from 'sqlite';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { syncLeadToPipedrive } from '../../lib/pipedrive.js';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ const router = express.Router();
 
 const ensureLeadAttributionColumns = async () => {
   const desiredColumns = {
+    advisor: 'TEXT',
     utm_source: 'TEXT',
     utm_medium: 'TEXT',
     utm_campaign: 'TEXT',
@@ -59,6 +61,7 @@ let db;
         message TEXT,
         salary TEXT,
         employment_status TEXT,
+        advisor TEXT,
         project_name TEXT,
         property_id INTEGER,
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -96,9 +99,10 @@ const leadValidation = [
     .withMessage('Teléfono debe tener entre 7 y 20 caracteres'),
   
   body('message')
+    .optional({ checkFalsy: true })
     .trim()
-    .isLength({ min: 10, max: 1000 })
-    .withMessage('Mensaje debe tener entre 10 y 1000 caracteres'),
+    .isLength({ max: 1000 })
+    .withMessage('Mensaje inválido'),
   
   body('property_id')
     .optional()
@@ -106,7 +110,11 @@ const leadValidation = [
     .withMessage('Property ID inválido'),
   
   body('salary')
-    .optional({ checkFalsy: true })
+    .trim()
+    .notEmpty()
+    .withMessage('Salario mensual es obligatorio')
+    .matches(/^\d+(\.\d+)?$/)
+    .withMessage('Salario debe ser numérico')
     .trim()
     .isLength({ max: 50 })
     .withMessage('Salario inválido'),
@@ -124,7 +132,9 @@ const leadValidation = [
     .withMessage('Asesor inválido'),
     
   body('project')
-    .optional({ checkFalsy: true })
+    .trim()
+    .notEmpty()
+    .withMessage('Ubicación de proyecto es obligatoria')
     .trim()
     .isLength({ max: 100 })
     .withMessage('Proyecto inválido'),
@@ -248,6 +258,10 @@ router.post('/', leadValidation, async (req, res) => {
       referrer
     } = req.body;
 
+    const normalizedMessage = (typeof message === 'string' && message.trim().length > 0)
+      ? message.trim()
+      : `Lead web - Ubicación de proyecto: ${project}. Salario mensual: ${salary}.`;
+
     // Check if DB is available
     if (!db) {
       console.error('❌ Database not initialized');
@@ -286,7 +300,7 @@ router.post('/', leadValidation, async (req, res) => {
         name,
         email,
         phone,
-        message,
+        normalizedMessage,
         salary || null,
         employment || null,
         advisor || null,
@@ -309,10 +323,37 @@ router.post('/', leadValidation, async (req, res) => {
 
     console.log('✅ Lead created:', { id: result.lastID, email });
 
+    let crmSync = { synced: false, reason: 'not-attempted' };
+    try {
+      crmSync = await syncLeadToPipedrive({
+        name,
+        email,
+        phone,
+        message: normalizedMessage,
+        advisor,
+        salary,
+        employment,
+        project,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content,
+        gclid,
+        fbclid,
+        landing_page,
+        referrer
+      });
+    } catch (crmError) {
+      console.error('Pipedrive sync failed:', crmError.message);
+      crmSync = { synced: false, reason: 'sync-error' };
+    }
+
     res.status(201).json({
       success: true,
       message: 'Gracias por tu interés. Te contactaremos pronto.',
-      leadId: result.lastID
+      leadId: result.lastID,
+      crmSynced: crmSync.synced === true
     });
 
   } catch (error) {
