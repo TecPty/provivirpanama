@@ -116,18 +116,20 @@
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 0.4rem;
-        overflow-x: visible;
+        overflow-x: hidden;
         padding: 0 0.75rem;
     }
 
     .trust-bar__logo-link {
         width: 100%;
-        overflow: visible;
+        overflow: hidden;
     }
 
     .trust-bar__logo-link img {
-        height: 74px;
-        width: auto;
-        max-width: none;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        max-height: 74px;
+        object-fit: contain;
     }
 }
