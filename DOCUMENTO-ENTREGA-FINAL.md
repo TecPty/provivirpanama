@@ -6,7 +6,8 @@
 **Proyecto:** Sitio Web Corporativo Provivir Panamá  
 **Cliente:** Promotora Provivir S.A.  
 **Fecha de Entrega:** 10 de Marzo, 2026  
-**Versión:** 2.1 - Optimizado + Mejoras Finales UX  
+**Última Actualización:** 30 de Marzo, 2026  
+**Versión:** 3.0 - Integración Pipedrive CRM + Auditoría de Seguridad  
 **URL Producción:** https://provivirpanama.com  
 
 ---
@@ -24,6 +25,7 @@
 9. [Mantenimiento y Actualizaciones](#mantenimiento-y-actualizaciones)
 10. [Credenciales y Accesos](#credenciales-y-accesos)
 11. [Documentación Técnica](#documentación-técnica)
+11.5. [Auditoría de Seguridad (30 marzo 2026)](#auditoría-de-seguridad-y-correcciones-30-marzo-2026)
 12. [Soporte y Garantía](#soporte-y-garantía)
 13. [Próximos Pasos Recomendados](#próximos-pasos-recomendados)
 
@@ -37,6 +39,7 @@ Sitio web corporativo moderno y optimizado para Provivir Panamá, enfocado en la
 
 - ✅ **6 secciones principales** (Hero, Proyectos, Financiamiento, Asesores, Misión/Visión, Contacto)
 - ✅ **Sistema de captación de leads** integrado con base de datos MySQL
+- ✅ **Integración con Pipedrive CRM** — sync automático de leads al pipeline de ventas
 - ✅ **Optimización SEO completa** para "viviendas en panama"
 - ✅ **Performance optimizado** (Lighthouse Score: 85-92 móvil, 95-98 desktop)
 - ✅ **Responsive design** perfecto en todos los dispositivos
@@ -72,10 +75,13 @@ Sitio web corporativo moderno y optimizado para Provivir Panamá, enfocado en la
 #### **Backend (API y Base de Datos)**
 - ✅ API REST en Node.js/Express
 - ✅ Base de datos MySQL en GoDaddy
-- ✅ Sistema de gestión de leads
-- ✅ Validación de datos server-side
-- ✅ Sistema de notificaciones por email
+- ✅ SQLite como fallback local para desarrollo
+- ✅ Sistema de gestión de leads con sync automático a Pipedrive CRM
+- ✅ Validación de datos server-side (express-validator + validación propia)
 - ✅ Honeypot anti-spam
+- ✅ Rate limiting: 10 submissions/hora por IP
+- ✅ CORS restringido al dominio de producción
+- ✅ Captura completa de atribución: UTM, gclid, fbclid, ttclid, msclkid, landing_page, referrer
 
 #### **SEO y Marketing**
 - ✅ Meta tags optimizados para "viviendas en panama"
@@ -138,16 +144,25 @@ JavaScript (Vanilla ES6+)
 
 ```
 Node.js 18.x
-├── Express.js (API REST)
+├── Express.js (API REST — servidor local)
+├── Serverless functions (Vercel — producción)
 ├── MySQL2 (Database driver)
-├── Serverless functions (Vercel/Netlify)
+├── SQLite + sqlite3 (desarrollo local)
+├── express-validator (validación server-side)
+├── express-rate-limit (anti-spam)
+├── helmet (security headers)
 └── Environment variables (.env)
 
-MySQL 8.0
+MySQL 8.0 (producción)
 ├── InnoDB engine
 ├── UTF8mb4 charset
 ├── Indexes optimizados
 └── Backup automático
+
+Pipedrive CRM API v1 (sync de leads)
+├── POST /persons — crear/buscar contacto
+├── POST /deals  — crear negocio en pipeline
+└── POST /notes  — nota con UTMs y datos del lead
 ```
 
 ### 3.3 DevOps & Deployment
@@ -178,6 +193,7 @@ CDN & Security
 | Lottie (Cloudflare CDN) | Animaciones | ✅ Deferred |
 | Google Maps | Mapa de ubicación | ✅ Lazy loaded |
 | WhatsApp Business API | Chat directo | ✅ Activo |
+| **Pipedrive CRM API v1** | **Sync automático de leads** | **✅ Implementado** |
 
 ---
 
@@ -232,12 +248,18 @@ provivir/
 │       ├── terminos-servicio.html
 │       └── igualdad-vivienda.html
 │
-├── api/                          # Backend serverless
-│   ├── index.js                  # Health check
+├── api/                          # Backend serverless (Vercel)
+│   ├── index.js                  # Express server (desarrollo local)
 │   ├── properties.js             # API propiedades
+│   ├── leads/
+│   │   └── index.js              # POST /api/leads (Vercel serverless)
 │   └── routes/
-│       ├── leads.js              # POST /api/leads
+│       ├── leads.js              # POST /api/leads (Express local)
 │       └── social-posts.js       # Feed social (futuro)
+│
+├── lib/                          # Módulos compartidos
+│   ├── mysql.js                  # Pool MySQL con lazy init
+│   └── pipedrive.js              # Integración CRM Pipedrive
 │
 ├── config/
 │   └── ssh-tunnel.js             # SSH tunnel for GoDaddy MySQL
@@ -316,16 +338,12 @@ provivir/
 #### **Campos:**
 - ✅ Nombre Completo* (text, required)
 - ✅ Email* (email, required, validación format)
-- ✅ Teléfono* (tel, required, validación Panamá)
-- ✅ Salario (select, opcional, con info tooltip)
-  - Opciones: <600, 601-700, 701-800, 801-900, 901-1000, >1000
-- ✅ Estabilidad Laboral (select, opcional)
-  - Opciones: Permanente, Temporal, Independiente
-- ✅ Proyecto de Interés* (select, required)
-  - Villas del Este: Roble, Cerezo
-  - Ciudad del Este: Córdoba, Granada
-- ✅ Mensaje* (textarea, required, min 10 caracteres)
-- 🛡️ Honeypot anti-spam (campo oculto)
+- ✅ Teléfono* (tel, required, validación Panamá: `+507 XXXX-XXXX`)
+- ✅ Salario mensual* (number, required, mínimo USD 1)
+- ✅ Ubicación de Proyecto* (radio buttons, required)
+  - Área Este
+  - Área Oeste
+- 🛡️ Honeypot anti-spam (campo oculto `website`)
 
 #### **Validaciones:**
 - Client-side: HTML5 + JavaScript
@@ -340,21 +358,55 @@ provivir/
 
 #### **Almacenamiento:**
 ```sql
--- Tabla: leads
+-- Tabla: leads (MySQL producción / SQLite desarrollo)
 CREATE TABLE leads (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  full_name VARCHAR(100) NOT NULL,
-  email VARCHAR(100) NOT NULL,
-  phone VARCHAR(20) NOT NULL,
-  salary_range VARCHAR(50),
-  employment_stability VARCHAR(50),
-  project_interest VARCHAR(100) NOT NULL,
-  message TEXT NOT NULL,
-  source VARCHAR(50) DEFAULT 'website',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  INDEX idx_email (email),
-  INDEX idx_created_at (created_at)
+  id            INTEGER PRIMARY KEY AUTOINCREMENT,
+  name          TEXT NOT NULL,
+  email         TEXT NOT NULL UNIQUE,
+  phone         TEXT,
+  message       TEXT,
+  salary        TEXT,
+  employment_status TEXT,
+  advisor       TEXT,
+  project_name  TEXT,
+  property_id   INTEGER,
+  source        TEXT DEFAULT 'website',
+  -- Atribución digital
+  utm_source    TEXT,
+  utm_medium    TEXT,
+  utm_campaign  TEXT,
+  utm_term      TEXT,
+  utm_content   TEXT,
+  utm_id        TEXT,
+  gclid         TEXT,
+  fbclid        TEXT,
+  ttclid        TEXT,
+  msclkid       TEXT,
+  landing_page  TEXT,
+  referrer      TEXT,
+  ip_address    TEXT,
+  user_agent    TEXT,
+  created_at    DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+```
+
+#### **Sync con Pipedrive (automático tras cada lead):**
+```
+Formulario enviado
+      │
+      ▼
+1. Guardar en base de datos (MySQL/SQLite)
+      │
+      ▼
+2. syncLeadToPipedrive(leadData)
+   ├── Buscar persona por email → reutilizar si existe
+   ├── Si no existe → CREATE /persons (nombre, email, teléfono)
+   ├── CREATE /deals (título: "Proyecto - Nombre", pipeline, stage, owner)
+   └── CREATE /notes (mensaje + salario + UTMs + referrer)
+      │
+      ├── [Si falla] → Log de error, lead guardado en DB igual
+      │               (sync no bloquea la respuesta al usuario)
+      └── [Si OK]   → crmSynced: true en respuesta
 ```
 
 ### 5.6 Footer Completo
@@ -831,12 +883,23 @@ vercel --prod
 ```
 Settings > Environment Variables
 │
-├── DB_HOST = [MySQL host de GoDaddy]
-├── DB_USER = provivir_user
-├── DB_PASSWORD = [contraseña]
-├── DB_NAME = provivir_panama
-└── DB_PORT = 3306
+├── NODE_ENV              = production
+├── DB_HOST               = [MySQL host de GoDaddy]
+├── DB_USER               = provivir_user
+├── DB_PASSWORD           = [contraseña]
+├── DB_NAME               = provivir_panama
+├── DB_PORT               = 3306
+├── CORS_ORIGIN           = https://provivirpanama.com
+│
+├── PIPEDRIVE_API_TOKEN   = [token de API de Pipedrive]
+├── PIPEDRIVE_SYNC_ENABLED= true
+├── PIPEDRIVE_PIPELINE_ID = [ID del pipeline]
+├── PIPEDRIVE_STAGE_ID    = [ID de la etapa inicial]
+├── PIPEDRIVE_OWNER_ID    = [ID del asesor por defecto]  ← opcional
+└── PIPEDRIVE_ORG_ID      = [ID de la organización]     ← opcional
 ```
+
+> **Nota:** Sin `PIPEDRIVE_API_TOKEN`, la integración queda desactivada automáticamente (`PIPEDRIVE_SYNC_ENABLED=false`). Los leads se siguen guardando en la base de datos.
 
 **5. Configurar dominio custom:**
 ```
@@ -1119,7 +1182,7 @@ API Status: Integrado en sitio web
 
 #### **GitHub**
 ```
-Repositorio: [URL del repo si aplica]
+Repositorio: https://github.com/TecPty/provivirpanama
 Branch principal: main
 Acceso: [CONFIDENCIAL]
 ```
@@ -1308,18 +1371,29 @@ Crear un nuevo lead.
 ```json
 {
   "success": true,
-  "message": "Lead guardado exitosamente",
-  "leadId": 123
+  "message": "Gracias por tu interés. Te contactaremos pronto.",
+  "leadId": 123,
+  "crmSynced": true
 }
 ```
 
-**Response (Error):**
+**Response (Error — validación):**
 ```json
 {
   "success": false,
-  "error": "El email ya está registrado"
+  "error": "Teléfono inválido"
 }
 ```
+
+**Response (Error — email duplicado):**
+```json
+{
+  "success": false,
+  "error": "Este email ya está registrado"
+}
+```
+
+> **Nota:** Los errores 500 no exponen detalles internos al cliente por seguridad. El detalle se registra en los logs del servidor (Vercel).
 
 #### **GET /api/properties**
 Obtener lista de propiedades (futuro).
@@ -1335,6 +1409,27 @@ Obtener lista de propiedades (futuro).
     }
   ]
 }
+```
+
+---
+
+## 11.5 AUDITORÍA DE SEGURIDAD Y CORRECCIONES (30 marzo 2026)
+
+Auditoría completa ejecutada sobre el proyecto en producción. Resultados y correcciones aplicadas:
+
+| # | Severidad | Área | Problema | Estado |
+|---|-----------|------|----------|--------|
+| 1 | 🔴 Crítico | Vercel | `outputDirectory` faltante → sitio devolvía 404 | ✅ Corregido |
+| 2 | 🔴 Crítico | API | `details: error.message` filtrado al cliente en error 500 | ✅ Corregido |
+| 3 | 🔴 Crítico | Frontend | Listeners de radio `project` fuera de `init()` → riesgo TypeError | ✅ Corregido |
+| 4 | 🟠 Alto | API | CORS wildcard `*` en producción | ✅ Corregido → origen dinámico desde `CORS_ORIGIN` |
+| 5 | 🟡 Medio | `.env.example` | Contraseña real de DB expuesta en repositorio | ✅ Reemplazada por placeholder |
+| 6 | 🟡 Medio | Validación | `.trim()` duplicado en campo `salary` | ✅ Corregido |
+
+### Commits de corrección
+```
+bab75ea  fix: CORS específico, outputDirectory Vercel, error 500 sin details,
+         radio listeners en init, trim duplicado, password en ejemplo
 ```
 
 ---
@@ -1556,36 +1651,26 @@ npm run build
 ---
 
 #### **F. Sistema CRM para Leads** 💼
-**Prioridad:** MEDIA  
-**Esfuerzo:** 10-15 horas  
+**Prioridad:** ✅ COMPLETADO (30 de Marzo, 2026)  
 
-**Opciones:**
+**Implementación:** Integración directa con **Pipedrive CRM** vía API REST v1.
 
-**Opción 1: Dashboard Custom (Recomendado)**
+Cada lead del formulario web crea automáticamente en Pipedrive:
+- **Persona** — con nombre, email y teléfono del prospecto
+- **Deal (Negocio)** — título `"Proyecto - Nombre"`, asignado al pipeline y etapa configurados
+- **Nota** — incluye mensaje del formulario, salario, asesor de preferencia, y todos los datos de atribución digital (UTMs, gclid, fbclid, landing_page, referrer)
+
+**Módulo:** `lib/pipedrive.js` — integración resiliente (fallo en CRM no bloquea guardado del lead en DB)
+
+**Variables a configurar en Vercel:**
 ```
-Características:
-- Login de admin
-- Lista de leads con filtros
-- Exportar a Excel/CSV
-- Asignar leads a asesores
-- Notas y seguimiento
-- Reportes visuales
-
-Tech Stack:
-- Frontend: HTML/CSS/JS
-- Backend: Node.js/Express
-- Database: MySQL (actual)
+PIPEDRIVE_API_TOKEN
+PIPEDRIVE_PIPELINE_ID
+PIPEDRIVE_STAGE_ID
+PIPEDRIVE_OWNER_ID   (opcional)
 ```
 
-**Opción 2: Integración con CRM Existente**
-- HubSpot (gratuito hasta 1,000 contactos)
-- Zoho CRM
-- Monday.com
-- Pipedrive
-
-**Costo:** $0-50/mes
-
-**Impacto esperado:** +30% conversión de leads por mejor seguimiento
+**Impacto:** El equipo de marketing ve cada lead en tiempo real en su pipeline de Pipedrive.
 
 ---
 
