@@ -1,11 +1,18 @@
 import { execute, getLeadColumns } from '../../lib/mysql.js';
 import { syncLeadToPipedrive } from '../../lib/pipedrive.js';
 
-const setCors = (res) => {
+const ALLOWED_ORIGINS = (process.env.CORS_ORIGIN || 'http://localhost:3000')
+  .split(',')
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+const setCors = (res, origin) => {
+  const allowed = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
   res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', allowed);
   res.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Vary', 'Origin');
 };
 
 const normalizeBody = (req) => {
@@ -39,7 +46,7 @@ const getClientIp = (req) => {
 };
 
 export default async function handler(req, res) {
-  setCors(res);
+  setCors(res, req.headers.origin || '');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -175,10 +182,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ success: false, error: 'Este email ya está registrado' });
     }
 
+    console.error('Lead handler error:', error.message);
     return res.status(500).json({
       success: false,
-      error: 'Error al procesar tu solicitud',
-      details: error.message
+      error: 'Error al procesar tu solicitud'
     });
   }
 }

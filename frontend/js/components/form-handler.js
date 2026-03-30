@@ -386,10 +386,6 @@ const FormHandler = (() => {
             });
         });
         
-        console.log('Form handler initialized');
-    };
-    
-
         const projectRadios = leadForm.querySelectorAll('input[name="project"]');
         const projectFieldset = leadForm.querySelector('.radio-group');
         if (projectFieldset) {
@@ -399,6 +395,10 @@ const FormHandler = (() => {
                 });
             });
         }
+
+        console.log('Form handler initialized');
+    };
+
     // Public API
     return {
         init

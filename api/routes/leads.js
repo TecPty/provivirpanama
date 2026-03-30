@@ -115,7 +115,6 @@ const leadValidation = [
     .withMessage('Salario mensual es obligatorio')
     .matches(/^\d+(\.\d+)?$/)
     .withMessage('Salario debe ser numérico')
-    .trim()
     .isLength({ max: 50 })
     .withMessage('Salario inválido'),
   
