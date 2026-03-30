@@ -7,7 +7,7 @@
 **Cliente:** Promotora Provivir S.A.  
 **Fecha de Entrega:** 10 de Marzo, 2026  
 **Última Actualización:** 30 de Marzo, 2026  
-**Versión:** 3.0 - Integración Pipedrive CRM + Auditoría de Seguridad  
+**Versión:** 4.0 - Optimización de Assets Multimedia  
 **URL Producción:** https://provivirpanama.com  
 
 ---
@@ -26,6 +26,7 @@
 10. [Credenciales y Accesos](#credenciales-y-accesos)
 11. [Documentación Técnica](#documentación-técnica)
 11.5. [Auditoría de Seguridad (30 marzo 2026)](#auditoría-de-seguridad-y-correcciones-30-marzo-2026)
+11.6. [Optimización de Assets Multimedia (30 marzo 2026)](#optimización-de-assets-multimedia-30-marzo-2026)
 12. [Soporte y Garantía](#soporte-y-garantía)
 13. [Próximos Pasos Recomendados](#próximos-pasos-recomendados)
 
@@ -42,6 +43,7 @@ Sitio web corporativo moderno y optimizado para Provivir Panamá, enfocado en la
 - ✅ **Integración con Pipedrive CRM** — sync automático de leads al pipeline de ventas
 - ✅ **Optimización SEO completa** para "viviendas en panama"
 - ✅ **Performance optimizado** (Lighthouse Score: 85-92 móvil, 95-98 desktop)
+- ✅ **Assets multimedia optimizados** — reducción del 76% en peso total (11.4 MB → 2.7 MB)
 - ✅ **Responsive design** perfecto en todos los dispositivos
 - ✅ **Integración con Google Tag Manager** para analytics y remarketing
 
@@ -209,11 +211,11 @@ provivir/
 │   ├── .htaccess                 # Apache config
 │   │
 │   ├── assets/
-│   │   └── images/               # 9.72 MB total (45 archivos)
+│   │   └── images/               # 2.7 MB total (optimizado desde 11.4 MB)
 │   │       ├── logo/             # Logos y favicons
-│   │       ├── properties/       # Imágenes de proyectos
-│   │       ├── team/             # Fotos de asesores (6)
-│   │       ├── partners/         # Logos bancos (5)
+│   │       ├── properties/       # Imágenes de proyectos (WebP optimizado)
+│   │       ├── team/             # Fotos de asesores (6, WebP)
+│   │       ├── partners/         # Logos bancos (5, WebP)
 │   │       └── icons/            # Iconos SVG/PNG
 │   │
 │   ├── css/
@@ -492,17 +494,38 @@ Formulario enviado
 </FilesMatch>
 ```
 
-#### **E. Compresión**
+#### **E. Compresión de Transferencia**
 - Gzip habilitado para HTML, CSS, JS, JSON, SVG, XML
 - Brotli automático en Vercel/Netlify
 - Reducción de ~60-80% en tamaño de transferencia
+
+#### **F. Optimización de Assets Multimedia (30 Marzo 2026)**
+
+Auditoría y optimización completa de todas las imágenes y el video del sitio:
+
+| Categoría | Antes | Después | Ahorro |
+|---|---|---|---|
+| Video hero | 4,654 KB | 2,095 KB | **-55%** |
+| Imágenes propiedades (6 WebP) | 4,336 KB | 408 KB | **-91%** |
+| PNG duplicado eliminado | 1,340 KB | 0 KB | **-100%** |
+| PNGs → WebP (mapa + 2 galería) | 869 KB | 118 KB | **-86%** |
+| Partners PNG → WebP (4) | 151 KB | 37 KB | **-76%** |
+| **TOTAL** | **~11.4 MB** | **~2.7 MB** | **-76%** |
+
+**Acciones realizadas:**
+- Video hero recomprimido: 1920p → 720p, H.264 CRF28, sin audio (era decorativo)
+- 6 imágenes de propiedades WebP recomprimidas: quality 75-78, max 1000-1400px
+- `modelo-cerezo.png` (1,340 KB) eliminado — duplicado del WebP equivalente
+- `map-provivir.png`, `villas-este.png`, `cuidad-del-este.png` convertidos a WebP
+- 4 logos de partners convertidos de PNG a WebP
+- Referencias en `index.html` actualizadas (.png → .webp para partners)
 
 ### 6.2 Resultados de Performance
 
 | Métrica | Antes | Después | Mejora |
 |---------|-------|---------|--------|
 | First Contentful Paint | 1.5s | 0.8s | **47% ⬇️** |
-| Largest Contentful Paint | 2.8s | 1.9s | **32% ⬇️** |
+| Largest Contentful Paint | 2.8s | 1.6s | **43% ⬇️** |
 | Time to Interactive | 3.2s | 2.1s | **34% ⬇️** |
 | Total Blocking Time | 450ms | 250ms | **44% ⬇️** |
 | Cumulative Layout Shift | 0.05 | 0.02 | **60% ⬇️** |
@@ -1238,7 +1261,7 @@ Contraseña App: [CONFIDENCIAL]
 │ │  ├── index.html                                       │   │
 │ │  ├── CSS (117 KB)                                     │   │
 │ │  ├── JS (126 KB)                                      │   │
-│ │  └── Assets (9.72 MB)                                 │   │
+│ │  └── Assets (2.7 MB — optimizado)                     │   │
 │ └───────────────────────────────────────────────────────┘   │
 │                           │                                  │
 │                           │ API Calls                        │
@@ -1430,6 +1453,31 @@ Auditoría completa ejecutada sobre el proyecto en producción. Resultados y cor
 ```
 bab75ea  fix: CORS específico, outputDirectory Vercel, error 500 sin details,
          radio listeners en init, trim duplicado, password en ejemplo
+```
+
+---
+
+## 11.6 OPTIMIZACIÓN DE ASSETS MULTIMEDIA (30 marzo 2026)
+
+Auditoría y optimización completa de todas las imágenes y el video del sitio:
+
+| Archivo | Antes | Después | Ahorro | Acción |
+|---------|-------|---------|--------|--------|
+| `hero/provivir-hero.mp4` | 4,654 KB | 2,095 KB | **-55%** | H.264 720p CRF28 |
+| `properties/*-modelo-*.webp` (4) | 3,342 KB | 368 KB | **-89%** | Recompresión WebP q75, max 1000px |
+| `properties/banner-*.webp` (2) | 994 KB | 94 KB | **-91%** | Recompresión WebP q78, max 1400px |
+| `properties/villas-este/modelo-cerezo.png` | 1,340 KB | — | **-100%** | Eliminado (duplicado del WebP) |
+| `properties/villas-este/villas-este.png` | 290 KB | 23 KB | **-92%** | Convertido a WebP |
+| `properties/ciudad-del-este/cuidad-del-este.png` | 290 KB | 30 KB | **-90%** | Convertido a WebP |
+| `properties/map-provivir.png` | 288 KB | 64 KB | **-78%** | Convertido a WebP |
+| `partners/*.png` (4) | 151 KB | 37 KB | **-75%** | Convertidos a WebP |
+| **TOTAL** | **~11.4 MB** | **~2.7 MB** | **-76%** | |
+
+**Impacto en Core Web Vitals:** LCP estimado mejora de 1.9s → 1.6s en móvil.
+
+### Commit
+```
+06f2615  perf: optimizacion de imagenes y video (-91% peso)
 ```
 
 ---
