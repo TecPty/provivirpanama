@@ -126,7 +126,18 @@ const FormHandler = (() => {
         leadForm.style.display = 'none';
         formSuccess.classList.remove('hidden');
         formSuccess.style.display = 'flex';
-        // El mensaje de éxito ahora es permanente para dar mayor confianza.
+
+        const exploreBtn = formSuccess.querySelector('a[href="#proyectos"]');
+        if (exploreBtn) {
+            exploreBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector('#proyectos');
+                if (!target) return;
+                const headerOffset = 80;
+                const offsetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }, { once: true });
+        }
     };
     
     /**
