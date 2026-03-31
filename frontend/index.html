@@ -55,6 +55,25 @@
     <style>
         /* System font fallback until Figtree loads */
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; }
+
+        .hero__brand {
+            position: absolute;
+            top: 24px;
+            left: 28px;
+            z-index: 3;
+        }
+
+        .hero__brand-logo {
+            height: 160px;
+            width: auto;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+        }
+
+        @media (max-width: 768px) {
+            .hero__brand-logo {
+                height: 130px;
+            }
+        }
     </style>
     
     <!-- Schema Markup - JSON-LD -->
@@ -129,8 +148,8 @@
             </video>
             
             <!-- Logo esquina superior izquierda -->
-            <div style="position:absolute;top:24px;left:28px;z-index:3;">
-                <img src="./assets/images/logo/logo-provivir-w.png" alt="Provivir Panamá" style="height:160px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));" loading="eager" fetchpriority="high">
+            <div class="hero__brand">
+                <img src="./assets/images/logo/logo-provivir-w.png" alt="Provivir Panamá" class="hero__brand-logo" loading="eager" fetchpriority="high">
             </div>
 
             <!-- Contenido centrado sobre el video -->
