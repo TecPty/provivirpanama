@@ -78,6 +78,32 @@ const projectComplexes = {
                 location: DEFAULT_PROJECT_LOCATION
             }
         ]
+    },
+    oeste: {
+        title: 'Villas del Oeste',
+        projects: [
+            {
+                name: 'Modelo 1',
+                description: 'Próximamente',
+                image: './assets/images/properties/villas-del-este-modelo-roble.webp',
+                whatsapp: '6371-2652',
+                location: DEFAULT_PROJECT_LOCATION
+            },
+            {
+                name: 'Modelo 2',
+                description: 'Próximamente',
+                image: './assets/images/properties/villas-del-este-modelo-cerezo.webp',
+                whatsapp: '6371-2652',
+                location: DEFAULT_PROJECT_LOCATION
+            },
+            {
+                name: 'Modelo 3',
+                description: 'Próximamente',
+                image: './assets/images/properties/ciudad-del-este-modelo-cordoba.webp',
+                whatsapp: '6371-2652',
+                location: DEFAULT_PROJECT_LOCATION
+            }
+        ]
     }
 };
 
