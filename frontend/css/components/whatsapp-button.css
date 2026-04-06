@@ -97,19 +97,18 @@
     .whatsapp-float {
         bottom: var(--spacing-xl);
         right: var(--spacing-xl);
-    }
-    
-    .whatsapp-button {
-        width: 76px;
-        height: 76px;
+        width: 60px !important;
+        height: 60px !important;
     }
     
     .whatsapp-button svg {
-        width: 56px;
-        height: 56px;
+        width: 45%;
+        height: 45%;
     }
     
     .whatsapp-tooltip {
-        bottom: 85px;
+        bottom: 70px;
+        font-size: 0.8rem;
+        padding: 6px 10px;
     }
 }

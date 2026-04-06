@@ -51,16 +51,26 @@
 .trust-bar__logo-link img {
     display: block;
     width: auto;
-    height: clamp(69px, 7.94vw, 120px);
-    max-width: 100%;
+    height: auto;
+    max-height: 110px;
+    max-width: 280px;
     opacity: 1;
     transition: all 0.3s ease;
     object-fit: contain;
-    filter: none;
 }
 
-/* Increase size for La Hipotecaria, Banco Nacional, and Banco Mercantil */
-.trust-bar__logos .trust-bar__logo-link:nth-child(1) img,
+.trust-bar__logo-link:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Increase size for La Hipotecaria specifically */
+.trust-bar__logos .trust-bar__logo-link:nth-child(1) img {
+    transform: scale(1.35);
+    transform-origin: center;
+}
+
+/* Increase size for Banco Nacional and Banco Mercantil */
 .trust-bar__logos .trust-bar__logo-link:nth-child(2) img,
 .trust-bar__logos .trust-bar__logo-link:nth-child(4) img {
     transform: scale(1.15);
@@ -69,7 +79,6 @@
 
 .trust-bar__logo-link:hover img {
     opacity: 1;
-    filter: none;
     transform: scale(1.08);
 }
 
