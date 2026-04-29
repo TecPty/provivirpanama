@@ -162,12 +162,59 @@
     justify-content: center;
 }
 
-.project-item__lottie-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
+/* CSS icon replacements for modal (replaces Lottie) */
+.css-icon {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
+}
+
+.css-icon--location {
+    flex-direction: column;
+    align-items: center;
+    width: 40px;
+    height: 48px;
+    gap: 0;
+}
+
+.css-icon--location .pin-svg {
+    animation: pinBounce 1.8s ease-in-out infinite;
+}
+
+.css-icon--location .pin-shadow {
+    display: block;
+    width: 14px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: 1px;
+    animation: shadowScale 1.8s ease-in-out infinite;
+}
+
+@keyframes pinBounce {
+    0%, 100% { transform: translateY(0); }
+    45%       { transform: translateY(-10px); }
+    65%       { transform: translateY(-5px); }
+}
+
+@keyframes shadowScale {
+    0%, 100% { transform: scaleX(1); opacity: 0.45; }
+    45%       { transform: scaleX(1.7); opacity: 0.15; }
+}
+
+.css-icon--chat {
+    width: 44px;
+    height: 44px;
+}
+
+.css-icon--chat .cdot {
+    animation: dotBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+    0%, 60%, 100% { transform: translateY(0);   opacity: 0.45; }
+    30%           { transform: translateY(-3px); opacity: 1; }
 }
 
 /* PROJECT MODAL */
@@ -427,13 +474,7 @@
     transform: translateY(-2px);
 }
 
-.project-item__btn--whatsapp .project-item__lottie-icon {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 
 .project-item__btn-icon {
     width: 28px;

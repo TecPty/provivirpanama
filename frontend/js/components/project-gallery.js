@@ -20,21 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectGallery();
 });
 
-// Función para cargar animaciones Lottie en el modal
-function loadLottieAnimations() {
-    const lottieIcons = document.querySelectorAll('.project-item__lottie-icon');
-    
-    lottieIcons.forEach(icon => {
-        const path = icon.dataset.path;
-        lottie.loadAnimation({
-            container: icon,
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: path
-        });
-    });
-}
+
 
 // Definición de proyectos por complejo
 const DEFAULT_PROJECT_LOCATION = 'https://maps.app.goo.gl/YcTLaREUbRt7VuvT8?g_st=ic';
@@ -176,14 +162,14 @@ function openProjectModal(complexKey) {
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--location"
                            title="Ver ubicación">
-                            <div class="project-item__lottie-icon" data-lottie="location" data-path="./assets/images/icons/Location-v2.json"></div>
+                            <span class="css-icon css-icon--location" aria-hidden="true"><svg class="pin-svg" width="34" height="42" viewBox="0 0 34 42" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 1C8.72 1 2 7.72 2 16C2 27.25 17 42 17 42C17 42 32 27.25 32 16C32 7.72 25.28 1 17 1Z" fill="#E53E3E"/><circle cx="17" cy="16" r="6" fill="white" opacity="0.9"/></svg><span class="pin-shadow"></span></span>
                         </a>
                         <a href="${whatsappUrl}" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            class="project-item__btn project-item__btn--whatsapp"
                            title="Contactar por WhatsApp">
-                            <div class="project-item__lottie-icon" data-lottie="chat" data-path="./assets/images/icons/Chat-v2.json"></div>
+                            <span class="css-icon css-icon--chat" aria-hidden="true"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="22" fill="#30B2E5"/><path d="M8 14C8 12.9 8.9 12 10 12H34C35.1 12 36 12.9 36 14V26C36 27.1 35.1 28 34 28H25L19 34V28H10C8.9 28 8 27.1 8 26V14Z" fill="white"/><circle class="cdot" cx="16" cy="21" r="2" fill="#30B2E5"/><circle class="cdot" style="animation-delay:.2s" cx="22" cy="21" r="2" fill="#30B2E5"/><circle class="cdot" style="animation-delay:.4s" cx="28" cy="21" r="2" fill="#30B2E5"/></svg></span>
                         </a>
                     </div>
                 </div>
@@ -196,8 +182,7 @@ function openProjectModal(complexKey) {
             modalProjects.appendChild(projectEl);
         });
 
-        // Cargar animaciones Lottie del modal
-        loadLottieAnimations();
+
     }
 
     // Mostrar modal
