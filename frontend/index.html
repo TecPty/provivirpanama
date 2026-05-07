@@ -137,29 +137,49 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero" id="inicio">
-            <!-- Video de fondo -->
-            <video class="hero__video" autoplay muted loop playsinline preload="none" poster="./assets/images/properties/banner-ciudad-del-este.webp" fetchpriority="low">
-                <!-- Solo cargar en desktop para ahorrar datos en mobile -->
-                <source src="./assets/images/hero/provivir-hero.mp4" type="video/mp4">
-                Tu navegador no soporta videos HTML5.
-            </video>
-            
-            <!-- Logo esquina superior izquierda -->
-            <div class="hero__brand">
-                <img src="./assets/images/logo/logo-provivir-w.png" alt="Provivir Panamá" class="hero__brand-logo" loading="eager" fetchpriority="high">
-            </div>
+    <div class="landing-header-v2">
+        <div class="container landing-header-v2__inner">
+            <a href="#inicio" class="landing-header-v2__brand" aria-label="Ir al inicio">
+                <img src="./assets/images/logo/logo-provivir.png" alt="Provivir Panamá" loading="eager" fetchpriority="high">
+            </a>
+            <nav class="landing-header-v2__nav" aria-label="Navegación principal">
+                <a href="#inicio">Inicio</a>
+                <a href="#vision-mision">Quienes Somos</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#financiamiento">Guía de compra</a>
+            </nav>
+            <a href="#contacto" class="landing-header-v2__cta">Contáctanos <span aria-hidden="true">→</span></a>
+        </div>
+    </div>
 
-            <!-- Contenido centrado sobre el video -->
-            <div class="hero__overlay">
-                <div class="hero__content-wrapper">
-                    <h1 class="hero__title">
-                        <span class="hero__title--hidden">Viviendas en <span class="hero__title--highlight">Panamá</span></span>
-                        <br>
-                        <span style="font-size: 0.6em; font-weight: 500;">Tu Nuevo Hogar está Más Cerca</span>
-                    </h1>
+    <main>
+        <!-- HERO SECTION V2 -->
+        <section class="hero hero--v2" id="inicio">
+            <div class="container">
+                <div class="hero-v2__surface">
+                    <img src="./assets/images/properties/banner-villas-del-este.webp" alt="Residencial Provivir" class="hero-v2__bg" loading="eager" fetchpriority="high">
+                    <div class="hero-v2__overlay"></div>
+
+                    <div class="hero-v2__content">
+                        <h1>Un hogar bien pensado cambia la forma de vivir</h1>
+                        <p>En Provivir desarrollamos casas en Panamá que combinan ubicación, diseño y tranquilidad para cada etapa de tu vida.</p>
+                        <div class="hero-v2__actions">
+                            <a href="#proyectos" class="hero-v2__btn hero-v2__btn--primary">Explorar proyectos</a>
+                            <a href="#contacto" class="hero-v2__btn hero-v2__btn--ghost">Agenda una visita</a>
+                        </div>
+                    </div>
+
+                    <div class="hero-v2__stats" aria-label="Métricas destacadas">
+                        <div class="hero-v2__stat">
+                            <strong>+5000</strong>
+                            <span>viviendas entregadas</span>
+                        </div>
+                        <div class="hero-v2__divider" aria-hidden="true"></div>
+                        <div class="hero-v2__stat">
+                            <strong>+15</strong>
+                            <span>años de experiencia</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -201,6 +221,69 @@
                     </div>
                 </div>
             </div>
+    </section>
+
+    <!-- MODEL SHOWCASE (NEW APPROVED SECTION) -->
+    <section class="model-showcase" id="modelos-destacados">
+        <div class="container">
+            <div class="model-showcase__stack">
+                <article class="model-showcase__card">
+                    <div class="model-showcase__copy">
+                        <div class="model-showcase__pills" aria-hidden="true">
+                            <span class="model-showcase__pill is-active">Modelo Cerezo</span>
+                            <span class="model-showcase__pill">Modelo Roble</span>
+                        </div>
+                        <h3>Modelo Cerezo</h3>
+                        <p>Modelo de vivienda en planta baja disenado para familias que buscan comodidad, distribucion eficiente y excelente iluminacion natural.</p>
+                        <div class="model-showcase__stats">
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/cama%201.png" alt="">Recamaras: 2</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/Ba%C3%B1o%201.png" alt="">Banos: 1</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/carro%201.png" alt="">Estacionamiento: 1</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/Metraje%201.png" alt="">Area: 180m2</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/_x30_22---Cash.png" alt="">Ingreso desde: 800</div>
+                        </div>
+                        <div class="model-showcase__actions">
+                            <a href="#contacto" class="model-showcase__btn">Quiero vivir aqui</a>
+                        </div>
+                    </div>
+                    <div class="model-showcase__visual">
+                        <div class="model-showcase__image-wrap">
+                            <img src="./assets/images/properties/villas-del-este-modelo-cerezo.webp" alt="Modelo Cerezo - Vista frontal" loading="lazy">
+                        </div>
+                        <div class="model-showcase__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                        <a href="#contacto" class="model-showcase__blue-cta">Ver planta arquitectonica</a>
+                    </div>
+                </article>
+
+                <article class="model-showcase__card">
+                    <div class="model-showcase__copy">
+                        <div class="model-showcase__pills" aria-hidden="true">
+                            <span class="model-showcase__pill">Modelo Cerezo</span>
+                            <span class="model-showcase__pill is-active">Modelo Roble</span>
+                        </div>
+                        <h3>Modelo Roble</h3>
+                        <p>Propuesta moderna pensada para un estilo de vida practico, con espacios funcionales y acabados orientados a durabilidad y confort diario.</p>
+                        <div class="model-showcase__stats">
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/cama%201.png" alt="">Recamaras: 2</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/Ba%C3%B1o%201.png" alt="">Banos: 1</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/carro%201.png" alt="">Estacionamiento: 1</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/Metraje%201.png" alt="">Area: 180m2</div>
+                            <div class="model-showcase__stat"><img src="./assets/images/properties/_x30_22---Cash.png" alt="">Ingreso desde: 900</div>
+                        </div>
+                        <div class="model-showcase__actions">
+                            <a href="#contacto" class="model-showcase__btn">Quiero vivir aqui</a>
+                        </div>
+                    </div>
+                    <div class="model-showcase__visual">
+                        <div class="model-showcase__image-wrap">
+                            <img src="./assets/images/properties/villas-del-este-modelo-roble.webp" alt="Modelo Roble - Vista frontal" loading="lazy">
+                        </div>
+                        <div class="model-showcase__dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                        <a href="#contacto" class="model-showcase__blue-cta">Ver planta arquitectonica</a>
+                    </div>
+                </article>
+            </div>
+        </div>
     </section>
 
     <!-- PROJECT DETAILS MODAL -->
