@@ -84,6 +84,7 @@ ehthumbs.db
 Desktop.ini
 
 .vercel
+.atl/
 .env*.local
 
 *.php
