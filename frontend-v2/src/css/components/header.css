@@ -1,123 +1,94 @@
 /* ==========================================================================
-   HEADER
+   HEADER — Provivir Panamá (Restored & Scaled)
    ========================================================================== */
 
 .header {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  z-index: 100;
+  width: 100%;
+  height: 80px;
   background: var(--color-white);
-  border-bottom: 1px solid transparent;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
   transition: all var(--transition);
-}
-
-.header.is-scrolled {
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px; /* Increased height for premium feel */
-  transition: height var(--transition);
-}
-
-.header.is-scrolled .header__inner {
-  height: 72px;
-}
-
-.header__logo {
-  flex-shrink: 0;
+  width: 100%;
 }
 
 .header__logo img {
-  height: 50px; /* Increased logo size from Figma */
-  width: auto;
-  transition: height var(--transition);
+  width: 120px;
+  height: auto;
+  max-height: 48px; /* Adjusted to match button height */
+  object-fit: contain;
 }
 
-.header.is-scrolled .header__logo img {
-  height: 40px;
-}
-
-/* Nav */
+/* Desktop Nav */
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 32px; /* Figma gap */
-  flex: 1;
-  justify-content: center;
+  gap: 40px; /* Increased gap between links */
+  margin-left: auto;
+  margin-right: 70px; /* Figma: Espacio 70px */
 }
 
-.header__nav a {
-  font-size: var(--text-sm);
-  font-weight: 600; /* Bolder from Figma */
-  color: #1F2937; /* Darker gray from Figma */
-  position: relative;
-  padding-block: var(--sp-1);
-  transition: color var(--transition);
-}
-
-.header__nav a:hover,
-.header__nav a.is-active {
-  color: var(--color-primary);
-}
-
-/* Dropdown */
-.header__nav-item {
-  position: relative;
-}
-
+.header__nav > a,
 .header__nav-item > a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text);
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-.header__nav-item > a svg {
+/* The "V" fix — SVG icon size */
+.header__nav svg {
   width: 14px;
   height: 14px;
-  transition: transform var(--transition);
+  flex-shrink: 0;
 }
 
-.header__nav-item:hover > a svg {
-  transform: rotate(180deg);
+/* Dropdown logic */
+.header__nav-item {
+  position: relative;
+  padding-block: 20px;
 }
 
 .header__dropdown {
   position: absolute;
-  top: calc(100% + var(--sp-2));
+  top: 100%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(10px);
   background: var(--color-white);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  padding: var(--sp-2);
-  min-width: 220px;
+  min-width: 200px;
+  padding: 10px 0;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
   opacity: 0;
-  pointer-events: none;
-  transition: all var(--transition);
-  transform: translateX(-50%) translateY(-8px);
+  visibility: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
 }
 
 .header__nav-item:hover .header__dropdown {
   opacity: 1;
-  pointer-events: all;
+  visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
 
 .header__dropdown a {
   display: block;
-  padding: var(--sp-2.5) var(--sp-4);
-  border-radius: var(--radius-sm);
-  font-size: var(--text-sm);
+  padding: 10px 20px;
+  font-size: 14px;
   color: var(--color-text);
-  transition: background var(--transition), color var(--transition);
 }
 
 .header__dropdown a:hover {
@@ -125,57 +96,18 @@
   color: var(--color-primary);
 }
 
-/* Mobile hamburger */
+/* Mobile elements — HIDDEN on desktop */
+.header__mobile-nav,
 .header__hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
-  padding: var(--sp-2);
-  cursor: pointer;
 }
 
-.header__hamburger span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-text);
-  border-radius: 2px;
-  transition: all var(--transition);
-}
-
-/* Mobile nav */
-.header__mobile-nav {
-  display: none;
-  position: fixed;
-  inset: 72px 0 0 0;
-  background: var(--color-white);
-  padding: var(--sp-6);
-  flex-direction: column;
-  gap: var(--sp-4);
-  border-top: 1px solid var(--color-border);
-  z-index: 99;
-}
-
-.header__mobile-nav.is-open {
-  display: flex;
-}
-
-.header__mobile-nav a {
-  font-size: var(--text-base);
-  font-weight: 500;
-  color: var(--color-text);
-  padding: var(--sp-3) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .header__nav,
-  .header__cta {
-    display: none;
-  }
-
-  .header__hamburger {
-    display: flex;
+@media (max-width: 1024px) {
+  .header__nav { display: none; }
+  .header__hamburger { 
+    display: block; 
+    width: 24px;
+    height: 18px;
+    margin-left: 20px;
   }
 }
