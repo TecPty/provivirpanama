@@ -128,36 +128,7 @@
 }
 
 /* Buttons */
-.btn-pill-arrow {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--sp-4);
-  background: var(--color-primary);
-  color: var(--color-white);
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-  border-radius: var(--radius-full);
-  font-weight: 700;
-  font-size: var(--text-base);
-  transition: all var(--transition);
-}
-
-.btn-pill-arrow:hover {
-  background: var(--color-primary-dark);
-  transform: translateX(4px);
-}
-
-.btn-pill-arrow__icon {
-  width: 32px; height: 32px;
-  background: var(--color-white);
-  color: var(--color-primary);
-  border-radius: var(--radius-full);
-  display: flex; align-items: center; justify-content: center;
-}
-
-.btn-pill-arrow__icon svg {
-  width: 18px; height: 18px;
-}
-
+/* Buttons */
 .btn-floor-plan {
   background: var(--color-primary);
   color: var(--color-white);
