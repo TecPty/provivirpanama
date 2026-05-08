@@ -1,0 +1,195 @@
+/* ==========================================================================
+   CTA + CONTACT FORM — "¿Estás listo para vivir como nunca?"
+   ========================================================================== */
+
+.cta-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+}
+
+.cta-section__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.cta-section__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 39, 64, 0.72);
+  z-index: 1;
+}
+
+.cta-section__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-16);
+  align-items: center;
+}
+
+/* Left: headline */
+.cta-section__copy .section__title {
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.cta-section__copy .section__subtitle {
+  color: rgba(255,255,255,0.75);
+}
+
+/* Right: form */
+.cta-form {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--sp-8);
+  box-shadow: var(--shadow-lg);
+}
+
+.cta-form__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-2);
+}
+
+.cta-form__subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-6);
+  line-height: 1.6;
+}
+
+.form-group {
+  margin-bottom: var(--sp-4);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--sp-2);
+}
+
+.form-label .required {
+  color: #E53E3E;
+  margin-left: 2px;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font: var(--text-sm)/1.5 var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(46, 125, 209, 0.15);
+}
+
+.form-input::placeholder {
+  color: #9CA3AF;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-4);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 0.875rem;
+  margin-top: var(--sp-2);
+  font-size: var(--text-base);
+  border-radius: var(--radius-md);
+}
+
+.form-privacy {
+  text-align: center;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-top: var(--sp-3);
+  line-height: 1.6;
+}
+
+/* Honeypot */
+.form-honeypot {
+  display: none;
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Success state */
+.form-success {
+  display: none;
+  text-align: center;
+  padding: var(--sp-8);
+}
+
+.form-success.is-visible {
+  display: block;
+}
+
+.form-success__icon {
+  width: 56px;
+  height: 56px;
+  background: #ECFDF5;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--sp-4);
+  color: #10B981;
+}
+
+.form-success__title {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-2);
+}
+
+.form-success__text {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 900px) {
+  .cta-section__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section__copy {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-form {
+    padding: var(--sp-5);
+  }
+}
