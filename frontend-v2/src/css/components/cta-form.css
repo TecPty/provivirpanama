@@ -71,12 +71,12 @@
 .cta-form__subtitle {
   font-size: 13px;
   color: #666;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   line-height: 1.4;
 }
 
 .form-group {
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
 
 .form-label {
@@ -84,7 +84,7 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .form-label .required {
@@ -95,8 +95,8 @@
 .form-input,
 .form-select {
   width: 100%;
-  height: 44px;
-  padding: 0 16px;
+  height: 38px;
+  padding: 0 14px;
   border: 1px solid #E0E0E0;
   border-radius: 8px;
   font-size: 14px;
@@ -153,9 +153,9 @@
 
 .form-submit {
   width: 100%;
-  height: 52px;
-  margin-top: 12px;
-  font-size: 16px;
+  height: 44px;
+  margin-top: 8px;
+  font-size: 15px;
   font-weight: 700;
   background: var(--color-primary);
   color: var(--color-white);
@@ -175,15 +175,15 @@
 }
 
 .form-footer-notes {
-  margin-top: 20px;
+  margin-top: 12px;
   border-top: 1px solid #F1F3F4;
-  padding-top: 16px;
+  padding-top: 10px;
 }
 
 .form-footer-notes p {
   font-size: 11px;
   color: #70757A;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .form-privacy-disclaimer {
