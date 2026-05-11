@@ -16,6 +16,10 @@
   margin-bottom: 32px;
 }
 
+.projects__header .section__label {
+  align-self: center;
+}
+
 .projects__header .section__title {
   max-width: 380px;
   font-size: 28px; /* Scaled from 36px */
