@@ -1,14 +1,14 @@
-/* ==========================================================================
-   CTA + CONTACT FORM — "¿Estás listo para vivir como nunca?"
+﻿/* ==========================================================================
+   CTA + CONTACT FORM â€” "Â¿EstÃ¡s listo para vivir como nunca?"
    ========================================================================== */
 
 .cta-section {
   position: relative;
   overflow: hidden;
-  height: 80vh; min-height: 550px;
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  padding-block: 20px !important; /* Overriding global .section padding */
+  padding-block: 48px; /* Overriding global .section padding */
 }
 
 .cta-section__bg {
@@ -260,4 +260,5 @@
     padding: var(--sp-5);
   }
 }
+
 
