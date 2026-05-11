@@ -5,9 +5,10 @@
 .cta-section {
   position: relative;
   overflow: hidden;
-  min-height: 600px;
+  min-height: 460px;
   display: flex;
   align-items: center;
+  padding-block: 20px !important; /* Overriding global .section padding */
 }
 
 .cta-section__bg {
@@ -30,15 +31,20 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-16);
+  grid-template-columns: 1fr 480px; /* Controlled form width */
+  gap: 80px; /* Calibrated gap */
   align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 80px; /* Figma 100px -> 80px */
 }
 
 /* Left: headline */
 .cta-section__copy .section__title {
   color: var(--color-white);
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 28px; /* Unified with other sections */
+  line-height: 1.1;
 }
 
 .cta-section__copy .section__subtitle {
@@ -49,27 +55,27 @@
 .cta-form {
   background: var(--color-white);
   border-radius: var(--radius-xl);
-  padding: var(--sp-8);
+  padding: 24px; /* Calibrated from 28px */
   box-shadow: var(--shadow-lg);
 }
 
 .cta-form__title {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--sp-2);
+  margin-bottom: 4px; /* Compacted from 8px */
 }
 
 .cta-form__subtitle {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
-  margin-bottom: var(--sp-6);
-  line-height: 1.6;
+  margin-bottom: 12px; /* Compacted from 24px */
+  line-height: 1.5;
 }
 
 .form-group {
-  margin-bottom: var(--sp-4);
+  margin-bottom: 12px; /* Compacted from 16px */
 }
 
 .form-label {
@@ -77,7 +83,7 @@
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--color-text);
-  margin-bottom: var(--sp-2);
+  margin-bottom: 4px; /* Compacted from 8px */
 }
 
 .form-label .required {
@@ -88,10 +94,10 @@
 .form-input,
 .form-select {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.875rem; /* Compacted from 0.625rem/1rem */
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
-  font: var(--text-sm)/1.5 var(--font-sans);
+  font: var(--text-sm)/1.4 var(--font-sans);
   color: var(--color-text);
   background: var(--color-white);
   transition: border-color var(--transition), box-shadow var(--transition);
@@ -127,8 +133,8 @@
   text-align: center;
   font-size: var(--text-xs);
   color: var(--color-text-muted);
-  margin-top: var(--sp-3);
-  line-height: 1.6;
+  margin-top: 8px; /* Compacted from sp-3 */
+  line-height: 1.4;
 }
 
 /* Honeypot */

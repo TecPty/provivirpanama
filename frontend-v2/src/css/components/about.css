@@ -78,12 +78,15 @@
 /* Global Section Label */
 .section__label {
   display: inline-flex;
-  padding: 4px 16px; /* Slightly tighter */
+  align-self: flex-start; /* Prevent stretching */
+  padding: 5px 20px; /* Figma: 5px/20px */
   border: 1px solid #272727;
-  border-radius: 42px;
-  font-size: 11px; /* Scaled from 12px */
+  border-radius: 42px; /* Figma: 42px */
+  font-size: 11px;
   font-weight: 500;
   color: #272727;
+  margin-bottom: 10px; /* Figma: Espacio 10px */
+  text-transform: capitalize;
 }
 
 .section__title {
