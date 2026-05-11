@@ -43,8 +43,10 @@
 /* Left: headline */
 .cta-section__copy .section__title {
   color: var(--color-white);
-  font-size: 28px; /* Unified with other sections */
-  line-height: 1.1;
+  font-size: clamp(40px, 5vw, 64px); /* Figma: 64px ExtraBold */
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
 }
 
 .cta-section__copy .section__subtitle {
