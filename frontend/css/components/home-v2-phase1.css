@@ -48,7 +48,7 @@
     font-size: 0.9rem;
     font-weight: 700;
     line-height: 1;
-    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    transition: all 0.3s ease;
 }
 
 .landing-header-v2__cta span {
@@ -62,12 +62,18 @@
     justify-content: center;
     font-size: 1rem;
     font-weight: 800;
+    transition: all 0.3s ease;
 }
 
 .landing-header-v2__cta:hover {
-    background: #024486;
-    border-color: #024486;
+    background: transparent;
+    color: #0457a9;
     transform: translateY(-1px);
+}
+
+.landing-header-v2__cta:hover span {
+    background: #0457a9;
+    color: #fff;
 }
 
 .hero--v2 {
@@ -79,12 +85,12 @@
 
 .hero-v2__surface {
     position: relative;
-    min-height: 520px;
+    min-height: 600px;
     border-radius: 20px;
     overflow: hidden;
     display: flex;
-    align-items: flex-start;
-    padding: 4.5rem 3rem;
+    align-items: center;
+    padding: 3rem 4rem;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
 }
 
@@ -99,7 +105,8 @@
 .hero-v2__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(110deg, rgba(3, 9, 18, 0.82) 26%, rgba(3, 9, 18, 0.26) 65%, rgba(3, 9, 18, 0.12) 100%);
+    /* Eliminamos el filtro oscuro casi por completo para máxima claridad */
+    background: linear-gradient(110deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .hero-v2__content,
@@ -147,22 +154,29 @@
 .hero-v2__btn--primary {
     background: #0c68c4;
     color: #fff;
+    border: 2px solid #0c68c4;
+    transition: all 0.3s ease;
 }
 
 .hero-v2__btn--primary:hover {
-    background: #0957a7;
+    background: #fff;
+    color: #0c68c4;
+    border-color: #0c68c4;
 }
 
 .hero-v2__btn--ghost {
-    background: rgba(255, 255, 255, 0.14);
+    background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.38);
     color: #fff;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
+    transition: all 0.3s ease;
 }
 
 .hero-v2__btn--ghost:hover {
-    background: rgba(255, 255, 255, 0.24);
+    background: #fff;
+    color: #0c68c4;
+    border-color: #0c68c4;
 }
 
 .hero-v2__stats {
