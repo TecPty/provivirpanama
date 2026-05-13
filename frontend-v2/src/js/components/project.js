@@ -22,14 +22,27 @@ export function initProject() {
     });
   });
 
-  // Placeholder for gallery logic
-  const nextBtns = document.querySelectorAll('.gallery-btn.next');
-  const prevBtns = document.querySelectorAll('.gallery-btn.prev');
+  // Carousel logic — one instance per model
+  models.forEach(model => {
+    const slides = Array.from(model.querySelectorAll('.gallery-slide'));
+    const dots   = Array.from(model.querySelectorAll('.gallery-dot'));
+    const prevBtn = model.querySelector('.gallery-btn.prev');
+    const nextBtn = model.querySelector('.gallery-btn.next');
 
-  nextBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      console.log('Next slide placeholder');
-      // Here you would implement simple carousel logic if needed
-    });
+    if (!slides.length) return;
+
+    let current = 0;
+
+    function goTo(index) {
+      slides[current].classList.remove('active');
+      if (dots[current]) dots[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (dots[current]) dots[current].classList.add('active');
+    }
+
+    nextBtn?.addEventListener('click', () => goTo(current + 1));
+    prevBtn?.addEventListener('click', () => goTo(current - 1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
   });
 }

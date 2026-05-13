@@ -73,7 +73,7 @@
 .models__tab {
   padding: 14px 27px; /* Figma: 14px top/bottom, 27px left/right */
   border-radius: 33px; /* Figma: 33px */
-  border: 1px solid var(--color-primary);
+  border: 2px solid #034C95; /* Figma: 2px solid #034C95 */
   background: transparent;
   color: var(--color-primary);
   font-family: var(--font-display);
@@ -81,10 +81,10 @@
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition);
-  min-width: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px; /* Figma: espacio 10px */
 }
 
 .models__tab.active {
@@ -112,16 +112,22 @@
 .model-detail__title {
   font-family: var(--font-display);
   font-size: 32px;
-  font-weight: 700;
+  font-weight: 800; /* Figma: ExtraBold */
   color: #034C95;
-  margin-bottom: 31px; /* Figma: 31px spacing */
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 36px; /* Figma: Frame 38 gap 36px */
 }
 
 .model-detail__description {
-  font-size: 14px;
-  color: #4B5563;
-  margin-bottom: 31px;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 16px;        /* Figma: 16px Regular */
+  font-weight: 400;
+  color: #272727;          /* Figma: #272727 */
+  text-align: justify;    /* Figma: Alineación Justificado */
+  line-height: 1.5;
+  letter-spacing: 0;
+  margin-bottom: 35px; /* Figma: Frame 37 gap 35px */
 }
 
 .model-detail__specs {
@@ -152,31 +158,47 @@
 
 .spec-item__value {
   display: block;
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--color-primary);
+  font-size: 16px;     /* Figma: 16px */
+  font-weight: 400;    /* Figma: Regular */
+  color: #272727;      /* Figma: #272727 */
+  line-height: 1;
 }
 
 /* Override del btn-pill-arrow para el contexto del modelo — Figma: 264x48px */
 .model-detail__actions .btn-pill-arrow {
-  width: 220px !important; /* proporcional a 264px/1440px */
-  font-size: 14px;
+  width: 264px !important;       /* Figma: 264px fijo */
+  height: 48px !important;       /* Figma: 48px fijo */
+  font-size: 20px;               /* Figma: 20px Bold */
+  font-weight: 700;
+  padding: 1px 57px 1px 17px;   /* Figma: top 1 / right 57.1 / bottom 1 / left 17 */
+  border: 1px solid #FFFFFF;     /* Figma: borde blanco sobre fondo azul */
+}
+
+.model-detail__actions .btn-pill-arrow__icon {
+  width: 37px !important;        /* Figma: 37.39px */
+  height: 37px !important;
+  right: 5px;
+}
+
+.model-detail__actions .btn-pill-arrow__icon svg {
+  width: 19px !important;        /* Figma: 18.69px */
+  height: 24px !important;       /* Figma: 24px */
 }
 
 /* Buttons */
 .btn-floor-plan {
   background: #034C95;
   color: var(--color-white);
-  padding: 14px 40px;
-  font-weight: 600;
-  font-size: 15px;
-  border-radius: 4px;
-  width: auto; /* Ya no es full width */
-  min-width: 320px;
-  display: inline-block;
+  padding: 10px 30px;   /* Figma: 10px top/bottom, 30px left/right */
+  font-family: var(--font-body);
+  font-weight: 500;     /* Figma: Medium */
+  font-size: 20px;      /* Figma: 20px */
+  line-height: 38px;    /* Figma: altura de linea 38px */
+  border-radius: 4px;   /* Figma: Radio 4px */
+  width: 100%;
+  display: block;
   text-align: center;
   transition: all var(--transition);
-  margin-top: 20px;
 }
 
 .btn-floor-plan:hover {
@@ -189,15 +211,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 0; /* dots pegados al carousel, gap se maneja con margin en gallery-dots */
 }
 
 .model-detail__gallery {
   position: relative;
   width: 100%;
+  aspect-ratio: 655 / 514; /* Figma: Photos frame 655×514px */
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra más suave y difusa */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 .gallery-main img {
@@ -206,55 +229,74 @@
   border-radius: 20px; /* Unificado a 20px */
 }
 
+/* Slides */
+.gallery-slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+}
+
 .gallery-nav {
   position: absolute;
   top: 50%; width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 0 25px; /* Figma: Left Arrow left: 25px */
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .gallery-btn {
-  width: 44px; /* Un poco más grandes para mejor UX */
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #034C95;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  pointer-events: auto;
-  transition: all var(--transition);
+  width: 42px; /* Figma: 42px clickable area */
+  height: 42px;
+  padding: 3.5px; /* Figma: Vector centrado 35px en 42px = 3.5px offset */
+  background: transparent; /* circulo esta dentro del SVG */
   border: none;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: auto;
   cursor: pointer;
+  transition: opacity var(--transition);
 }
 
 .gallery-btn:hover {
-  background: #fff;
-  transform: scale(1.1);
-  color: #2E7DD1;
+  opacity: 0.8;
 }
 
 .gallery-dots {
   display: flex;
-  gap: 8px;
+  gap: 5px; /* Figma: 15px center-to-center con dots 10px = 5px gap */
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 4px;    /* casi pegados al carousel */
+  margin-bottom: 55px; /* Figma: Frame 40 Espacio 55px antes del boton */
 }
 
 .gallery-dot {
-  width: 8px; height: 8px;
+  width: 10px; height: 10px; /* Figma: 10×10px */
   border-radius: 50%;
-  background: #D1D5DB;
+  background: #D9D9D9; /* Figma: inactivo #D9D9D9 */
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .gallery-dot.active {
-  background: #034C95;
-  width: 24px; /* Efecto expandido como en Figma modernos */
-  border-radius: 4px;
+  background: rgba(75, 75, 76, 0.92); /* Figma: #4B4B4C 92% — círculo simple */
+  width: 10px; /* mismo tamaño, sin pill */
+  border-radius: 50%;
 }
 
 /* Amenities Section Refinement */
