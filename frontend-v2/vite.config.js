@@ -17,6 +17,10 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    allowedHosts: ['dai6i2-ip-190-123-239-147.tunnelmole.net'],
+    host: true,
+    allowedHosts: [
+      'dai6i2-ip-190-123-239-147.tunnelmole.net',
+      'vfoxlb-ip-190-123-239-147.tunnelmole.net'
+    ],
   },
 });
