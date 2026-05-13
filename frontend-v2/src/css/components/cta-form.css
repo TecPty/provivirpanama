@@ -1,14 +1,14 @@
-﻿/* ==========================================================================
-   CTA + CONTACT FORM â€” "Â¿EstÃ¡s listo para vivir como nunca?"
+/* ==========================================================================
+   CTA + CONTACT FORM — "¿Estás listo para vivir como nunca?"
    ========================================================================== */
 
 .cta-section {
   position: relative;
   overflow: hidden;
-  min-height: 80vh;
+  min-height: 500px; /* Reduced from 600px to avoid pushing content down */
   display: flex;
   align-items: center;
-  padding-block: 48px; /* Overriding global .section padding */
+  padding: 40px 0; /* Tightened from 60px */
 }
 
 .cta-section__bg {
@@ -23,31 +23,37 @@
 .cta-section__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(15, 39, 64, 0.72);
+  background: rgba(0, 0, 0, 0.45); /* Lightened to "remove the filter" feel */
   z-index: 1;
 }
 
 .cta-section__inner {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1fr 420px; /* Controlled form width */
-  gap: 40px; /* Calibrated gap */
-  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Changed from center to align with Figma top-heavy look */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 80px; /* Figma 100px -> 80px */
+  padding: 0 40px; 
+  gap: 60px;
 }
 
 /* Left: headline */
+.cta-section__copy {
+  width: 576px; /* Figma: 576px */
+  flex-shrink: 0;
+}
+
 .cta-section__copy .section__title {
   color: var(--color-white);
   font-family: var(--font-display);
-  font-size: clamp(32px, 5vw, 48px); /* Calibrado segÃºn diseño de Alicia */
-  font-weight: 700;
+  font-size: clamp(32px, 5vw, 48px); /* Calibrated from 64px to fix gigantism */
+  font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  width: 520px;
+  text-align: left;
 }
 
 .cta-section__copy .section__subtitle {
@@ -57,23 +63,28 @@
 /* Right: form */
 .cta-form {
   background: var(--color-white);
-  border-radius: 20px; /* Figma: 20px */
-  padding: 24px 30px; /* Calibrated from Figma */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  width: 481px; /* Exact match with SVG */
+  min-height: 511px; /* Exact match with SVG */
+  padding: 40px; /* More air like Figma */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cta-form__title {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 20px; /* Matched to Figma */
   font-weight: 800;
-  color: var(--color-text); /* Black/Dark text in mockup */
-  margin-bottom: 8px;
+  color: #272727;
+  margin-bottom: 6px;
   text-align: left;
 }
 
 .cta-form__subtitle {
-  font-size: 13px;
-  color: #666;
+  font-size: 11px; /* Figma: Very small */
+  color: #70757A;
   margin-bottom: 12px;
   line-height: 1.4;
 }
@@ -84,10 +95,11 @@
 
 .form-label {
   display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #272727;
+  margin-bottom: 3px;
+  text-transform: none;
 }
 
 .form-label .required {
@@ -118,25 +130,25 @@
 
 .input-badge {
   position: absolute;
-  left: 12px;
-  background: #F1F3F4;
-  color: #5F6368;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 4px 8px;
-  border-radius: 4px;
+  left: 14px;
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 500;
   pointer-events: none;
+  border-right: 1px solid #E5E7EB;
+  padding-right: 10px;
 }
 
 .input-with-badge .form-input {
-  padding-left: 56px;
+  padding-left: 60px;
 }
 
 /* Project Location Radio Group */
 .form-radio-group {
   display: flex;
-  gap: 24px;
-  margin-top: 8px;
+  gap: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .form-radio {
@@ -146,6 +158,7 @@
   cursor: pointer;
   font-size: 14px;
   color: var(--color-text);
+  white-space: nowrap; /* Evita que el nombre del proyecto se rompa */
 }
 
 .form-radio input[type="radio"] {
@@ -154,23 +167,27 @@
   accent-color: var(--color-primary);
 }
 
-.form-submit {
+.cta-form__submit {
   width: 100%;
-  height: 44px;
-  margin-top: 8px;
-  font-size: 15px;
+  height: 48px; /* Figma: 48px */
+  margin-top: 12px;
+  font-size: 18px; /* Figma: 18px */
   font-weight: 700;
   background: var(--color-primary);
   color: var(--color-white);
-  border-radius: 10px;
+  border-radius: 8px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.form-submit:hover {
+.cta-form__submit:hover {
   background: var(--color-primary-dark);
+  transform: translateY(-1px);
 }
 
 .btn-arrow {
@@ -184,13 +201,14 @@
 }
 
 .form-footer-notes p {
-  font-size: 11px;
-  color: #70757A;
+  font-size: 10px; /* Extra small like Figma */
+  color: #9AA0A6;
   margin-bottom: 4px;
+  line-height: 1.4;
 }
 
 .form-privacy-disclaimer {
-  line-height: 1.5;
+  margin-top: 4px;
 }
 
 .form-privacy {
