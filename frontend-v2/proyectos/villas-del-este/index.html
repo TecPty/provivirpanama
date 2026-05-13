@@ -348,19 +348,18 @@
 
     <!-- CONTACT FORM -->
     <section class="cta-section section" id="contacto">
-      <img src="/assets/images/properties/map-provivir.webp" alt="" class="cta-section__bg" loading="lazy">
+      <img src="/assets/images/properties/villas-del-este/hero.webp" alt="" class="cta-section__bg" loading="lazy">
       <div class="cta-section__overlay"></div>
 
       <div class="container">
         <div class="cta-section__inner">
           <div class="cta-section__copy">
-            <h2 class="section__title">Â¿EstÃ¡s listo para vivir como nunca?</h2>
-            <p class="section__subtitle">Contáctanos hoy y un asesor experto te guiarÃ¡ en todo el proceso.</p>
+            <h2 class="section__title">¿Estás listo para vivir como nunca?</h2>
           </div>
 
           <div class="cta-form" id="contactForm">
-            <h3 class="cta-form__title">¡EstÃ¡s más cerca de tu nuevo hogar!</h3>
-            <p class="cta-form__subtitle">La informaciÃ³n que nos brindas serÃ¡ utilizada Ãºnicamente para compartir contigo informaciÃ³n sobre nuestros proyectos.</p>
+            <h3 class="cta-form__title">¡Estás más cerca de tu nuevo hogar!</h3>
+            <p class="cta-form__subtitle">La información que nos brindas será utilizada únicamente para compartir contigo información sobre nuestros proyectos.</p>
 
             <form id="leadForm" novalidate>
               <div class="form-honeypot" aria-hidden="true">
@@ -374,48 +373,53 @@
 
               <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="email">Correo electrÃ³nico <span class="required">*</span></label>
+                  <label class="form-label" for="email">Correo electrónico <span class="required">*</span></label>
                   <input class="form-input" type="email" id="email" name="email" autocomplete="email" required>
                 </div>
                 <div class="form-group">
-                  <label class="form-label" for="phone">TelÃ©fono <span class="required">*</span></label>
+                  <label class="form-label" for="phone">Teléfono <span class="required">*</span></label>
                   <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" required>
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="project">Proyecto de interÃ©s</label>
-                <select class="form-select" id="project" name="project">
-                  <option value="">Seleccionar proyecto</option>
-                  <option value="villas-del-este" selected>Villas del Este</option>
-                  <option value="villas-del-oeste">Villas del Oeste</option>
-                  <option value="ciudad-del-este">Ciudad del Este</option>
-                </select>
+                <label class="form-label" for="salary">Salario mensual <span class="required">*</span></label>
+                <div class="input-with-badge">
+                  <span class="input-badge">USD</span>
+                  <input class="form-input" type="number" id="salary" name="salary" placeholder="0.00" required>
+                </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="salary">Rango de ingresos mensuales</label>
-                <select class="form-select" id="salary" name="salary">
-                  <option value="">Seleccionar rango</option>
-                  <option value="menos-800">Menos de $800</option>
-                  <option value="800-1200">$800 â€“ $1,200</option>
-                  <option value="1200-2000">$1,200 â€“ $2,000</option>
-                  <option value="mas-2000">MÃ¡s de $2,000</option>
-                </select>
+                <label class="form-label">Ubicación de Proyecto</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="project" value="villas-del-este" checked>
+                    <span>Villas del Este</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="project" value="ciudad-del-este">
+                    <span>Ciudad del Este</span>
+                  </label>
+                </div>
               </div>
 
-              <button type="submit" class="btn btn--primary form-submit" id="submitBtn">
-                Quiero más informaciÃ³n
+              <button type="submit" class="cta-form__submit">
+                Quiero más información <span class="btn-arrow">→</span>
               </button>
-              <p class="form-privacy">Tu informaciÃ³n estÃ¡ protegida. No compartimos tus datos con terceros.</p>
+
+              <div class="form-footer-notes">
+                <p>Los campos obligatorios están marcados con <span class="required">*</span></p>
+                <p class="form-privacy-disclaimer">Nunca compartas información confidencial (números de tarjetas de crédito, números de identificación personal, contraseñas) a través de este formulario.</p>
+              </div>
             </form>
 
             <div class="form-success" id="formSuccess">
               <div class="form-success__icon">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
               </div>
-              <h3 class="form-success__title">¡Gracias por tu interÃ©s!</h3>
-              <p class="form-success__text">Un asesor experto se pondrÃ¡ en contacto contigo muy pronto.</p>
+              <h3 class="form-success__title">¡Gracias por tu interés!</h3>
+              <p class="form-success__text">Un asesor experto se pondrá en contacto contigo muy pronto.</p>
             </div>
           </div>
         </div>
