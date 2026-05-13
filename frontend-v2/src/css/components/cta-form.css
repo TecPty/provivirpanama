@@ -43,10 +43,11 @@
 /* Left: headline */
 .cta-section__copy .section__title {
   color: var(--color-white);
-  font-size: clamp(40px, 5vw, 64px); /* Figma: 64px ExtraBold */
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 48px); /* Calibrado segÃºn diseño de Alicia */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 .cta-section__copy .section__subtitle {
