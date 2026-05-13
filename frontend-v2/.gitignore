@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Raw designer source files (heavy PNGs, pending WebP conversion)
+public/assets/images/properties/**/MODELO-*/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
