@@ -1,15 +1,16 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    PROJECT PAGE STYLES
    ========================================================================== */
 
 .project-hero {
   position: relative;
-  height: 60vh;
-  min-height: 400px;
+  height: 75vh;
+  min-height: 500px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
+  margin-bottom: 94px; /* Figma: 1440x94 spacer */
 }
 
 .project-hero__bg {
@@ -18,44 +19,72 @@
   z-index: -1;
 }
 
+.project-hero__overlay {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+}
+
 .project-hero__bg img {
   width: 100%; height: 100%; object-fit: cover;
+  display: block;
+}
+
+.project-hero .container {
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .project-hero__card {
   background: var(--color-white);
-  padding: var(--sp-8);
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  box-shadow: var(--shadow-lg);
-  max-width: 400px;
+  padding: 32px 48px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  max-width: 380px;
   width: 90%;
   display: flex;
   justify-content: center;
-  transform: translateY(1px);
+  transform: translateY(50%);
+  z-index: 10;
+  position: relative;
 }
 
 .project-hero__logo {
-  max-height: 100px;
-  width: auto;
+  max-width: 240px;
+  width: 100%;
+  height: auto;
 }
 
 /* Tabs */
+.models {
+  padding-top: 0; /* El espacio lo maneja margin-bottom del hero */
+}
+
 .models__tabs {
   display: flex;
   justify-content: center;
-  gap: var(--sp-4);
-  margin-bottom: var(--sp-12);
+  gap: 44px; /* Figma: 44px */
+  margin-bottom: 55px;
 }
 
 .models__tab {
-  padding: var(--sp-3) var(--sp-8);
-  border-radius: var(--radius-full);
-  border: 2px solid var(--color-primary);
+  padding: 14px 27px; /* Figma: 14px top/bottom, 27px left/right */
+  border-radius: 33px; /* Figma: 33px */
+  border: 1px solid var(--color-primary);
   background: transparent;
   color: var(--color-primary);
+  font-family: var(--font-display);
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition);
+  min-width: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .models__tab.active {
@@ -75,99 +104,106 @@
 
 .model-detail__grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: var(--sp-12);
-  align-items: flex-start;
+  grid-template-columns: 591fr 655fr; /* Figma: 591px info / 655px gallery */
+  gap: 43px; /* Figma: 43px */
+  align-items: start;
 }
 
 .model-detail__title {
-  font-size: var(--text-3xl);
-  font-weight: 800;
-  color: var(--color-primary);
-  margin-bottom: var(--sp-6);
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #034C95;
+  margin-bottom: 31px; /* Figma: 31px spacing */
 }
 
 .model-detail__description {
-  font-size: var(--text-sm);
-  color: var(--color-text);
-  margin-bottom: var(--sp-8);
+  font-size: 14px;
+  color: #4B5563;
+  margin-bottom: 31px;
   line-height: 1.6;
 }
 
 .model-detail__specs {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--sp-6) var(--sp-8);
-  margin-bottom: var(--sp-10);
+  gap: 20px 16px;
+  margin-bottom: 31px;
 }
 
 .spec-item {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
+  gap: 12px;
 }
 
 .spec-item__icon {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
-  opacity: 0.7;
 }
 
 .spec-item__label {
   display: block;
-  font-size: var(--text-sm);
+  font-size: 13px;
   font-weight: 600;
-  color: var(--color-text);
+  color: #1A1A2E;
 }
 
 .spec-item__value {
   display: block;
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Override del btn-pill-arrow para el contexto del modelo — Figma: 264x48px */
+.model-detail__actions .btn-pill-arrow {
+  width: 220px !important; /* proporcional a 264px/1440px */
+  font-size: 14px;
 }
 
 /* Buttons */
-/* Buttons */
 .btn-floor-plan {
-  background: var(--color-primary);
+  background: #034C95;
   color: var(--color-white);
-  padding: var(--sp-4) var(--sp-12);
+  padding: 14px 40px;
   font-weight: 600;
-  font-size: var(--text-base);
-  border-radius: var(--radius-sm);
-  width: 100%;
-  max-width: 400px;
+  font-size: 15px;
+  border-radius: 4px;
+  width: auto; /* Ya no es full width */
+  min-width: 320px;
   display: inline-block;
   text-align: center;
   transition: all var(--transition);
+  margin-top: 20px;
 }
 
 .btn-floor-plan:hover {
-  background: var(--color-primary-dark);
+  background: #023a73;
   box-shadow: var(--shadow-md);
 }
 
-/* Gallery */
+/* Gallery - Refined shadows and borders */
 .model-detail__gallery-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-6);
+  gap: 24px;
 }
 
 .model-detail__gallery {
   position: relative;
   width: 100%;
-  border-radius: var(--radius-xl);
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra más suave y difusa */
 }
 
 .gallery-main img {
   width: 100%;
   display: block;
-  border-radius: var(--radius-xl);
+  border-radius: 20px; /* Unificado a 20px */
 }
 
 .gallery-nav {
@@ -175,68 +211,196 @@
   top: 50%; width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 var(--sp-4);
+  padding: 0 20px;
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .gallery-btn {
-  width: 36px; height: 36px;
-  border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.8);
-  color: var(--color-primary);
+  width: 44px; /* Un poco más grandes para mejor UX */
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #034C95;
   display: flex; align-items: center; justify-content: center;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   pointer-events: auto;
   transition: all var(--transition);
+  border: none;
+  cursor: pointer;
 }
 
 .gallery-btn:hover {
-  background: var(--color-white);
+  background: #fff;
   transform: scale(1.1);
+  color: #2E7DD1;
 }
 
 .gallery-dots {
   display: flex;
-  gap: var(--sp-2);
+  gap: 8px;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .gallery-dot {
   width: 8px; height: 8px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   background: #D1D5DB;
   cursor: pointer;
-  transition: all var(--transition);
+  transition: all 0.3s ease;
 }
 
 .gallery-dot.active {
-  background: #4B5563;
-  width: 12px;
+  background: #034C95;
+  width: 24px; /* Efecto expandido como en Figma modernos */
+  border-radius: 4px;
 }
 
-/* Amenities */
+/* Amenities Section Refinement */
+.amenities {
+  padding-block: 100px;
+}
+
+.bg-light {
+  background-color: #F8FAFC;
+}
+
 .amenities__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sp-12);
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
   align-items: center;
+}
+
+.amenities__copy .section__label {
+  display: inline-block;
+  padding: 6px 16px;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+
+.amenities__copy .section__title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 800;
+  color: #1A3C5E;
+  line-height: 1.1;
+  margin-bottom: 40px;
+  letter-spacing: -0.02em;
 }
 
 .amenities__list {
   list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--sp-4);
-  margin-top: var(--sp-6);
+  gap: 20px;
 }
 
 .amenities__list li {
   display: flex;
   align-items: center;
-  gap: var(--sp-3);
+  gap: 16px;
+  font-size: 18px;
   font-weight: 600;
-  color: var(--color-text);
+  color: #1A3C5E;
+}
+
+.check-icon {
+  width: 24px;
+  height: 24px;
+  color: #034C95;
+}
+
+/* Video / Amenity Preview */
+.amenities__video {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 16 / 10;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.amenities__video:hover .video-thumb {
+  transform: scale(1.03);
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.play-btn:hover {
+  background: #fff;
+  color: #034C95;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Project Map Section */
+.project-map {
+  padding-block: 100px;
+}
+
+.project-map__inner {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  height: 500px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.project-map__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-map__overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.project-map .btn--primary {
+  padding: 16px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  background: #034C95;
+  box-shadow: 0 10px 15px -3px rgba(3, 76, 149, 0.3);
 }
 
 .check-icon {
