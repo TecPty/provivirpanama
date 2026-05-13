@@ -41,8 +41,8 @@
 .project-hero__card {
   background: var(--color-white);
   padding: 32px 48px;
-  border-radius: 20px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  border-radius: 20px 20px 0 0;
+  box-shadow: none;
   max-width: 380px;
   width: 90%;
   display: flex;
