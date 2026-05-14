@@ -4,26 +4,27 @@
 
 .project-hero {
   position: relative;
-  height: 75vh;
-  min-height: 500px;
+  height: 913px; /* Fixed height from Figma */
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* Align card to bottom */
   justify-content: center;
-  overflow: visible;
-  margin-bottom: 94px; /* Figma: 1440x94 spacer */
+  overflow: visible; /* ALLOWS LOGO CARD TO OVERLAP */
+  margin-bottom: 240px; /* MORE SPACE FOR THE BRIDGE CARD */
+  z-index: 10;
 }
 
 .project-hero__bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   z-index: -1;
+  overflow: hidden; /* KEEP IMAGE CONTAINED */
 }
 
 .project-hero__overlay {
-  content: '';
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+  background: rgba(0, 0, 0, 0.45); 
+  z-index: 1;
 }
 
 .project-hero__bg img {
@@ -32,30 +33,39 @@
 }
 
 .project-hero .container {
-  height: 100%;
+  height: auto;
+  position: relative;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  z-index: 30; 
 }
 
 .project-hero__card {
   background: var(--color-white);
-  padding: 32px 48px;
-  border-radius: 20px 20px 0 0;
-  box-shadow: none;
-  max-width: 380px;
-  width: 90%;
+  width: 578px; 
+  height: 358px; 
+  border-radius: 20px; 
+  box-shadow: none; /* Removed as requested */
   display: flex;
+  align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
   transform: translateY(50%);
-  z-index: 10;
-  position: relative;
+  padding: 60px;
+  z-index: 100;
 }
 
 .project-hero__logo {
-  max-width: 240px;
+  max-width: 400px;
+  max-height: 200px;
   width: 100%;
   height: auto;
+  object-fit: contain;
+  display: block;
+  position: relative;
+  z-index: 110;
 }
 
 /* Tabs */
