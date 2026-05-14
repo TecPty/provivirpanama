@@ -7,6 +7,9 @@ export function initGallery() {
   let current = 0;
   let timer;
 
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+
   // Build dots
   slides.forEach((_, i) => {
     const dot = document.createElement('button');
@@ -15,6 +18,18 @@ export function initGallery() {
     dot.addEventListener('click', () => goTo(i));
     dotsContainer.appendChild(dot);
   });
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      goTo((current - 1 + slides.length) % slides.length);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      next();
+    });
+  }
 
   function goTo(index) {
     current = index;
@@ -29,7 +44,7 @@ export function initGallery() {
   }
 
   // Auto-play
-  const startAuto = () => { timer = setInterval(next, 4000); };
+  const startAuto = () => { timer = setInterval(next, 5000); }; // Increased to 5s for better reading
   const stopAuto = () => clearInterval(timer);
 
   startAuto();
