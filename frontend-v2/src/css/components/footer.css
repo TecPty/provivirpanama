@@ -5,17 +5,17 @@
 .footer {
   background: #ffffff;
   color: #3a3a3a;
-  padding-top: 40px;
+  padding-top: 60px; /* Increased for better breathing room */
   padding-bottom: 0;
 }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 280px 1fr; /* Adjusted for better logo/tagline space */
+  grid-template-columns: 320px 1fr; /* Wider logo column as in Figma */
   align-items: start;
-  gap: 40px; /* Reduced from 60px */
-  padding-bottom: 30px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  gap: 40px; 
+  padding-bottom: 40px; /* Symmetrical padding with the bottom part */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Single line divider */
 }
 
 /* Col 1: Logo + Tagline + CTA — vertical, gap 20px */
@@ -59,8 +59,8 @@
 /* Logo col */
 .footer__logo {
   width: auto;
-  height: 38px; /* Reducción de 52px a 38px */
-  max-width: 180px;
+  height: 50px; /* Increased from 38px to match Figma */
+  max-width: 220px;
   object-fit: contain;
   object-position: left center;
   margin-bottom: -5px;
@@ -223,13 +223,13 @@
   color: var(--color-primary);
 }
 
-/* Bottom bar — Frame 23: vertical gap 26px; Frame 22: horizontal space-between */
+/* Bottom bar — Single divider handled by grid border-bottom */
 .footer__bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: 26px;
-  border-top: 1px solid rgba(0, 0, 0, 0.10);
+  padding-block: 30px; 
+  border-top: none; /* Single line only */
   width: 100%;
 }
 
