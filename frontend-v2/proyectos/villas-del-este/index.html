@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Villas del Este | Provivir Panamá</title>
   <meta name="description" content="Descubre Villas del Este en Pacora. Casas de diseño moderno con amplios espacios, excelente ubicación y la tranquilidad que tu familia busca en Panamá Este.">
-  <link rel="icon" href="/favicon.ico">
+  
+  <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  
+  <!-- Preload Critical CSS -->
+  <link rel="preload" href="/src/css/main.css" as="style">
+  
+  <link rel="icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/main.css">
 </head>
@@ -66,7 +73,7 @@
     <!-- PROJECT HERO -->
     <section class="project-hero">
       <div class="project-hero__bg">
-        <img src="/assets/images/properties/villas-del-este/hero.webp" alt="Villas del Este Hero View">
+        <img src="/assets/images/properties/villas-del-este/hero.webp" alt="Villas del Este Hero View" fetchpriority="high" loading="eager">
         <div class="project-hero__overlay"></div>
       </div>
       <div class="container">

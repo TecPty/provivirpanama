@@ -519,20 +519,123 @@
 }
 
 
-@media (max-width: 900px) {
-  .model-detail__grid,
-  .amenities__grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-12);
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .project-hero {
+    height: 600px;
+    margin-bottom: 180px;
   }
   
-  .project-hero { height: 40vh; }
-  .model-detail__title { font-size: var(--text-3xl); }
+  .project-hero__card {
+    width: 450px;
+    height: 280px;
+    padding: 40px;
+  }
+
+  .model-detail__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .amenities__grid {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    height: 500px;
+    margin-bottom: 150px;
+  }
+
+  .project-hero__card {
+    width: 90%;
+    max-width: 380px;
+    height: auto;
+    aspect-ratio: 16 / 10;
+    padding: 30px;
+  }
+
+  .models__tabs {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .amenities__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .amenities__copy .section__title {
+    font-size: 28px;
+  }
+
+  .project-map__inner {
+    height: 400px;
+  }
+
+  .project-map .btn--primary {
+    width: 100%;
+  }
 }
 
 @media (max-width: 600px) {
-  .model-detail__specs { grid-template-columns: 1fr; }
-  .models__tabs { flex-direction: column; align-items: stretch; }
+  .project-hero {
+    height: 400px;
+    margin-bottom: 120px;
+  }
+
+  .project-hero__card {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  .models__tabs {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .models__tab {
+    width: 100%;
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .model-detail__title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+
+  .model-detail__specs {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .model-detail__actions .btn-pill-arrow {
+    width: 100% !important;
+  }
+
+  .amenity-item {
+    font-size: 17px;
+  }
+
+  .play-btn {
+    width: 80px;
+    height: 80px;
+  }
+
+  .play-btn img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section {
+    padding-block: 60px;
+  }
 }
 
 @keyframes fadeIn {
