@@ -3,15 +3,13 @@
    ========================================================================== */
 
 .hero-section {
-  padding-top: 80px;
-  /* Space for fixed header */
-  background: var(--color-off-white);
+  padding-top: 130px; /* 100px (Header) + 30px (Gap) to match Figma "aire" */
+  background: var(--color-white);
 }
 
 .hero {
   position: relative;
-  min-height: 680px;
-  /* Scaled down from 792px */
+  min-height: 912px; /* Adjusted to Figma 912px */
   display: flex;
   align-items: center;
   border-radius: 20px;
@@ -32,21 +30,20 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7); /* Black filter at 70% opacity */
+  background: rgba(0, 0, 0, 0.25); /* Reduced filter from 70% to 25% for clarity */
   z-index: 1;
 }
 
 .hero__content {
   position: relative;
   z-index: 2;
-  padding: 80px 60px;
+  padding: 60px 50px; /* Adjusted to Figma: 60px Top/Bottom, 50px Left/Right */
   width: 100%;
 }
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: 48px;
-  /* Scaled for better screen fit */
+  font-size: 64px; /* Increased to match 912px height scale */
   font-weight: 800;
   color: var(--color-white);
   line-height: 1.1;
@@ -57,12 +54,11 @@
 
 .hero__description {
   font-family: var(--font-body);
-  font-size: 20px;
-  /* Scaled for better screen fit */
-  font-weight: 300;
+  font-size: 22px; /* Scaled up */
+  font-weight: 400;
   color: var(--color-white);
   line-height: 1.5;
-  max-width: 600px;
+  max-width: 650px;
   margin-bottom: 40px;
 }
 

@@ -18,7 +18,7 @@
     <div class="container">
       <div class="header__inner">
         <a href="/" class="header__logo" aria-label="Provivir Panamá - Inicio">
-          <img src="/assets/images/logo/provivir-horizontal.svg" alt="Provivir Panamá" width="160" height="45">
+          <img src="/assets/images/logo/brand_logo.svg" alt="Provivir Panamá" width="160" height="45">
         </a>
 
         <nav class="header__nav" aria-label="Navegación principal">
@@ -204,7 +204,7 @@
 
     <!-- CTA + FORM -->
     <section class="cta-section section" id="contacto">
-      <img src="/assets/images/properties/about-3.webp" alt="" class="cta-section__bg" loading="lazy">
+      <img src="/assets/images/about/about-3.webp" alt="" class="cta-section__bg" loading="lazy">
       <div class="cta-section__overlay"></div>
 
       <div class="container">
@@ -217,31 +217,32 @@
             <h3 class="cta-form__title">¡Estás más cerca de tu nuevo hogar!</h3>
             <p class="cta-form__subtitle">La información que nos brindas será utilizada únicamente para compartir contigo información sobre nuestros proyectos.</p>
 
-                        <form id="leadForm" novalidate>
+            <form id="leadForm" novalidate>
               <div class="form-honeypot" aria-hidden="true">
                 <input type="text" name="website" tabindex="-1" autocomplete="off">
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="fullName">Nombre y Apellido <span class="required">*</span></label>
-                <input class="form-input" type="text" id="fullName" name="fullName" autocomplete="name" placeholder="Ingresa tu nombre completo" required>
+                <input class="form-input" type="text" id="fullName" name="fullName" autocomplete="name" required>
               </div>
 
-              <div class="form-group">
-                <label class="form-label" for="email">Correo electrónico <span class="required">*</span></label>
-                <input class="form-input" type="email" id="email" name="email" autocomplete="email" placeholder="ejemplo@correo.com" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="phone">Teléfono <span class="required">*</span></label>
-                <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" placeholder="0000-0000" required>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Correo electrónico <span class="required">*</span></label>
+                  <input class="form-input" type="email" id="email" name="email" autocomplete="email" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="phone">Teléfono <span class="required">*</span></label>
+                  <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" required>
+                </div>
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="salary">Salario mensual <span class="required">*</span></label>
                 <div class="input-with-badge">
                   <span class="input-badge">USD</span>
-                  <input class="form-input" type="text" id="salary" name="salary" placeholder="0.00" required>
+                  <input class="form-input" type="number" id="salary" name="salary" placeholder="0.00" required>
                 </div>
               </div>
 
@@ -249,20 +250,20 @@
                 <label class="form-label">Ubicación de Proyecto <span class="required">*</span></label>
                 <div class="form-radio-group">
                   <label class="form-radio">
-                    <input type="radio" name="project_location" value="este" required>
+                    <input type="radio" name="project" value="area-este" checked>
                     <span>Área Este</span>
                   </label>
                   <label class="form-radio">
-                    <input type="radio" name="project_location" value="oeste">
+                    <input type="radio" name="project" value="area-oeste">
                     <span>Área Oeste</span>
                   </label>
                 </div>
               </div>
 
-              <button type="submit" class="btn btn--primary form-submit" id="submitBtn">
+              <button type="submit" class="cta-form__submit">
                 Enviar <span class="btn-arrow">→</span>
               </button>
-              
+
               <div class="form-footer-notes">
                 <p>Los campos obligatorios están marcados con <span class="required">*</span></p>
                 <p class="form-privacy-disclaimer">Nunca compartas información confidencial (números de tarjetas de crédito, números de identificación personal, contraseñas) a través de este formulario.</p>
