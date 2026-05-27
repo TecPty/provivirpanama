@@ -16,7 +16,7 @@
   padding-bottom: 40px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   flex-wrap: wrap;
-  column-gap: 338px; /* El espacio exacto que marca Figma */
+  gap: 40px;
   row-gap: 40px;
 }
 
@@ -80,8 +80,8 @@
   align-items: center;
   justify-content: center;
   gap: 6px;
-  width: auto;
-  padding: 8px 18px;
+  width: 100%;
+  padding: 12px 18px;
   border-radius: 4px;
   font-family: var(--font-main);
   font-size: 13px;
@@ -113,8 +113,8 @@
 }
 
 .footer__social-link {
-  width: 28px; /* Reducido para parecerse a los circulitos pequeños del Figma */
-  height: 28px;
+  width: 44px;
+  height: 44px;
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
@@ -141,8 +141,8 @@
 }
 
 .footer__social-link svg {
-  width: 18px; /* Reducción de 24px a 18px */
-  height: 18px;
+  width: 22px;
+  height: 22px;
 }
 
 /* Columns — Contacto & Accesos */
