@@ -1,0 +1,616 @@
+/* ==========================================================================
+   ABOUT PAGE — Estilos de la Página ¿Quiénes Somos? (V2 Premium)
+   ========================================================================== */
+
+/* --- HERO SECTION --- */
+.about-hero {
+  position: relative;
+  height: 850px; /* Altura exacta del Figma (Home Screen) */
+  display: flex;
+  align-items: center; /* Centro vertical — igual al boceto */
+  justify-content: flex-start; /* Texto alineado a la izquierda */
+  color: var(--color-white);
+  padding: 50px 80px 80px 80px; /* Paddings exactos del Figma */
+  background-color: var(--color-primary-dark);
+  overflow: hidden;
+}
+
+.about-hero__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* Doble overlay de gradiente oscuro para legibilidad */
+.about-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+.about-hero__container {
+  position: relative;
+  z-index: 3;
+  text-align: left;
+  max-width: 1290px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-hero__title {
+  font-family: 'Poppins', var(--font-display); /* Figma: Poppins */
+  font-size: 64px;  /* Figma: 64px */
+  font-weight: 700; /* Figma: Bold 700 */
+  line-height: 1.5; /* Figma: 150% */
+  letter-spacing: 0; /* Figma: 0% */
+  color: var(--color-white);
+  max-width: 604px;  /* Figma: ancho bloque 604px */
+  margin-bottom: 32px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.about-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: 16px; /* Figma: 16px */
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 560px;
+}
+
+@media (max-width: 1024px) {
+  .about-hero {
+    height: 640px;
+    padding: 40px 40px 60px 40px;
+  }
+  .about-hero__title {
+    font-size: 48px;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-hero {
+    height: 520px;
+    padding: 30px 20px 44px 20px;
+  }
+  .about-hero__title {
+    font-size: 36px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+  }
+  .about-hero__subtitle {
+    font-size: 14px;
+  }
+}
+
+/* --- HISTORIA & ELEGIRNOS GRIDS --- */
+.about-grid-section {
+  padding: 70px 60px; /* Reducido de 100px 129px */
+  background: var(--color-white);
+  display: flex;
+  justify-content: center;
+}
+
+.about-grid-container {
+  max-width: 1180px; /* Ligeramente reducido */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 70px; /* Reducido de 100px */
+}
+
+/* Label centrado arriba de la historia "— Sobre nosotros —" */
+.about-section-label-wrapper {
+  text-align: center;
+  margin-bottom: 28px; /* Reducido de 40px */
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 72px; /* Reducido de 117px */
+  width: 100%;
+}
+
+.about-grid--reverse {
+  flex-direction: row-reverse;
+}
+
+.about-grid__col-img {
+  width: 460px; /* Reducido de 524px */
+  flex: 0 0 460px;
+  height: 320px; /* Reducido de 378px */
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.about-grid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-grid__col-img:hover .about-grid__img {
+  transform: scale(1.03);
+}
+
+.about-grid__col-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Reducido de 32px */
+}
+
+.about-grid__title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl); /* Reducido de 4xl (36px) → 3xl (30px) */
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+.about-grid__body {
+  font-family: var(--font-body);
+  font-size: var(--text-sm); /* Reducido de base (16px) → sm (14px) */
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Signature block para "¿Por qué elegirnos?" */
+.about-grid__signature {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* Lista Elegante (mantenida por si se necesita en otro lugar) */
+.about-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: 8px;
+}
+
+.about-list__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.about-list__icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent);
+  margin-top: 2px;
+}
+
+@media (max-width: 1200px) {
+  .about-grid-section {
+    padding: 60px 40px;
+  }
+  .about-grid {
+    gap: 48px;
+  }
+  .about-grid__col-img {
+    width: 42%;
+    flex: 0 0 42%;
+    height: 290px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-grid-section {
+    padding: 50px 24px;
+  }
+  .about-grid-container {
+    gap: 50px;
+  }
+  .about-grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .about-grid--reverse {
+    flex-direction: column;
+  }
+  .about-grid__col-img {
+    width: 100%;
+    flex: 0 0 auto;
+    height: 300px;
+  }
+  .about-grid__col-text {
+    width: 100%;
+    flex: 0 0 auto;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-grid-section {
+    padding: 40px 16px;
+  }
+  .about-grid-container {
+    gap: 40px;
+  }
+  .about-grid__col-img {
+    height: 230px;
+    border-radius: 14px;
+  }
+  .about-grid__title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* --- STATS SECTION (FRANJA AZUL OSCURO) --- */
+.about-stats-section {
+  background: #034C95;
+  color: var(--color-white);
+  padding: 0 80px; /* Reducido */
+  height: 120px; /* Reducido de 153px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-stats__grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px; /* Reducido de 150px */
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+.about-stats__item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
+}
+
+.about-stats__number {
+  font-family: var(--font-display);
+  font-size: 36px; /* Reducido de 42px */
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-white);
+  letter-spacing: 0.2px;
+}
+
+.about-stats__label {
+  font-family: var(--font-body);
+  font-size: 13px; /* Reducido ligeramente */
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.90);
+  letter-spacing: 0.2px;
+  text-transform: none;
+  margin-top: 0;
+}
+
+@media (max-width: 1024px) {
+  .about-stats-section {
+    height: auto;
+    padding: 32px 24px;
+  }
+  .about-stats__grid {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-stats__grid {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+/* --- AQUELLO QUE NOS DEFINE (DISTINCIÓN DE MARCA) --- */
+.about-define-section {
+  padding: 100px 157px; /* Figma: 100px top/bottom, 157px left/right */
+  background: var(--color-white);
+}
+
+.about-define__inner {
+  max-width: 1236px; /* Figma: Frame 122 ancho relleno */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Reducido — menos espacio entre header y grid */
+}
+
+.about-define__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Sobrescribir align-self global del label — forzar centrado */
+.about-define__header .section__label {
+  align-self: center;
+}
+
+.about-define__title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.about-define__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px; /* Figma: Space 48px entre cards */
+  width: 100%;
+}
+
+.about-define__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px; /* Figma: Espacio 15px entre elementos */
+  padding: 32px 24px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border); /* Borde visible como en Figma */
+  border-radius: var(--radius-xl);
+}
+
+.about-define__icon-wrapper {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: var(--color-primary); /* Fondo azul — los SVGs son blancos */
+  border-radius: 16px; /* Esquinas redondeadas como en Figma */
+  padding: 8px;
+}
+
+.about-define__icon-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.about-define__card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.about-define__card-desc {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  .about-define-section {
+    padding: 80px 80px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .about-define-section {
+    padding: 80px 48px;
+  }
+  .about-define__grid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-define-section {
+    padding: 60px 32px;
+  }
+  .about-define__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-define-section {
+    padding: 50px 20px;
+  }
+}
+
+
+/* --- EQUIPO DE ASESORES --- */
+.about-team-section {
+  padding: 80px 20px; /* Reducido el padding masivo top/bottom */
+  background: var(--color-white);
+}
+
+.about-team__inner {
+  max-width: 1080px; /* Reducido de 1236px para evitar que las fotos escalen gigante */
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Reducido de 48px */
+}
+
+.about-team__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px; /* Reducido de 12px */
+}
+
+/* Centrar el label en esta sección también */
+.about-team__header .section__label {
+  align-self: center;
+}
+
+.about-team__title {
+  font-family: 'Poppins', var(--font-display); 
+  font-size: 36px;       /* Reducido de 40px para que no grite */
+  font-weight: 700;      
+  line-height: 1.2;      
+  letter-spacing: 0;     
+  color: var(--color-primary);
+  text-align: center;    
+  margin: 0;
+  max-width: 535px;      
+}
+
+.about-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; 
+}
+
+/* Card — Figma Frame 160: 351.79×487.93px */
+.team-card {
+  background: var(--color-white);
+  border-radius: 17px;           /* Figma: Radio 16.91px */
+  border: 0.85px solid var(--color-border); /* Figma: Borde 0.85px */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 17px 11px;            /* Figma: padding 16.91/10.99px */
+  gap: 15px;                     /* Figma: Espacio 15.22px */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Imagen — Figma Frame 159: proporción 329.8/374.62 ≈ 0.88:1 */
+.team-card__img-wrapper {
+  width: 100%;
+  aspect-ratio: 329.8 / 374.62; /* Escala correctamente en cualquier ancho */
+  border-radius: 17px;           /* Figma: Radio 16.91px */
+  overflow: hidden;
+  background-color: var(--color-off-white);
+  flex-shrink: 0;
+}
+
+.team-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-card__img {
+  transform: scale(1.03);
+}
+
+/* Texto — Figma Frame 161: gap 8.46px */
+.team-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;                      /* Figma: Espacio 8.46px */
+  padding: 0 4px;
+}
+
+.team-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.team-card__role {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  .about-team-section {
+    padding: 80px 80px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .about-team-section {
+    padding: 80px 48px;
+  }
+  .about-team__grid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  .about-team-section {
+    padding: 60px 32px;
+  }
+  .about-team__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-team-section {
+    padding: 50px 20px;
+  }
+  .about-team__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .about-team__title {
+    font-size: 30px;
+  }
+}

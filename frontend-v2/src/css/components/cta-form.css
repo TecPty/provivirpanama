@@ -8,7 +8,7 @@
   min-height: 500px; /* Reduced from 600px to avoid pushing content down */
   display: flex;
   align-items: center;
-  padding: 40px 0; /* Tightened from 60px */
+  padding: 40px 0 50px 0;
 }
 
 .cta-section__bg {
