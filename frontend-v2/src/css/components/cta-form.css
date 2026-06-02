@@ -32,7 +32,7 @@
   z-index: 2;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Changed from center to align with Figma top-heavy look */
+  align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;

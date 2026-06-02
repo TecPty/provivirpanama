@@ -4,12 +4,12 @@
 
 .project-hero {
   position: relative;
-  height: 913px; /* Fixed height from Figma */
+  height: 913px;
   display: flex;
-  align-items: flex-end; /* Align card to bottom */
+  align-items: center;
   justify-content: center;
-  overflow: visible; /* ALLOWS LOGO CARD TO OVERLAP */
-  margin-bottom: 240px; /* MORE SPACE FOR THE BRIDGE CARD */
+  overflow: hidden;
+  margin-bottom: 60px;
   z-index: 10;
 }
 
@@ -42,35 +42,33 @@
 }
 
 .project-hero__card {
-  background: var(--color-white);
-  width: 578px; 
-  height: 358px; 
-  border-radius: 20px; 
-  box-shadow: none; /* Removed as requested */
+  background: transparent;
+  width: 555px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
-  transform: translateY(50%);
-  padding: 60px;
+  padding: 0;
   z-index: 100;
 }
 
 .project-hero__logo {
-  max-width: 400px;
-  max-height: 200px;
-  width: 100%;
+  width: 555px;
   height: auto;
   object-fit: contain;
   display: block;
-  position: relative;
+  filter: brightness(0) invert(1);
   z-index: 110;
+}
+
+/* Ciudad del Este PNG tiene mucho espacio transparente alrededor del logo real */
+#logo-ciudad-del-este {
+  width: 900px;
 }
 
 /* Tabs */
 .models {
-  padding-top: 0; /* El espacio lo maneja margin-bottom del hero */
+  padding-top: 60px;
 }
 
 .models__tabs {
@@ -526,13 +524,13 @@
 @media (max-width: 1024px) {
   .project-hero {
     height: 600px;
-    margin-bottom: 180px;
+    margin-bottom: 40px;
   }
   
   .project-hero__card {
-    width: 450px;
-    height: 280px;
-    padding: 40px;
+    width: min(555px, 85vw);
+    height: auto;
+    padding: 0;
   }
 
   .model-detail__grid {
@@ -548,15 +546,13 @@
 @media (max-width: 768px) {
   .project-hero {
     height: 500px;
-    margin-bottom: 150px;
+    margin-bottom: 40px;
   }
 
   .project-hero__card {
-    width: 90%;
-    max-width: 380px;
+    width: min(555px, 85vw);
     height: auto;
-    aspect-ratio: 16 / 10;
-    padding: 30px;
+    padding: 0;
   }
 
   .models__tabs {
@@ -584,12 +580,12 @@
 @media (max-width: 600px) {
   .project-hero {
     height: 400px;
-    margin-bottom: 120px;
+    margin-bottom: 40px;
   }
 
   .project-hero__card {
-    padding: 25px;
-    border-radius: 15px;
+    width: min(320px, 80vw);
+    padding: 0;
   }
 
   .models__tabs {
