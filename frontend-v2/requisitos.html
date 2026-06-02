@@ -1,19 +1,19 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Provivir Panamá — Tu nuevo hogar está más cerca</title>
-  <meta name="description" content="Viviendas en Panamá con financiamiento flexible. Casas y apartamentos de calidad. Villas del Este, Villas del Oeste y Ciudad del Este.">
-  
+  <title>Requisitos para tu hogar | Provivir Panamá</title>
+  <meta name="description" content="Conoce los requisitos para adquirir tu hogar en Provivir Panamá. Tenemos opciones para asalariados e independientes. ¡Cotiza hoy!">
+
   <!-- Performance Optimizations -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  
+
   <!-- Preload Critical CSS -->
   <link rel="preload" href="/src/css/main.css" as="style">
-  
+
   <link rel="icon" href="/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/src/css/main.css">
@@ -32,7 +32,7 @@
           <a href="/">Inicio</a>
           <a href="/quienes-somos.html">Quienes Somos</a>
           <div class="header__nav-item">
-            <a href="#proyectos">
+            <a href="/#proyectos">
               Proyectos
               <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
             </a>
@@ -42,8 +42,8 @@
               <a href="/proyectos/ciudad-del-este/">Ciudad del Este</a>
             </div>
           </div>
-          <a href="#testimoniales">Testimonios</a>
-          <a href="/requisitos.html">Requisitos</a>
+          <a href="/#testimoniales">Testimonios</a>
+          <a href="/requisitos.html" class="is-active" style="color: var(--color-accent); font-weight: 700;">Requisitos</a>
         </nav>
 
         <div class="header__cta">
@@ -64,153 +64,86 @@
     <nav class="header__mobile-nav" id="mobileNav" aria-label="Navegación móvil">
       <a href="/">Inicio</a>
       <a href="/quienes-somos.html">Quienes Somos</a>
-      <a href="#proyectos">Proyectos</a>
-      <a href="#testimoniales">Testimonios</a>
-      <a href="/requisitos.html">Requisitos</a>
+      <a href="/#proyectos">Proyectos</a>
+      <a href="/#testimoniales">Testimonios</a>
+      <a href="/requisitos.html" class="is-active" style="color: var(--color-accent); font-weight: 700;">Requisitos</a>
       <a href="#footer" class="btn btn--primary" style="margin-top:0.5rem">Contáctanos</a>
     </nav>
   </header>
 
   <main>
 
-    <!-- HERO -->
-    <section class="hero-section" id="inicio">
-      <div class="container">
-        <div class="hero">
-          <img src="/assets/images/hero/hero.webp" alt="Residencial Provivir Panamá" class="hero__bg" loading="eager" fetchpriority="high">
-          <div class="hero__overlay"></div>
+    <!-- HERO DE PÁGINA -->
+    <div class="hero-section">
+      <section class="req-hero">
+        <img src="/assets/images/about/quienes-somos-hero.webp" alt="Familia en su nuevo hogar Provivir" class="req-hero__bg" loading="eager" fetchpriority="high">
+        <div class="req-hero__overlay"></div>
+        <div class="req-hero__container">
+          <h1 class="req-hero__title">Requisitos para<br>tu nuevo hogar</h1>
+          <p class="req-hero__subtitle">
+            Tenemos opciones para asalariados e independientes. Conoce lo que necesitás y da el primer paso hacia tu hogar propio.
+          </p>
+        </div>
+      </section>
+    </div>
 
-          <div class="hero__content">
-            <h1 class="hero__title">Un hogar bien pensado <br> cambia la forma de vivir</h1>
-            <p class="hero__description">En Provivir desarrollamos casas en Panamá que combinan ubicación, diseño y tranquilidad para cada etapa de tu vida.</p>
-            <div class="hero__actions">
-              <a href="#proyectos" class="btn btn--primary">Explorar proyectos</a>
-              <a href="#contacto" class="btn btn--ghost">Agenda una visita</a>
+    <!-- CARDS DE REQUISITOS -->
+    <section class="req-cards-section">
+      <div class="req-cards__inner">
+
+        <div class="req-cards__header">
+          <span class="section__label">— ¿Qué necesitás? —</span>
+          <h2 class="req-cards__title">Selecciona tu perfil</h2>
+        </div>
+
+        <div class="req-cards__grid">
+
+          <!-- Card Asalariados -->
+          <div class="req-card">
+            <div class="req-card__header">
+              <span class="req-card__label">Requisitos para</span>
+              <span class="req-card__title">Asalariados</span>
+            </div>
+            <div class="req-card__body">
+              <ul class="req-card__list">
+                <li class="req-card__item">Comprobante de pago</li>
+                <li class="req-card__item">Copia de cédula</li>
+                <li class="req-card__item">Carta de trabajo</li>
+                <li class="req-card__item">Ficha</li>
+              </ul>
+              <a href="#contacto" class="req-card__cta" data-perfil="Asalariado">
+                Cotizar ahora <span class="req-card__cta-arrow">→</span>
+              </a>
             </div>
           </div>
 
+          <!-- Card Independientes -->
+          <div class="req-card">
+            <div class="req-card__header">
+              <span class="req-card__label">Requisitos para</span>
+              <span class="req-card__title">Independientes</span>
+            </div>
+            <div class="req-card__body">
+              <ul class="req-card__list">
+                <li class="req-card__item">Ingreso mensual declarado desde B/. 1,200</li>
+                <li class="req-card__item">Cédula de identidad</li>
+                <li class="req-card__item">2 últimas declaraciones de renta</li>
+                <li class="req-card__item">Paz y salvo con la DGI</li>
+                <li class="req-card__item">Estado de cuenta de los últimos 6 meses</li>
+                <li class="req-card__item">Referencia bancaria</li>
+                <li class="req-card__item">2 referencias personales</li>
+              </ul>
+              <a href="#contacto" class="req-card__cta" data-perfil="Independiente">
+                Cotizar ahora <span class="req-card__cta-arrow">→</span>
+              </a>
+            </div>
+          </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="about section" id="quienes-somos">
-      <div class="container">
-        <div class="about__inner">
-          <div class="about__gallery" id="aboutGallery">
-            <div class="about__gallery-track" id="galleryTrack">
-              <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-1.webp" alt="Provivir - Residencial 1" loading="eager">
-              </div>
-              <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-2.webp" alt="Provivir - Residencial 2" loading="lazy">
-              </div>
-              <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-3.webp" alt="Provivir - Residencial 3" loading="lazy">
-              </div>
-              <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-4.webp" alt="Provivir - Residencial 4" loading="lazy">
-              </div>
-              <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-5.webp" alt="Provivir - Residencial 5" loading="lazy">
-              </div>
-            </div>
-
-            <button class="about__gallery-arrow about__gallery-arrow--prev" id="galleryPrev" aria-label="Anterior">
-              <svg width="42" height="42" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.5 0C7.875 0 0 7.875 0 17.5C0 27.125 7.875 35 17.5 35C27.125 35 35 27.125 35 17.5C35 7.875 27.125 0 17.5 0ZM22.75 19.25H16.45L18.725 21.525C19.425 22.225 19.425 23.275 18.725 23.975C18.025 24.675 16.975 24.675 16.275 23.975L11.025 18.725C10.325 18.025 10.325 16.975 11.025 16.275L16.275 11.025C16.975 10.325 18.025 10.325 18.725 11.025C19.425 11.725 19.425 12.775 18.725 13.475L16.45 15.75H22.75C23.8 15.75 24.5 16.45 24.5 17.5C24.5 18.55 23.8 19.25 22.75 19.25Z" fill="white" fill-opacity="0.9"/>
-              </svg>
-            </button>
-            <button class="about__gallery-arrow about__gallery-arrow--next" id="galleryNext" aria-label="Siguiente">
-              <svg width="42" height="42" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.5 35C27.125 35 35 27.125 35 17.5C35 7.875 27.125 -6.88454e-07 17.5 -1.5299e-06C7.875 -2.37134e-06 2.37134e-06 7.875 1.5299e-06 17.5C6.88454e-07 27.125 7.875 35 17.5 35ZM12.25 15.75L18.55 15.75L16.275 13.475C15.575 12.775 15.575 11.725 16.275 11.025C16.975 10.325 18.025 10.325 18.725 11.025L23.975 16.275C24.675 16.975 24.675 18.025 23.975 18.725L18.725 23.975C18.025 24.675 16.975 24.675 16.275 23.975C15.575 23.275 15.575 22.225 16.275 21.525L18.55 19.25L12.25 19.25C11.2 19.25 10.5 18.55 10.5 17.5C10.5 16.45 11.2 15.75 12.25 15.75Z" fill="white" fill-opacity="0.9"/>
-              </svg>
-            </button>
-
-            <div class="about__gallery-dots" id="galleryDots"></div>
-          </div>
-
-          <div class="about__copy">
-            <span class="section__label">Quienes Somos</span>
-            <h2 class="section__title">Provivir un sueño hecho meta</h2>
-            <div class="about__body">
-              <p>En Provivir Panamá llevamos más de 15 años haciendo realidad el sueño de miles de familias panameñas. Construimos viviendas de calidad en ubicaciones estratégicas, pensadas para que tu familia crezca con comodidad y seguridad.</p>
-              <p>Nuestros proyectos están diseñados con estándares modernos de construcción, áreas verdes y comunidades planificadas para ofrecerte la mejor calidad de vida.</p>
-            </div>
-            <a href="/quienes-somos.html" class="btn btn--outline">Leer más</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="projects section" id="proyectos">
-      <div class="container">
-        <div class="projects__header">
-          <span class="section__label">Proyectos</span>
-          <h2 class="section__title">Tu hogar más cerca de ti</h2>
-          <p class="section__subtitle">Proyectos residenciales en ubicaciones estratégicas de Panamá.</p>
-        </div>
-
-        <div class="projects__grid">
-
-          <!-- Villas del Este -->
-          <a href="/proyectos/villas-del-este/" class="project-card">
-            <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/villas-del-este/hero.webp" alt="Villas del Este" class="project-card__image" loading="lazy">
-            </div>
-            <div class="project-card__body">
-              <img src="/assets/images/logo/logo-villas-del-este.svg" alt="Villas del Este" class="project-card__logo">
-              <p class="project-card__location">
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                Vía la Mesa de San Martín - Pacora
-              </p>
-              <span class="project-card__link">
-                VER PROYECTO ?
-              </span>
-            </div>
-          </a>
-
-          <!-- Villas del Oeste -->
-          <a href="/proyectos/villas-del-oeste/" class="project-card">
-            <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/villas-del-oeste/villas-del-oeste.webp" alt="Villas del Oeste" class="project-card__image" loading="lazy">
-            </div>
-            <div class="project-card__body">
-              <img src="/assets/images/logo/logo-villas-del-oeste.svg" alt="Villas del Oeste" class="project-card__logo">
-              <p class="project-card__location">
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                Vía hacia Santa Cruz - La Chorrera
-              </p>
-              <span class="project-card__link">
-                VER PROYECTO ?
-              </span>
-            </div>
-          </a>
-
-          <!-- Ciudad del Este -->
-          <a href="/proyectos/ciudad-del-este/" class="project-card">
-            <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/ciudad-del-este/ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy">
-            </div>
-            <div class="project-card__body">
-              <img src="/assets/images/logo/logo-ciudad-del-este.svg" alt="Ciudad del Este" class="project-card__logo">
-              <p class="project-card__location">
-                <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
-                Río Chico - Pacora
-              </p>
-              <span class="project-card__link">
-                VER PROYECTO ?
-              </span>
-            </div>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA + FORM -->
+    <!-- FORMULARIO DE CONTACTO / COTIZACIÓN -->
     <section class="cta-section section" id="contacto">
       <img src="/assets/images/hero/cta-bg.webp" alt="" class="cta-section__bg" loading="lazy">
       <div class="cta-section__overlay"></div>
@@ -229,6 +162,9 @@
               <div class="form-honeypot" aria-hidden="true">
                 <input type="text" name="website" tabindex="-1" autocomplete="off">
               </div>
+
+              <!-- Campo oculto para identificar el perfil del lead -->
+              <input type="hidden" id="perfilLead" name="perfil" value="">
 
               <div class="form-group">
                 <label class="form-label" for="fullName">Nombre y Apellido <span class="required">*</span></label>
@@ -334,9 +270,9 @@
             <ul class="footer__links">
               <li><a href="/">Inicio</a></li>
               <li><a href="/quienes-somos.html">Quienes somos</a></li>
-              <li><a href="#proyectos">Proyectos</a></li>
+              <li><a href="/#proyectos">Proyectos</a></li>
               <li><a href="/requisitos.html">Requisitos</a></li>
-              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="#footer">Contacto</a></li>
             </ul>
           </div>
 
@@ -372,8 +308,17 @@
   </footer>
 
   <script type="module" src="/src/js/main.js"></script>
+
+  <!-- Pre-llenar perfil según la card clickeada -->
+  <script>
+    document.querySelectorAll('.req-card__cta[data-perfil]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var perfil = this.getAttribute('data-perfil');
+        var campo = document.getElementById('perfilLead');
+        if (campo) campo.value = perfil;
+      });
+    });
+  </script>
+
 </body>
 </html>
-
-
-

@@ -141,6 +141,10 @@
   color: var(--color-text);
 }
 
+.header__mobile-nav .btn--primary {
+  color: #ffffff;
+}
+
 @media (max-width: 1024px) {
   .header {
     height: 80px;
@@ -148,6 +152,10 @@
 
   .header__nav { 
     display: none; 
+  }
+
+  .header__cta {
+    display: none;
   }
 
   .header__hamburger { 

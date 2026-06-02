@@ -1,0 +1,242 @@
+/* ==========================================================================
+   REQUISITOS PAGE — Provivir Panamá
+   ========================================================================== */
+
+/* --- HERO --- */
+.req-hero {
+  position: relative;
+  min-height: 912px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #0F2740;
+}
+
+@media (max-width: 1024px) {
+  .req-hero {
+    min-height: 600px;
+  }
+}
+
+.req-hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.req-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.req-hero__container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: 80px 60px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.req-hero__title {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+.req-hero__subtitle {
+  font-family: var(--font-body);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-white);
+  line-height: 1.5;
+  max-width: 700px;
+}
+
+/* --- CARDS SECTION --- */
+.req-cards-section {
+  padding: 80px 32px;
+  background: var(--color-bg, #F8FAFC);
+}
+
+.req-cards__inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+
+.req-cards__header {
+  text-align: center;
+}
+
+.req-cards__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.req-cards__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+/* --- CARD --- */
+.req-card {
+  background: var(--color-white);
+  border-radius: 24px;
+  box-shadow: 0 4px 24px rgba(3, 76, 149, 0.08);
+  border: 1px solid rgba(3, 76, 149, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.req-card:hover {
+  box-shadow: 0 8px 40px rgba(3, 76, 149, 0.14);
+  transform: translateY(-3px);
+}
+
+.req-card__header {
+  background: var(--color-primary);
+  padding: 28px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.req-card__label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs, 11px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.req-card__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-white);
+  line-height: 1.1;
+  background: var(--color-success, #2DB34A);
+  display: inline-block;
+  padding: 4px 16px 6px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.req-card__body {
+  padding: 28px 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.req-card__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.req-card__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.req-card__item::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.req-card__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.req-card__cta:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.req-card__cta-arrow {
+  font-size: 1.1em;
+  transition: transform 0.2s ease;
+}
+
+.req-card__cta:hover .req-card__cta-arrow {
+  transform: translateX(3px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 720px) {
+  .req-cards-section {
+    padding: 60px 20px;
+  }
+  .req-cards__grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .req-hero {
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .req-card__header {
+    padding: 22px 24px 18px;
+  }
+  .req-card__body {
+    padding: 22px 24px;
+  }
+}

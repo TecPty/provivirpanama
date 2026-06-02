@@ -141,3 +141,19 @@
     margin-top: 40px;
   }
 }
+
+@media (max-width: 600px) {
+  .hero__actions {
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+    height: 48px;
+    font-size: 15px;
+    padding-inline: 20px;
+  }
+}
