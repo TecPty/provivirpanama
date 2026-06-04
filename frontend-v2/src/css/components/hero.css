@@ -30,7 +30,7 @@
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25); /* Reduced filter from 70% to 25% for clarity */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0) 100%);
   z-index: 1;
 }
 
