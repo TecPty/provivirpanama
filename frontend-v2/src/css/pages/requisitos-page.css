@@ -31,7 +31,7 @@
 .req-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.4) 100%);
 }
 
 .req-hero__container {
@@ -143,6 +143,15 @@
   display: inline-block;
   padding: 4px 16px 6px;
   border-radius: 8px;
+  margin-top: 4px;
+}
+
+.req-card__subtitle {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-white);
+  opacity: 0.9;
   margin-top: 4px;
 }
 

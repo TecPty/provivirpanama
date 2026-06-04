@@ -42,6 +42,7 @@
               <a href="/proyectos/ciudad-del-este/" class="active">Ciudad del Este</a>
             </div>
           </div>
+          <a href="/#testimoniales">Testimonios</a>
           <a href="/requisitos.html">Requisitos</a>
         </nav>
 
@@ -64,6 +65,7 @@
       <a href="/">Inicio</a>
       <a href="/quienes-somos.html">Quienes somos</a>
       <a href="/#proyectos">Proyectos</a>
+      <a href="/#testimoniales">Testimonios</a>
       <a href="/requisitos.html">Requisitos</a>
       <a href="#footer" class="btn btn--primary" style="margin-top:0.5rem">Contáctanos</a>
     </nav>
@@ -73,7 +75,7 @@
     <!-- PROJECT HERO -->
     <section class="project-hero">
       <div class="project-hero__bg">
-        <img src="/assets/images/properties/villas-del-este/hero.webp" alt="Ciudad del Este Hero View" fetchpriority="high" loading="eager">
+        <img src="/assets/images/properties/ciudad-del-este/ciudad-del-este.webp" alt="Ciudad del Este Hero View" fetchpriority="high" loading="eager">
         <div class="project-hero__overlay"></div>
       </div>
       <div class="container">
@@ -88,6 +90,7 @@
       <div class="container">
         <div class="models__tabs">
           <button class="models__tab active" data-model="cordoba">Modelo Córdoba</button>
+          <button class="models__tab" data-model="granada">Modelo Granada</button>
         </div>
 
         <div class="models__content">
@@ -180,6 +183,86 @@
                   <span class="gallery-dot" data-index="8"></span>
                 </div>
                 <button data-floor-plan="/assets/images/properties/ciudad-del-este/CORDOBA/cordoba-planta.webp" class="btn-floor-plan">Ver planta arquitectónica</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modelo Granada (Estructura base para material pendiente) -->
+          <div class="model-detail" id="model-granada">
+            <div class="model-detail__grid">
+              <div class="model-detail__info">
+                <h2 class="model-detail__title">Modelo Granada</h2>
+                <p class="model-detail__description">Diseño contemporáneo y confort absoluto. El Modelo Granada ofrece una experiencia de vida única, optimizando cada metro cuadrado para el disfrute de tu familia.</p>
+                
+                <div class="model-detail__specs">
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-cama.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Recámaras</span>
+                      <span class="spec-item__value">3</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-bano.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Baños</span>
+                      <span class="spec-item__value">2</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-carro.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Estacionamientos</span>
+                      <span class="spec-item__value">1</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-metraje.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Área de terreno</span>
+                      <span class="spec-item__value">desde 180m²</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-cash.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Ingreso desde</span>
+                      <span class="spec-item__value">$800</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="model-detail__actions">
+                  <a href="#contacto" class="btn-pill-arrow">
+                    ¡Quiero vivir aquí!
+                    <span class="btn-pill-arrow__icon">
+                      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="model-detail__gallery-container">
+                <div class="model-detail__gallery">
+                  <div class="gallery-slides">
+                    <!-- Usando placeholder de Granada si existe, o imagen temporal -->
+                    <img class="gallery-slide active" src="/assets/images/properties/ciudad-del-este/modelo-granada.webp" alt="Modelo Granada - Fachada" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/modelo-granada.webp" alt="Modelo Granada" loading="lazy">
+                  </div>
+                  <div class="gallery-nav">
+                    <button class="gallery-btn prev" aria-label="Anterior">
+                      <img src="/assets/images/icons/left-arrow.svg" alt="Anterior" width="35" height="35">
+                    </button>
+                    <button class="gallery-btn next" aria-label="Siguiente">
+                      <img src="/assets/images/icons/right-arrow.svg" alt="Siguiente" width="35" height="35">
+                    </button>
+                  </div>
+                </div>
+                <div class="gallery-dots">
+                  <span class="gallery-dot active" data-index="0"></span>
+                  <span class="gallery-dot" data-index="1"></span>
+                </div>
+                <button data-floor-plan="/assets/images/properties/ciudad-del-este/modelo-granada.webp" class="btn-floor-plan">Ver planta arquitectónica</button>
               </div>
             </div>
           </div>
@@ -305,7 +388,7 @@
               <input type="hidden" name="project" value="ciudad-del-este">
 
               <button type="submit" class="cta-form__submit">
-                Enviar <span class="btn-arrow">?</span>
+                Enviar <span class="btn-arrow">→</span>
               </button>
 
               <div class="form-footer-notes">
