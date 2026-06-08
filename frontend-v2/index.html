@@ -77,7 +77,9 @@
     <section class="hero-section" id="inicio">
       <div class="container">
         <div class="hero">
-          <img src="/assets/images/hero/hero.webp" alt="Residencial Provivir Panamá" class="hero__bg" loading="eager" fetchpriority="high">
+          <video class="hero__bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-label="Video principal de Provivir Panamá">
+            <source src="/assets/images/hero/video-hero.mp4" type="video/mp4">
+          </video>
           <div class="hero__overlay"></div>
 
           <div class="hero__content">
@@ -371,6 +373,25 @@
     </div>
   </footer>
 
+  <script>
+    (function ensureHeroVideoPlayback() {
+      const tryPlay = () => {
+        const heroVideo = document.querySelector('.hero__bg');
+        if (!heroVideo || heroVideo.tagName !== 'VIDEO') return;
+        heroVideo.play().catch(() => {});
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', tryPlay, { once: true });
+      } else {
+        tryPlay();
+      }
+
+      ['click', 'touchstart', 'keydown'].forEach((eventName) => {
+        document.addEventListener(eventName, tryPlay, { once: true, passive: true });
+      });
+    })();
+  </script>
   <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
