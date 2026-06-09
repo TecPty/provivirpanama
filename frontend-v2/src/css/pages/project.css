@@ -43,7 +43,8 @@
 
 .project-hero__card {
   background: transparent;
-  width: 555px;
+  width: 900px;
+  max-width: 90vw;
   height: auto;
   display: flex;
   align-items: center;
@@ -54,6 +55,7 @@
 
 .project-hero__logo {
   width: 555px;
+  max-width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
@@ -61,9 +63,9 @@
   z-index: 110;
 }
 
-/* Ciudad del Este PNG tiene mucho espacio transparente alrededor del logo real */
 #logo-ciudad-del-este {
-  width: 900px;
+  width: 750px;
+  max-width: 100%;
 }
 
 /* Tabs */
@@ -166,43 +168,42 @@
 
 .spec-item__value {
   display: block;
-  font-size: 16px;     /* Figma: 16px */
-  font-weight: 400;    /* Figma: Regular */
-  color: #272727;      /* Figma: #272727 */
+  font-size: 16px;     
+  font-weight: 400;    
+  color: #272727;      
   line-height: 1;
 }
 
-/* Override del btn-pill-arrow para el contexto del modelo — Figma: 264x48px */
 .model-detail__actions .btn-pill-arrow {
-  width: 264px !important;       /* Figma: 264px fijo */
-  height: 48px !important;       /* Figma: 48px fijo */
-  font-size: 20px;               /* Figma: 20px Bold */
+  width: 264px !important;       
+  height: 48px !important;       
+  font-size: 20px;               
   font-weight: 700;
-  padding: 1px 57px 1px 17px;   /* Figma: top 1 / right 57.1 / bottom 1 / left 17 */
-  border: 1px solid #FFFFFF;     /* Figma: borde blanco sobre fondo azul */
+  padding: 1px 57px 1px 17px;   
+  border: 1px solid #FFFFFF;    
 }
 
 .model-detail__actions .btn-pill-arrow__icon {
-  width: 37px !important;        /* Figma: 37.39px */
+  width: 37px !important;       
   height: 37px !important;
   right: 5px;
 }
 
 .model-detail__actions .btn-pill-arrow__icon svg {
-  width: 19px !important;        /* Figma: 18.69px */
-  height: 24px !important;       /* Figma: 24px */
+  width: 19px !important;        
+  height: 24px !important;       
 }
 
 /* Buttons */
 .btn-floor-plan {
   background: #034C95;
   color: var(--color-white);
-  padding: 10px 30px;   /* Figma: 10px top/bottom, 30px left/right */
+  padding: 10px 30px;   
   font-family: var(--font-body);
-  font-weight: 500;     /* Figma: Medium */
-  font-size: 20px;      /* Figma: 20px */
-  line-height: 38px;    /* Figma: altura de linea 38px */
-  border-radius: 4px;   /* Figma: Radio 4px */
+  font-weight: 500;     
+  font-size: 20px;      
+  line-height: 38px;    
+  border-radius: 4px;   
   width: 100%;
   display: block;
   text-align: center;
@@ -219,13 +220,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0; /* dots pegados al carousel, gap se maneja con margin en gallery-dots */
+  gap: 0; 
 }
 
 .model-detail__gallery {
   position: relative;
   width: 100%;
-  aspect-ratio: 655 / 514; /* Figma: Photos frame 655×514px */
+  aspect-ratio: 655 / 514; 
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
@@ -234,7 +235,7 @@
 .gallery-main img {
   width: 100%;
   display: block;
-  border-radius: 20px; /* Unificado a 20px */
+  border-radius: 20px; 
 }
 
 /* Slides */
@@ -264,16 +265,16 @@
   top: 50%; width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 25px; /* Figma: Left Arrow left: 25px */
+  padding: 0 25px; 
   transform: translateY(-50%);
   pointer-events: none;
 }
 
 .gallery-btn {
-  width: 42px; /* Figma: 42px clickable area */
+  width: 42px; 
   height: 42px;
-  padding: 3.5px; /* Figma: Vector centrado 35px en 42px = 3.5px offset */
-  background: transparent; /* circulo esta dentro del SVG */
+  padding: 3.5px; 
+  background: transparent; 
   border: none;
   display: flex; align-items: center; justify-content: center;
   pointer-events: auto;
@@ -287,10 +288,10 @@
 
 .gallery-dots {
   display: flex;
-  gap: 5px; /* Figma: 15px center-to-center con dots 10px = 5px gap */
+  gap: 5px; /* Figma: 5px  */
   justify-content: center;
-  margin-top: 4px;    /* casi pegados al carousel */
-  margin-bottom: 55px; /* Figma: Frame 40 Espacio 55px antes del boton */
+  margin-top: 4px;    
+  margin-bottom: 55px;  /* Figma: Frame 40 Espacio 55px antes del boton */
 }
 
 .gallery-dot {

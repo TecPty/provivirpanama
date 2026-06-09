@@ -3,13 +3,13 @@
    ========================================================================== */
 
 .hero-section {
-  padding-top: 130px; /* 100px (Header) + 30px (Gap) to match Figma "aire" */
+  padding-top: 130px; 
   background: var(--color-white);
 }
 
 .hero {
   position: relative;
-  min-height: 912px; /* Adjusted to Figma 912px */
+  min-height: 912px; 
   display: flex;
   align-items: center;
   border-radius: 20px;
@@ -37,13 +37,13 @@
 .hero__content {
   position: relative;
   z-index: 2;
-  padding: 60px 50px; /* Adjusted to Figma: 60px Top/Bottom, 50px Left/Right */
+  padding: 60px 50px; 
   width: 100%;
 }
 
 .hero__title {
   font-family: var(--font-display);
-  font-size: 64px; /* Increased to match 912px height scale */
+  font-size: 64px; 
   font-weight: 800;
   color: var(--color-white);
   line-height: 1.1;
@@ -54,7 +54,7 @@
 
 .hero__description {
   font-family: var(--font-body);
-  font-size: 22px; /* Scaled up */
+  font-size: 22px;
   font-weight: 400;
   color: var(--color-white);
   line-height: 1.5;
