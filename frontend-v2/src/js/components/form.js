@@ -29,9 +29,10 @@ const getActiveModel = () => {
   return document.querySelector('.models__tab.active')?.dataset.model || null;
 };
 
-const mountPipedriveWebform = (form, webformUrl) => {
+const mountPipedriveWebform = (form, container, webformUrl) => {
   if (!webformUrl) return;
 
+  container?.classList.add('cta-form--embedded');
   form.classList.add('cta-form__embedded-host');
   form.innerHTML = `
     <iframe
@@ -46,6 +47,7 @@ const mountPipedriveWebform = (form, webformUrl) => {
 };
 
 const initPipedriveWebforms = (form) => {
+  const container = form.closest('.cta-form');
   const pageKey = resolvePageKey(window.location.pathname);
   if (!pageKey || !PIPEDRIVE_WEBFORMS[pageKey]) return false;
 
@@ -58,14 +60,14 @@ const initPipedriveWebforms = (form) => {
     return pageForms[Object.keys(pageForms)[0]];
   };
 
-  mountPipedriveWebform(form, resolveUrl());
+  mountPipedriveWebform(form, container, resolveUrl());
 
   if (typeof pageForms === 'object') {
     document.querySelectorAll('.models__tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         // Espera al siguiente frame para leer el estado "active" actualizado.
         window.requestAnimationFrame(() => {
-          mountPipedriveWebform(form, resolveUrl());
+          mountPipedriveWebform(form, container, resolveUrl());
         });
       });
     });
@@ -76,6 +78,7 @@ const initPipedriveWebforms = (form) => {
 
 export function initForm() {
   const form = document.getElementById('leadForm');
+  const container = form?.closest('.cta-form');
   const successEl = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('submitBtn');
   if (!form) return;
@@ -83,6 +86,8 @@ export function initForm() {
   if (initPipedriveWebforms(form)) {
     return;
   }
+
+  container?.classList.remove('cta-form--embedded');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
