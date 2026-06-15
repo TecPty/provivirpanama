@@ -18,10 +18,21 @@ const PIPEDRIVE_WEBFORMS = {
 };
 
 const resolvePageKey = (pathname) => {
-  if (pathname === '/' || pathname === '/index.html') return 'home';
-  if (pathname.includes('/proyectos/ciudad-del-este')) return 'ciudad-del-este';
-  if (pathname.includes('/proyectos/villas-del-este')) return 'villas-del-este';
-  if (pathname.includes('/proyectos/villas-del-oeste')) return 'villas-del-oeste';
+  const normalizedPath = pathname.endsWith('/') && pathname.length > 1
+    ? pathname.slice(0, -1)
+    : pathname;
+
+  const isHomePath =
+    normalizedPath === '' ||
+    normalizedPath === '/' ||
+    normalizedPath === '/index.html' ||
+    normalizedPath.endsWith('/frontend-v2') ||
+    normalizedPath.endsWith('/frontend-v2/index.html');
+
+  if (isHomePath) return 'home';
+  if (normalizedPath.includes('/proyectos/ciudad-del-este')) return 'ciudad-del-este';
+  if (normalizedPath.includes('/proyectos/villas-del-este')) return 'villas-del-este';
+  if (normalizedPath.includes('/proyectos/villas-del-oeste')) return 'villas-del-oeste';
   return null;
 };
 
