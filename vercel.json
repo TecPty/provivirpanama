@@ -3,7 +3,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://provivirpanama.com/api-router.php?endpoint=:path*"
+      "destination": "https://api.provivirpanama.com/api-router.php?endpoint=:path*"
     }
   ],
   "headers": [
