@@ -14,10 +14,12 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     
-    # Don't rewrite API requests
-    RewriteCond %{REQUEST_URI} !^/api/
+    # Route /api/* to api-router.php
+    RewriteRule ^api/(.*)$ api-router.php?endpoint=$1 [QSA,L]
     
     # Rewrite everything else to index.html for SPA
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ index.html [QSA,L]
 </IfModule>
 

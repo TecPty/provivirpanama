@@ -2,12 +2,12 @@
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /provivirpanama/
+    RewriteBase /
     
     # Route /api/* to api-router.php
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^api/(.*)$ /provivirpanama/api-router.php?endpoint=$1 [QSA,L]
+    RewriteRule ^api/(.*)$ api-router.php?endpoint=$1 [QSA,L]
 </IfModule>
 <IfModule mod_mime.c>
     AddType text/html .html
