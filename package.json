@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node api/index.js",
     "dev": "node --watch api/index.js",
+    "build": "npm run build --prefix frontend-v2",
     "frontend": "http-server frontend -p 8081 -c-1",
     "dev:all": "echo \"Inicia 2 terminales: 1) npm run dev  2) npm run frontend\"",
     "migrate:advisor": "node migrate-advisor.js",
