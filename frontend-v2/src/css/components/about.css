@@ -114,6 +114,10 @@
 }
 
 /* Global Section Label */
+.about__label--mobile {
+  display: none;
+}
+
 .section__label {
   display: inline-flex;
   align-self: flex-start; /* Prevent stretching */
@@ -183,5 +187,39 @@
   .about__gallery {
     width: 100%;
     height: 350px;
+  }
+  .about__copy {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .about.section {
+    padding-block: 40px;
+  }
+
+  .about__inner {
+    padding-inline: 0;
+    gap: 24px;
+  }
+
+  .about__gallery {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .about__label--mobile {
+    display: inline-flex;
+    align-self: center;
+  }
+
+  .about__label--desktop {
+    display: none;
+  }
+
+  .about__body {
+    text-align: left;
   }
 }
