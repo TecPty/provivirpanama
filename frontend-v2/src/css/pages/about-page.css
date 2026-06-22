@@ -89,6 +89,7 @@
 @media (max-width: 576px) {
   .about-hero {
     height: 520px;
+    align-items: center;
     padding: 30px 20px 44px 20px;
   }
   .about-hero__title {
@@ -512,6 +513,9 @@
     grid-template-columns: 1fr;
     gap: 24px;
   }
+  .about-define__title {
+    font-size: var(--text-3xl);
+  }
 }
 
 
@@ -656,10 +660,10 @@
     padding: 50px 20px;
   }
   .about-team__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
   .about-team__title {
-    font-size: 30px;
+    font-size: 26px;
   }
 }
