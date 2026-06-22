@@ -613,13 +613,27 @@
     margin-bottom: 20px;
   }
 
+  .model-detail__description {
+    text-align: left;
+  }
+
   .model-detail__specs {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
   }
 
   .model-detail__actions .btn-pill-arrow {
     width: 100% !important;
+  }
+
+  .gallery-dots {
+    margin-bottom: 20px;
+  }
+
+  .btn-floor-plan {
+    font-size: 16px;
+    line-height: normal;
+    padding: 12px 20px;
   }
 
   .amenity-item {
