@@ -239,6 +239,24 @@
   .req-hero {
     height: 340px;
   }
+  .req-hero__title {
+    font-size: 42px;
+  }
+  .req-hero__subtitle {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .req-hero__title {
+    font-size: 30px;
+  }
+  .req-hero__subtitle {
+    font-size: 16px;
+  }
+  .req-hero__container {
+    padding: 60px 24px;
+  }
 }
 
 @media (max-width: 480px) {

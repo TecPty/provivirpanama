@@ -176,14 +176,4 @@
   .header__logo img {
     max-height: 40px;
   }
-
-  .header__cta .btn-pill-arrow {
-    padding: 8px 14px;
-    font-size: 12px;
-  }
-
-  .header__cta .btn-pill-arrow__icon {
-    width: 24px;
-    height: 24px;
-  }
 }

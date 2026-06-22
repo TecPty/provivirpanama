@@ -578,6 +578,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .project-map__inner {
+    height: 260px;
+  }
+}
+
 @media (max-width: 600px) {
   .project-hero {
     height: 400px;

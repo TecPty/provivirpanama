@@ -46,7 +46,6 @@
 .footer__col-accesos {
   display: flex;
   flex-direction: column;
-  white-space: nowrap;
 }
 
 .footer__col-redes {
@@ -247,15 +246,25 @@
 }
 
 @media (max-width: 1200px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  
   .footer__info {
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__grid {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .footer__col-logo {
+    max-width: 100%;
+  }
+
+  .footer__info {
+    gap: 24px;
   }
 }
 
@@ -270,5 +279,6 @@
   .footer__legal {
     flex-direction: column;
     gap: 10px;
+    align-items: center;
   }
 }

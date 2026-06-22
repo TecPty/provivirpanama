@@ -366,6 +366,12 @@
   }
 }
 
+@media (max-width: 900px) {
+  .about-stats__grid {
+    gap: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .about-stats__grid {
     flex-direction: column;
@@ -488,6 +494,13 @@
   }
   .about-define__card {
     padding: 24px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-define__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
