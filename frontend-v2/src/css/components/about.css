@@ -114,10 +114,6 @@
 }
 
 /* Global Section Label */
-.about__label--mobile {
-  display: none;
-}
-
 .section__label {
   display: inline-flex;
   align-self: flex-start; /* Prevent stretching */
@@ -208,15 +204,6 @@
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
-  }
-
-  .about__label--mobile {
-    display: inline-flex;
-    align-self: center;
-  }
-
-  .about__label--desktop {
-    display: none;
   }
 
   .about__body {
