@@ -348,28 +348,32 @@
 
 @media (max-width: 600px) {
   .cta-section.section {
-    padding-block: 16px;
+    padding-block: 32px;
   }
 
   .cta-section__inner {
     padding: 0 16px;
-    gap: 16px;
+    gap: 24px;
   }
 
   .cta-form {
     width: 100%;
     min-height: 0;
-    padding: 8px;
+    padding: 16px;
   }
 
   .cta-form--embedded {
     padding: 0;
   }
 
+  .form-group {
+    margin-bottom: 8px;
+  }
+
   .form-row {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 8px;
   }
 
   .cta-form__title {
