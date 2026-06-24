@@ -10,15 +10,13 @@
 .about__inner {
   display: flex;
   align-items: center;
-  gap: 32px; /* Scaled from 40px */
-  max-width: 1100px; /* More compact container */
-  margin: 0 auto;
+  gap: 96px;
 }
 
 /* Slider Gallery Container */
 .about__gallery {
-  flex: 0 1 520px; /* Scaled from 655px */
-  height: 420px; /* Scaled from 540px */
+  flex: 1 1 520px;
+  height: 420px;
   position: relative;
   overflow: hidden;
   border-radius: 20px;
@@ -178,7 +176,6 @@
 @media (max-width: 1024px) {
   .about__inner {
     flex-direction: column;
-    padding-inline: 24px;
   }
   .about__gallery {
     width: 100%;
