@@ -7,7 +7,7 @@
       "source": "/api/:path*",
       "destination": "https://api.provivirpanama.com/index.php?endpoint=:path*"
     },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!.*\\..*).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
