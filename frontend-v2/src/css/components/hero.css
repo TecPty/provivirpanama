@@ -21,10 +21,10 @@
 
 .hero {
   position: relative;
-  min-height: 912px; 
+  width: 100%;
+  min-height: 912px;
   display: flex;
   align-items: center;
-  border-radius: 20px;
   overflow: hidden;
   background: #0F2740;
 }
