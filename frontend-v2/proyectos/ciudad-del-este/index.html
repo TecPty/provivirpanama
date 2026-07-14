@@ -91,13 +91,103 @@
     <section class="models section">
       <div class="container">
         <div class="models__tabs">
-          <button class="models__tab active" data-model="cordoba">Modelo Córdoba</button>
-          <button class="models__tab" data-model="granada">Modelo Granada</button>
+          <button class="models__tab active" data-model="granada">Modelo Granada</button>
+          <button class="models__tab" data-model="cordoba">Modelo Córdoba</button>
         </div>
 
         <div class="models__content">
+          <!-- Modelo Granada (Estructura base para material pendiente) -->
+          <div class="model-detail active" id="model-granada">
+            <div class="model-detail__grid">
+              <div class="model-detail__info">
+                <h2 class="model-detail__title">Modelo Granada</h2>
+                <p class="model-detail__description">Diseño contemporáneo y confort absoluto. El Modelo Granada ofrece una experiencia de vida única, optimizando cada metro cuadrado para el disfrute de tu familia.</p>
+                
+                <div class="model-detail__specs">
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-cama.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Recámaras</span>
+                      <span class="spec-item__value">2</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-bano.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Baños</span>
+                      <span class="spec-item__value">1</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-carro.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Estacionamientos</span>
+                      <span class="spec-item__value">1</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-metraje.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Área de terreno</span>
+                      <span class="spec-item__value">hasta 135 m²</span>
+                    </div>
+                  </div>
+                  <div class="spec-item">
+                    <img src="/assets/images/icons/icon-cash.png" alt="" class="spec-item__icon">
+                    <div class="spec-item__text">
+                      <span class="spec-item__label">Ingreso desde</span>
+                      <span class="spec-item__value">$725</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="model-detail__actions">
+                  <a href="#contacto" class="btn-pill-arrow">
+                    ¡Quiero vivir aquí!
+                    <span class="btn-pill-arrow__icon">
+                      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="model-detail__gallery-container">
+                <div class="model-detail__gallery">
+                  <div class="gallery-slides">
+                    <img class="gallery-slide active" src="/assets/images/properties/ciudad-del-este/granada/granada-fachada.webp" alt="Modelo Granada - Fachada" loading="eager">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-living-room.webp" alt="Modelo Granada - Sala" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-dining-room.webp" alt="Modelo Granada - Comedor" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-kitchen.webp" alt="Modelo Granada - Cocina" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-room-1.webp" alt="Modelo Granada - Habitación 1" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-room-2.webp" alt="Modelo Granada - Habitación 2" loading="lazy">
+                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-bathroom.webp" alt="Modelo Granada - Baño" loading="lazy">
+                  </div>
+                  <div class="gallery-nav">
+                    <button class="gallery-btn prev" aria-label="Anterior">
+                      <img src="/assets/images/icons/left-arrow.svg" alt="Anterior" width="35" height="35">
+                    </button>
+                    <button class="gallery-btn next" aria-label="Siguiente">
+                      <img src="/assets/images/icons/right-arrow.svg" alt="Siguiente" width="35" height="35">
+                    </button>
+                  </div>
+                </div>
+                <div class="gallery-dots">
+                  <span class="gallery-dot active" data-index="0"></span>
+                  <span class="gallery-dot" data-index="1"></span>
+                  <span class="gallery-dot" data-index="2"></span>
+                  <span class="gallery-dot" data-index="3"></span>
+                  <span class="gallery-dot" data-index="4"></span>
+                  <span class="gallery-dot" data-index="5"></span>
+                  <span class="gallery-dot" data-index="6"></span>
+                  <span class="gallery-dot" data-index="7"></span>
+                </div>
+                <button data-floor-plan="/assets/images/properties/ciudad-del-este/granada/granada-planta.webp" class="btn-floor-plan">Ver planta arquitectónica</button>
+              </div>
+            </div>
+          </div>
+
           <!-- Modelo Córdoba -->
-          <div class="model-detail active" id="model-cordoba">
+          <div class="model-detail" id="model-cordoba">
             <div class="model-detail__grid">
               <div class="model-detail__info">
                 <h2 class="model-detail__title">Modelo Córdoba</h2>
@@ -186,96 +276,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Modelo Granada (Estructura base para material pendiente) -->
-          <div class="model-detail" id="model-granada">
-            <div class="model-detail__grid">
-              <div class="model-detail__info">
-                <h2 class="model-detail__title">Modelo Granada</h2>
-                <p class="model-detail__description">Diseño contemporáneo y confort absoluto. El Modelo Granada ofrece una experiencia de vida única, optimizando cada metro cuadrado para el disfrute de tu familia.</p>
-                
-                <div class="model-detail__specs">
-                  <div class="spec-item">
-                    <img src="/assets/images/icons/icon-cama.png" alt="" class="spec-item__icon">
-                    <div class="spec-item__text">
-                      <span class="spec-item__label">Recámaras</span>
-                      <span class="spec-item__value">2</span>
-                    </div>
-                  </div>
-                  <div class="spec-item">
-                    <img src="/assets/images/icons/icon-bano.png" alt="" class="spec-item__icon">
-                    <div class="spec-item__text">
-                      <span class="spec-item__label">Baños</span>
-                      <span class="spec-item__value">1</span>
-                    </div>
-                  </div>
-                  <div class="spec-item">
-                    <img src="/assets/images/icons/icon-carro.png" alt="" class="spec-item__icon">
-                    <div class="spec-item__text">
-                      <span class="spec-item__label">Estacionamientos</span>
-                      <span class="spec-item__value">1</span>
-                    </div>
-                  </div>
-                  <div class="spec-item">
-                    <img src="/assets/images/icons/icon-metraje.png" alt="" class="spec-item__icon">
-                    <div class="spec-item__text">
-                      <span class="spec-item__label">Área de terreno</span>
-                      <span class="spec-item__value">hasta 135 m²</span>
-                    </div>
-                  </div>
-                  <div class="spec-item">
-                    <img src="/assets/images/icons/icon-cash.png" alt="" class="spec-item__icon">
-                    <div class="spec-item__text">
-                      <span class="spec-item__label">Ingreso desde</span>
-                      <span class="spec-item__value">$725</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="model-detail__actions">
-                  <a href="#contacto" class="btn-pill-arrow">
-                    ¡Quiero vivir aquí!
-                    <span class="btn-pill-arrow__icon">
-                      <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
-                    </span>
-                  </a>
-                </div>
-              </div>
-
-              <div class="model-detail__gallery-container">
-                <div class="model-detail__gallery">
-                  <div class="gallery-slides">
-                    <img class="gallery-slide active" src="/assets/images/properties/ciudad-del-este/granada/granada-fachada.webp" alt="Modelo Granada - Fachada" loading="eager">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-living-room.webp" alt="Modelo Granada - Sala" loading="lazy">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-dining-room.webp" alt="Modelo Granada - Comedor" loading="lazy">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-kitchen.webp" alt="Modelo Granada - Cocina" loading="lazy">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-room-1.webp" alt="Modelo Granada - Habitación 1" loading="lazy">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-room-2.webp" alt="Modelo Granada - Habitación 2" loading="lazy">
-                    <img class="gallery-slide" src="/assets/images/properties/ciudad-del-este/granada/granada-bathroom.webp" alt="Modelo Granada - Baño" loading="lazy">
-                  </div>
-                  <div class="gallery-nav">
-                    <button class="gallery-btn prev" aria-label="Anterior">
-                      <img src="/assets/images/icons/left-arrow.svg" alt="Anterior" width="35" height="35">
-                    </button>
-                    <button class="gallery-btn next" aria-label="Siguiente">
-                      <img src="/assets/images/icons/right-arrow.svg" alt="Siguiente" width="35" height="35">
-                    </button>
-                  </div>
-                </div>
-                <div class="gallery-dots">
-                  <span class="gallery-dot active" data-index="0"></span>
-                  <span class="gallery-dot" data-index="1"></span>
-                  <span class="gallery-dot" data-index="2"></span>
-                  <span class="gallery-dot" data-index="3"></span>
-                  <span class="gallery-dot" data-index="4"></span>
-                  <span class="gallery-dot" data-index="5"></span>
-                  <span class="gallery-dot" data-index="6"></span>
-                  <span class="gallery-dot" data-index="7"></span>
-                </div>
-                <button data-floor-plan="/assets/images/properties/ciudad-del-este/granada/granada-planta.webp" class="btn-floor-plan">Ver planta arquitectónica</button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -343,7 +343,7 @@
       <div class="container">
         <div class="project-map__inner">
           <!-- El src apunta a una imagen inexistente para mostrar el icono de "imagen rota" hasta que la diseñadora pase el arte final -->
-          <img src="/assets/images/properties/ciudad-del-este/map-ciudad-del-este.png" alt="Mapa de Ubicación Ciudad del Este" class="project-map__img" loading="lazy" decoding="async">
+          <img src="/assets/images/properties/ciudad-del-este/map-ciudad-del-este.webp" alt="Mapa de Ubicación Ciudad del Este" class="project-map__img" loading="lazy" decoding="async" width="1468" height="748">
         </div>
         <div class="project-map__actions">
           <a href="https://www.google.com/maps/place/Ciudad+del+Este/@9.101512,-79.2307316,1117m/data=!3m1!1e3!4m6!3m5!1s0x8e54a90013771d1d:0xc93a5b71090e047a!8m2!3d9.1002408!4d-79.2247342!16s%2Fg%2F11yx7w6cjc!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMy4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener" class="btn btn--primary">Ver en Google Maps</a>

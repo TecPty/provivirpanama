@@ -76,9 +76,9 @@
     <!-- HERO -->
     <section class="hero-section" id="inicio">
       <div class="hero">
-        <video class="hero__bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/assets/images/hero/hero-poster.webp" aria-label="Video principal de Provivir Panamá">
-          <source src="/assets/images/hero/video-hero-v2.webm" type="video/webm">
-          <source src="/assets/images/hero/video-hero-v2-optimized.mp4" type="video/mp4">
+        <video class="hero__bg" autoplay muted loop playsinline webkit-playsinline preload="metadata" poster="/assets/images/hero/hero-poster.webp" fetchpriority="high" aria-label="Video principal de Provivir Panamá">
+          <source src="/assets/images/hero/video-hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)">
+          <source src="/assets/images/hero/video-hero-desktop.mp4" type="video/mp4">
         </video>
         <div class="hero__overlay"></div>
 
@@ -102,19 +102,19 @@
           <div class="about__gallery" id="aboutGallery">
             <div class="about__gallery-track" id="galleryTrack">
               <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-1.webp" alt="Provivir - Residencial 1" loading="eager">
+                <img src="/assets/images/about/about-1.webp" alt="Provivir - Residencial 1" loading="eager" fetchpriority="high" width="655" height="514">
               </div>
               <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-2.webp" alt="Provivir - Residencial 2" loading="lazy">
+                <img src="/assets/images/about/about-2.webp" alt="Provivir - Residencial 2" loading="lazy" width="655" height="514">
               </div>
               <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-3.webp" alt="Provivir - Residencial 3" loading="lazy">
+                <img src="/assets/images/about/about-3.webp" alt="Provivir - Residencial 3" loading="lazy" width="654" height="514">
               </div>
               <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-4.webp" alt="Provivir - Residencial 4" loading="lazy">
+                <img src="/assets/images/about/about-4.webp" alt="Provivir - Residencial 4" loading="lazy" width="653" height="514">
               </div>
               <div class="about__gallery-slide">
-                <img src="/assets/images/about/about-5.webp" alt="Provivir - Residencial 5" loading="lazy">
+                <img src="/assets/images/about/about-5.webp" alt="Provivir - Residencial 5" loading="lazy" width="655" height="514">
               </div>
             </div>
 
@@ -159,7 +159,7 @@
           <!-- Villas del Este -->
           <a href="/proyectos/villas-del-este/" class="project-card">
             <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/villas-del-este/hero.webp" alt="Villas del Este" class="project-card__image" loading="lazy">
+              <img src="/assets/images/properties/villas-del-este/hero-card.webp" alt="Villas del Este" class="project-card__image" loading="lazy" width="960" height="960">
             </div>
             <div class="project-card__body">
               <img src="/assets/images/logo/logo-villas-del-este.svg" alt="Villas del Este" class="project-card__logo">
@@ -176,7 +176,7 @@
           <!-- Villas del Oeste -->
           <a href="/proyectos/villas-del-oeste/" class="project-card">
             <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/villas-del-oeste/villas-del-oeste.webp" alt="Villas del Oeste" class="project-card__image" loading="lazy">
+              <img src="/assets/images/properties/villas-del-oeste/villas-del-oeste.webp" alt="Villas del Oeste" class="project-card__image" loading="lazy" width="1008" height="752">
             </div>
             <div class="project-card__body">
               <img src="/assets/images/logo/logo-villas-del-oeste.svg" alt="Villas del Oeste" class="project-card__logo">
@@ -193,7 +193,7 @@
           <!-- Ciudad del Este -->
           <a href="/proyectos/ciudad-del-este/" class="project-card">
             <div class="project-card__image-wrapper">
-              <img src="/assets/images/properties/ciudad-del-este/ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy">
+              <img src="/assets/images/properties/ciudad-del-este/ciudad-del-este.webp" alt="Ciudad del Este" class="project-card__image" loading="lazy" width="655" height="514">
             </div>
             <div class="project-card__body">
               <img src="/assets/images/logo/logo-ciudad-del-este.svg" alt="Ciudad del Este" class="project-card__logo">
