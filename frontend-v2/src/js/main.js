@@ -3,6 +3,7 @@ import { initHeader } from './components/header.js';
 import { initGallery } from './components/gallery.js';
 import { initForm } from './components/form.js';
 import { initProject } from './components/project.js';
+import { initTestimonials } from './components/testimonials.js';
 
 // Immediate initialization for UI layout
 initHeader();
@@ -16,5 +17,6 @@ window.addEventListener('load', () => {
     initGallery();
     initForm();
     initProject();
+    initTestimonials();
   });
 });
