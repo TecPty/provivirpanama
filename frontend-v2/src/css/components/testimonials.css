@@ -365,3 +365,8 @@
     height: 22px;
   }
 }
+
+/* Offset for the fixed header when jumping from the "Testimonios" nav link */
+#testimonios {
+  scroll-margin-top: 100px;
+}
