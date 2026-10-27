@@ -120,7 +120,8 @@
   top: 0;
   right: -100%;
   width: 80%;
-  height: 67vh;
+  height: auto;
+  max-height: 90vh;
   background: var(--color-white);
   padding: 90px 32px 40px;
   display: flex;
@@ -209,4 +210,18 @@
   .header__mobile-nav {
     padding: 80px 24px 32px;
   }
+}
+
+/* Mobile submenu — project links always visible under "Proyectos" */
+.header__mobile-nav .header__mobile-sub {
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
+}
+
+.header__mobile-nav .header__mobile-sub a:not(.btn) {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding-block: 10px;
 }

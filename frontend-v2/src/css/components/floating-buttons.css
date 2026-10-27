@@ -1,0 +1,58 @@
+/* ==========================================================================
+   FLOATING BUTTONS — Instagram + WhatsApp (bottom-right)
+   ========================================================================== */
+
+.floating-buttons {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 900;
+}
+
+.floating-buttons__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.floating-buttons__btn:hover,
+.floating-buttons__btn:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+
+.floating-buttons__btn svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.floating-buttons__btn--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.floating-buttons__btn--whatsapp {
+  background: #25d366;
+}
+
+@media (max-width: 767px) {
+  .floating-buttons {
+    right: 12px;
+    bottom: 12px;
+    gap: 10px;
+  }
+
+  .floating-buttons__btn {
+    width: 50px;
+    height: 50px;
+  }
+}
